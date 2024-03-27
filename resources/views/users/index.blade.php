@@ -65,17 +65,13 @@
                                     </td>
                                     <td class="align-middle text-center action">
                                     <a href="#" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-info text-center align-items-center justify-content-center btn-edit-user" 
-   data-toggle="modal" 
-   data-target="#edit_modal" 
-   data-name="{{$user->name}}" 
-   data-username="{{$user->username}}" 
-   data-rowid="{{$user->id}}">
-   <i class="fa fa-edit"></i>
-</a>
-
-
-
-                                        </a>
+                                        data-toggle="modal" 
+                                        data-target="#edit_modal" 
+                                        data-name="{{$user->name}}" 
+                                        data-username="{{$user->username}}" 
+                                        data-rowid="{{$user->id}}">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
                                     </td>
                                     @include('users.edit')
                                 </tr>

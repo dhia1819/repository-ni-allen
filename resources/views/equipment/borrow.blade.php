@@ -41,7 +41,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-6">
-                            <label class="form-label" for="borrowed_by">Borrowed Person<span class="text-danger">&#x2022;</span></label>
+                            <label class="form-label" for="borrowed_by">Borrowed By<span class="text-danger">&#x2022;</span></label>
                             <input type="text" class="form-control" id="borrowed_by" name="borrowed_by" required>
                         </div>
                         <div class="col-md-6">
@@ -73,7 +73,8 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary btn-submit float-end">Submit</button>
+                            <button type="submit" class="btn btn-primary bg-gradient-success float-end">
+                                <i class="fa fa-paper-plane">  </i>Submit</button>
                         </div>
                     </div>
                 

@@ -50,8 +50,8 @@
                                             @endif
                                         </span>
                                     </td>
-                                    <td class="align-middle text-center action">
-                                        <a href="#" data-rowid="{{$cat->id}}" class=" icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-info text-center align-items-center justify-content-center btn-edit-cat" data-toggle="modal" data-target="#edit_modal">
+                                    <td class="align-middle text-center action">       
+                                        <a href="#" data-rowid="{{$cat->id}}" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-info text-center align-items-center justify-content-center btn-edit-cat" data-toggle="modal" data-target="#edit_modal">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                     </td>

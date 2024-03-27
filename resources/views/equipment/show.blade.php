@@ -17,7 +17,7 @@
 @endsection
 @section('content')
 
-<div class="row">
+<div class="row mt-2">
     <div class="col-md-12">
 
     <a href="{{ route('equipment.edit', ['id' => $equipment->id]) }}" class="btn bg-gradient-success trigger-modal btn-md">
@@ -34,7 +34,7 @@
     </div>
 </div>
 
-<div class="row mt-3">
+<div class="row mt-2">
     <div class="col-12">
         <div class="card">
             <div class="card-body">

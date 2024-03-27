@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Category;
+use App\Models\Equipment;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,7 +24,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             OfficeSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            EquipmentSeeder::class,
+            CategorySeeder::class
         ]);
     }
 }

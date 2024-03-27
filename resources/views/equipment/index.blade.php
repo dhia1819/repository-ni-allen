@@ -44,7 +44,7 @@
             <!-- Category Filter -->
             <div class="form-group">
                 <label for="category_filter">Filter by Category:</label>
-                <select class="form-control" id="category_filter">
+                <select class="form-control select select2-filter" id="category_filter">
                     <option value="">All Categories</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->category }}">{{ $category->category }}</option>
@@ -66,11 +66,11 @@
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Category</th>
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Property Number</th> 
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Serial Number</th> 
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Value</th> 
+                                    {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Value</th> 
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Quantity</th> 
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Remarks</th> 
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Date Acquired</th> 
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Conditions</th> 
+                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Conditions</th>  --}}
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Status</th> 
                                     <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder" width="11%">Action</th>
                                 </tr>
@@ -88,7 +88,7 @@
                                     <td style="vertical-align: middle;">{{ $item->category_name }}</td>
                                     <td style="vertical-align: middle;">{{ $item->property_no }}</td>
                                     <td style="vertical-align: middle;">{{ $item->serial_no }}</td>
-                                    <td style="vertical-align: middle;">Php.{{ $item->value }}</td>
+                                    {{-- <td style="vertical-align: middle;">Php.{{ $item->value }}</td>
                                     <td style="vertical-align: middle;">{{ $item->quantity }}</td>
                                     <td style="vertical-align: middle;">{{ $item->remarks }}</td>
                                     <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($item->date_acquired)->format('F d, Y') }}</td>
@@ -99,12 +99,12 @@
     
 
                                 
-                                    </td>
+                                    </td> --}}
                                     <td style="vertical-align: middle;">
                                     {{ ucfirst($item->status) }}
                                     </td>
                                     <td>
-<div class ="text-center">
+<div class ="text-center">                                                              
     <a href="{{ route('equipment.show', ['id' => $item->id]) }}" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-info text-center align-items-center justify-content-center">
     <i class="fa fa-eye 2x" aria-hidden="true"></i>
 </a>

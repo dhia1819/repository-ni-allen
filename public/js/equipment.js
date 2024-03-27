@@ -10,6 +10,9 @@ $(function() {
         },
         'scrollX' : (screen_height > screen_width) ? true : false
     });
+
+    $(".select2-create").select2({ dropdownParent: $("#addEquipment")});
+    $(".select2-update").select2({ dropdownParent: $("#editEquipment")});    
     
     $('#category_filter').on('change', function() {
         var category = $(this).val();
@@ -55,6 +58,8 @@ $(function() {
         }
     });
     $(".select2-create").select2({ dropdownParent: $('#office').parent() });
+   
+
 
     });
     

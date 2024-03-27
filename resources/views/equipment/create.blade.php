@@ -5,11 +5,13 @@
         td { font-size: 0.75rem !important }
     </style>
 @endsection
+@section('page_script')
+    <script type="text/javascript" src="/js/equipment.js"></script>
+@endsection
 @section('content')
 
-<div class="row">
+<div class="row mt-2">
     <div class="col-md-12">
-           
 <a href="{{ route('equipment.back') }}" class="btn bg-gradient-danger trigger-modal btn-md">
     <i class="fa fa-arrow-left"></i> Back
 </a>
@@ -21,9 +23,9 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Add Equipment </h5>
+                <h5 class="card-title text-info">Add Equipment </h5>
         <br>
-                <form method="POST" action="{{ route('equipment.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('equipment.store') }}" enctype="multipart/form-data" id="addEquipment">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
@@ -32,7 +34,7 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="category">Category<span class="text-danger">&#x2022;</span></label>
-                            <select class="form-control" id="category" name="category">
+                            <select class="form-control select select2-create" id="category" name="category">
                                 <option value="">Select Category</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->category }}</option>
@@ -66,7 +68,7 @@
                             <input type="text" class="form-control" id="quantity" name="quantity">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="image">Image<span class="text-info">(Optional)</span></label>
+                            <label class="form-label" for="image">Image <span class="text-info">(Optional)</span></label>
                             <input type="file" class="form-control" id="image" name="image">
                         </div>
                     </div>
@@ -82,7 +84,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary btn-submit float-end">Submit</button>
+                            <button type="submit" class="btn bg-gradient-success btn-submit float-end">Submit</button>
                         </div>
                     </div>
                 </form>

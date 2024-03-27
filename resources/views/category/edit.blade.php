@@ -1,4 +1,4 @@
-<div class="modal fade" role="dialog"  id="edit_modal">
+<div class="modal fade" id="edit_modal" role="dialog">
     <div class="modal-dialog modal-dialog-top" role="document">
         <div class="modal-content">
             <form method="post" action="{{ route('category.update', ['id' => $cat->id]) }}" class="form">
@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-md-12">
                             <label class="text-muted">Status</label> <span class="text-danger">&#x2022;</span>
-                            <select class="form-control select2 select2-edit" name="status" id="status" style="width: 100%" required>
+                            <select class="form-control select2 select2-update" name="status" id="status" style="width: 100%" required>
                                 <option selected disabled></option>
                                 <option  value="active">Active</option>
                                 <option  value="inactive">Inactive</option>

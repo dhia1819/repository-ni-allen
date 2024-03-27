@@ -11,7 +11,7 @@ $(function() {
         'scrollX' : (screen_height > screen_width) ? true : false
     });
     $(".select2-create").select2({ dropdownParent: $("#create_modal")});
-    $(".select2-edit").select2({ dropdownParent: $("#edit_modal")});
+    $(".select2-update").select2({ dropdownParent: $("#edit_modal")});    
 
     
     $('.btn-edit-cat').click(function(){
