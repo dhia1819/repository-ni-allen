@@ -121,7 +121,8 @@ class UserController extends Controller
             'rowid'          => 'required|exists:tbl_users,id',
             'name'           => 'required',
             'username'       => 'required',
-            'classification' => 'required'
+            'classification' => 'required',
+            'status'        => 'required'
         ]);
     
         // Check if validation fails
@@ -137,6 +138,7 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->username = strtolower($request->username);
             $user->classification_id = $request->classification;
+            $user->status=$request->status;
             $user->updated_at = Carbon::now('Asia/Manila');
             $user->save();
     

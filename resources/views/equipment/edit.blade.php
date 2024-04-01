@@ -43,8 +43,11 @@
                             <select class="form-control select select2-update" id="category" name="category">
                                 <option value="">Select Category</option>
                                 @foreach($categories as $category)
-                                    <option value="{{ $category->id }}" {{ $category->id == $equipment->category ? 'selected' : '' }}>{{ $category->category }}</option>
-                                @endforeach
+                                @if($category->status == 0)
+                                    @continue
+                                @endif
+                                <option value="{{ $category->id }}" {{ $category->id == $equipment->category ? 'selected' : '' }}>{{ $category->category }}</option>
+                            @endforeach
                             </select>
                         </div>
                     </div>

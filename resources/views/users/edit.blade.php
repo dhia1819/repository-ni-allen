@@ -28,8 +28,14 @@
                             <label class="text-muted">Classification</label> <span class="text-danger">&#x2022;</span>
                             <select class="form-control select2 select2-edit" name="classification" id="classification"style="width: 100%" required>
                                 <option selected disabled></option>
-                                <option value ="1">Overall Admin</option>
-                                <option value ="2">Admin</option>
+                                <option value ="1">Overall Administrator</option>
+                                <option value ="2">Administrator</option>
+                            </select>
+                            <label class="text-muted">Status</label> <span class="text-danger">&#x2022;</span>
+                            <select class="form-control select2 select2-edit" name="status" id="status"style="width: 100%" required>
+                                <option selected disabled></option>
+                                <option value ="1">Active</option>
+                                <option value ="2">Not Active</option>
                             </select>
                         </div>
                     </div>

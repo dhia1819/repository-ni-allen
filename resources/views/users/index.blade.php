@@ -50,7 +50,7 @@
                                     </td>
                                     <td data-label="Classification" class="align-middle with-label">
                                         <span class="text-xs" style="color: {{$user->classification_id == 1 ? 'blue' : 'red'}};">
-                                            {{$user->classification_id == 1 ? 'Administrator' : 'Overall Administrator'}}
+                                            {{$user->classification_id == 1 ? 'Overall Administrator' : 'Administrator'}}
                                         </span>
                                     </td>
 

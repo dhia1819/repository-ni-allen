@@ -43,6 +43,9 @@
                 <select class="form-control" id="category_filter">
                     <option value="">All Categories</option>
                     @foreach($categories as $category)
+                    @if($category->status == 0)
+                        @continue
+                    @endif
                         <option value="{{ $category->category }}">{{ $category->category }}</option>
                     @endforeach
                 </select>

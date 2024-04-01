@@ -50,7 +50,7 @@ class CategoryController extends Controller
     
         $tblCategory = new Category();
         $tblCategory->category = $validatedData['category'];
-        $tblCategory->status = $validatedData['status'] === 'Active' ? true : false;
+        $tblCategory->status = $validatedData['status'] === '1' ? true : false;
         $tblCategory->save();
     
         return redirect()->back()->with('success', 'Category added successfully!');
@@ -100,7 +100,7 @@ class CategoryController extends Controller
         // Update the category
         $tblCategory = Category::findOrFail($validatedData['rowid']);
         $tblCategory->category = $validatedData['category'];
-        $tblCategory->status = $validatedData['status'] === 'Active';
+        $tblCategory->status = $validatedData['status'] === '1';
         $tblCategory->save();
     
         return redirect()->back()->with('success', 'Category updated successfully!');

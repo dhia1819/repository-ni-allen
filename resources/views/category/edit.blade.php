@@ -21,8 +21,8 @@
                             <label class="text-muted">Status</label> <span class="text-danger">&#x2022;</span>
                             <select class="form-control select2 select2-update" name="status" id="status" style="width: 100%" required>
                                 <option selected disabled></option>
-                                <option  value="active">Active</option>
-                                <option  value="inactive">Inactive</option>
+                                <option  value="1">Active</option>
+                                <option  value="0">Inactive</option>
                             </select>
                         </div>
                     </div>
