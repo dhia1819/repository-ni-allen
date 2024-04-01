@@ -12,7 +12,7 @@ $(function() {
     });
 
     $(".select2-create").select2({ dropdownParent: $("#addEquipment")});
-    $(".select2-update").select2({ dropdownParent: $("#editEquipment")});    
+    $(".select2-update").select2({ dropdownParent: $("#editEquipment")});
     
     $('#category_filter').on('change', function() {
         var category = $(this).val();
