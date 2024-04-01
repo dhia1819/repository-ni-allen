@@ -17,7 +17,7 @@ class EquipmentSeeder extends Seeder
             array(
             'admin_id' => 1,
             'equipment_name' => 'Air Conditioner',
-            'category' => 'Air Conditioner',
+            'category' => 2,
             'Description' => '2.5Hp window type aircondition-CARRIER',
             'property_no' => 'F100225',
             'serial_no' => '51PMX-RAC-CAR-24KEA N16PC-1220130',
@@ -34,7 +34,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop Computer',
-                'category' => 'Laptop Computer',
+                'category' => 1,
                 'Description' => 'Laptop with separated audio jack with high-end webcam-DELL, 15.6" FHD, Core i5-10300H (8MB Cache, up to 4.5GHz, 4 Cores). 8GB DDR4-2933MHz, 2x4G. 1TB SATA HD + 256GB M.2 Pcle NVMe SSD. 4GB GDDR6. Operating System',
                 'property_no' => 'LAP0024935',
                 'serial_no' => 'FJRF203',
