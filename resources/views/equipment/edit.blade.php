@@ -91,7 +91,8 @@
 
                     <div class="row mt-3">
                         <div class="col-md-12">
-                            <button type="submit" class="btn bg-gradient-success btn-submit float-end">Submit</button>
+                            <button type="submit" class="btn bg-gradient-success btn-submit float-end">
+                               <i class="fa fa-paper-plane"></i> Submit</button>
                         </div>
                     </div>
                 </form>

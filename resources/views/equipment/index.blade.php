@@ -105,11 +105,15 @@
                                     </td>
                                     <td>
 <div class ="text-center">                                                              
-    <a href="{{ route('equipment.show', ['id' => $item->id]) }}" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-info text-center align-items-center justify-content-center">
+    <a href="{{ route('equipment.show', ['id' => $item->id]) }}" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center align-items-center justify-content-center">
     <i class="fa fa-eye 2x" aria-hidden="true"></i>
 </a>
 @if($item->status !== 'Borrowed')
     <a href="{{ route('equipment.borrow', ['id' => $item->id]) }}" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-warning text-center align-items-center justify-content-center">
+        <i class="fas fa-hand-holding"></i> <!-- Replace with the appropriate borrow icon -->
+    </a>
+@else
+    <a href="#" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-secondary text-center align-items-center justify-content-center">
         <i class="fas fa-hand-holding"></i> <!-- Replace with the appropriate borrow icon -->
     </a>
 @endif

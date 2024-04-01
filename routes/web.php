@@ -59,5 +59,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/office/store', [Controllers\OfficeController::class, 'store']);
 	Route::post('/office/{id}/update', [Controllers\OfficeController::class, 'update'])->name('office.update');
 
+    Route::get('/employee', [Controllers\EmployeeController::class, 'index']);
+
 
 });
