@@ -46,48 +46,6 @@
                             </div>
                             
                         </div>
-<<<<<<< HEAD
-                        <div class="col-md-4">
-                            <label class="form-label" for="equipment_name">Equipment Name <span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="equipment_name" name="equipment_name" value="{{ $equipment->equipment_name }}">
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label" for="category">Category<span class="text-danger">&#x2022;</span></label>
-                            <select class="form-control select select2-update" id="category" name="category">
-                                <option value="">Select Category</option>
-                                @foreach($categories as $category)
-                                @if($category->status == 0)
-                                    @continue
-                                @endif
-                                <option value="{{ $category->id }}" {{ $category->id == $equipment->category ? 'selected' : '' }}>{{ $category->category }}</option>
-                            @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-4">
-                            <label class="form-label" for="property_no">Property Number<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="property_no" name="property_no" value="{{ $equipment->property_no }}">
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label" for="serial_no">Serial Number<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="serial_no" name="serial_no" value="{{ $equipment->serial_no }}">
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label" for="value">Value<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="value" name="value" value="{{ $equipment->value }}">
-                        </div>
-                                               
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-6">
-                            <label class="form-label" for="quantity">Quantity<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="quantity" name="quantity" value="{{ $equipment->quantity }}">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="remarks">Remarks<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="remarks" name="remarks" value="{{ $equipment->remarks }}">
-=======
                         <div class="col-md-8">
                             <div class="row">
                                 <div class="col-md-6">
@@ -99,6 +57,9 @@
                                     <select class="form-control select select2-update" id="category" name="category">
                                         <option value="">Select Category</option>
                                         @foreach($categories as $category)
+                                        @if($category->status==0)
+                                            @continue
+                                            @endif
                                             <option value="{{ $category->id }}" {{ $category->id == $equipment->category ? 'selected' : '' }}>{{ $category->category }}</option>
                                         @endforeach
                                     </select>
@@ -146,7 +107,6 @@
                                        <i class="fa fa-paper-plane"></i> Submit</button>
                                 </div>
                             </div>
->>>>>>> a8ca49455eaf5284632279686b15c0a040299116
                         </div>
                         
                     </div>
