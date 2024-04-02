@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Equipment;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -31,9 +32,10 @@ class HomeController extends Controller
         ];
 
         $users = User::count();
+        $equipment=Equipment::count();
   
         return view('home', compact(
-            'page','users'
+            'page','users', 'equipment'
         ));
     }
 }

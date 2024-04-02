@@ -49,27 +49,6 @@
                         <div class="col-md-8">
                             <div class="row">
                                 <div class="col-md-6">
-<<<<<<< HEAD
-                                    <label class="form-label" for="equipment_name">Equipment Name <span class="text-danger">&#x2022;</span></label>
-                                    <input type="text" class="form-control" id="equipment_name" name="equipment_name" value="{{ $equipment->equipment_name }}">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label" for="category">Category<span class="text-danger">&#x2022;</span></label>
-                                    <select class="form-control select select2-update" id="category" name="category">
-                                        <option value="">Select Category</option>
-                                        @foreach($categories as $category)
-                                            @if($category->status == 0)
-                                                @continue
-                                            @endif
-                                            <option value="{{ $category->id }}" {{ $category->id == $equipment->category ? 'selected' : '' }}>{{ $category->category }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-6">
-=======
->>>>>>> 3b7249a4e884b6b3adc8b2743699941156997a11
                                     <label class="form-label" for="date_acquired">Date Acquired<span class="text-danger">&#x2022;</span></label>
                                     <input type="date" class="form-control" id="date_acquired" name="date_acquired" value="{{ $equipment->date_acquired }}">
                                 </div>
