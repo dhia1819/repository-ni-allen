@@ -12,7 +12,7 @@
 
 <div class="row mt-2">
     <div class="col-md-12">
-        <a href="{{ route('equipment.back') }}" class="btn bg-gradient-danger trigger-modal btn-md">
+        <a href="{{ route('return') }}" class="btn bg-gradient-danger trigger-modal btn-md">
             <i class="fa fa-arrow-left"></i> Back
         </a>
         @include('layouts.message')

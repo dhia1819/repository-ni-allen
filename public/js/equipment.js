@@ -1,43 +1,50 @@
 $(function() {
 
     $('#tbl-equipment').dataTable({
-        'language':{
-            // 'zeroRecords': '<center><span class="badge text-white bg-danger">No Records Found</span></center>',
+        'language': {
             "paginate": {
                 "previous": "<",
                 "next": ">",
             }
         },
-        'scrollX' : (screen_height > screen_width) ? true : false
+        'scrollX': (screen.height > screen.width) ? true : false
     });
 
-    $(".select2-create").select2({ dropdownParent: $("#addEquipment")});
-    $(".select2-update").select2({ dropdownParent: $("#editEquipment")});
-    
-    $('#category_filter').on('change', function() {
-        var category = $(this).val();
-    
+    $(".select2-create").select2({ dropdownParent: $("#addEquipment") });
+    $(".select2-update").select2({ dropdownParent: $("#editEquipment") });
+    $(".select2-filter").select2({ dropdownParent: $("#filters") });
+
+    $('#category_filter, #condition_filter, #status_filter').on('change', function() {
+        var category = $('#category_filter').val();
+        var condition = $('#condition_filter').val();
+        var status = $('#status_filter').val();
+
         // Loop through each row of the table
         $('#equipment_table_body tr').each(function() {
             var rowCategory = $(this).find('td:eq(2)').text().trim(); // Get the category from the third column
-    
-            // Show or hide rows based on the selected category
-            if (category === '' || category === rowCategory) {
+            var rowCondition = $(this).find('td:eq(5)').text().trim(); // Get the condition from the sixth column
+            var rowStatus = $(this).find('td:eq(6)').text().trim(); // Get the status from the seventh column
+
+            // Show or hide rows based on the selected filters
+            if ((category === '' || category === rowCategory) && 
+                (condition === '' || condition === rowCondition) && 
+                (status === '' || status === rowStatus.toLowerCase())) {
                 $(this).show();
             } else {
                 $(this).hide();
             }
         });
     });
+
     document.getElementById('conditionDropdown').addEventListener('change', function(event) {
         // Submit the form when an option is selected
         document.getElementById('conditionForm').submit();
     });
-    // JavaScript Event Listener
+
     document.getElementById('conditionDropdown').addEventListener('change', function(event) {
         // Get the selected option value
         const selectedOption = event.target.value;
-    
+
         // Execute action based on the selected option
         switch (selectedOption) {
             case 'Good':
@@ -57,9 +64,7 @@ $(function() {
                 console.log('Unknown condition selected');
         }
     });
+
     $(".select2-create").select2({ dropdownParent: $('#office').parent() });
-   
 
-
-    });
-    
+});

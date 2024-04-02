@@ -87,8 +87,7 @@
                                         <td style="vertical-align: middle;">{{ ucfirst($transaction->tstatus) }}</td> --}}
                                         <td>
                                             <div class="align-middle text-center action" role="group" aria-label="Actions">
-                                            <a href="{{ route('show.history', ['id' => $transaction->
-                                            id]) }}" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center align-items-center justify-content-center">
+                                            <a href="{{ route('show.history', ['id' => $transaction->transaction_id]) }}" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center align-items-center justify-content-center">
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                             </div>

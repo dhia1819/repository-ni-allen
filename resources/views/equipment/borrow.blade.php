@@ -21,21 +21,21 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Borrow Form</h5>
+                <h5 class="card-title text-info">Borrow Form</h5>
                 <form method="POST" action="{{ route('equipment.save') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <input type="hidden" id="equipment_id" name="equipment_id" value="{{ $equipment->id }}">
                             <label class="form-label" for="equipment_name">Equipment Name <span class="text-danger">&#x2022;</span></label>
                             <input type="text" class="form-control" id="equipment_name" name="equipment_name" value="{{ $equipment->equipment_name }}" readonly>
                         </div>
-                        <div class="col-md-3">
-                            <label class="form-label" for="serial_no">Serial no# <span class="text-danger">&#x2022;</span></label>
+                        <div class="col-md-4">
+                            <label class="form-label" for="serial_no">Serial Number <span class="text-danger">&#x2022;</span></label>
                             <input type="text" class="form-control" id="serial_no" name="serial_no" value="{{ $equipment->serial_no}}" readonly>
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label" for="property_no">Property no#<span class="text-danger">&#x2022;</span></label>
+                            <label class="form-label" for="property_no">Property Number<span class="text-danger">&#x2022;</span></label>
                             <input type="text" class="form-control" id="property_no" name="property_no" value="{{ $equipment->property_no }}" readonly>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
-                            <label class="form-label" for="release_by">Release by:<span class="text-danger">&#x2022;</span></label>
+                            <label class="form-label" for="release_by">Release by<span class="text-danger">&#x2022;</span></label>
                             <input type="text" class="form-control" id="release_by" name="release_by" required>
                         </div>
                     </div>
@@ -84,12 +84,11 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-body">
-                <div class="col-md-12 mt-3">
-                    <label class="text-info">Upload File Here<span class="text-danger">&#x2022;</span></label>
-                    <p style="font-size: 0.75rem" class="text-muted">Note: For every new account the default password is "12345678"</p>
-                </div>  
+                <h5 class="text-info">File Upload</h5> 
                 <div class="col-md-12">
-                <input type="file" class="form-control" id="upload_file" name="upload_file" accept="image/jpeg, image/png, application/pdf">
+                    <label class="form-label" for="upload_file">ID and/or Request Letter<span class="text-danger">&#x2022;</span></label>
+                    <input type="file" class="form-control" id="upload_file" name="upload_file" accept="image/jpeg, image/png, application/pdf">
+                    <p style="font-size: 0.75rem" class="text-muted">Note: Upload only <strong>ONE (1)</strong> file with a maximum file size of <strong></strong></p>
                 </div>
             </div>
         </div>

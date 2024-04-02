@@ -42,7 +42,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-6">
-                            <label class="form-label" for="borrowed_by">Borrowed Person<span class="text-danger">&#x2022;</span></label>
+                            <label class="form-label" for="borrowed_by">Borrower<span class="text-danger">&#x2022;</span></label>
                             <input type="text" class="form-control" id="borrowed_by" name="borrowed_by" value="{{ $transaction->borrowed_by }}" readonly>
                             {{-- <p> {{ $transaction->borrowed_by }}</p> --}}
                         </div>

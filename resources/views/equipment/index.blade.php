@@ -41,18 +41,45 @@
             @include('layouts.message')
         </div>
         <div class="col-12">
-            <!-- Category Filter -->
-            <div class="form-group">
-                <label for="category_filter">Filter by Category:</label>
-                <select class="form-control select select2-filter" id="category_filter">
-                    <option value="">All Categories</option>
-                    @foreach($categories as $category)
-                            @if($category->status == 0)
-                                @continue
-                            @endif
-                        <option value="{{ $category->category }}">{{ $category->category }}</option>
-                    @endforeach
-                </select>
+            <div class="col-12" id="filters">
+                <div class="row">
+                    <!-- Category Filter -->
+                    <div class="form-group col-md-4">
+                        <label for="category_filter">Filter by Category:</label>
+                        <select class="form-control select select2-filter" id="category_filter">
+                            <option value="">All Categories</option>
+                            @foreach($categories as $category)
+                                    @if($category->status == 0)
+                                        @continue
+                                    @endif
+                                <option value="{{ $category->category }}">{{ $category->category }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <!-- Condition Filter -->
+                    <div class="form-group col-md-4">
+                        <label for="condition_filter">Filter by Condition</label>
+                        <select class="form-control select select2-filter" id="condition_filter">
+                            <option value="">All Conditions</option>
+                            <option value="Good" >Good</option>
+                            <option value="Fair">Fair</option>
+                            <option value="Poor">Poor</option>
+                            <option value="Damaged">Damaged</option>
+                            <option value="Obsolete">Obsolete</option>
+                            <option value="Unusable">Unusable</option>
+                            <option value="Under Maintenance">Under Maintenance</option>                                            
+                        </select>
+                    </div>
+                    <!-- Status Filter -->
+                    <div class="form-group col-md-4">
+                        <label for="status_filter">Filter by Status</label>
+                        <select class="form-control select select2-filter" id="status_filter">
+                            <option value="">All Items</option>
+                            <option value="available" >Available</option>
+                            <option value="borrowed" >Borrowed</option>                                                 
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="col-12">
                 <div class="card mb-2">
