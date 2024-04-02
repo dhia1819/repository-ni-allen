@@ -15,9 +15,9 @@ class EmployeeController extends Controller
             'crumb' =>  array('Employee' => '/employee')
         ];
         
-        $employee = Employee::orderBy('created_at', 'DESC')->get();
+        $employees = Employee::orderBy('created_at', 'DESC')->get();
 
         
-        return view('employee.index', compact('page', 'employee')); 
+        return view('employee.index', compact('page', 'employees')); 
     }
 }

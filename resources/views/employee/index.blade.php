@@ -29,7 +29,7 @@
                                 <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">First Name</th>
                                 <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Last Name</th>
                                 <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Position</th> 
-                                {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2"><center>Status</center></th>  --}}
+                                <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Status</th> 
                                 <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder" width="11%">Action</th>
                             </tr>
                         </thead>
@@ -58,27 +58,27 @@
                                         </span>
                                     </td>
 
-                                    {{-- <td data-label="Status" class="align-middle with-label" align="center">
+                                    <td data-label="Status" class="align-middle with-label">
                                         <span class="text-xs">
-                                            @if($user->status == 1)
+                                            @if($employee->status == 1)
                                                 <span class="badge badge-sm bg-gradient-success">active</span>
                                             @else
                                                 <span class="badge badge-sm bg-gradient-secondary">inactive</span>
                                             @endif
                                         </span>
-                                    </td> --}}
+                                    </td>
 
                                     <td class="align-middle text-center action">
                                     <a href="#" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-info text-center align-items-center justify-content-center btn-edit-user" 
                                         data-toggle="modal" 
                                         data-target="#edit_modal" 
                                         data-firstName="{{$employee->firstName}}" 
-                                        data-lastName="{{$user->lastName}}" 
+                                        data-lastName="{{$employee->lastName}}" 
                                         data-rowid="{{$employee->id}}">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     </td>
-                                    @include('employee.edit')
+                                    {{-- @include('employee.edit') --}}
                                 </tr>
                             @endforeach
                         </tbody>
@@ -88,7 +88,7 @@
         </div>
     </div>
 
-    @include('employee.create')
+
 
 
     
