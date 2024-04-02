@@ -34,18 +34,19 @@ class EquipmentController extends Controller
     }
 
     public function borrow(int $id)
-    {
-        $office = Office::all();
-        $equipment = Equipment::findOrFail($id);
-        
-        $page = [
-            'name'  =>  'Borrow',
-            'title' =>  'Borrow Equipment',
-            'crumb' =>  ['Borrow Equipment' => '/borrow']
-        ];
+{
+    $office = Office::all();
+    $equipment = Equipment::findOrFail($id);
     
-        return view('equipment.borrow', compact('page', 'equipment','office'));
-    }
+    $page = [
+        'name'  =>  'Borrow',
+        'title' =>  'Borrow Equipment',
+        'crumb' =>  ['Equipment' => '/equipment', 'Borrow Equipment' => "/equipment/borrow/{$id}"]
+    ];
+
+    return view('equipment.borrow', compact('page', 'equipment', 'office'));
+}
+
 public function save(Request $request){
     $validatedData = $request->validate([
         'equipment_id' => 'required|string',
@@ -113,7 +114,7 @@ public function history()
     $page = [
         'name'  =>  'History', // Change the name to "Borrowed"
         'title' =>  'History', // Change the title to "Borrowed"
-        'crumb' =>  ['Borrowed' => '/history'] // Change the crumb to "Borrowed"
+        'crumb' =>  ['History' => '/history'] // Change the crumb to "Borrowed"
     ];
     
     $borrowedData = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
@@ -127,11 +128,12 @@ public function history()
     return view('equipment.history', compact('page', 'borrowedData', 'categories', 'offices'));       
 }
 
-public function showhistory(string $id) {
+public function showhistory(string $id)
+{
     $page = [
         'name'  =>  'Return',
-        'title' =>  'Return Equipment',
-        'crumb' =>  ['Return Equipment' => '/borrow/return']
+        'title' =>  'History Details',
+        'crumb' =>  ['History' => '/borrow/history', 'History Details' => "/borrow/showhistory/{$id}"]
     ];
 
     // Assuming you have an 'Offices' model
@@ -146,24 +148,25 @@ public function showhistory(string $id) {
 
     return view('equipment.showhistory', compact('transactions', 'page', 'offices'));
 }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        // Fetch all categories with status 'Active'
-        $categories = Category::where('status', '1')->get();
-    
-        // Data for the page
-        $page = [
-            'name'  =>  'Equipment',
-            'title' =>  'Add Equipment',
-            'crumb' =>  ['Add Equipment' => '/equipment']
-        ];
-    
-        // Return the view with the necessary data
-        return view('equipment.create', compact('page', 'categories'));
-    }
+{
+    // Fetch all categories with status 'Active'
+    $categories = Category::where('status', '1')->get();
+
+    // Data for the page
+    $page = [
+        'name'  =>  'Equipment',
+        'title' =>  'Add Equipment',
+        'crumb' =>  ['Equipment' => '/equipment', 'Add Equipment' => '/equipment/create']
+    ];
+
+    // Return the view with the necessary data
+    return view('equipment.create', compact('page', 'categories'));
+}
     
     
     /**
@@ -233,23 +236,24 @@ public function condition(Request $request, $id)
      * Display the specified resource.
      */
     public function show(string $id)
-    {
-        $categories = Category::all();
-        
-        // Fetch the specific equipment item by ID
-        $equipment = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
-            ->where('equipment.id', $id) // Filter by equipment ID
-            ->select('equipment.*', 'categories.category as category_name')
-            ->firstOrFail(); // Use firstOrFail() to fetch a single record
-        
-        $page = [
-            'name'  =>  'Equipment',
-            'title' =>  'Show Equipment',
-            'crumb' =>  array('Show Equipment' => '/equipment')
-        ];
-        
-        return view('equipment.show', compact('equipment', 'page', 'categories'));
-    }
+{
+    $categories = Category::all();
+    
+    // Fetch the specific equipment item by ID
+    $equipment = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
+        ->where('equipment.id', $id) // Filter by equipment ID
+        ->select('equipment.*', 'categories.category as category_name')
+        ->firstOrFail(); // Use firstOrFail() to fetch a single record
+    
+    $page = [
+        'name'  =>  'Equipment',
+        'title' =>  'Equipment Details',
+        'crumb' =>  ['Equipment' => '/equipment', 'Details' => "/show/{$id}"]
+    ];
+    
+    return view('equipment.show', compact('equipment', 'page', 'categories'));
+}
+
     
 
     /**
@@ -270,25 +274,27 @@ public function condition(Request $request, $id)
     
         return view('equipment.edit', compact('equipment', 'page', 'categories'));
     }
-    public function showreturn(string $id) {
-        $page = [
-            'name'  =>  'Return',
-            'title' =>  'Return Equipment',
-            'crumb' =>  ['Return Equipment' => '/borrow/return']
-        ];
-    
-        // Assuming you have an 'Offices' model
-        $offices = Office::all();
-    
-        $transactions = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
-            ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
-            ->select('transactions.*', 'equipment.*', 'offices.office as office_name', 'transactions.id as transaction_id')
-            ->where('equipment.id', $id)
-            ->where('transactions.status', '=', 'Borrowed')
-            ->get();
-    
-        return view('equipment.showreturn', compact('transactions', 'page', 'offices'));
-    }
+    public function showreturn(string $id)
+{
+    $page = [
+        'name'  =>  'Return',
+        'title' =>  'Return Equipment',
+        'crumb' =>  ['Borrowed' => '/borrow/return', 'Return Equipment' => "/borrow/return/{$id}"]
+    ];
+
+    // Assuming you have an 'Offices' model
+    $offices = Office::all();
+
+    $transactions = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
+        ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
+        ->select('transactions.*', 'equipment.*', 'offices.office as office_name', 'transactions.id as transaction_id')
+        ->where('equipment.id', $id)
+        ->where('transactions.status', '=', 'Borrowed')
+        ->get();
+
+    return view('equipment.showreturn', compact('transactions', 'page', 'offices'));
+}
+
     public function phase(Request $request, string $id)
     {
         $validatedData = $request->validate([
