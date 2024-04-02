@@ -15,9 +15,14 @@ class EmployeeSeeder extends Seeder
     {
         $employees = array(
             array(
-                'firstName' => 'Raiven',
-                'lastName' => 'Muega',
-                'position' => 'Computer programmer 2',
+                'fullName' => 'Hiro Alarzar',
+                'position' => 'Assistant Manager',
+                'status' => 1
+            ),
+
+            array(
+                'fullName' => 'Raiven Muega',
+                'position' => 'Manager', 
                 'status' => 1
             )
             );
