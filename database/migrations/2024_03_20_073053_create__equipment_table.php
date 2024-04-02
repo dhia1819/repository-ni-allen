@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('admin_id');
             $table->string('equipment_name');
             $table->string('category');
-            $table->text('Description');
+            $table->text('Description', 8000);
             $table->string('property_no');
             $table->string('serial_no');
             $table->string('unit_of_measure');
