@@ -32,9 +32,9 @@ $(function() {
             $('#rowid').val(rowId);
             $('#edit_modal').modal('show');
         });
-        $('#edit_modal').on('hidden.bs.modal', function () {
-            location.reload(); // Refresh the page when the modal is closed
-        });
+        // $('#edit_modal').on('hidden.bs.modal', function () {
+        //     location.reload(); // Refresh the page when the modal is closed
+        // });
     });
     
     
