@@ -88,7 +88,7 @@
                 <div class="col-md-12">
                     <label class="form-label" for="upload_file">ID and/or Request Letter<span class="text-danger">&#x2022;</span></label>
                     <input type="file" class="form-control" id="upload_file" name="upload_file" accept="image/jpeg, image/png, application/pdf">
-                    <p style="font-size: 0.75rem" class="text-muted">Note: Upload only <strong>ONE (1)</strong> file with a maximum file size of <strong></strong></p>
+                    <p style="font-size: 0.75rem" class="text-muted">Note: Upload only <strong>ONE (1)</strong> file</p>
                 </div>
             </div>
         </div>
