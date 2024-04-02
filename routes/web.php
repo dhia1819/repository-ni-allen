@@ -60,6 +60,11 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/office/{id}/update', [Controllers\OfficeController::class, 'update'])->name('office.update');
 
     Route::get('/employee', [Controllers\EmployeeController::class, 'index']);
+    Route::get('/fetchall', [Controllers\EmployeeController::class, 'fetchAll'])->name('fetchAll');
+    Route::get('/employee/create', [Controllers\EmployeeController::class, 'create']);
+	Route::post('/employee/store', [Controllers\EmployeeController::class, 'store']);
+	Route::get('/employee/{id}/edit', [Controllers\EmployeeController::class, 'edit']);
+	Route::post('/employee/{id}/update', [Controllers\EmployeeController::class, 'update'])->name('employee.update');
 
 
 });

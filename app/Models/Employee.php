@@ -11,7 +11,7 @@ class Employee extends Model
 
     protected $fillable=[
         'fullName',
-        'Position',
-        'Status'
+        'position',
+        'status'
     ];
 }
