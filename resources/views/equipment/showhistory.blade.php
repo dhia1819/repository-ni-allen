@@ -73,8 +73,7 @@
                             {{-- <p>{{ $transaction->release_by }}</p> --}}
                         </div>
                     </div>
-                    <form method="POST" action="{{ route('borrow.phase', ['id' => $transaction->transaction_id]) }}" enctype="multipart/form-data">
-                        @csrf
+                    
                         <div class="row mt-3">
                             <h5 class="text-info text-sm">Return Details</h5>
                             <div class="col-md-6">
@@ -99,7 +98,7 @@
                                 {{-- <p>{{ $transaction->received_by }}</p> --}}
                             </div>
                         </div>
-                    </form>
+                    
                 @empty
                     <p>No transaction found.</p>
                 @endforelse
@@ -114,7 +113,7 @@
                     {{-- <label class="text-info"></label> --}}
                     @foreach ($transactions as $transaction)
                         @if ($transaction->upload_file)
-                            @if (Str::endsWith($transaction->upload_file, ['.jpg', '.jpeg', '.png', '.gif']))
+                            @if (Str::endsWith($transaction->upload_file, ['.jpg', '.jpeg', '.png', '.gif','jfif']))
                                 <img src="{{ asset('uploads/' . $transaction->upload_file) }}" alt="Image Preview" style="max-width: 100%">
                             @elseif (Str::endsWith($transaction->upload_file, '.pdf'))
                                 <embed src="{{ asset('uploads/' . $transaction->upload_file) }}" type="application/pdf" width="100%" height="600px">
