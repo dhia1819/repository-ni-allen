@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             OfficeSeeder::class,
             UserSeeder::class,
             CategorySeeder::class,
-            EquipmentSeeder::class
+            EquipmentSeeder::class,
+            EmployeeSeeder::class
         ]);
     }
 }
