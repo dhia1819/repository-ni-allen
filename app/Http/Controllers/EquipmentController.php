@@ -178,18 +178,19 @@ public function showhistory(string $id) {
         'Description' => 'required|string',
         'property_no' => 'required|string',
         'serial_no' => 'required|string',
+        'unit_of_measure' => 'required|string',
         'value' => 'required|string',
         'quantity' => 'required|integer',
         'image' => 'nullable|image',
         'remarks' => 'required|string',
         'date_acquired' => 'nullable|date',
+        'conditions' => 'required|string'
     ]);
 
     // Set admin_id to the authenticated user's ID
     $validatedData['admin_id'] = Auth::id();
 
-    // Set conditions and status
-    $validatedData['conditions'] = 'Good';
+    //status
     $validatedData['status'] = 'available';
 
     // Handle image upload
@@ -338,18 +339,19 @@ public function condition(Request $request, $id)
             'Description' => 'required|string',
             'property_no' => 'required|string',
             'serial_no' => 'required|string',
+            'unit_of_measure' => 'required|string',
             'value' => 'required|string',
             'quantity' => 'required|integer',
             'image' => 'nullable|image',
             'remarks' => 'required|string',
             'date_acquired' => 'nullable|date',
+            'conditions' => 'required|string',
         ]);
     
         // Set admin_id to the authenticated user's ID
         $validatedData['admin_id'] = Auth::id();
     
-        // Set conditions and status
-        $validatedData['conditions'] = 'Good';
+        // Set status
         if ($equipment->status === 'available') {
             $validatedData['status'] = 'available';
         } elseif ($equipment->status === 'Borrowed') {

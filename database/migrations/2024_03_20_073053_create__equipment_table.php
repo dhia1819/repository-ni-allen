@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('Description');
             $table->string('property_no');
             $table->string('serial_no');
+            $table->string('unit_of_measure');
             $table->string('value');
             $table->integer('quantity');
             $table->string('image')->nullable();

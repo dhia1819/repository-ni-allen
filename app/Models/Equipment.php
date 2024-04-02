@@ -15,6 +15,7 @@ class Equipment extends Model
         'Description',
         'property_no',
         'serial_no',
+        'unit_of_measure',
         'value',
         'quantity',
         'image',

@@ -53,42 +53,44 @@
             <div class="col-12">
                 <div class="card mb-2">
                     <div class="card-header pb-0">
-                        <h6>Transaction Table</h6>
+                        <h6 class="text-info">Transaction Table</h6>
                     </div>
                     <div class="card-body">
                         <table class="table align-items-center mb-0" id="tbl-equipment" style="width: 100%;">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Equipment</th> 
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Property No#</th> 
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Serial No#</th> 
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Borrowed By:</th> 
+                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Borrower</th> 
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Office</th>
+                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Equipment</th> 
+                                    {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Property No#</th> 
+                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Serial No#</th>  --}}
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Date Borrowed</th> 
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Date Returned</th>
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Release by:</th> 
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Status</th> 
+                                    {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Release by:</th>  --}}
+                                    {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Status</th>  --}}
                                     <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder" width="11%">Action</th>
                                 </tr>
                             </thead>
                             <tbody id="equipment_table_body">
                                 @foreach ($borrowedData as $transaction)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $transaction->equipment_name }}</td>
-                                        <td style="vertical-align: middle;">{{ $transaction->property_no }}</td>
-                                        <td style="vertical-align: middle;">{{ $transaction->serial_no }}</td>
                                         <td style="vertical-align: middle;">{{ $transaction->borrowed_by }}</td>
                                         <td style="vertical-align: middle;">{{ $transaction->office_name }}</td>
+                                        <td style="vertical-align: middle;">{{ $transaction->equipment_name }}</td>
+                                        {{-- <td style="vertical-align: middle;">{{ $transaction->property_no }}</td>
+                                        <td style="vertical-align: middle;">{{ $transaction->serial_no }}</td> --}}
                                         <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F d, Y') }}</td>
                                         <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->date_returned)->format('F d, Y') }}</td>
-                                        <td style="vertical-align: middle;">{{ $transaction->release_by }}</td>
+                                        {{-- <td style="vertical-align: middle;">{{ $transaction->release_by }}</td>
 
 
-                                        <td style="vertical-align: middle;">{{ ucfirst($transaction->tstatus) }}</td>
+                                        <td style="vertical-align: middle;">{{ ucfirst($transaction->tstatus) }}</td> --}}
                                         <td>
-                                            <div class="btn-group" role="group" aria-label="Actions">
+                                            <div class="align-middle text-center action" role="group" aria-label="Actions">
                                             <a href="{{ route('show.history', ['id' => $transaction->
-                                            id]) }}" class="btn btn-sm btn-info">Show</a>
+                                            id]) }}" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center align-items-center justify-content-center">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
                                             </div>
                                         </td>
                                     </tr>
