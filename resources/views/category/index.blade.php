@@ -67,8 +67,8 @@
     </div>
 
   
-
+@include('category.create')
 @endsection
 
 
-@include('category.create')
+
