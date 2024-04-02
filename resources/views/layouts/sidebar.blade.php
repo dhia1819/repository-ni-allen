@@ -24,7 +24,7 @@ id="sidenav-main">
 			<li class="nav-item">
 				<a class="nav-link {{($page['name'] == "Category") ? 'active' : ''}}" href="/category">
 					<div class="icon icon-shape icon-sm shadow border-radius-md bg-gradient-info text-center me-2 pb-3 d-flex align-items-center justify-content-center">
-						<i class="fa fa-check"></i>
+						<i class="fa fa-folder"></i>
 					</div>
 					<span class="nav-link-text ms-1">Category</span>
 				</a>
@@ -32,7 +32,7 @@ id="sidenav-main">
 			<li class="nav-item">
 				<a class="nav-link {{($page['name'] == "Equipment") ? 'active' : ''}}" href="/equipment">
 					<div class="icon icon-shape icon-sm shadow border-radius-md bg-gradient-info text-center me-2 pb-3 d-flex align-items-center justify-content-center">
-						<i class="fa fa-check"></i>
+						<i class="fa fa-toolbox"></i>
 					</div>
 					<span class="nav-link-text ms-1"> All Equipment</span>
 				</a>
@@ -40,15 +40,15 @@ id="sidenav-main">
 			<li class="nav-item">
 				<a class="nav-link {{($page['name'] == "Borrowed") ? 'active' : ''}}" href="{{ route('return') }}">
 					<div class="icon icon-shape icon-sm shadow border-radius-md bg-gradient-info text-center me-2 pb-3 d-flex align-items-center justify-content-center">
-						<i class="fa fa-check"></i>
+						<i class="fa fa-reply"></i>
 					</div>
-					<span class="nav-link-text ms-1">Return</span>
+					<span class="nav-link-text ms-1">Borrowed</span>
 				</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link {{($page['name'] == "History") ? 'active' : ''}}" href="{{ route('history') }}">
 					<div class="icon icon-shape icon-sm shadow border-radius-md bg-gradient-info text-center me-2 pb-3 d-flex align-items-center justify-content-center">
-						<i class="fa fa-check"></i>
+						<i class="fa fa-scroll"></i>
 					</div>
 					<span class="nav-link-text ms-1">History</span>
 				</a>

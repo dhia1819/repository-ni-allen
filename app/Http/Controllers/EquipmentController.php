@@ -139,8 +139,8 @@ public function showhistory(string $id) {
 
     $transactions = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
         ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
-        ->select('transactions.*', 'equipment.*', 'offices.office as office_name', 'transactions.id as transaction_id')
-        ->where('equipment.id', $id)
+        ->select('transactions.*', 'equipment.*', 'offices.office as office_name')
+        ->where('transactions.id', $id)
         ->where('transactions.status', '=', 'Return')
         ->get();
 
