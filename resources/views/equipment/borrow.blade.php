@@ -67,8 +67,16 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
-                            <label class="form-label" for="release_by">Release by<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="release_by" name="release_by" required>
+                            <label class="form-label" for="release_by">Release By<span class="text-danger">&#x2022;</span></label>
+                            <select class="form-control select2 select2-create"  id="release_by" name="release_by">
+                                        <option value="">Release By</option>
+                                        @foreach($employees as $employee)
+                                        @if($employee->status==0)
+                                            @continue
+                                            @endif
+                                            <option value="{{ $employee->id }}" {{ $employee->id == $equipment->employee ? 'selected' : '' }}>{{ $employee->fullName }}</option>
+                                        @endforeach
+                                    </select>
                         </div>
                     </div>
                     <div class="row mt-3">

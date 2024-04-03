@@ -66,7 +66,7 @@
                                         data-target="#edit_modal" 
                                         data-fullname="{{$employee->fullName}}" 
                                         data-position="{{$employee->position}}" 
-                                        data-staus="{{$employee->status}}"
+                                        data-status="{{$employee->status}}"
                                         data-rowid="{{$employee->id}}">
                                         <i class="fa fa-edit"></i>
                                     </a>

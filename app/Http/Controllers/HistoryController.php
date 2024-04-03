@@ -5,6 +5,7 @@ use App\Models\Equipment;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Office;
+use App\Models\Employee;
 
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
@@ -43,14 +44,16 @@ public function showhistory(string $id)
 
     // Assuming you have an 'Offices' model
     $offices = Office::all();
+    $employees = Employee::all();
 
     $transactions = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
         ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
-        ->select('transactions.*', 'equipment.*', 'offices.office as office_name')
+        ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
+        ->select('transactions.*', 'equipment.*', 'offices.office as office_name', 'employees.fullName as release_by')
         ->where('transactions.id', $id)
         ->where('transactions.status', '=', 'Return')
         ->get();
 
-    return view('equipment.showhistory', compact('transactions', 'page', 'offices'));
+    return view('equipment.showhistory', compact('transactions', 'page', 'offices', 'employees'));
 }
 }
