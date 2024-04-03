@@ -59,6 +59,5 @@
             </div>
         </div>
     </div>
-
+    @include('office.create')
 @endsection
-@include('office.create')

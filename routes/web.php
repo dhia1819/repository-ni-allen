@@ -25,7 +25,7 @@ Route::get('/home', [Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function () {
 
-	Route::get('/users', [Controllers\UserController::class, 'index']);
+	Route::get('/users', [Controllers\UserController::class, 'index'])->name('users');
 	Route::get('/fetchall', [Controllers\UserController::class, 'fetchAll'])->name('fetchAll');
 	Route::get('/users/create', [Controllers\UserController::class, 'create']);
 	Route::post('/users/store', [Controllers\UserController::class, 'store']);
@@ -55,11 +55,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/borrow/showhistory/{id}', [Controllers\EquipmentController::class, 'showhistory'])->name('show.history');
 
 
-	Route::get('/office', [Controllers\OfficeController::class, 'index']);
+	Route::get('/office', [Controllers\OfficeController::class, 'index'])->name('office');
     Route::post('/office/store', [Controllers\OfficeController::class, 'store']);
 	Route::post('/office/{id}/update', [Controllers\OfficeController::class, 'update'])->name('office.update');
 
-    Route::get('/employee', [Controllers\EmployeeController::class, 'index']);
+    Route::get('/employee', [Controllers\EmployeeController::class, 'index'])->name('employee');
     Route::get('/fetchall', [Controllers\EmployeeController::class, 'fetchAll'])->name('fetchAll');
     Route::get('/employee/create', [Controllers\EmployeeController::class, 'create']);
 	Route::post('/employee/store', [Controllers\EmployeeController::class, 'store']);
