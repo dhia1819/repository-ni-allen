@@ -64,16 +64,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/borrow/history', [Controllers\HistoryController::class, 'history'])->name('history');
     Route::get('/borrow/showhistory/{id}', [Controllers\HistoryController::class, 'showhistory'])->name('show.history');
 
-
-	Route::get('/office', [Controllers\OfficeController::class, 'index'])->name('office');
     //Office Module
-	Route::get('/office', [Controllers\OfficeController::class, 'index']);
+	Route::get('/office', [Controllers\OfficeController::class, 'index'])->name('office');
     Route::post('/office/store', [Controllers\OfficeController::class, 'store']);
 	Route::post('/office/{id}/update', [Controllers\OfficeController::class, 'update'])->name('office.update');
 
-    Route::get('/employee', [Controllers\EmployeeController::class, 'index'])->name('employee');
+    
     //Employee Module
-    Route::get('/employee', [Controllers\EmployeeController::class, 'index']);
+    Route::get('/employee', [Controllers\EmployeeController::class, 'index'])->name('employee');
     Route::get('/fetchall', [Controllers\EmployeeController::class, 'fetchAll'])->name('fetchAll');
     Route::get('/employee/create', [Controllers\EmployeeController::class, 'create']);
 	Route::post('/employee/store', [Controllers\EmployeeController::class, 'store']);
