@@ -77,7 +77,7 @@
 
                         <div class="row mt-3">
                             <div class="col-md-6">
-                                <label class="form-label" for="quantity">Quantity</label>
+                                <label class="form-label" for="quantity">Quantity per Property Card</label>
                                 <input type="text" class="form-control" id="quantity" name="quantity" value="{{ $equipment->quantity }}" readonly>
                             </div>
                             <div class="col-md-6">

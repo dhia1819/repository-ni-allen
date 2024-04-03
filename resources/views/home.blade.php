@@ -14,6 +14,7 @@
 <script type="text/javascript" src="/js/home.js"></script>
 @endsection
 
+
 @section('content')
 @include('layouts.message')
 
