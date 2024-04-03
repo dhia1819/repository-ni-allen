@@ -82,7 +82,7 @@ public function phase(Request $request, string $id)
         }
     
         // Return a response indicating success
-        return redirect()->route('return')->with('success', 'Equipment returned successfully.');
+        return redirect('/borrow/history')->with('success', 'Equipment returned successfully.');
     }
 
 }

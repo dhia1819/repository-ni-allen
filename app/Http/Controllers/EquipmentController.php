@@ -81,7 +81,7 @@ public function save(Request $request){
         $equipment->status = 'Borrowed';
         $equipment->save();
     }
-    return redirect()->route('equipment')->with('success', 'Equipment Borrowed successfully.');
+    return redirect('/borrow/return')->with('success', 'Equipment Borrowed successfully.');
 
     
 }
@@ -145,7 +145,7 @@ public function save(Request $request){
     Equipment::create($validatedData);
 
     // Redirect back with success message
-    return redirect()->back()->with('success', 'Equipment added successfully.');
+    return redirect('equipment')->with('success', 'Equipment updated successfully.');
 }
 
 public function condition(Request $request, $id)
@@ -251,10 +251,10 @@ public function condition(Request $request, $id)
         }
     
         // Update the equipment record with the validated data
-        $equipment->update($validatedData);
-    
-        // Redirect back with success message
-        return redirect()->back()->with('success', 'Equipment updated successfully.');
+$equipment->update($validatedData);
+
+// Redirect to the show route for the updated equipment
+return redirect()->route('equipment.show', ['id' => $equipment->id])->with('success', 'Equipment updated successfully.');
     }
     
     /**
