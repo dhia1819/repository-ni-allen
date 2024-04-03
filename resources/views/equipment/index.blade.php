@@ -38,11 +38,14 @@
             <a href="{{ route('equipment.create') }}" class="btn bg-gradient-info trigger-modal btn-md">
                 <i class="fa fa-plus"></i> Add Equipment
             </a>
+            <button id="reset_filters" class="btn bg-gradient-danger" style="display:none;">
+                <i class="fa fa-undo"></i> Clear Filters
+            </button>
             @include('layouts.message')
         </div>
         <div class="col-12">
             <div class="col-12" id="filters">
-                <div class="row">
+                <div class="row col-12">
                     <!-- Category Filter -->
                     <div class="form-group col-md-4">
                         <label for="category_filter">Filter by Category:</label>

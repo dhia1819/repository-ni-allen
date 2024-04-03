@@ -34,6 +34,16 @@ $(function() {
                 $(this).hide();
             }
         });
+
+        // Show the clear filters button when any filter is selected
+        $('#reset_filters').show();
+    });
+
+    $('#reset_filters').click(function() {
+        // Reset all select elements to their default value
+        $('.select2-filter').val('').trigger('change');
+        // Hide the clear filters button after resetting filters
+        $(this).hide();
     });
 
     document.getElementById('conditionDropdown').addEventListener('change', function(event) {

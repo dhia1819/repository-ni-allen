@@ -84,18 +84,18 @@
     </div>
     <div class="col-md-3">
         <div class="card">
-            <a href="{{route('office')}}">
+            <a href="{{route('history')}}">
                 <div class="card-body p-3">
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Offices</p>
-                                <h5 class="font-weight-bolder mb-0 text-success">{{ $office }}</h5>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Closed Transactions</p>
+                                <h5 class="font-weight-bolder mb-0 text-success">{{ $history }}</h5>
                             </div>
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-dark shadow text-center border-radius-md">
-                                <i class="fa fa-building"></i>
+                                <i class="fa fa-scroll"></i>
                             </div>
                         </div>
                     </div>
