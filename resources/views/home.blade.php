@@ -14,6 +14,7 @@
 <script type="text/javascript" src="/js/home.js"></script>
 @endsection
 
+
 @section('content')
 @include('layouts.message')
 
@@ -109,7 +110,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <div id="piechart_3d" style="width: 350px; height: 350px;">pie chart dito ng Equipment conditions</div>
+                <div id="piechart_3d" style="width: 350px; height: 350px;"></div>
             </div>
         </div>
     </div>

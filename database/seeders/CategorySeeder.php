@@ -87,7 +87,13 @@ class CategorySeeder extends Seeder
             'updated_at' => now(),
            ),
            array(
-            'category'=>'printer',
+            'category'=>'Printer',
+            'status'=>1,
+            'created_at' => now(),
+            'updated_at' => now(),
+           ),
+           array(
+            'category'=>'Table',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
