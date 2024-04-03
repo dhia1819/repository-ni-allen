@@ -20,14 +20,6 @@ id="sidenav-main">
 			</li>
 			<li class="nav-item mt-3">
 					<h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Inventory</h6>
-				</li>
-			<li class="nav-item">
-				<a class="nav-link {{($page['name'] == "Category") ? 'active' : ''}}" href="/category">
-					<div class="icon icon-shape icon-sm shadow border-radius-md bg-gradient-info text-center me-2 pb-3 d-flex align-items-center justify-content-center">
-						<i class="fa fa-folder"></i>
-					</div>
-					<span class="nav-link-text ms-1">Category</span>
-				</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link {{($page['name'] == "Equipment") ? 'active' : ''}}" href="/equipment">
@@ -53,6 +45,34 @@ id="sidenav-main">
 					<span class="nav-link-text ms-1">History</span>
 				</a>
 			</li>
+
+			<li class="nav-item mt-3">
+				<h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">REFERENCE LIBRARY</h6>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {{($page['name'] == "Category") ? 'active' : ''}}" href="/category">
+					<div class="icon icon-shape icon-sm shadow border-radius-md bg-gradient-info text-center me-2 pb-3 d-flex align-items-center justify-content-center">
+						<i class="fa fa-folder"></i>
+					</div>
+					<span class="nav-link-text ms-1">Equipment Category</span>
+				</a>
+				<li class="nav-item">
+					<a class="nav-link {{($page['name'] == "Office") ? 'active' : ''}}" href="/office">
+						<div class="icon icon-shape icon-sm shadow border-radius-md bg-gradient-info text-center me-2 pb-3 d-flex align-items-center justify-content-center">
+							<i class="fa fa-building"></i>
+						</div>
+						<span class="nav-link-text ms-1">Office</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link {{($page['name'] == "Employees") ? 'active' : ''}}" href="/employee">
+						<div class="icon icon-shape icon-sm shadow border-radius-md bg-gradient-info text-center me-2 pb-3 d-flex align-items-center justify-content-center">
+							<i class="fa fa-id-badge"></i>
+						</div>
+						<span class="nav-link-text ms-1">Employees</span>
+					</a>
+				</li>
+			</li>
 			
 
 			@if(in_array(Auth::user()->classification_id, [1,2]))
@@ -68,22 +88,8 @@ id="sidenav-main">
 						<span class="nav-link-text ms-1">Users</span>
 					</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link {{($page['name'] == "Office") ? 'active' : ''}}" href="/office">
-						<div class="icon icon-shape icon-sm shadow border-radius-md bg-gradient-info text-center me-2 pb-3 d-flex align-items-center justify-content-center">
-							<i class="fa fa-users"></i>
-						</div>
-						<span class="nav-link-text ms-1">Office</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link {{($page['name'] == "Employees") ? 'active' : ''}}" href="/employee">
-						<div class="icon icon-shape icon-sm shadow border-radius-md bg-gradient-info text-center me-2 pb-3 d-flex align-items-center justify-content-center">
-							<i class="fa fa-id-badge"></i>
-						</div>
-						<span class="nav-link-text ms-1">Employees</span>
-					</a>
-				</li>
+				
+				
 			@endif
 
 		</ul>
