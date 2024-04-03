@@ -78,6 +78,8 @@
     {{-- select2 --}}
     <script src="/vendor/select2/select2/js/select2.full.min.js"></script>
     <script src="/js/app.js"></script>
+    {{-- charts --}}
+    <script async defer src="https://www.gstatic.com/charts/loader.js"></script>
     @yield('page_script')
 </body>
 
