@@ -109,16 +109,89 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <div id="piechart_3d" style="width: 350px; height: 350px;">pie chart dito ng Equipment conditions</div>
+                <h5 class="card-title">Pie Chart</h5>
+                <canvas id="pieChart" style="width: 100%; height: 300px;"></canvas>
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <div id="piechart_3d" style="width: 350px; height: 350px;">Bar chart ng Borrowed equipments</div>
+                <h5 class="card-title">Bar Graph</h5>
+                <canvas id="barGraph" style="width: 100%; height: 300px;"></canvas>
             </div>
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Pie Chart
+        var pieCtx = document.getElementById('pieChart').getContext('2d');
+        var pieChart = new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Working', 'Under Maintenance', 'Damaged'],
+                datasets: [{
+                    label: 'Equipment Conditions',
+                    data: [10, 5, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Equipment Conditions'
+                }
+            }
+        });
+
+        // Bar Graph
+        var barCtx = document.getElementById('barGraph').getContext('2d');
+        var barGraph = new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Borrowed Equipments',
+                    data: [10, 15, 8, 12, 6, 9, 11],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                title: {
+                    display: true,
+                    text: 'Borrowed Equipments per Month'
+                }
+            }
+        });
+    });
+</script>
+
+<style>
+    .card-body canvas {
+        width: 100%;
+        height: 100%;
+    }
+</style>
 @endsection

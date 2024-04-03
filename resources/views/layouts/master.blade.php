@@ -80,6 +80,7 @@
     <script src="/js/app.js"></script>
     {{-- charts --}}
     <script async defer src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     @yield('page_script')
 </body>
 
