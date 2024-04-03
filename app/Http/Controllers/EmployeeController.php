@@ -80,26 +80,36 @@ class EmployeeController extends Controller
     }
 
 
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        // Validate incoming request data
-        $validatedData = $request->validate([
-            'fullName' => 'required|string',
-            'position' => 'required|string',
-            'status' => 'required|string',
+        // Validate the request data
+        $validator = Validator::make($request->all(), [
+            'rowid'          => 'required|exists:employees,id',
+            'fullName'           => 'required',
+            'position'       => 'required',
+            'status'        => 'required'
         ]);
-        
-        // Find the existing Office model by its ID
-        $employee = Employee::where('id', $id)->firstOrFail();
-        
-        // Update the attributes of the Office model with the validated data
-        $employee->fill($validatedData);
-        
-        // Save the changes to the database
-        $employee->save();
-        
-        // Redirect back with a success message
-        return redirect()->back()->with('success', 'Employee updated successfully!');
+    
+        // Check if validation fails
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+    
+        try {
+            // Find the user by rowid
+            $employee = Employee::findOrFail($request->rowid);
+    
+            // Update the user instance with new data
+            $employee->fullName = $request->fullName;
+            $employee->position = $request->position;
+            $employee->status=$request->status;
+            $employee->updated_at = Carbon::now('Asia/Manila');
+            $employee->save();
+    
+            return Redirect::back()->with('success', 'Employee updated successfully!');
+        } catch (\Exception $exception) {
+            return Redirect::back()->withErrors('An error occurred while updating the Employee.')->withInput();
+        }
     }
 
 }

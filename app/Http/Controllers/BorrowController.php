@@ -5,6 +5,7 @@ use App\Models\Equipment;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Office;
+use App\Models\Employee;
 
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,7 @@ class BorrowController extends Controller
 {
     $categories = Category::all();
     $offices = Office::all(); // Assuming you have an Office model
+    $employees = Employee::all();
 
     $page = [
         'name'  =>  'Borrowed', // Change the name to "Borrowed"
@@ -25,12 +27,13 @@ class BorrowController extends Controller
     $borrowedData = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
         ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
         ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
+        ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
         ->where('transactions.status', 'Borrowed') // Filter out borrowed transactions
-        ->select('transactions.*', 'equipment.*', 'categories.category as category_name', 'offices.office as office_name', 'transactions.id as transaction_id')
+        ->select('transactions.*', 'equipment.*', 'categories.category as category_name', 'offices.office as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
         ->orderBy('transactions.created_at', 'ASC')
         ->get();
 
-    return view('equipment.return', compact('page', 'borrowedData', 'categories', 'offices'));       
+    return view('equipment.return', compact('page', 'borrowedData', 'categories', 'offices', 'employees'));       
 }
 
 public function showreturn(string $id)
@@ -43,15 +46,17 @@ public function showreturn(string $id)
 
     // Assuming you have an 'Offices' model
     $offices = Office::all();
+    $employees = Employee::all();
 
     $transactions = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
         ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
-        ->select('transactions.*', 'equipment.*', 'offices.office as office_name', 'transactions.id as transaction_id')
+        ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
+        ->select('transactions.*', 'equipment.*', 'offices.office as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
         ->where('equipment.id', $id)
         ->where('transactions.status', '=', 'Borrowed')
         ->get();
 
-    return view('equipment.showreturn', compact('transactions', 'page', 'offices'));
+    return view('equipment.showreturn', compact('transactions', 'page', 'offices', 'employees'));
 }
 
 public function phase(Request $request, string $id)
