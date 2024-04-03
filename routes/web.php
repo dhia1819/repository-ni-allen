@@ -70,7 +70,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/office/{id}/update', [Controllers\OfficeController::class, 'update'])->name('office.update');
 
     
-    //Employee Module
+ 
     Route::get('/employee', [Controllers\EmployeeController::class, 'index'])->name('employee');
     Route::get('/fetchall', [Controllers\EmployeeController::class, 'fetchAll'])->name('fetchAll');
     Route::get('/employee/create', [Controllers\EmployeeController::class, 'create']);
