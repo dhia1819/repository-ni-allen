@@ -71,7 +71,7 @@ id="sidenav-main">
 				<li class="nav-item">
 					<a class="nav-link {{($page['name'] == "Office") ? 'active' : ''}}" href="/office">
 						<div class="icon icon-shape icon-sm shadow border-radius-md bg-gradient-info text-center me-2 pb-3 d-flex align-items-center justify-content-center">
-							<i class="fa fa-users"></i>
+							<i class="fa fa-building"></i>
 						</div>
 						<span class="nav-link-text ms-1">Office</span>
 					</a>

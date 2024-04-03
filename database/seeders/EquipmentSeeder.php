@@ -27,7 +27,7 @@ class EquipmentSeeder extends Seeder
             'conditions' => 'Good',
             'remarks' => 'Aileen Rosales',
             'status' => 'available',
-            'date_acquired' => '2026-01-12',
+            'date_acquired' => '2016-01-12',
             'created_at' => now(),
             'updated_at' => now(),
             ),

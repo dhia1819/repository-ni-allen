@@ -80,7 +80,7 @@
                                         {{-- <td style="vertical-align: middle;">{{ $transaction->property_no }}</td>
                                         <td style="vertical-align: middle;">{{ $transaction->serial_no }}</td> --}}
                                         <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F d, Y') }}</td>
-                                        <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->date_returned)->format('F d, Y') }}</td>
+                                        <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->returned_date)->format('F d, Y') }}</td>
                                         {{-- <td style="vertical-align: middle;">{{ $transaction->release_by }}</td>
 
 
