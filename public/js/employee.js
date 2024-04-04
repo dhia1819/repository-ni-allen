@@ -1,6 +1,6 @@
 $(function() {
 
-    $('#employee').dataTable({
+    $('#employees').dataTable({
         'language':{
             // 'zeroRecords': '<center><span class="badge text-white bg-danger">No Records Found</span></center>',
             "paginate": {

@@ -5,6 +5,7 @@ use App\Models\Equipment;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Office;
+use App\Models\Employee;
 
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,7 @@ class EquipmentController extends Controller
     public function borrow(int $id)
 {
     $office = Office::all();
+    $employees = Employee::all();
     $equipment = Equipment::findOrFail($id);
     
     $page = [
@@ -43,7 +45,7 @@ class EquipmentController extends Controller
         'crumb' =>  ['Equipment' => '/equipment', 'Borrow Equipment' => "/equipment/borrow/{$id}"]
     ];
 
-    return view('equipment.borrow', compact('page', 'equipment', 'office'));
+    return view('equipment.borrow', compact('page', 'equipment', 'office', 'employees'));
 }
 
 //Create function of borrowing transaction

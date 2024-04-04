@@ -66,9 +66,6 @@
                                         @if($category->status==0)
                                             @continue
                                             @endif
-                                            @if($category->status ==0)
-                                                @continue
-                                            @endif
                                             <option value="{{ $category->id }}" {{ $category->id == $equipment->category ? 'selected' : '' }}>{{ $category->category }}</option>
                                         @endforeach
                                     </select>
