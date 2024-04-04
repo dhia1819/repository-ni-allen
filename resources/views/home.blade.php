@@ -143,18 +143,23 @@
                     label: 'Equipment Conditions',
                     data: conditionData,
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.6)', // This is fallback color if gradients aren't supported
-                        createLinearGradient('rgba(218, 112, 214, 0.6)', 'rgba(128, 0, 128, 1)'),
-                        createLinearGradient('rgba(173, 216, 230, 0.6)', 'rgba(30, 144, 255, 1)'),
-                        createLinearGradient('rgba(144, 238, 144, 0.6)', 'rgba(34, 139, 34, 1)'),
-                        createLinearGradient('rgba(255, 255, 102, 0.6)', 'rgba(255, 215, 0, 1)'),
-                        createLinearGradient('rgba(255, 204, 153, 0.6)', 'rgba(255, 165, 0, 1)'),
-                        createLinearGradient('rgba(255, 153, 153, 0.6)', 'rgba(255, 51, 51, 1)'),
-                        createLinearGradient('rgba(192, 192, 192, 0.6)', 'rgba(105, 105, 105, 1)'),                    
+                        // createLinearGradient('rgba(67, 131, 255, 1)', 'rgba(9, 183, 202, 1)'),
+                        // createLinearGradient('rgba(31, 203, 255, 1)', 'rgba(0, 142, 18, 1)'),
+                        // createLinearGradient('rgba(16, 205, 255, 1)', 'rgba(0, 104, 136, 1)'),
+                        // createLinearGradient('rgba(0, 217, 255, 1)', 'rgba(0, 92, 123, 1)'),
+                        // createLinearGradient('rgba(0, 197, 241, 1)', 'rgba(0, 76, 110, 1)'),
+                        // createLinearGradient('rgba(0, 202, 216, 1)', 'rgba(0, 63, 102, 1)'),
+                        // createLinearGradient('rgba(0, 168, 129, 1)', 'rgba(0, 57, 97, 1)'),  
+                        'rgba(54, 162, 235, 0.1)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(54, 162, 235, 0.3)',
+                        'rgba(54, 162, 235, 0.4)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(54, 162, 235, 0.7)'
+                        
                     ],
-                    borderColor: [
-                        'rgba(0, 0, 0, 0)',
-                    ],
+                    borderColor: 'rgba(0,0,0,0)',
                     borderWidth: 1
                 }]
             },
@@ -165,25 +170,43 @@
                 }
             }
         });
-        function createLinearGradient(color1, color2) {
-            var ctx = pieCtx;
-            var gradient = ctx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, color1);
-            gradient.addColorStop(1, color2);
-            return gradient;
-        }
+        // function createLinearGradient(color1, color2) {
+        //     var ctx = pieCtx;
+        //     var gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        //     gradient.addColorStop(0, color1);
+        //     gradient.addColorStop(1, color2);
+        //     return gradient;
+        // }
 
         // Bar Graph
+        var status = @json($status); // Convert PHP array to JavaScript object
+
+        // Get keys (status) and values (counts)
+        var statusLabel = Object.keys(status);
+        var statusData = Object.values(status);
+
+        // Function to convert text to sentence case
+        function toSentenceCase(text) {
+            return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+        }
+
+        // Convert statusLabel to sentence case
+        statusLabel = statusLabel.map(toSentenceCase);
+
         var barCtx = document.getElementById('barGraph').getContext('2d');
         var barGraph = new Chart(barCtx, {
             type: 'bar',
             data: {
-                labels: ['Borrowed', 'Available', 'Unavailable'],
+                labels: statusLabel,
                 datasets: [{
                     label: 'Equipments',
-                    data: [10, 15, 8],
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
+                    data: statusData,
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(54, 162, 235, 0.3)',
+                    ],
+                    borderColor: 'rgba(0,0,0,0)',
                     borderWidth: 1
                 }]
             },

@@ -58,7 +58,7 @@
                             {{-- <p>{{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F j, Y') }}</p> --}}
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="date_returned">Return Date</label>
+                            <label class="form-label" for="date_returned">Expected Return Date</label>
                             <input type="date" class="form-control" id="date_returned" name="date_returned" value="{{ $transaction->date_returned }}" readonly>
 
                             {{-- <p>{{ \Carbon\Carbon::parse($transaction->date_returned)->format('F j, Y') }}</p> --}}
@@ -66,7 +66,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
-                            <label class="form-label" for="release_by">Release by:<span class="text-danger">&#x2022;</span></label>
+                            <label class="form-label" for="release_by">Released by:<span class="text-danger">&#x2022;</span></label>
                             <input type="text" class="form-control" id="release_by" name="release_by" value="{{ $transaction->release_by }}" readonly>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                             <h5>Return Form</h5>
                             <div class="col-md-6">
                                 <input type="hidden" class="form-control" id="equipment_id" name="equipment_id" value="{{ $transaction->transaction_id }}" readonly>
-                                <label class="form-label" for="date_borrowed">Returned Date<span class="text-danger">&#x2022;</span></label>
+                                <label class="form-label" for="date_borrowed">Return Date<span class="text-danger">&#x2022;</span></label>
                                 <input type="date" class="form-control" id="returned_date" name="returned_date" required>
                             </div>
                             <div class="col-md-6">

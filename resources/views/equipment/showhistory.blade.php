@@ -69,7 +69,7 @@
                             {{-- <p>{{ \Carbon\Carbon::parse($transaction->date_returned)->format('F j, Y') }}</p> --}}
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="release_by">Release by<span class="text-danger">&#x2022;</span></label>
+                            <label class="form-label" for="release_by">Released by<span class="text-danger">&#x2022;</span></label>
                             <input type="text" class="form-control" id="release_by" name="release_by" value="{{ $transaction->release_by }}" readonly>
 
                             {{-- <p>{{ $transaction->release_by }}</p> --}}

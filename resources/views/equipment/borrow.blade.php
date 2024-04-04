@@ -61,15 +61,15 @@
                             <input type="date" class="form-control" id="date_borrowed" name="date_borrowed" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="date_returned">Return Date</label>
+                            <label class="form-label" for="date_returned">Expected Return Date</label>
                             <input type="datetime-local" class="form-control" id="date_returned" name="date_returned">
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
-                            <label class="form-label" for="release_by">Release By<span class="text-danger">&#x2022;</span></label>
+                            <label class="form-label" for="release_by">Released by<span class="text-danger">&#x2022;</span></label>
                             <select class="form-control select2 select2-create"  id="release_by" name="release_by">
-                                        <option value="">Release By</option>
+                                        <option value=""></option>
                                         @foreach($employees as $employee)
                                         @if($employee->status==0)
                                             @continue

@@ -70,19 +70,23 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                
                                 <div class="col-md-6">
                                     <label class="form-label" for="conditions">Condition<span class="text-danger">&#x2022;</span></label>
                                     <select class="form-control select select2-update" id="conditions" name="conditions">
-                                        <option selected disabled>{{ $equipment->conditions }}</option>
-                                        <option value="Good" >Good</option>
-                                        <option value="Fair">Fair</option>
-                                        <option value="Poor">Poor</option>
-                                        <option value="Damaged">Damaged</option>
-                                        <option value="Obsolete">Obsolete</option>
-                                        <option value="Unusable">Unusable</option>
-                                        <option value="Under Maintenance">Under Maintenance</option>
+                                        <!-- Initial option with the selected condition -->
+                                        <option value="{{ $equipment->conditions }}" selected>{{ $equipment->conditions }}</option>
+                                        
+                                        <!-- Loop to generate options dynamically -->
+                                        @foreach(['Good', 'Fair', 'Poor', 'Damaged', 'Obsolete', 'Unusable', 'Under Maintenance'] as $condition)
+                                            @if($equipment->conditions != $condition)
+                                                <option value="{{ $condition }}">{{ $condition }}</option>
+                                            @endif
+                                        @endforeach
                                     </select>
                                 </div>
+                                
+                                
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6">
