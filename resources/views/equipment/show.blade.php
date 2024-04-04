@@ -53,7 +53,7 @@
                                 <input type="text" class="form-control" id="equipment_name" name="equipment_name" value="{{ $equipment->equipment_name }}" readonly>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-md-6">
                                 <label class="form-label" for="category">Category</label>
                                 <input type="text" class="form-control" id="category" name="category" value="{{ $equipment->category_name }}" readonly>
@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-md-6">
                                 <label class="form-label" for="serial_no">Serial Number</label>
                                 <input type="text" class="form-control" id="serial_no" name="serial_no" value="{{ $equipment->serial_no }}" readonly>
@@ -75,7 +75,7 @@
                             </div>
                         </div>
 
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-md-6">
                                 <label class="form-label" for="quantity">Quantity per Property Card</label>
                                 <input type="text" class="form-control" id="quantity" name="quantity" value="{{ $equipment->quantity }}" readonly>
@@ -86,7 +86,7 @@
                             </div>
                         </div>
 
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-md-6">
                                 <label class="form-label" for="remarks">Unit of Measure</label>
                                 <input type="text" class="form-control" id="unit_of_measure" name="unit_of_measure" value="{{ $equipment->unit_of_measure }}" readonly>
@@ -97,7 +97,7 @@
                             </div>
                         </div>
 
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-md-12">
                                 <label class="form-label" for="description">Description</label>
                                 <textarea class="form-control" id="Description" name="Description" readonly>{{ $equipment->Description }}</textarea>
