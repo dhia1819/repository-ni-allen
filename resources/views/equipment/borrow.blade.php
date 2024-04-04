@@ -61,7 +61,7 @@
                             <input type="date" class="form-control" id="date_borrowed" name="date_borrowed" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="date_returned">Return Date</label>
+                            <label class="form-label" for="date_returned">Expected Return Date</label>
                             <input type="datetime-local" class="form-control" id="date_returned" name="date_returned">
                         </div>
                     </div>

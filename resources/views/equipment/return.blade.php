@@ -66,8 +66,8 @@
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Property No#</th> 
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Serial No#</th>  --}}
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Date Borrowed</th> 
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Date Returned</th>
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Release by:</th> 
+                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Expected Return Date</th>
+                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Released by:</th> 
                                     {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Status</th>  --}}
                                     <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder" width="11%">Action</th>
                                 </tr>
