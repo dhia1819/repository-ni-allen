@@ -43,6 +43,10 @@ class HomeController extends Controller
                            ->groupBy('conditions')
                            ->pluck('total', 'conditions')
                            ->toArray();
+        $status = Equipment::select('status', DB::raw('count(*) as total'))
+                            ->groupBy('status')
+                           ->pluck('total', 'status')
+                           ->toArray();
   
         return view('home', compact(
             'page', 
@@ -50,7 +54,8 @@ class HomeController extends Controller
             'equipment', 
             'conditions',
             'employee',
-            'history'
+            'history',
+            'status'
         ));
     }
 

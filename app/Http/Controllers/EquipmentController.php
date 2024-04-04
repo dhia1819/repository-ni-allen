@@ -129,7 +129,14 @@ public function save(Request $request){
     $validatedData['admin_id'] = Auth::id();
 
     //status
-    $validatedData['status'] = 'available';
+    if ($validatedData['conditions'] === 'Good' || $validatedData['conditions'] === 'Fair' || $validatedData['conditions'] === 'Poor') {
+        $validatedData['status'] = 'available';
+    }
+    else{
+        $validatedData['status'] = 'unavailable';
+    }
+    
+    
 
     // Handle image upload
     if($request->hasFile('image')) {
@@ -234,8 +241,13 @@ public function condition(Request $request, $id)
         $validatedData['admin_id'] = Auth::id();
     
         // Set status
-        if ($equipment->status === 'available') {
-            $validatedData['status'] = 'available';
+        if ($equipment->status === 'available' || $equipment->status === 'unavailable') {
+            if ($validatedData['conditions'] === 'Good' || $validatedData['conditions'] === 'Fair' || $validatedData['conditions'] === 'Poor') {
+                $validatedData['status'] = 'available';
+            }
+            else{
+                $validatedData['status'] = 'unavailable';
+            }
         } elseif ($equipment->status === 'Borrowed') {
             $validatedData['status'] = 'Borrowed';
         }
