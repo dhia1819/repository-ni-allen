@@ -9,6 +9,10 @@ $(function() {
         },
         'scrollX': (screen.height > screen.width) ? true : false
     });
+    $(".select2-return").select2({
+        dropdownParent: $("#received_by").parent() // Changed to parent() instead of selecting by ID
+    });
+
 
     $(".select2-create").select2({ dropdownParent: $("#addEquipment") });
     $(".select2-update").select2({ dropdownParent: $("#editEquipment") });
@@ -77,4 +81,6 @@ $(function() {
 
     $(".select2-create").select2({ dropdownParent: $('#office').parent() });
 
+
+    
 });

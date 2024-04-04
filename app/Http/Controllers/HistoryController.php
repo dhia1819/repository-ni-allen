@@ -33,7 +33,6 @@ class HistoryController extends Controller
 
     return view('equipment.history', compact('page', 'borrowedData', 'categories', 'offices'));       
 }
-
 public function showhistory(string $id)
 {
     $page = [
@@ -49,11 +48,12 @@ public function showhistory(string $id)
     $transactions = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
         ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
         ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
-        ->select('transactions.*', 'equipment.*', 'offices.office as office_name', 'employees.fullName as release_by')
+        ->select('transactions.*', 'equipment.*', 'offices.office as office_name', 'employees.fullName as release_by', 'transactions.received_by', 'employees.fullName as employee_name') // corrected the assignment
         ->where('transactions.id', $id)
         ->where('transactions.status', '=', 'Return')
         ->get();
 
     return view('equipment.showhistory', compact('transactions', 'page', 'offices', 'employees'));
 }
+
 }

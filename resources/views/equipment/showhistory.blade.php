@@ -95,8 +95,8 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-12">
-                                <label class="form-label" for="date_returned">Received By<span class="text-danger">&#x2022;</span></label>
-                                <input type="text" class="form-control" id="received_by" name="received_by" value="{{ $transaction->received_by }}" readonly>
+                                <label class="form-label" for="date_returned">Receive By<span class="text-danger">&#x2022;</span></label>
+                                <input type="text" class="form-control" id="received_by" name="received_by" value="{{ $transaction->employee_name }}" readonly>
 
                                 {{-- <p>{{ $transaction->received_by }}</p> --}}
                             </div>
