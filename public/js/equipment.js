@@ -18,36 +18,37 @@ $(function() {
     $(".select2-update").select2({ dropdownParent: $("#editEquipment") });
     $(".select2-filter").select2({ dropdownParent: $("#filters") });
 
-    $('#category_filter, #condition_filter, #status_filter').on('change', function() {
-        var category = $('#category_filter').val();
-        var condition = $('#condition_filter').val();
-        var status = $('#status_filter').val();
+    $(document).ready(function() {
+        // Initialize DataTable
+        var table = $('#tbl-equipment').DataTable();
 
-        // Loop through each row of the table
-        $('#equipment_table_body tr').each(function() {
-            var rowCategory = $(this).find('td:eq(2)').text().trim(); // Get the category from the third column
-            var rowCondition = $(this).find('td:eq(5)').text().trim(); // Get the condition from the sixth column
-            var rowStatus = $(this).find('td:eq(6)').text().trim(); // Get the status from the seventh column
+        // Event listener for filter select elements
+        $('#category_filter, #condition_filter, #status_filter').on('change', function() {
+            // Get selected filter values
+            var category = $('#category_filter').val();
+            var condition = $('#condition_filter').val();
+            var status = $('#status_filter').val();
 
-            // Show or hide rows based on the selected filters
-            if ((category === '' || category === rowCategory) && 
-                (condition === '' || condition === rowCondition) && 
-                (status === '' || status === rowStatus.toLowerCase())) {
-                $(this).show();
-            } else {
-                $(this).hide();
-            }
+            // Apply filters using DataTables API
+            table.columns(2).search(category).draw(); // Filter by category in the third column
+            table.columns(5).search(condition).draw(); // Filter by condition in the sixth column
+            table.columns(6).search(status).draw(); // Filter by status in the seventh column
+
+            // Show the clear filters button when any filter is selected
+            $('#reset_filters').show();
         });
 
-        // Show the clear filters button when any filter is selected
-        $('#reset_filters').show();
-    });
+        // Event listener for reset filters button
+        $('#reset_filters').click(function() {
+            // Reset all filter select elements to their default value
+            $('.select2-filter').val('').trigger('change');
 
-    $('#reset_filters').click(function() {
-        // Reset all select elements to their default value
-        $('.select2-filter').val('').trigger('change');
-        // Hide the clear filters button after resetting filters
-        $(this).hide();
+            // Clear filters using DataTables API
+            table.columns().search('').draw();
+
+            // Hide the clear filters button after resetting filters
+            $(this).hide();
+        });
     });
 
     document.getElementById('conditionDropdown').addEventListener('change', function(event) {
