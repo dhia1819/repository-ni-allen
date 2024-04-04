@@ -160,14 +160,14 @@
                         
                     ],
                     borderColor: 'rgba(0,0,0,0)',
-                    borderWidth: 1
+                    borderWidth: 1,
                 }]
             },
             options: {
                 title: {
                     display: true,
                     text: 'Equipment Conditions'
-                }
+                },
             }
         });
         // function createLinearGradient(color1, color2) {
