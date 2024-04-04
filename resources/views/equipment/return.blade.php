@@ -89,7 +89,7 @@
                                         <td>
                                             <div class="align-middle text-center action" role="group" aria-label="Actions">
                                             <a href="{{ route('borrow.return', ['id' => $transaction->
-                                            id]) }}" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-warning text-center align-items-center justify-content-center">
+                                            transaction_id]) }}" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-warning text-center align-items-center justify-content-center">
                                                 <i class="fas fa-reply"></i>
                                             </a>
                                             </div>

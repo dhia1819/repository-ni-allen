@@ -52,7 +52,7 @@ public function showreturn(string $id)
         ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
         ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
         ->select('transactions.*', 'equipment.*', 'offices.office as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
-        ->where('equipment.id', $id)
+        ->where('transactions.id', $id)
         ->where('transactions.status', '=', 'Borrowed')
         ->get();
 
