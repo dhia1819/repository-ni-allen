@@ -63,6 +63,7 @@ Route::middleware(['auth'])->group(function () {
     //Borrow History Module
     Route::get('/borrow/history', [Controllers\HistoryController::class, 'history'])->name('history');
     Route::get('/borrow/showhistory/{id}', [Controllers\HistoryController::class, 'showhistory'])->name('show.history');
+    Route::get('/dowload-history', [Controllers\HistoryController::class, 'downloadHistory'])->name('download.history');
 
     //Office Module
 	Route::get('/office', [Controllers\OfficeController::class, 'index'])->name('office');

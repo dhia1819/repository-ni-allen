@@ -34,7 +34,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <a href="" class="btn bg-gradient-success">
+            <a href="{{ route('download.history') }}" class="btn bg-gradient-success">
                 <i class="fa fa-download mx-1"> </i>Download Excel
             </a>
         </div>
