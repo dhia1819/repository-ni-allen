@@ -46,12 +46,14 @@ public function showhistory(string $id)
     $employees = Employee::all();
 
     $transactions = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
-        ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
-        ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
-        ->select('transactions.*', 'equipment.*', 'offices.office as office_name', 'employees.fullName as release_by', 'transactions.received_by', 'employees.fullName as employee_name') // corrected the assignment
-        ->where('transactions.id', $id)
-        ->where('transactions.status', '=', 'Return')
-        ->get();
+    ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
+    ->leftJoin('employees as release_employees', 'transactions.release_by', '=', 'release_employees.id')
+    ->leftJoin('employees as received_employees', 'transactions.received_by', '=', 'received_employees.id')
+    ->select('transactions.*', 'equipment.*', 'offices.office as office_name', 'release_employees.fullName as release_by', 'received_employees.fullName as received_by')
+    ->where('transactions.id', $id)
+    ->where('transactions.status', '=', 'Return')
+    ->get();
+
 
     return view('equipment.showhistory', compact('transactions', 'page', 'offices', 'employees'));
 }
