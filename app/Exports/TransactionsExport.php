@@ -11,19 +11,17 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 
 class TransactionsExport implements FromCollection, WithHeadings, WithColumnWidths, WithTitle
 {
+    protected $transactions;
+
+    public function __construct($transactions)
+    {
+        $this->transactions = $transactions;
+    }
+
     public function collection()
     {
-        // Fetch transactions data from the database
-        $transactions = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
-        ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
-        ->leftJoin('employees as release_employees', 'transactions.release_by', '=', 'release_employees.id')
-        ->leftJoin('employees as received_employees', 'transactions.received_by', '=', 'received_employees.id')
-        ->select('transactions.*', 'equipment.equipment_name as equipmentName', 'offices.office as office_name', 'release_employees.fullName as release_by', 'received_employees.fullName as received_by')
-        ->where('transactions.status', '=', 'Return')
-        ->get();
-
         // Prepare and return the data as a collection
-        $data = $transactions->map(function ($transaction) {
+        $data = $this->transactions->map(function ($transaction) {
             return [
                 'Equipment' => $transaction->equipmentName,
                 'Borrower' => $transaction->borrowed_by,
@@ -32,7 +30,7 @@ class TransactionsExport implements FromCollection, WithHeadings, WithColumnWidt
                 'Expected Return' => $transaction->date_borrowed,
                 'Released by' => $transaction->release_by,
                 'Date Returned' => $transaction->returned_date,
-                'Returned by' =>$transaction->returned_by,
+                'Returned by' => $transaction->returned_by,
                 'Received by' => $transaction->received_by,
             ];
         });

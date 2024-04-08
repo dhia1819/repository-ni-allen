@@ -34,74 +34,114 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ route('download.history') }}" class="btn bg-gradient-success">
-                <i class="fa fa-download mx-1"> </i>Download Excel
-            </a>
+            <form action="{{ route('download.history') }}" method="GET">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="start_date">Start Date</label>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="end_date">End Date</label>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-2">
+
+                        <input type="date" class="form-control" id="start_date" name="start_date">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input type="date" class="form-control" id="end_date" name="end_date">
+
+                    </div>
+                    <div class="col-md-2 align-items-end">
+                        <button type="submit" class="btn bg-gradient-success">
+                            <i class="fa fa-download mx-1"> </i>
+                        </button>
+                    </div>
+                    
+                </div>
+            </form>
         </div>
         <div class="col-md-12">
             @include('layouts.message')
         </div>
         <div class="col-12">
-            <!-- Category Filter -->
-            <div class="form-group">
-                <label for="category_filter">Filter by Category:</label>
-                <select class="form-control" id="category_filter">
-                    <option value="">All Categories</option>
-                    @foreach($categories as $category)
-                    @if($category->status == 0)
-                        @continue
-                    @endif
-                        <option value="{{ $category->category }}">{{ $category->category }}</option>
-                    @endforeach
-                </select>
             </div>
             <div class="col-12">
                 <div class="card mb-2">
-                    <div class="card-header pb-0">
-                        <h6 class="text-info">Transaction Table</h6>
+                    <div class="card-header pb-0">                        
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="text-info">Transaction Table</h6>
+                            </div>
+                            <!-- Category Filter -->
+                            <div class="form-group col-md-4" id="filter">
+                                <div class="row">
+                                    <div class="col-md-3 justify-content-end">
+                                        <button id="reset_filter" class="btn bg-gradient-danger " style="display:none;" >
+                                            <i class="fa fa-undo"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <select class="form-control select select2-filter" id="category_filter">
+                                            <option value="">Select Filter</option>
+                                            @foreach($categories as $category)
+                                            @if($category->status == 0)
+                                                @continue
+                                            @endif
+                                                <option value="{{ $category->category }}">{{ $category->category }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
-                        <table class="table align-items-center mb-0" id="tbl-equipment" style="width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Borrower</th> 
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Office</th>
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Equipment</th> 
-                                    {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Property No#</th> 
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Serial No#</th>  --}}
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Date Borrowed</th> 
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Date Returned</th>
-                                    {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Release by:</th>  --}}
-                                    {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Status</th>  --}}
-                                    <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder" width="11%">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="equipment_table_body">
-                                @foreach ($borrowedData as $transaction)
+                        <div class="table-responsive">
+                            <table class="table align-items-center mb-0" id="tbl-history" style="width: 100%;">
+                                <thead>
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $transaction->borrowed_by }}</td>
-                                        <td style="vertical-align: middle;">{{ $transaction->office_name }}</td>
-                                        <td style="vertical-align: middle;">{{ $transaction->equipment_name }}</td>
-                                        {{-- <td style="vertical-align: middle;">{{ $transaction->property_no }}</td>
-                                        <td style="vertical-align: middle;">{{ $transaction->serial_no }}</td> --}}
-                                        <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F d, Y') }}</td>
-                                        <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->returned_date)->format('F d, Y') }}</td>
-                                        {{-- <td style="vertical-align: middle;">{{ $transaction->release_by }}</td>
-
-
-                                        <td style="vertical-align: middle;">{{ ucfirst($transaction->tstatus) }}</td> --}}
-                                        <td>
-                                            <div class="align-middle text-center action" role="group" aria-label="Actions">
-                                            <a href="{{ route('show.history', ['id' => $transaction->
-                                            transaction_id]) }}" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center align-items-center justify-content-center">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                            </div>
-                                        </td>
+                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Borrower</th> 
+                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Office</th>
+                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Equipment</th> 
+                                        {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Property No#</th> 
+                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Serial No#</th>  --}}
+                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Date Borrowed</th> 
+                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Date Returned</th>
+                                        {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Release by:</th>  --}}
+                                        {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Status</th>  --}}
+                                        <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder" width="11%">Action</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody id="equipment_table_body">
+                                    @foreach ($borrowedData as $transaction)
+                                        <tr>
+                                            <td style="vertical-align: middle;">{{ $transaction->borrowed_by }}</td>
+                                            <td style="vertical-align: middle;">{{ $transaction->office_name }}</td>
+                                            <td style="vertical-align: middle;">{{ $transaction->equipment_name }}</td>
+                                            {{-- <td style="vertical-align: middle;">{{ $transaction->property_no }}</td>
+                                            <td style="vertical-align: middle;">{{ $transaction->serial_no }}</td> --}}
+                                            <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F d, Y') }}</td>
+                                            <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->returned_date)->format('F d, Y') }}</td>
+                                            {{-- <td style="vertical-align: middle;">{{ $transaction->release_by }}</td>
+    
+    
+                                            <td style="vertical-align: middle;">{{ ucfirst($transaction->tstatus) }}</td> --}}
+                                            <td>
+                                                <div class="align-middle text-center action" role="group" aria-label="Actions">
+                                                <a href="{{ route('show.history', ['id' => $transaction->
+                                                transaction_id]) }}" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center align-items-center justify-content-center">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

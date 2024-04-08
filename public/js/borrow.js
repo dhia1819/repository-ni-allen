@@ -1,29 +1,39 @@
 $(function() {
     // Initialize the DataTable
-    $('#tbl-equipment').DataTable({
+    $('#tbl-history').DataTable({
         language: {
             paginate: {
-                previous: '<',
-                next: '>'
+                previous: "<",
+                next: ">"
             }
         },
         scrollX: screen.height > screen.width
     });
 
-    // Handle change event of the category filter
-    $('#category_filter').on('change', function() {
-        var category = $(this).val();
+    $(".select2-filter").select2({ dropdownParent: $("#filter")});
 
-        // Loop through each row of the table
-        $('#equipment_table_body tr').each(function() {
-            var rowCategory = $(this).find('td:eq(2)').text().trim(); // Get the category from the third column
+    $(document).ready(function(){
+        var table =$('#tbl-history').DataTable();
+        // Handle change event of the category filter
+        $('#category_filter').on('change', function() {
+            var category = $(this).val();
 
-            // Show or hide rows based on the selected category
-            if (category === '' || category === rowCategory) {
-                $(this).show();
-            } else {
-                $(this).hide();
-            }
+            table.columns(2).search(category).draw();
+
+            $('#reset_filter').show();
         });
+
+        
+    });
+
+    $('#reset_filter').click(function() {
+        // Reset all filter select elements to their default value
+        $('.select2-filter').val('').trigger('change');
+
+        // Clear filters using DataTables API
+        table.columns().search('').draw();
+
+        // Hide the clear filters button after resetting filters
+        $(this).hide();
     });
 });
