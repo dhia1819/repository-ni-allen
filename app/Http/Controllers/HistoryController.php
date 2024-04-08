@@ -10,6 +10,7 @@ use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Excel;
 use App\Exports\TransactionsExport;
+use Illuminate\Support\Carbon;
 
 class HistoryController extends Controller
 {
@@ -66,14 +67,31 @@ class HistoryController extends Controller
 
         return view('equipment.showhistory', compact('transactions', 'page', 'offices', 'employees'));
     }
-    public function downloadHistory()
+    public function downloadHistory(Request $request)
     {
-         // Get transactions data from the database
-         $transactions = Transaction::all();
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
 
-         // Prepare data for download (e.g., CSV or Excel)
-         $data = []; // Prepare your data here
-         return $this->excel->download(new TransactionsExport($transactions), 'transactions.xlsx');
+        // Get transactions data from the database within the date range
+        $transactions = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
+            ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
+            ->leftJoin('employees as release_employees', 'transactions.release_by', '=', 'release_employees.id')
+            ->leftJoin('employees as received_employees', 'transactions.received_by', '=', 'received_employees.id')
+            ->select('transactions.*', 'equipment.equipment_name as equipmentName', 'offices.office as office_name', 'release_employees.fullName as release_by', 'received_employees.fullName as received_by')
+            ->where('transactions.status', '=', 'Return')
+            ->whereBetween('date_borrowed', [$startDate, $endDate])
+            ->get();
+        // Check if there are transactions within the date range
+        if ($transactions->isEmpty()) {
+            return response()->json(['message' => 'No transactions found within the specified date range'], 404);
         }
+
+        // Generate file name using start and end dates
+        $fileName = 'transactions_' . str_replace('-', '_', $startDate) . '_to_' . str_replace('-', '_', $endDate) . '.xlsx';
+
+
+        // Assuming you have an Export class named TransactionsExport
+        return $this->excel->download(new TransactionsExport($transactions), $fileName);
+    }
 
 }
