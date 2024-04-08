@@ -41,6 +41,11 @@
             <button id="reset_filters" class="btn bg-gradient-danger" style="display:none;">
                 <i class="fa fa-undo"></i> Clear Filters
             </button>
+            <a href="{{route('download.equipment')}}" class="btn bg-gradient-success float-end">
+                <i class="fas fa-download mx-1"></i> Download Excel
+            </a>
+            
+            
             @include('layouts.message')
         </div>
         <div class="col-12">

@@ -9,6 +9,8 @@ use App\Models\Employee;
 
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\EquipmentsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EquipmentController extends Controller
 {
@@ -278,4 +280,17 @@ return redirect()->route('equipment.show', ['id' => $equipment->id])->with('succ
     {
         //
     }
+
+    public function downloadEquipment()
+{
+    // Get equipments data from the database
+    $equipments = Equipment::all();
+
+    // Prepare data for download (e.g., CSV or Excel)
+    $data = []; // Prepare your data here
+    
+    // Use the Excel facade to download the Excel file
+    return Excel::download(new EquipmentsExport($equipments), 'equipments.xlsx');
+}
+
 }

@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/category/{id}/update', [Controllers\CategoryController::class, 'update'])->name('category.update');
 
     //All Equipment Module
+    Route::get('/dowload-equipment', [Controllers\EquipmentController::class, 'downloadEquipment'])->name('download.equipment');
 	Route::get('/equipment', [Controllers\EquipmentController::class, 'index'])->name('equipment');
     Route::get('/equipment/create', [Controllers\EquipmentController::class, 'create'])->name('equipment.create');
     Route::post('/equipment/store', [Controllers\EquipmentController::class, 'store'])->name('equipment.store');
