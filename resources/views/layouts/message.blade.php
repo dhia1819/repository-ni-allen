@@ -1,5 +1,5 @@
 @if(count($errors))
-    <div id="error-alert" class="alert alert-danger text-white alert-dismissible fade show" role="alert">
+    <div id="error-alert" class="alert alert-danger text-white alert-dismissible show" role="alert">
         <strong class="text-capitalize">Oops!</strong><br>
         @foreach ($errors->all() as $error)
             {{ $error }}<br>
@@ -8,7 +8,7 @@
     </div>
 @else 
     @if (session('success'))
-        <div id="success-alert" class="alert alert-success text-white alert-dismissible fade show" role="alert">
+        <div id="success-alert" class="alert alert-success text-white alert-dismissible show" role="alert">
             <strong class="text-capitalize">Success!</strong><br>
             {{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -22,10 +22,11 @@
         var alerts = document.querySelectorAll('.alert');
         alerts.forEach(function(alert) {
             setTimeout(function() {
-                alert.classList.add('hide');
+                alert.classList.remove('show');
+                alert.classList.add('fade');
                 setTimeout(function() {
                     alert.remove();
-                }, 500); // Delay the removal after hiding animation completes
+                }, 500); // Delay the removal after fade-out animation completes
             }, 2500);
         });
     });

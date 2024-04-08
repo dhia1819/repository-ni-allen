@@ -283,7 +283,7 @@ return redirect()->route('equipment.show', ['id' => $equipment->id])->with('succ
 
     public function downloadEquipment()
 {
-    // Get equipments data from the database
+    // Get equipments data from thdatabase
     $equipments = Equipment::all();
 
     // Prepare data for download (e.g., CSV or Excel)

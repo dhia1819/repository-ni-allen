@@ -42,7 +42,7 @@
                 <i class="fa fa-undo"></i> Clear Filters
             </button>
             <a href="{{route('download.equipment')}}" class="btn bg-gradient-success float-end">
-                <i class="fas fa-download mx-1"></i> Download Excel
+                <i class="fas fa-download mx-1"></i> 
             </a>
             
             
