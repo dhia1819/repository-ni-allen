@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Excel;
 use App\Exports\TransactionsExport;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class HistoryController extends Controller
 {
@@ -72,26 +73,43 @@ class HistoryController extends Controller
         $startDate = $request->input('start_date');
         $endDate = $request->input('end_date');
 
-        // Get transactions data from the database within the date range
-        $transactions = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
+        // Initialize query
+        $query = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
             ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
             ->leftJoin('employees as release_employees', 'transactions.release_by', '=', 'release_employees.id')
             ->leftJoin('employees as received_employees', 'transactions.received_by', '=', 'received_employees.id')
             ->select('transactions.*', 'equipment.equipment_name as equipmentName', 'offices.office as office_name', 'release_employees.fullName as release_by', 'received_employees.fullName as received_by')
-            ->where('transactions.status', '=', 'Return')
-            ->whereBetween('date_borrowed', [$startDate, $endDate])
-            ->get();
-        // Check if there are transactions within the date range
-        if ($transactions->isEmpty()) {
-            return response()->json(['message' => 'No transactions found within the specified date range'], 404);
+            ->where('transactions.status', '=', 'Return');
+
+        // Add conditions for start date and end date if they are provided
+        if (!empty($startDate) && !empty($endDate)) {
+            $query->whereBetween('date_borrowed', [$startDate, $endDate]);
+
+            $fileName = 'transactions_' . str_replace('-', '_', $startDate) . '_to_' . str_replace('-', '_', $endDate) . '.xlsx';
+
+        } elseif (!empty($startDate)) {
+            $query->where('date_borrowed', '>=', $startDate);
+
+             $fileName = 'transactions_from_' . str_replace('-', '_', $startDate) . '_onwards'.'.xlsx';
+        }
+        else{
+            // Generate file name using start and end dates
+            $fileName = 'All_transactions.xlsx';
         }
 
-        // Generate file name using start and end dates
-        $fileName = 'transactions_' . str_replace('-', '_', $startDate) . '_to_' . str_replace('-', '_', $endDate) . '.xlsx';
+        // Get transactions data from the database
+        $transactions = $query->get();
 
+        // Check if there are transactions within the date range
+        if ($transactions->isEmpty()) {
+            // return response()->json(['message' => 'No transactions found within the specified date range'], 404);
+            return Redirect::back()->withErrors('No transactions found within the specified date range.');
+        }
 
+        
         // Assuming you have an Export class named TransactionsExport
         return $this->excel->download(new TransactionsExport($transactions), $fileName);
     }
+
 
 }
