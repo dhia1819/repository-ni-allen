@@ -182,22 +182,22 @@
         var status = @json($status); // Convert PHP array to JavaScript object
 
         // Get keys (status) and values (counts)
-        var statusLabel = Object.keys(status);
+        // var statusLabel = Object.keys(status);
         var statusData = Object.values(status);
 
-        // Function to convert text to sentence case
-        function toSentenceCase(text) {
-            return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
-        }
+        // // Function to convert text to sentence case
+        // function toSentenceCase(text) {
+        //     return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+        // }
 
-        // Convert statusLabel to sentence case
-        statusLabel = statusLabel.map(toSentenceCase);
+        // // Convert statusLabel to sentence case
+        // statusLabel = statusLabel.map(toSentenceCase);
 
         var barCtx = document.getElementById('barGraph').getContext('2d');
         var barGraph = new Chart(barCtx, {
             type: 'bar',
             data: {
-                labels: statusLabel,
+                labels: ['Available', 'Borrowed', 'Unavailable'],
                 datasets: [{
                     label: 'Equipments',
                     data: statusData,
