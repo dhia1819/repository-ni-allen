@@ -43,11 +43,14 @@ class HomeController extends Controller
                            ->groupBy('conditions')
                            ->pluck('total', 'conditions')
                            ->toArray();
-        $status = Equipment::select('status', DB::raw('count(*) as total'))
-                            ->groupBy('status')
-                           ->pluck('total', 'status')
-                           ->toArray();
-  
+
+        $statusAvailable = Equipment::where('status', 'available')
+                           ->count();
+
+        $statusBorrowed = Equipment::where('status', 'Borrowed')
+                           ->count();
+        $statusUnavailable = Equipment::where('status', 'unavailable')
+                           ->count();
         return view('home', compact(
             'page', 
             'users', 
@@ -55,7 +58,9 @@ class HomeController extends Controller
             'conditions',
             'employee',
             'history',
-            'status'
+            'statusAvailable',
+            'statusBorrowed',
+            'statusUnavailable'
         ));
     }
 

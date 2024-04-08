@@ -179,19 +179,10 @@
         // }
 
         // Bar Graph
-        var status = @json($status); // Convert PHP array to JavaScript object
+        var statusAvailable = @json($statusAvailable); // Convert PHP array to JavaScript object
+        var statusBorrowed = @json($statusBorrowed);
+        var statusUnavailable = @json($statusUnavailable);
 
-        // Get keys (status) and values (counts)
-        // var statusLabel = Object.keys(status);
-        var statusData = Object.values(status);
-
-        // // Function to convert text to sentence case
-        // function toSentenceCase(text) {
-        //     return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
-        // }
-
-        // // Convert statusLabel to sentence case
-        // statusLabel = statusLabel.map(toSentenceCase);
 
         var barCtx = document.getElementById('barGraph').getContext('2d');
         var barGraph = new Chart(barCtx, {
@@ -200,7 +191,7 @@
                 labels: ['Available', 'Borrowed', 'Unavailable'],
                 datasets: [{
                     label: 'Equipments',
-                    data: statusData,
+                    data: [statusAvailable, statusBorrowed, statusUnavailable],
                     backgroundColor: [
                         'rgba(54, 162, 235, 0.7)',
                         'rgba(54, 162, 235, 0.5)',
@@ -222,6 +213,7 @@
                     display: true,
                     text: 'Borrowed Equipments per Month'
                 }
+                
             }
         });
     });
