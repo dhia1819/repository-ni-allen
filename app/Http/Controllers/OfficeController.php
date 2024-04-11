@@ -43,6 +43,16 @@ class OfficeController extends Controller
             'office' => 'required|string',
             'type' => 'required|string',
         ]);
+
+        $existingOffice = Office::where('office', $validatedData['office'])->first();
+        $existingCode = Office::where('code', $validatedData['code'])->first();
+    
+        if ($existingOffice) {
+            return redirect()->back()->withErrors(['This Office already exists']);  
+        }
+        if ($existingCode) {
+            return redirect()->back()->withErrors(['This Code already exists']);  
+        }
     
         // Create a new instance of your model
         $newItem = new Office();

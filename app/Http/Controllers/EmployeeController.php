@@ -30,7 +30,7 @@ class EmployeeController extends Controller
 {
     // Validation rules
     $rules = [
-        'fullName'           => 'required',
+        'fullName'           => 'required|unique:employees',
         'position'       => 'required',
     ];
 
