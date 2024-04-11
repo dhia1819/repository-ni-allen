@@ -94,9 +94,10 @@
                                                 $today = \Carbon\Carbon::today();
                                             @endphp
                                             @if ($today->greaterThan($expectedReturnDate))
-                                            <span class="badge badge-sm bg-gradient-danger">Late</span>
+                                            <a href="{{ route('borrow.return', ['id' => $transaction->
+                                                transaction_id]) }}" class="badge badge-sm bg-gradient-danger">Late</a>
                                             @else
-                                            <span class="badge badge-sm bg-gradient-success">{{ $transaction->status }}</span>
+                                                <span class="badge badge-sm bg-gradient-success">{{ $transaction->status }}</span>
                                             @endif
                                         </td>
                                         
