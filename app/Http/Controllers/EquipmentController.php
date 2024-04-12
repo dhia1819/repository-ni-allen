@@ -11,6 +11,7 @@ use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use App\Exports\EquipmentsExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Carbon;
 
 class EquipmentController extends Controller
 {
@@ -73,22 +74,26 @@ public function save(Request $request){
         $validatedData['upload_file'] = $imageName;
     }
 
+    // Check if the return date has passed
+    $returnDate = Carbon::parse($validatedData['date_returned']);
+    $today = Carbon::today();
+    $status = $today->greaterThan($returnDate) ? 'Late' : 'Borrowed';
     
-    $validatedData['status'] = 'Borrowed';
+    // Set the status based on whether the return date has passed
+    $validatedData['status'] = $status;
 
-    
-    $transaction = Transaction::create($validatedData);
+     // Create the transaction
+     $transaction = Transaction::create($validatedData);
 
-    
-    $equipment = Equipment::find($validatedData['equipment_id']);
-    if ($equipment) {
-        $equipment->status = 'Borrowed';
-        $equipment->save();
-    }
-    return redirect('/borrow/return')->with('success', 'Equipment Borrowed successfully.');
-
-    
-}
+     // Update equipment status to 'Borrowed' if applicable
+     $equipment = Equipment::find($validatedData['equipment_id']);
+     if ($equipment) {
+         $equipment->status = 'Borrowed';
+         $equipment->save();
+     }
+ 
+     return redirect('/borrow/return')->with('success', 'Equipment Borrowed successfully.');
+ }
 
 
 

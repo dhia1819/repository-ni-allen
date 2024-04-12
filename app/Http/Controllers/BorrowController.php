@@ -32,16 +32,16 @@ class BorrowController extends Controller
         $query->where('transactions.status', 'Borrowed')
             ->orWhere('transactions.status', 'Late');
     })
-    ->select('transactions.*', 'equipment.*', 'categories.category as category_name', 'offices.office as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
+    ->select('transactions.*', 'equipment.id as equipment_id','equipment.equipment_name as equipment_name', 'equipment.serial_no as serial_no', 'equipment.property_no as property_no', 'categories.category as category_name', 'offices.office as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
     ->orderBy('transactions.created_at', 'ASC')
     ->get();
 
-    // Update transaction status to 'Late' if the expected return date has passed
+         // Update transaction status to 'Late' if the expected return date has passed
     foreach ($borrowedData as $transaction) {
         $expectedReturnDate = Carbon::parse($transaction->date_returned);
         $today = Carbon::today();
 
-        if ($today->greaterThan($expectedReturnDate)) {
+        if ($today->greaterThan($expectedReturnDate) && $transaction->status !== 'Return') {
             // Update transaction status to 'Late'
             $transaction->status = 'Late';
             $transaction->save(); // Save the updated status
@@ -70,6 +70,7 @@ public function showreturn(string $id)
         ->where('transactions.id', $id)
       
         ->get();
+        
 
     return view('equipment.showreturn', compact('transactions', 'page', 'offices', 'employees'));
 }
