@@ -15,77 +15,131 @@ class EmployeeSeeder extends Seeder
     {
         $employees = array(
             array(
-                'fullName' => 'Hiro Alarzar',
-                'position' => 'Assistant Manager',
+                'fullName' => 'Jaime M. Garcia',
+                'position' => 'OIC-MISO',
                 'status' => 1
             ),
 
             array(
-                'fullName' => 'Raiven Muega',
-                'position' => 'Manager', 
+                'fullName' => 'Analee P. Vergel',
+                'position' => 'Information Technology Officer II', 
                 'status' => 1
             ),
 
             // Additional Employees
             array(
-                'fullName' => 'John Doe',
-                'position' => 'Developer',
+                'fullName' => 'Aileen U. Rosales',
+                'position' => 'Administrative Officer IV',
                 'status' => 1
             ),
 
             array(
-                'fullName' => 'Jane Smith',
-                'position' => 'Designer',
+                'fullName' => 'Rodney Boy C. Rfeyes',
+                'position' => 'Bookbinder I',
                 'status' => 1
             ),
 
             array(
-                'fullName' => 'Michael Johnson',
-                'position' => 'Sales Manager',
+                'fullName' => 'Jocelyn M. Dela Cruz',
+                'position' => 'Administrative Aide I',
                 'status' => 1
             ),
 
             array(
-                'fullName' => 'Emily Brown',
-                'position' => 'Marketing Coordinator',
+                'fullName' => 'Girlie D. Radaza',
+                'position' => 'Administrative Aide I',
                 'status' => 1
             ),
 
             array(
-                'fullName' => 'David Lee',
-                'position' => 'IT Specialist',
+                'fullName' => 'Charlie R. Crisostomo',
+                'position' => 'Casual',
                 'status' => 1
             ),
 
             array(
-                'fullName' => 'Sarah Williams',
-                'position' => 'HR Consultant',
+                'fullName' => 'Audie B. Cada',
+                'position' => 'Computer Maintenance Technologist II',
                 'status' => 1
             ),
 
             array(
-                'fullName' => 'Alex Clark',
-                'position' => 'Accountant',
+                'fullName' => 'Allan N. Abasola',
+                'position' => 'Administrative Aide III',
                 'status' => 1
             ),
 
             array(
-                'fullName' => 'Michelle Martinez',
-                'position' => 'Customer Service Representative',
+                'fullName' => 'Rodessa G. Mendoza',
+                'position' => '',
                 'status' => 1
             ),
 
             array(
-                'fullName' => 'Daniel Garcia',
-                'position' => 'Project Manager',
+                'fullName' => 'Pamela L. Yu',
+                'position' => 'COS - Information Systems Researcher I',
                 'status' => 1
             ),
 
             array(
-                'fullName' => 'Olivia Wilson',
-                'position' => 'Executive Assistant',
+                'fullName' => 'Venz Lawrence O. Cao',
+                'position' => 'Job Order',
                 'status' => 1
-            )
+            ),
+
+            array(
+                'fullName' => 'Leandro Martin L. Bona',
+                'position' => 'Job Order',
+                'status' => 1
+            ),
+
+            array(
+                'fullName' => 'Rowena M. Palacol',
+                'position' => 'Administrative Assistant III',
+                'status' => 1
+            ),
+
+            array(
+                'fullName' => 'Raquel M. Burbos',
+                'position' => 'Administrative Officer II',
+                'status' => 1
+            ),
+
+            array(
+                'fullName' => 'Rodrigo N. Abasola',
+                'position' => 'Administrative Aide III',
+                'status' => 1
+            ),
+
+            array(
+                'fullName' => 'Stephanie Grace C. Reyes',
+                'position' => 'COS - Information Systems Researcher II',
+                'status' => 1
+            ),
+
+            array(
+                'fullName' => 'Christian G. Juano',
+                'position' => 'COS - System Developer & Administrator',
+                'status' => 1
+            ),
+
+            array(
+                'fullName' => 'Jan Ivy S. Flores',
+                'position' => 'COS - Information Systems Researcher',
+                'status' => 1
+            ),
+
+            array(
+                'fullName' => 'Sean Edriel T. Umali',
+                'position' => 'COS - Information Systems Researcher',
+                'status' => 1
+            ),
+
+            array(
+                'fullName' => 'Roi Vinson D. Abrazaldo',
+                'position' => 'Computer Programmer II',
+                'status' => 1
+            ),
         );
         
         DB::table('employees')->insert($employees);

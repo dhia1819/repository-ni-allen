@@ -19,7 +19,10 @@
 @include('layouts.message')
 
 <div class="row mt-3">
-    <div class="col-md-3">
+    @php
+    $colClass = $lateReturn == 0 ? 'col-md-4' : 'col-md-3'; // Define column class based on $lateReturn value
+    @endphp
+    <div class="{{ $colClass }}">
             <div class="card">
                 <a href="{{ route('equipment') }}">
                 <div class="card-body p-3">
@@ -42,7 +45,7 @@
     </div>
 
    
-    <div class="col-md-3">
+    <div class="{{ $colClass }}">
         <div class="card">
             <a href="{{route('employee')}}">
                 <div class="card-body p-3">
@@ -63,7 +66,7 @@
             </a>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="{{ $colClass }}">
         <div class="card">
             <a href="{{route('history')}}">
                 <div class="card-body p-3">
