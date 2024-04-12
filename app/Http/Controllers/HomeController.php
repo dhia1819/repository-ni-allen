@@ -81,13 +81,13 @@ class HomeController extends Controller
         $employees = Employee::all();
 
         $lateTransaction = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
-        ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
-        ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
-        ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
-        ->where('transactions.status', 'Late')
-        ->select('transactions.*', 'equipment.*', 'categories.category as category_name', 'offices.office as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
-        ->orderBy('transactions.created_at', 'ASC')
-        ->get();
+    ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
+    ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
+    ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
+    ->where('transactions.status', 'Late')
+    ->select('transactions.*', 'equipment.id as equipment_id','equipment.equipment_name as equipment_name', 'equipment.serial_no as serial_no', 'equipment.property_no as property_no', 'categories.category as category_name', 'offices.office as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
+    ->orderBy('transactions.created_at', 'ASC')
+    ->get();
 
         return view('equipment.late', compact('page', 'lateTransaction', 'categories', 'offices', 'employees' ));
     }
