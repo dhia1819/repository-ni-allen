@@ -46,7 +46,7 @@
 						</a>
 					</li>
 					<li class="mb-2">
-						<a class="dropdown-item border-radius-md" href="#">
+						<a class="dropdown-item border-radius-md" href="/password">
 							<center>
 								<span class="">
 									Change password

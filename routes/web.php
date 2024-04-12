@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use App\Http\Controllers\PasswordController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,11 @@ Route::get('/home', [Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function () {
 
+
+  
+    Route::get('/password', [Controllers\PasswordController::class, 'index'])->name('password');
+    Route::get('/password/change', [Controllers\PasswordController::class, 'changePassword'])->name('changePassword');
+    Route::post('/password/change', [Controllers\PasswordController::class, 'changePasswordSave'])->name('postChangePassword');
 
     //User Module
 	Route::get('/users', [Controllers\UserController::class, 'index']);

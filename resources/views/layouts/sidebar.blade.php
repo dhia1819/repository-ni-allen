@@ -88,6 +88,15 @@ id="sidenav-main">
 						<span class="nav-link-text ms-1">Users</span>
 					</a>
 				</li>
+
+				<li class="nav-item">
+					<a class="nav-link {{($page['name'] == "Password") ? 'active' : ''}}" href="/password">
+						<div class="icon icon-shape icon-sm shadow border-radius-md bg-gradient-info text-center me-2 pb-3 d-flex align-items-center justify-content-center">
+							<i class="fa fa-users"></i>
+						</div>
+						<span class="nav-link-text ms-1">Password Manager</span>
+					</a>
+				</li>
 				
 				
 			@endif
