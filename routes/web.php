@@ -27,7 +27,7 @@ Route::get('/home', [Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function () {
 
-
+    Route::get('/home-late', [Controllers\HomeController::class, 'late'])->name('late');
   
     Route::get('/password', [Controllers\PasswordController::class, 'index'])->name('password');
     Route::get('/password/change', [Controllers\PasswordController::class, 'changePassword'])->name('changePassword');

@@ -84,22 +84,22 @@
             </a>
         </div>
     </div>
+    @if($lateReturn>0)
     <div class="col-md-3">
         <div class="card">
-            <a href="{{route('return')}}">
+            <a href="{{route('late')}}">
                 <div class="card-body p-3">
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Late Transactions</p>
-                                <h5 class="font-weight-bolder mb-0 text-success">{{ $users }}</h5>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Missing Items</p>
+                                <h5 class="font-weight-bolder mb-0 text-success">{{ $lateReturn }}</h5>
                             </div>
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-dark shadow text-center border-radius-md">
                                <!-- Late icon using Font Awesome (Exclamation Circle) -->
-<i class="fas fa-exclamation-circle "></i>
-
+                                <i class="fas fa-exclamation-circle "></i>
                             </div>
                         </div>
                     </div>
@@ -107,6 +107,7 @@
             </a>
         </div>
     </div>
+    @endif
 </div>
 
 <div class="row mt-3">
