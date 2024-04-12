@@ -69,6 +69,7 @@
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Expected Return Date</th>
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Released by:</th> 
                                     {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Status</th>  --}}
+                                    <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder" width="11%">Status</th>
                                     <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder" width="11%">Action</th>
                                 </tr>
                             </thead>
@@ -86,6 +87,21 @@
 
 
                                         {{-- <td style="vertical-align: middle;">{{ ucfirst($transaction->status) }}</td> --}}
+
+                                        <td class="align-middle text-center action" role="group" aria-label="Status">
+                                            @php
+                                                $expectedReturnDate = \Carbon\Carbon::parse($transaction->date_returned);
+                                                $today = \Carbon\Carbon::today();
+                                            @endphp
+                                            @if ($today->greaterThan($expectedReturnDate))
+                                            <a href="{{ route('borrow.return', ['id' => $transaction->
+                                                transaction_id]) }}" class="badge badge-sm bg-gradient-danger">Late</a>
+                                            @else
+                                                <span class="badge badge-sm bg-gradient-success">{{ $transaction->status }}</span>
+                                            @endif
+                                        </td>
+                                        
+
                                         <td>
                                             <div class="align-middle text-center action" role="group" aria-label="Actions">
                                             <a href="{{ route('borrow.return', ['id' => $transaction->

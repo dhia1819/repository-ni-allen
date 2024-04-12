@@ -39,22 +39,23 @@
                             <input type="text" class="form-control" id="property_no" name="property_no" value="{{ $equipment->property_no }}" readonly>
                         </div>
                     </div>
+                    
                     <div class="row mt-3">
                         <div class="col-md-6">
                             <label class="form-label" for="borrowed_by">Borrowed By<span class="text-danger">&#x2022;</span></label>
                             <input type="text" class="form-control" id="borrowed_by" name="borrowed_by" required>
                         </div>
                         <div class="col-md-6">
-    <label class="form-label" for="office">Office<span class="text-danger">&#x2022;</span></label>
-    <select class="form-control select2 select2-create" id="office" name="office">
-        <option value="">Select Office</option>
-        @foreach($office as $offices)
-            <option value="{{ $offices->id }}">{{ $offices->office }}</option>
-        @endforeach
-    </select>
-</div>
-
+                            <label class="form-label" for="office">Office<span class="text-danger">&#x2022;</span></label>
+                            <select class="form-control select2 select2-create" id="office" name="office">
+                                <option value="">Select Office</option>
+                                @foreach($office as $offices)
+                                    <option value="{{ $offices->id }}">{{ $offices->office }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
+
                     <div class="row mt-3">
                         <div class="col-md-6">
                             <label class="form-label" for="date_borrowed">Date<span class="text-danger">&#x2022;</span></label>

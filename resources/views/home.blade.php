@@ -41,27 +41,7 @@
         </a>
     </div>
 
-    <div class="col-md-3">
-        <div class="card">
-            <a href="{{route('users')}}">
-                <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Users</p>
-                                <h5 class="font-weight-bolder mb-0 text-success">{{ $users }}</h5>
-                            </div>
-                        </div>
-                        <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-dark shadow text-center border-radius-md">
-                                <i class="fa fa-users"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
+   
     <div class="col-md-3">
         <div class="card">
             <a href="{{route('employee')}}">
@@ -97,6 +77,29 @@
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-dark shadow text-center border-radius-md">
                                 <i class="fa fa-scroll"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <a href="{{route('return')}}">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="numbers">
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Late Transactions</p>
+                                <h5 class="font-weight-bolder mb-0 text-success">{{ $users }}</h5>
+                            </div>
+                        </div>
+                        <div class="col-4 text-end">
+                            <div class="icon icon-shape bg-gradient-dark shadow text-center border-radius-md">
+                               <!-- Late icon using Font Awesome (Exclamation Circle) -->
+<i class="fas fa-exclamation-circle "></i>
+
                             </div>
                         </div>
                     </div>

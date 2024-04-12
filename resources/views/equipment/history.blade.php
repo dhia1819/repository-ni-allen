@@ -35,32 +35,55 @@
     <div class="row">
         <div class="col-md-12">
             <form action="{{ route('download.history') }}" method="GET">
+                @csrf
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-5">
+                        <label for="category_filter">Category filter</label>
+                    </div>
+                    <div class="col-md-3">
                         <label for="start_date">Start Date</label>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label for="end_date">End Date</label>
                     </div>
 
                 </div>
                 <div class="row">
-                    <div class="form-group col-md-2">
+                    <div class="col-md-5 form-group" id="filter">
+                        <select class="form-control select select2-filter" id="category_filter" name="category">
+                            <option value="">Select Category</option>
+                            @foreach($categories as $category)
+                            @if($category->status == 0)
+                                @continue
+                            @endif
+                                <option value="{{ $category->category }}">{{ $category->category }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
 
                         <input type="date" class="form-control" id="start_date" name="start_date">
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-3">
                         <input type="date" class="form-control" id="end_date" name="end_date">
 
                     </div>
-                    <div class="col-md-2 align-items-end">
+                    <div class="col-md-1 align-items-end">
                         <button type="submit" class="btn bg-gradient-success">
                             <i class="fa fa-download mx-1"> </i>
                         </button>
                     </div>
                     
+                </form>
                 </div>
-            </form>
+                <div class="row mt-2 justify-content-start" id="reset-button">
+                    <div class="col-md-2">
+                        <button id="reset_filter" class="btn bg-gradient-danger " style="display:none;" >
+                            <i class="fa fa-undo mx-1"></i>Clear filters
+                        </button>
+                    </div>
+                </div>
+            
         </div>
         <div class="col-md-12">
             @include('layouts.message')
@@ -74,28 +97,7 @@
                             <div class="col-md-8">
                                 <h6 class="text-info">Transaction Table</h6>
                             </div>
-                            <!-- Category Filter -->
-                            <div class="form-group col-md-4" id="filter">
-                                <div class="row">
-                                    <div class="col-md-3 justify-content-end">
-                                        <button id="reset_filter" class="btn bg-gradient-danger " style="display:none;" >
-                                            <i class="fa fa-undo"></i>
-                                        </button>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <select class="form-control select select2-filter" id="category_filter">
-                                            <option value="">Select Filter</option>
-                                            @foreach($categories as $category)
-                                            @if($category->status == 0)
-                                                @continue
-                                            @endif
-                                                <option value="{{ $category->category }}">{{ $category->category }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="card-body">
@@ -106,6 +108,7 @@
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Borrower</th> 
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Office</th>
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Equipment</th> 
+                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Category</th> 
                                         {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Property No#</th> 
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Serial No#</th>  --}}
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Date Borrowed</th> 
@@ -121,6 +124,7 @@
                                             <td style="vertical-align: middle;">{{ $transaction->borrowed_by }}</td>
                                             <td style="vertical-align: middle;">{{ $transaction->office_name }}</td>
                                             <td style="vertical-align: middle;">{{ $transaction->equipment_name }}</td>
+                                            <td style="vertical-align: middle;">{{ $transaction->category_name }}</td>
                                             {{-- <td style="vertical-align: middle;">{{ $transaction->property_no }}</td>
                                             <td style="vertical-align: middle;">{{ $transaction->serial_no }}</td> --}}
                                             <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F d, Y') }}</td>

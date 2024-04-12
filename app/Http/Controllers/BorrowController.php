@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Office;
 use App\Models\Employee;
-
+use Carbon\Carbon;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +15,7 @@ class BorrowController extends Controller
     public function return()
 {
     $categories = Category::all();
-    $offices = Office::all(); // Assuming you have an Office model
+    $offices = Office::all();
     $employees = Employee::all();
 
     $page = [
@@ -25,13 +25,28 @@ class BorrowController extends Controller
     ];
     
     $borrowedData = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
-        ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
-        ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
-        ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
-        ->where('transactions.status', 'Borrowed') // Filter out borrowed transactions
-        ->select('transactions.*', 'equipment.*', 'categories.category as category_name', 'offices.office as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
-        ->orderBy('transactions.created_at', 'ASC')
-        ->get();
+    ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
+    ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
+    ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
+    ->where(function ($query) {
+        $query->where('transactions.status', 'Borrowed')
+            ->orWhere('transactions.status', 'Late');
+    })
+    ->select('transactions.*', 'equipment.*', 'categories.category as category_name', 'offices.office as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
+    ->orderBy('transactions.created_at', 'ASC')
+    ->get();
+
+    // Update transaction status to 'Late' if the expected return date has passed
+    foreach ($borrowedData as $transaction) {
+        $expectedReturnDate = Carbon::parse($transaction->date_returned);
+        $today = Carbon::today();
+
+        if ($today->greaterThan($expectedReturnDate)) {
+            // Update transaction status to 'Late'
+            $transaction->status = 'Late';
+            $transaction->save(); // Save the updated status
+        }
+    }
 
     return view('equipment.return', compact('page', 'borrowedData', 'categories', 'offices', 'employees'));       
 }
@@ -53,7 +68,7 @@ public function showreturn(string $id)
         ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
         ->select('transactions.*', 'equipment.*', 'offices.office as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
         ->where('transactions.id', $id)
-        ->where('transactions.status', '=', 'Borrowed')
+      
         ->get();
 
     return view('equipment.showreturn', compact('transactions', 'page', 'offices', 'employees'));

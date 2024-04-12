@@ -72,29 +72,52 @@ class HistoryController extends Controller
     {
         $startDate = $request->input('start_date');
         $endDate = $request->input('end_date');
+        $category = $request->input('category');
 
         // Initialize query
         $query = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
             ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
             ->leftJoin('employees as release_employees', 'transactions.release_by', '=', 'release_employees.id')
             ->leftJoin('employees as received_employees', 'transactions.received_by', '=', 'received_employees.id')
-            ->select('transactions.*', 'equipment.equipment_name as equipmentName', 'offices.office as office_name', 'release_employees.fullName as release_by', 'received_employees.fullName as received_by')
+            ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
+            ->select('transactions.*', 
+                    'equipment.equipment_name as equipmentName', 
+                    'offices.office as office_name', 'release_employees.fullName as release_by', 
+                    'received_employees.fullName as received_by',
+                    'categories.category as category_name', )
             ->where('transactions.status', '=', 'Return');
 
         // Add conditions for start date and end date if they are provided
         if (!empty($startDate) && !empty($endDate)) {
-            $query->whereBetween('date_borrowed', [$startDate, $endDate]);
+            $query->whereBetween('returned_date', [$startDate, $endDate]);
 
-            $fileName = 'transactions_' . str_replace('-', '_', $startDate) . '_to_' . str_replace('-', '_', $endDate) . '.xlsx';
+            if(!empty($category)){
+                $query->where('categories.category', $category);
+            }
+            $fileName = 'completed_transactions_' . str_replace('-', '_', $startDate) . '_to_' . str_replace('-', '_', $endDate) . '.xlsx';
 
         } elseif (!empty($startDate)) {
-            $query->where('date_borrowed', '>=', $startDate);
-
-             $fileName = 'transactions_from_' . str_replace('-', '_', $startDate) . '_onwards'.'.xlsx';
+            $query->where('returned_date', '>=', $startDate);
+                if(!empty($category)){
+                    $query->where('categories.category', $category);
+                }
+             $fileName = 'completed_transactions_' . str_replace('-', '_', $startDate) . '_onwards'.'.xlsx';
+        }
+        elseif(!empty($endDate)){
+            $query->where('returned_date', '<=', $endDate);
+            if(!empty($category)){
+                $query->where('categories.category', $category);
+            }
+         $fileName = 'completed_transactions_until_' . str_replace('-', '_', $endDate) .'.xlsx';
         }
         else{
-            // Generate file name using start and end dates
-            $fileName = 'All_transactions.xlsx';
+            if(!empty($category)){
+                $query->where('categories.category', $category);
+                $fileName = $category . '.xlsx';
+            }
+            else{
+                $fileName = 'All_completed_transactions.xlsx';
+            }
         }
 
         // Get transactions data from the database
