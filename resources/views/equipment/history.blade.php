@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('page_name', $page['name'])
 @section('page_script')
-    <script type="text/javascript" src="/js/borrow.js"></script>
+    <script type="text/javascript" src="/js/history.js"></script>
 @endsection
 @section('page_css')
     <style type="text/css">
