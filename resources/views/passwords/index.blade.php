@@ -14,7 +14,9 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">Change Password</div>
+                <div class="card-header">
+                    <h5 class="text-info">Change Password</h5>
+                </div>
                 <div class="card-body">
                     @if($errors->any())
                     <div class="alert alert-danger">
@@ -45,21 +47,31 @@
                     <form class="form" action="{{ route('postChangePassword') }}" method="post">
                         @csrf
                         <div class="mb-3">
-                            <label for="current_password" class="form-label">Current Password</label>
+                            <label for="current_password" class="form-label">Current Password<span class="text-danger">&#x2022;</span></label>
                             <input type="password" class="form-control" id="current_password" name="current_password">
                         </div>
                         <div class="mb-3">
-                            <label for="new_password" class="form-label">New Password</label>
+                            <label for="new_password" class="form-label">New Password<span class="text-danger">&#x2022;</span></label>
                             <input type="password" class="form-control" id="new_password" name="new_password">
                         </div>
                         <div class="mb-3">
-                            <label for="new_password_confirmation" class="form-label">Confirm New Password</label>
+                            <label for="new_password_confirmation" class="form-label">Confirm New Password<span class="text-danger">&#x2022;</span></label>
                             <input type="password" class="form-control" id="new_password_confirmation" name="new_password_confirmation">
                         </div>
-                        <button type="submit" class="btn bg-gradient-info trigger-modal btn-md" >Submit</button>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Back
-                        </button>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <i class="fa fa-arrow-left"></i> Cancel
+                                </button>
+                            </div>
+                            <div class=" col-md-6">
+                                <button type="submit" class="btn bg-gradient-success trigger-modal btn-md float-end" >
+                                    <i class="fa fa-paper-plane"></i> Submit</button>
+                                
+                            </div>
+                        </div>
+                        
+                        
                     </form>
                 </div>
             </div>

@@ -44,8 +44,7 @@ $('.btn-edit-user').click(function () {
   // Set the rowid in a hidden input field
   $('#rowid').val(rowId);
 
-  // Show the modal
-  $('#edit_modal').modal('show');
+  
 });
 
 
