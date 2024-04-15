@@ -35,26 +35,41 @@
 
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ route('equipment.create') }}" class="btn bg-gradient-info trigger-modal btn-md">
-                <i class="fa fa-plus"></i> Add Equipment
-            </a>
-            <button id="reset_filters" class="btn bg-gradient-danger" style="display:none;">
-                <i class="fa fa-undo"></i> Clear Filters
-            </button>
-            <a href="{{route('download.equipment')}}" class="btn bg-gradient-success float-end">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="{{ route('equipment.create') }}" class="btn bg-gradient-info trigger-modal btn-md">
+                        <i class="fa fa-plus"></i> Add Equipment
+                    </a>
+                    <button id="reset_filters" class="btn bg-gradient-danger" style="display:none;">
+                        <i class="fa fa-undo"></i> Clear Filters
+                    </button>
+                </div>
+                
+                <div class="col-md-8 ">
+                    <form action="{{route('download.equipment')}}" method="GET">
+                        @csrf
+                        <button type="submit" class="btn bg-gradient-success float-end">
+                            <i class="fa fa-download mx-1"> </i>
+                        </button>
+                </div>
+                
+                
+            </div>
+            {{-- <a href="{{route('download.equipment')}}" class="btn bg-gradient-success float-end">
                 <i class="fas fa-download mx-1"></i> 
-            </a>
+            </a> --}}
             
             
             @include('layouts.message')
         </div>
         <div class="col-12">
+            
             <div class="col-12" id="filters">
                 <div class="row col-12">
                     <!-- Category Filter -->
                     <div class="form-group col-md-4">
                         <label for="category_filter">Filter by Category:</label>
-                        <select class="form-control select select2-filter" id="category_filter">
+                        <select class="form-control select select2-filter" id="category_filter" name="category_filter">
                             <option value="">All Categories</option>
                             @foreach($categories as $category)
                                     @if($category->status == 0)
@@ -67,7 +82,7 @@
                     <!-- Condition Filter -->
                     <div class="form-group col-md-4">
                         <label for="condition_filter">Filter by Condition</label>
-                        <select class="form-control select select2-filter" id="condition_filter">
+                        <select class="form-control select select2-filter" id="condition_filter" name="condition_filter">
                             <option value="">All Conditions</option>
                             <option value="Good" >Good</option>
                             <option value="Fair">Fair</option>
@@ -81,7 +96,7 @@
                     <!-- Status Filter -->
                     <div class="form-group col-md-4">
                         <label for="status_filter">Filter by Status</label>
-                        <select class="form-control select select2-filter" id="status_filter">
+                        <select class="form-control select select2-filter" id="status_filter" name="status_filter">
                             <option value="">All Items</option>
                             <option value="available" >Available</option>
                             <option value="unavailable" >Unvailable</option>
@@ -90,6 +105,7 @@
                     </div>
                 </div>
             </div>
+        </form>
             <div class="col-12">
                 <div class="card mb-2">
                     <div class="card-header pb-0">
