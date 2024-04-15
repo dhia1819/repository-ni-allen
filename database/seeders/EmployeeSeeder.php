@@ -140,6 +140,66 @@ class EmployeeSeeder extends Seeder
                 'position' => 'Computer Programmer II',
                 'status' => 1
             ),
+            array(
+                'fullName' => 'John Derel M. Tuazon',
+                'position' => 'Information Systems Analyst I',
+                'status' => 1
+            ),
+            array(
+                'fullName' => 'Renz Alfred J. Litan',
+                'position' => 'Computer Programmer I',
+                'status' => 1
+            ),
+            array(
+                'fullName' => 'Reinald M. De Luna',
+                'position' => 'COS - Information Systems Researcher II',
+                'status' => 1
+            ),
+            array(
+                'fullName' => 'Jayvee M. Dela Cruz',
+                'position' => '',
+                'status' => 1
+            ),
+            array(
+                'fullName' => 'Maeron Joseph A. Reyes',
+                'position' => 'COS - Computer Programmer I',
+                'status' => 1
+            ),
+            array(
+                'fullName' => 'Mara Angelica C. Delgado',
+                'position' => ' I',
+                'status' => 1
+            ),
+            array(
+                'fullName' => 'Danika Ana P. Billiones',
+                'position' => 'Information Systems Researcher',
+                'status' => 1
+            ),
+            array(
+                'fullName' => 'Forrest S. Dimasaca',
+                'position' => 'Job Order - Programmer',
+                'status' => 1
+            ),
+            array(
+                'fullName' => 'John Ray M. Pleto',
+                'position' => 'Job Order - Programmer',
+                'status' => 1
+            ),
+            array(
+                'fullName' => 'Adrian F. Miras',
+                'position' => 'Senior Administrative Assistant',
+                'status' => 1
+            ),
+            array(
+                'fullName' => 'Julie Ann D. Yaneza',
+                'position' => 'Computer Programmer I    ',
+                'status' => 1
+            ),
+            array(
+                'fullName' => 'Elenor O. Perejas',
+                'position' => 'Computer Maintenance Technologist I',
+                'status' => 1
+            ),
         );
         
         DB::table('employees')->insert($employees);
