@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string('equipment_id');
             $table->string('release_by');
             $table->string('borrowed_by');
-            $table->date('date_borrowed');
-            $table->date('date_returned')->nullable();
+            $table->datetime('date_borrowed');
+            $table->datetime('date_returned')->nullable();
             $table->string('office');
             $table->string('upload_file')->nullable();
-            $table->date('returned_date')->nullable();
+            $table->datetime('returned_date')->nullable();
             $table->string('returned_by')->nullable();
             $table->string('received_by')->nullable();
             $table->string('status');

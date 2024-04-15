@@ -81,8 +81,14 @@
                                         {{-- <td style="vertical-align: middle;">{{ $transaction->equipment_name }}</td>
                                         <td style="vertical-align: middle;">{{ $transaction->property_no }}</td>
                                         <td style="vertical-align: middle;">{{ $transaction->serial_no }}</td> --}}
-                                        <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F d, Y') }}</td>
-                                        <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->date_returned)->format('F d, Y') }}</td>
+                                        <td style="vertical-align: middle;">
+                                            {{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F d, Y | h:i A') }}
+                                        </td>
+                                        
+                                        <td style="vertical-align: middle;">
+                                            {{ \Carbon\Carbon::parse($transaction->date_returned)->format('F d, Y | h:i A') }}
+                                        </td>
+                                        
                                         <td style="vertical-align: middle;">{{ $transaction->release_by }}</td>
 
 
