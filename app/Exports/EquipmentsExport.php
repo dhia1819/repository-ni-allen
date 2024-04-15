@@ -11,15 +11,17 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 
 class EquipmentsExport implements FromCollection, WithHeadings, WithColumnWidths, WithTitle
 {
+    protected $equipments;
+
+    public function __construct($equipments)
+    {
+        $this->equipments = $equipments;
+    }
     public function collection()
     {
-        $equipments = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
-            ->orderBy('equipment.created_at', 'ASC')
-            ->select('equipment.*', 'categories.category as category_name')
-            ->get();
-
+        
         // Prepare and return the data as a collection
-        $data = $equipments->map(function ($equipment) {
+        $data = $this->equipments->map(function ($equipment) {
             return [
                 'Article/Item Name'=> $equipment->equipment_name,
                 'Category'=> $equipment->category_name,

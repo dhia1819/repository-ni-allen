@@ -10,8 +10,9 @@ use App\Models\Employee;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use App\Exports\EquipmentsExport;
-use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Excel;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class EquipmentController extends Controller
 {
@@ -300,16 +301,68 @@ return redirect()->route('equipment.show', ['id' => $equipment->id])->with('succ
         //
     }
 
-    public function downloadEquipment()
-{
-    // Get equipments data from thdatabase
-    $equipments = Equipment::all();
+    protected $excel;
 
-    // Prepare data for download (e.g., CSV or Excel)
-    $data = []; // Prepare your data here
-    
-    // Use the Excel facade to download the Excel file
-    return Excel::download(new EquipmentsExport($equipments), 'equipments.xlsx');
-}
+    public function __construct(Excel $excel)
+    {
+        $this->excel = $excel;
+    }
+    public function downloadEquipment(Request $request)
+    {
+        $category_filter = $request->input('category_filter');
+        $condition_filter = $request->input('condition_filter');
+        $status_filter = $request->input('status_filter');
+
+        // Get equipments data from the database
+        $query = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
+                        ->select('equipment.*', 'categories.category as category');
+
+        if (!empty($category_filter) && !empty($condition_filter) && !empty($status_filter)) {
+            // Code for when all filters are not empty
+            $query->where('categories.category', '=', $category_filter)
+                    ->where('conditions', '=', $condition_filter)
+                    ->where('equipment.status', '=', $status_filter);
+            $fileName = 'Equipments_'.$category_filter.'_'.$condition_filter.'_'.$status_filter.'.xlsx';
+        } elseif (!empty($category_filter) && !empty($condition_filter) && empty($status_filter)) {
+            // Code for when category and condition filters are not empty, but status filter is empty
+            $query->where('categories.category', '=', $category_filter)
+                    ->where('conditions', '=', $condition_filter);
+                    $fileName = 'Equipments_'.$category_filter.'_'.$condition_filter.'.xlsx';
+        } elseif (!empty($category_filter) && empty($condition_filter) && !empty($status_filter)) {
+            // Code for when category and status filters are not empty, but condition filter is empty
+            $query->where('categories.category', '=', $category_filter)
+                    ->where('equipment.status', '=', $status_filter);
+                    $fileName = 'Equipments_'.$category_filter.'_'.$status_filter.'.xlsx';
+        } elseif (empty($category_filter) && !empty($condition_filter) && !empty($status_filter)) {
+            // Code for when condition and status filters are not empty, but category filter is empty
+            $query->where('conditions', '=', $condition_filter)
+                    ->where('equipment.status', '=', $status_filter);
+                    $fileName = 'Equipments_'.$condition_filter.'_'.$status_filter.'.xlsx';
+        } elseif (!empty($category_filter) && empty($condition_filter) && empty($status_filter)) {
+            // Code for when only category filter is not empty
+            $query->where('categories.category', '=', $category_filter);
+            $fileName = 'Equipments_'.$category_filter.'.xlsx';
+        } elseif (empty($category_filter) && !empty($condition_filter) && empty($status_filter)) {
+            // Code for when only condition filter is not empty
+            $query->where('conditions', '=', $condition_filter);
+            $fileName = 'Equipments_'.$condition_filter.'.xlsx';
+        } elseif (empty($category_filter) && empty($condition_filter) && !empty($status_filter)) {
+            // Code for when only status filter is not empty
+            $query->where('equipment.status', '=', $status_filter);
+            $fileName = 'Equipments_'.$status_filter.'.xlsx';
+        } else {
+            // Code for when all filters are empty
+            $fileName = 'MISO_Equipments.xlsx';
+        }
+
+        $equipments = $query->get();
+
+        if ($equipments->isEmpty()) {
+            return Redirect::back()->withErrors('No equipments found with the specified filters.');
+        }
+        
+        // Use the Excel facade to download the Excel file
+        return $this->excel->download(new EquipmentsExport($equipments), $fileName);
+    }
 
 }
