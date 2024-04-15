@@ -53,13 +53,13 @@
                     <div class="row mt-3">
                         <div class="col-md-6">
                             <label class="form-label" for="date_borrowed">Date<span class="text-danger">&#x2022;</span></label>
-                            <input type="date" class="form-control" id="date_borrowed" name="date_borrowed" value="{{ $transaction->date_borrowed }}" readonly>
+                            <input type="datetime-local" class="form-control" id="date_borrowed" name="date_borrowed" value="{{ $transaction->date_borrowed }}" readonly>
 
                             {{-- <p>{{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F j, Y') }}</p> --}}
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="date_returned">Expected Return Date</label>
-                            <input type="date" class="form-control" id="date_returned" name="date_returned" value="{{ $transaction->date_returned }}" readonly>
+                            <input type="datetime-local" class="form-control" id="date_returned" name="date_returned" value="{{ $transaction->date_returned }}" readonly>
 
                             {{-- <p>{{ \Carbon\Carbon::parse($transaction->date_returned)->format('F j, Y') }}</p> --}}
                         </div>
@@ -77,7 +77,7 @@
                             <div class="col-md-6">
                                 <input type="hidden" class="form-control" id="equipment_id" name="equipment_id" value="{{ $transaction->transaction_id }}" readonly>
                                 <label class="form-label" for="date_borrowed">Return Date<span class="text-danger">&#x2022;</span></label>
-                                <input type="date" class="form-control" id="returned_date" name="returned_date" required>
+                                <input type="datetime-local" class="form-control" id="returned_date" name="returned_date" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label" for="date_returned">Returned By<span class="text-danger">&#x2022;</span></label>

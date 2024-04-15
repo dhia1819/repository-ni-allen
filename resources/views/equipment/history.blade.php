@@ -107,7 +107,7 @@
                                     <tr>
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Borrower</th> 
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Office</th>
-                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Equipment</th> 
+                                      
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Category</th> 
                                         {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Property No#</th> 
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Serial No#</th>  --}}
@@ -123,12 +123,16 @@
                                         <tr>
                                             <td style="vertical-align: middle;">{{ $transaction->borrowed_by }}</td>
                                             <td style="vertical-align: middle;">{{ $transaction->office_name }}</td>
-                                            <td style="vertical-align: middle;">{{ $transaction->equipment_name }}</td>
+                                           
                                             <td style="vertical-align: middle;">{{ $transaction->category_name }}</td>
                                             {{-- <td style="vertical-align: middle;">{{ $transaction->property_no }}</td>
                                             <td style="vertical-align: middle;">{{ $transaction->serial_no }}</td> --}}
-                                            <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F d, Y') }}</td>
-                                            <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->returned_date)->format('F d, Y') }}</td>
+                                            <td style="vertical-align: middle;">
+                                                {{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F d, Y | h:i A') }}
+                                            </td>
+                                            <td style="vertical-align: middle;">
+                                                {{ \Carbon\Carbon::parse($transaction->returned_date)->format('F d, Y | h:i A') }}
+                                            </td>
                                             {{-- <td style="vertical-align: middle;">{{ $transaction->release_by }}</td>
     
     

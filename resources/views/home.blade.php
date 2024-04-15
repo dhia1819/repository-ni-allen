@@ -100,7 +100,7 @@
                             </div>
                         </div>
                         <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-dark shadow text-center border-radius-md">
+                            <div class="icon icon-shape bg-gradient-danger shadow text-center border-radius-md">
                                <!-- Late icon using Font Awesome (Exclamation Circle) -->
                                 <i class="fas fa-exclamation-circle "></i>
                             </div>

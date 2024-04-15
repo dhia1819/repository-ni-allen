@@ -81,24 +81,27 @@
                                         {{-- <td style="vertical-align: middle;">{{ $transaction->equipment_name }}</td>
                                         <td style="vertical-align: middle;">{{ $transaction->property_no }}</td>
                                         <td style="vertical-align: middle;">{{ $transaction->serial_no }}</td> --}}
-                                        <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F d, Y') }}</td>
-                                        <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($transaction->date_returned)->format('F d, Y') }}</td>
+                                        <td style="vertical-align: middle;">
+                                            {{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F d, Y | h:i A') }}
+                                        </td>
+                                        
+                                        <td style="vertical-align: middle;">
+                                            {{ \Carbon\Carbon::parse($transaction->date_returned)->format('F d, Y | h:i A') }}
+                                        </td>
+                                        
                                         <td style="vertical-align: middle;">{{ $transaction->release_by }}</td>
 
 
                                         {{-- <td style="vertical-align: middle;">{{ ucfirst($transaction->status) }}</td> --}}
 
                                         <td class="align-middle text-center action" role="group" aria-label="Status">
-                                            @php
-                                                $expectedReturnDate = \Carbon\Carbon::parse($transaction->date_returned);
-                                                $today = \Carbon\Carbon::today();
-                                            @endphp
-                                            @if ($today->greaterThan($expectedReturnDate))
-                                            <span class="badge badge-sm bg-gradient-danger">{{ $transaction->status }}</span>
-                                            @else
-                                                <span class="badge badge-sm bg-gradient-success">{{ $transaction->status }}</span>
+                                            @if ($transaction->status === 'Late')
+                                                <span class="badge badge-sm bg-gradient-danger text-white">{{ $transaction->status }}</span>
+                                            @elseif ($transaction->status === 'Borrowed')
+                                                <span class="badge badge-sm bg-gradient-success text-white">{{ $transaction->status }}</span>
                                             @endif
                                         </td>
+                                        
                                         
 
                                         <td>
