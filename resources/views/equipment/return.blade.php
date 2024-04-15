@@ -95,16 +95,13 @@
                                         {{-- <td style="vertical-align: middle;">{{ ucfirst($transaction->status) }}</td> --}}
 
                                         <td class="align-middle text-center action" role="group" aria-label="Status">
-                                            @php
-                                                $expectedReturnDate = \Carbon\Carbon::parse($transaction->date_returned);
-                                                $today = \Carbon\Carbon::today();
-                                            @endphp
-                                            @if ($today->greaterThan($expectedReturnDate))
-                                            <span class="badge badge-sm bg-gradient-danger">{{ $transaction->status }}</span>
-                                            @else
-                                                <span class="badge badge-sm bg-gradient-success">{{ $transaction->status }}</span>
+                                            @if ($transaction->status === 'Late')
+                                                <span class="badge badge-sm bg-gradient-danger text-white">{{ $transaction->status }}</span>
+                                            @elseif ($transaction->status === 'Borrowed')
+                                                <span class="badge badge-sm bg-gradient-success text-white">{{ $transaction->status }}</span>
                                             @endif
                                         </td>
+                                        
                                         
 
                                         <td>

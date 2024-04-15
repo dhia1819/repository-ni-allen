@@ -51,21 +51,24 @@ class EquipmentController extends Controller
     return view('equipment.borrow', compact('page', 'equipment', 'office', 'employees'));
 }
 
-//Create function of borrowing transaction
-public function save(Request $request){
+public function save(Request $request)
+{
+    // Set timezone to Asia/Manila
+    date_default_timezone_set('Asia/Manila');
+
     $validatedData = $request->validate([
         'equipment_id' => 'required|string',
         'release_by' => 'required|string',
         'borrowed_by' => 'required|string', 
         'date_borrowed' => 'required|date',
-        'date_returned' => 'nullable|date',
+        'date_returned' => 'nullable|date', // Validate datetime format (date and time)
         'office' => 'required|string',
         'upload_file' => 'nullable|file|mimes:jpeg,png,pdf', //Can be nullable or not depends on process
         'returned_by' => 'nullable|string',
         'received_by' => 'nullable|string',
     ]);
 
-    //Upload file part
+    // Upload file part
     if ($request->hasFile('upload_file')) {
         $image = $request->file('upload_file');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -74,26 +77,37 @@ public function save(Request $request){
         $validatedData['upload_file'] = $imageName;
     }
 
-    // Check if the return date has passed
-    $returnDate = Carbon::parse($validatedData['date_returned']);
-    $today = Carbon::today();
-    $status = $today->greaterThan($returnDate) ? 'Late' : 'Borrowed';
+    // Check if the return date and time has passed
+    if (!empty($validatedData['date_returned'])) {
+        $returnDateTime = Carbon::parse($validatedData['date_returned'])->timezone('Asia/Manila');
+        $currentDateTime = Carbon::now()->timezone('Asia/Manila');
+
+        // Compare date and time (including seconds) for precise comparison
+        if ($currentDateTime->greaterThanOrEqualTo($returnDateTime)) {
+            $status = 'Late';
+        } else {
+            $status = 'Borrowed';
+        }
+    } else {
+        // If no return date is specified, default to 'Borrowed'
+        $status = 'Borrowed';
+    }
     
-    // Set the status based on whether the return date has passed
+    // Set the status based on whether the return date and time has passed
     $validatedData['status'] = $status;
 
-     // Create the transaction
-     $transaction = Transaction::create($validatedData);
+    // Create the transaction
+    $transaction = Transaction::create($validatedData);
 
-     // Update equipment status to 'Borrowed' if applicable
-     $equipment = Equipment::find($validatedData['equipment_id']);
-     if ($equipment) {
-         $equipment->status = 'Borrowed';
-         $equipment->save();
-     }
- 
-     return redirect('/borrow/return')->with('success', 'Equipment Borrowed successfully.');
- }
+    // Update equipment status to 'Borrowed' if applicable
+    $equipment = Equipment::find($validatedData['equipment_id']);
+    if ($equipment) {
+        $equipment->status = 'Borrowed';
+        $equipment->save();
+    }
+
+    return redirect('/borrow/return')->with('success', 'Equipment Borrowed successfully.');
+}
 
 
 
