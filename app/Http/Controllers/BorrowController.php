@@ -14,6 +14,10 @@ class BorrowController extends Controller
 {
     public function return()
 {
+    // Set the timezone for Carbon to match your local timezone (e.g., Asia/Manila)
+    // Adjust this to match your actual timezone
+    date_default_timezone_set('Asia/Manila');
+
     $categories = Category::all();
     $offices = Office::all();
     $employees = Employee::all();
@@ -25,23 +29,22 @@ class BorrowController extends Controller
     ];
     
     $borrowedData = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
-    ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
-    ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
-    ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
-    ->where(function ($query) {
-        $query->where('transactions.status', 'Borrowed')
-            ->orWhere('transactions.status', 'Late');
-    })
-    ->select('transactions.*', 'equipment.id as equipment_id','equipment.equipment_name as equipment_name', 'equipment.serial_no as serial_no', 'equipment.property_no as property_no', 'categories.category as category_name', 'offices.office as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
-    ->orderBy('transactions.created_at', 'ASC')
-    ->get();
+        ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
+        ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
+        ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
+        ->where(function ($query) {
+            $query->where('transactions.status', 'Borrowed')
+                  ->orWhere('transactions.status', 'Late');
+        })
+        ->select('transactions.*', 'equipment.id as equipment_id','equipment.equipment_name as equipment_name', 'equipment.serial_no as serial_no', 'equipment.property_no as property_no', 'categories.category as category_name', 'offices.code as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
+        ->orderBy('transactions.created_at', 'ASC')
+        ->get();
 
-         // Update transaction status to 'Late' if the expected return date has passed
+    // Update transaction status to 'Late' if the expected return datetime has passed
     foreach ($borrowedData as $transaction) {
-        $expectedReturnDate = Carbon::parse($transaction->date_returned);
-        $today = Carbon::today();
+        $expectedReturnDateTime = Carbon::parse($transaction->date_returned);
 
-        if ($today->greaterThan($expectedReturnDate) && $transaction->status !== 'Return') {
+        if (Carbon::now()->greaterThan($expectedReturnDateTime) && $transaction->status !== 'Return') {
             // Update transaction status to 'Late'
             $transaction->status = 'Late';
             $transaction->save(); // Save the updated status

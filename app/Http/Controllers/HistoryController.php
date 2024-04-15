@@ -37,7 +37,7 @@ class HistoryController extends Controller
             ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
             ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
             ->where('transactions.status', 'Return') // Filter out borrowed transactions
-            ->select('transactions.*', 'equipment.*', 'categories.category as category_name', 'offices.office as office_name', 'transactions.id as transaction_id','transactions.status as tstatus')
+            ->select('transactions.*', 'equipment.*', 'categories.category as category_name', 'offices.code as office_name', 'transactions.id as transaction_id','transactions.status as tstatus')
             ->orderBy('transactions.created_at', 'ASC')
             ->get();
 
