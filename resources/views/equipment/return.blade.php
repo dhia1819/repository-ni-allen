@@ -1,8 +1,6 @@
 @extends('layouts.master')
 @section('page_name', $page['name'])
 @section('page_script')
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script type="text/javascript" src="/js/borrow.js"></script>
 @endsection
 @section('page_css')
@@ -12,17 +10,17 @@
         /* Media query for small screens */
         @media (max-width: 768px) {
             /* Hide table headers */
-            #tbl-equipment th {
+            #tbl-borrowed th {
                 display: none;
             }
 
             /* Show table data as block elements */
-            #tbl-equipment td {
+            #tbl-borrowed td {
                 display: block;
             }
 
             /* Center-align table data */
-            #tbl-equipment td {
+            #tbl-borrowed td {
                 text-align: center;
             }
 

@@ -1,4 +1,22 @@
+
 $(document).ready(function() {
+    // Initialize Select2 on filter dropdowns
+    $('#office_filter, #employee_filter').select2();
+
+    // Initialize DataTable on #tbl-borrowed table
+    $('#tbl-borrowed').DataTable({
+        paging: true, // Enable pagination
+        language: {
+            paginate: {
+                previous: "<", // Custom previous page symbol
+                next: ">"      // Custom next page symbol
+            }
+        },
+        searching: true, // Enable search/filtering
+        ordering: true, // Enable sorting
+        responsive: true // Enable responsiveness for mobile devices
+    });
+});
     // Function to parse date string (without time) into Date object
     function parseDateWithoutTime(dateString) {
         if (!dateString) return null; // Return null for empty strings
@@ -21,21 +39,24 @@ $(document).ready(function() {
     function applyFilters() {
         var borrowedFilter = convertInputDate($('#borrowed_filter').val());
         var returnedFilter = convertInputDate($('#returned_filter').val());
-        console.log('Filtered Date (Borrowed):', borrowedFilter);
-        console.log('Filtered Date (Returned):', returnedFilter);
+        var officeFilter = $('#office_filter').val();
+        var employeeFilter = $('#employee_filter').val()
     
         $('#equipment_table_body tr').each(function() {
             var dateBorrowed = $(this).find('td:nth-child(3)').text().trim();
             var dateReturned = $(this).find('td:nth-child(4)').text().trim();
-            console.log('Date Borrowed (Table):', dateBorrowed);
-            console.log('Expected Return Date (Table):', dateReturned);
+            var office = $(this).find('td:nth-child(2)').text().trim();
+            var employee = $(this).find('td:nth-child(5)').text().trim();
+            
     
-            // Compare table dates with filter dates
+            // Compare table dates and office with filter values
             var matchesBorrowed = (borrowedFilter === '' || dateBorrowed.includes(borrowedFilter));
             var matchesReturned = (returnedFilter === '' || dateReturned.includes(returnedFilter));
+            var matchesOffice = (officeFilter === '' || office === officeFilter);
+            var matchesEmployee = (employeeFilter === '' || employee === employeeFilter);
     
             // Show/hide table row based on filter matches
-            $(this).toggle(matchesBorrowed && matchesReturned);
+            $(this).toggle(matchesBorrowed && matchesReturned && matchesOffice && matchesEmployee);
         });
     }
     
@@ -56,4 +77,3 @@ $(document).ready(function() {
 
     // Initial application of filters on page load
     applyFilters();
-});
