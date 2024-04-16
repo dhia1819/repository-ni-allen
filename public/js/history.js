@@ -22,10 +22,10 @@ $(function() {
             var end_date = $('#end_date').val();
     
             // Apply category filter
-            table.columns(3).search(category).draw();
+            table.columns(2).search(category).draw();
     
             // Apply start date filter
-            table.columns(5).every(function() {
+            table.columns(4).every(function() {
                 var column = this;
                 column.search(start_date ? '>=' + start_date : '', true, false);
                 column.search(end_date ? '<=' + end_date : '', true, false);

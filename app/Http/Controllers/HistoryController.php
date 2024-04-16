@@ -74,6 +74,9 @@ class HistoryController extends Controller
         $endDate = $request->input('end_date');
         $category = $request->input('category');
 
+         // Adjust the end date to include transactions up to 11:59:59 PM on the end date
+         $endDatePlusOneDay = date('Y-m-d', strtotime($endDate . ' +1 day'));
+
         // Initialize query
         $query = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
             ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
@@ -87,9 +90,10 @@ class HistoryController extends Controller
                     'categories.category as category_name', )
             ->where('transactions.status', '=', 'Return');
 
+            
         // Add conditions for start date and end date if they are provided
         if (!empty($startDate) && !empty($endDate)) {
-            $query->whereBetween('returned_date', [$startDate, $endDate]);
+            $query->whereBetween('returned_date', [$startDate, $endDatePlusOneDay]);
 
             if(!empty($category)){
                 $query->where('categories.category', $category);
@@ -104,12 +108,14 @@ class HistoryController extends Controller
              $fileName = 'completed_transactions_' . str_replace('-', '_', $startDate) . '_onwards'.'.xlsx';
         }
         elseif(!empty($endDate)){
-            $query->where('returned_date', '<=', $endDate);
+           
+            $query->where('returned_date', '<=', $endDatePlusOneDay);
             if(!empty($category)){
                 $query->where('categories.category', $category);
             }
-         $fileName = 'completed_transactions_until_' . str_replace('-', '_', $endDate) .'.xlsx';
+            $fileName = 'completed_transactions_until_' . str_replace('-', '_', $endDate) .'.xlsx';
         }
+        
         else{
             if(!empty($category)){
                 $query->where('categories.category', $category);

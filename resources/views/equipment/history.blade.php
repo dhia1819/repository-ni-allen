@@ -41,10 +41,10 @@
                         <label for="category_filter">Category filter</label>
                     </div>
                     <div class="col-md-3">
-                        <label for="start_date">Start Date</label>
+                        <label for="start_date">Transactions since</label>
                     </div>
                     <div class="col-md-3">
-                        <label for="end_date">End Date</label>
+                        <label for="end_date">Transactions until</label>
                     </div>
 
                 </div>
