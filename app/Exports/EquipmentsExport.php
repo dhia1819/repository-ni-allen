@@ -24,7 +24,7 @@ class EquipmentsExport implements FromCollection, WithHeadings, WithColumnWidths
         $data = $this->equipments->map(function ($equipment) {
             return [
                 'Article/Item Name'=> $equipment->equipment_name,
-                'Category'=> $equipment->category_name,
+                'Category'=> $equipment->category,
                 'Description' => $equipment->Description,
                 'Property no.' => $equipment->property_no,
                 'Serial no.' => $equipment->serial_no,
