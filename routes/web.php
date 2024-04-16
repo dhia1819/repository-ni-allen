@@ -34,10 +34,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/password/change', [Controllers\PasswordController::class, 'changePasswordSave'])->name('postChangePassword');
 
     //User Module
-	Route::get('/users', [Controllers\UserController::class, 'index']);
 	Route::get('/users', [Controllers\UserController::class, 'index'])->name('users');
 	Route::get('/fetchall', [Controllers\UserController::class, 'fetchAll'])->name('fetchAll');
-	Route::get('/users/create', [Controllers\UserController::class, 'create']);
 	Route::post('/users/store', [Controllers\UserController::class, 'store']);
 	Route::get('/users/{id}/edit', [Controllers\UserController::class, 'edit']);
 	Route::post('/users/{id}/update', [Controllers\UserController::class, 'update'])->name('user.update');
@@ -87,5 +85,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/employee/{id}/edit', [Controllers\EmployeeController::class, 'edit']);
 	Route::post('/employee/{id}/update', [Controllers\EmployeeController::class, 'update'])->name('employee.update');
 
-
+    //supplies module
+    Route::get('/supplies', [Controllers\SuppliesController::class, 'index']);
+    Route::post('/add-supplies', [Controllers\SuppliesController::class, 'create'])->name('add.supp');
 });

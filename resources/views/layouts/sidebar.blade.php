@@ -30,6 +30,14 @@ id="sidenav-main">
 				</a>
 			</li>
 			<li class="nav-item">
+				<a class="nav-link {{($page['name'] == "Supplies") ? 'active' : ''}}" href="/supplies">
+					<div class="icon icon-shape icon-sm shadow border-radius-md bg-gradient-info text-center me-2 pb-3 d-flex align-items-center justify-content-center">
+						<i class="fa fa-toolbox"></i>
+					</div>
+					<span class="nav-link-text ms-1"> Supplies</span>
+				</a>
+			</li>
+			<li class="nav-item">
 				<a class="nav-link {{($page['name'] == "Borrowed") ? 'active' : ''}}" href="{{ route('return') }}">
 					<div class="icon icon-shape icon-sm shadow border-radius-md bg-gradient-info text-center me-2 pb-3 d-flex align-items-center justify-content-center">
 						<i class="fa fa-reply"></i>
