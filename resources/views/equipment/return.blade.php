@@ -1,6 +1,8 @@
 @extends('layouts.master')
 @section('page_name', $page['name'])
 @section('page_script')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script type="text/javascript" src="/js/borrow.js"></script>
 @endsection
 @section('page_css')
@@ -36,27 +38,62 @@
         <div class="col-md-12">
             @include('layouts.message')
         </div>
-        <div class="col-12">
-            <!-- Category Filter -->
-            <div class="form-group">
-                <label for="category_filter">Filter by Category:</label>
-                <select class="form-control" id="category_filter">
-                    <option value="">All Categories</option>
-                    @foreach($categories as $category)
-                    @if($category->status == 0)
-                        @continue
-                    @endif
-                        <option value="{{ $category->category }}">{{ $category->category }}</option>
-                    @endforeach
-                </select>
-            </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                        <button id="reset_filters" class="btn bg-gradient-danger" style="display:none;">
+                            <i class="fa fa-undo"></i> Clear Filters
+                        </button>
+                    </div>
+
+                    <div class="col-md-8 ">
+                        <form action="{{route('download.equipment')}}" method="GET">
+                            @csrf
+                            <button type="submit" class="btn bg-gradient-success float-end">
+                                <i class="fa fa-download mx-1"> </i>
+                            </button>
+                    </div>
+            <div class="col-12" id="filter">
+                <div class="row col-12">
+                    
+                    <div class="form-group col-md-3">
+                        <label for="office_filter">Filter by Office:</label>
+                        <select class="form-control select2 select2-filter" id="office_filter" name="office_filter">
+                            <option value="">All Offices</option>
+                            @foreach($offices as $office)
+                                    
+                                <option value="{{ $office->code }}">{{ $office->code }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                   
+                    <div class="form-group col-md-3">
+                        <label for="borrowed_filter">Filter by Date Borrowed</label>
+                        <input type="date" class="form-control" id="borrowed_filter" name="borrowed_filter">
+                    </div>
+                   
+                    <div class="form-group col-md-3">
+                        <label for="returned_filter">Filter by Expected Return Date</label>
+                        <input type="date" class="form-control" id="returned_filter" name="returned_filter">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="employee_filter">Filter by Employee:</label>
+                        <select class="form-control select2 select2-filter" id="employee_filter" name="employee_filter">
+                            <option value="">All Employee</option>
+                            @foreach($employees as $employee)
+                                    
+                                <option value="{{ $employee->fullName }}">{{ $employee->fullName }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+        </form>
             <div class="col-12">
                 <div class="card mb-2">
                     <div class="card-header pb-0">
                         <h6>Transaction Table</h6>
                     </div>
                     <div class="card-body">
-                        <table class="table align-items-center mb-0" id="tbl-equipment" style="width: 100%;">
+                        <table class="table align-items-center mb-0" id="tbl-borrowed" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Borrower</th> 

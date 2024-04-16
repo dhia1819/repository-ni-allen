@@ -63,9 +63,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/borrow/borrow/', [Controllers\EquipmentController::class, 'save'])->name('equipment.save');
 
     //Borrow Module
+    Route::get('/download-borrowed', [Controllers\BorrowController::class, 'downloadBorrowed'])->name('download.borrowed');
     Route::get('/borrow/return', [Controllers\BorrowController::class, 'return'])->name('return');
     Route::get('/borrow/return/{id}', [Controllers\BorrowController::class, 'showreturn'])->name('borrow.return');
-
     Route::post('/borrow/{id}/phase', [Controllers\BorrowController::class, 'phase'])->name('borrow.phase');
 
     //Borrow History Module
