@@ -34,7 +34,7 @@ class EmployeeSeeder extends Seeder
             ),
 
             array(
-                'fullName' => 'Rodney Boy C. Rfeyes',
+                'fullName' => 'Rodney Boy C. Reyes',
                 'position' => 'Bookbinder I',
                 'status' => 1
             ),
