@@ -74,12 +74,16 @@ class HistoryController extends Controller
     }
     public function downloadHistory(Request $request)
     {
-        $startDate = $request->input('start_date');
-        $endDate = $request->input('end_date');
-        $category = $request->input('category');
+        $startBorrow = $request->input('start_date_borrowed');
+        $endBorrow =$request->input('end_date_borrowed');
+        $startReturn = $request->input('start_date_return');
+        $endReturn = $request->input('end_date_return');
+        $category_filter = $request->input('category_filter');
+        $office_filter =$request->input('office_filter');
 
          // Adjust the end date to include transactions up to 11:59:59 PM on the end date
-         $endDatePlusOneDay = date('Y-m-d', strtotime($endDate . ' +1 day'));
+         $endBorrowPlusOneDay = date('Y-m-d', strtotime($endBorrow . ' +1 day'));
+         $endReturnPlusOneDay = date('Y-m-d', strtotime($endReturn . ' +1 day'));
 
         // Initialize query
         $query = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
@@ -94,44 +98,36 @@ class HistoryController extends Controller
                     'categories.category as category_name', )
             ->where('transactions.status', '=', 'Return');
 
+            if (!empty($startBorrow) && !empty($endBorrow)) {
+                $query->whereBetween('date_borrowed', [$startBorrow, $endBorrowPlusOneDay]);
             
-        // Add conditions for start date and end date if they are provided
-        if (!empty($startDate) && !empty($endDate)) {
-            $query->whereBetween('returned_date', [$startDate, $endDatePlusOneDay]);
+            } 
 
-            if(!empty($category)){
-                $query->where('categories.category', $category);
+            if (!empty($startBorrow) && empty($endBorrow)) {
+                $query->whereBetween('date_borrowed', [$startBorrow, $endBorrowPlusOneDay]);
             }
-            $fileName = 'completed_transactions_' . str_replace('-', '_', $startDate) . '_to_' . str_replace('-', '_', $endDate) . '.xlsx';
 
-        } elseif (!empty($startDate)) {
-            $query->where('returned_date', '>=', $startDate);
-                if(!empty($category)){
-                    $query->where('categories.category', $category);
-                }
-             $fileName = 'completed_transactions_' . str_replace('-', '_', $startDate) . '_onwards'.'.xlsx';
-        }
-        elseif(!empty($endDate)){
-           
-            $query->where('returned_date', '<=', $endDatePlusOneDay);
-            if(!empty($category)){
-                $query->where('categories.category', $category);
+            if (!empty($startReturn) && !empty($endReturn)) {
+                $query->whereBetween('returned_date', [$startReturn, $endReturnPlusOneDay]);
+            } 
+
+            if (!empty($startReturn) && empty($endReturn)) {
+                $query->whereBetween('returned_date', [$startReturn, $endReturnPlusOneDay]);
+            } 
+
+            if (!empty($category_filter)) {
+                $query->where('categories.category', $category_filter);
             }
-            $fileName = 'completed_transactions_until_' . str_replace('-', '_', $endDate) .'.xlsx';
-        }
         
-        else{
-            if(!empty($category)){
-                $query->where('categories.category', $category);
-                $fileName = $category . '.xlsx';
+            if (!empty($office_filter)) {
+                $query->where('offices.code', $office_filter);
             }
-            else{
-                $fileName = 'All_completed_transactions.xlsx';
-            }
-        }
+                    $fileName = 'test.xlsx';
+           
 
         // Get transactions data from the database
         $transactions = $query->get();
+
 
         // Check if there are transactions within the date range
         if ($transactions->isEmpty()) {
