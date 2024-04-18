@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <h5 class="font-weight-bolder text-info text-gradient">
-                                                MISO Borrowing System
+                                                MISO Equipment Borrowing System
                                             </h5>
                                         </div>
                                     </div>
@@ -83,7 +83,7 @@
         <div class="row">
             <div class="col-8 mx-auto text-center mt-1">
             <p class="mb-0 text-secondary">
-                Copyright © 2023 Provincial Government of Laguna
+                Copyright © 2024 Provincial Government of Laguna
                 <img src="/images/laguna_logo.png" width="30" alt=""><br>
                 <small class="text-gradient text-info">Management Information Systems Office</small>
             </p>

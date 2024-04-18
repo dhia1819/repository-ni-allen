@@ -99,7 +99,7 @@
                         <select class="form-control select select2-filter" id="status_filter" name="status_filter">
                             <option value="">All Items</option>
                             <option value="available" >Available</option>
-                            <option value="unavailable" >Unvailable</option>
+                            <option value="unavailable" >Unavailable</option>
                             <option value="borrowed" >Borrowed</option>                                                 
                         </select>
                     </div>
