@@ -2,6 +2,11 @@
 @section('page_name', $page['name'])
 @section('page_script')
     <script type="text/javascript" src="/js/history.js"></script>
+    <script>
+        // Pass PHP variable $borrowedData to JavaScript
+        var borrowedData = @json($borrowedData); // Convert PHP array/object to JSON
+        console.log('Borrowed Data:', borrowedData);
+    </script>
 @endsection
 @section('page_css')
     <style type="text/css">
@@ -10,17 +15,17 @@
         /* Media query for small screens */
         @media (max-width: 768px) {
             /* Hide table headers */
-            #tbl-equipment th {
+            #tbl-history th {
                 display: none;
             }
 
             /* Show table data as block elements */
-            #tbl-equipment td {
+            #tbl-history td {
                 display: block;
             }
 
             /* Center-align table data */
-            #tbl-equipment td {
+            #tbl-history td {
                 text-align: center;
             }
 
@@ -37,51 +42,65 @@
             <form action="{{ route('download.history') }}" method="GET">
                 @csrf
                 <div class="row">
-                    <div class="col-md-5">
-                        <label for="category_filter">Category filter</label>
-                    </div>
-                    <div class="col-md-3">
-                        <label for="start_date">Transactions since</label>
-                    </div>
-                    <div class="col-md-3">
-                        <label for="end_date">Transactions until</label>
-                    </div>
-
+                <div class="col-md-12">
+                   
+                        <a id="reset_filter" class="btn bg-gradient-danger " style="display:none;" >
+                            <i class="fa fa-undo mx-1"></i>Clear filters
+                        </a>
+                 
+                    <button type="submit" class="btn bg-gradient-success float-end">
+                        <i class="fa fa-download mx-1"></i> 
+                    </button>  
+                </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-5 form-group" id="filter">
-                        <select class="form-control select select2-filter" id="category_filter" name="category">
-                            <option value="">Select Category</option>
-                            @foreach($categories as $category)
-                            @if($category->status == 0)
-                                @continue
-                            @endif
-                                <option value="{{ $category->category }}">{{ $category->category }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group col-md-3">
+                    <div class="col-12" id="filter">
+                        <div class="row col-12">
+                            <div class="form-group col-md-3">
+                                <label for="office_filter">Filter by Office:</label>
+                                <select class="form-control select2 select2-filter" id="office_filter" name="office_filter">
+                                    <option value="">All Offices</option>
+                                    @foreach($offices as $office)
+                                        <option value="{{ $office->code }}">{{ $office->code }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                        <input type="date" class="form-control" id="start_date" name="start_date">
+                            <div class="form-group col-md-3">
+                                <label for="category_filter">Filter by Category:</label>
+                                <select class="form-control select2 select2-filter" id="category_filter" name="category_filter">
+                                    <option value="">All Category</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->category }}">{{ $category->category }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                           
+                            <div class="date-range-container col-md-3">
+                                <label for="start_date_borrowed" id="start_date_label">Date Borrowed | Start Date</label>
+                                <label for="end_date_borrowed" id="end_date_label" style="display: none;">Date Borrowed | End Date</label>
+                                <div class="date-inputs">
+                                    <input type="date" class="form-control" id="start_date_borrowed" name="start_date_borrowed" onchange="handleStartDateChange('borrowed')">
+                                    <input type="date" class="form-control" id="end_date_borrowed" name="end_date_borrowed" style="display: none;">
+                                </div>
+                            </div>
+                            
+                            <div class="date-range-container col-md-3">
+                                <label for="start_date_return" id="start_date_return_label">Date Return | Start Date</label>
+                                <label for="end_date_return" id="end_date_return_label" style="display: none;">Date Return | End Date</label>
+                                <div class="date-inputs">
+                                    <input type="date" class="form-control" id="start_date_return" name="start_date_return" onchange="handleStartDateChange('returned')">
+                                    <input type="date" class="form-control" id="end_date_return" name="end_date_return" style="display: none;">
+                                </div>
+                            </div>
+            
+                            
+                        </div>
                     </div>
-                    <div class="form-group col-md-3">
-                        <input type="date" class="form-control" id="end_date" name="end_date">
-
-                    </div>
-                    <div class="col-md-1 align-items-end">
-                        <button type="submit" class="btn bg-gradient-success">
-                            <i class="fa fa-download mx-1"> </i>
-                        </button>
-                    </div>
+                </div>
+                    
                     
                 </form>
-                </div>
-                <div class="row mt-2 justify-content-start" id="reset-button">
-                    <div class="col-md-2">
-                        <button id="reset_filter" class="btn bg-gradient-danger " style="display:none;" >
-                            <i class="fa fa-undo mx-1"></i>Clear filters
-                        </button>
-                    </div>
                 </div>
             
         </div>
@@ -118,7 +137,7 @@
                                         <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder" width="11%">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody id="equipment_table_body">
+                                <tbody id="history_table_body">
                                     @foreach ($borrowedData as $transaction)
                                         <tr>
                                             <td style="vertical-align: middle;">{{ $transaction->borrowed_by }}</td>

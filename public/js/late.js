@@ -35,7 +35,7 @@ $(document).ready(function() {
     }
 
     // Initialize DataTable on #tbl-history table after processing borrowedData
-    $('#tbl-borrowed').DataTable({
+    $('#tbl-late').DataTable({
         paging: true,
         language: {
             paginate: {
@@ -56,7 +56,7 @@ $(document).ready(function() {
         var officeFilter = $('#office_filter').val();
         var categoryFilter = $('#employee_filter').val();
     
-        $('#borrow_table_body tr').each(function() {
+        $('#late_table_body tr').each(function() {
             var dateBorrowedStr = $(this).find('td:nth-child(4)').text().trim(); // Assuming date_borrowed column is the 4th column
             var dateReturnStr = $(this).find('td:nth-child(5)').text().trim(); // Assuming date_borrowed column is the 4th column
             var office = $(this).find('td:nth-child(2)').text().trim(); // Assuming office column is the 2nd column
@@ -72,6 +72,7 @@ $(document).ready(function() {
 
             var isDateInRangeReturn = (!startDateReturn || dateReturn >= parseDateWithoutTime(startDateReturn)) &&
                                 (!endDateReturn || dateReturn <= parseDateWithoutTime(endDateReturn));
+
 
             var isOfficeMatch = !officeFilter || office === officeFilter;
             var isCategoryMatch = !categoryFilter || category === categoryFilter;
@@ -138,8 +139,9 @@ function resetFilters() {
     $('#end_date_expect').hide();     // Hide end date input
     $('#start_date_expect_label').show();  // Show start date label
     $('#end_date_expect_label').hide();    // Hide end date label
-}
 
+   
+}
 
 function parseDateWithoutTime(dateString) {
     if (!dateString) return null; // Return null for empty strings

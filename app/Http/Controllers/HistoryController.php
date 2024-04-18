@@ -21,6 +21,7 @@ class HistoryController extends Controller
     {
         $this->excel = $excel;
     }
+    
 
     public function history()
     {
@@ -43,6 +44,9 @@ class HistoryController extends Controller
 
         return view('equipment.history', compact('page', 'borrowedData', 'categories', 'offices'));       
     }
+
+
+    
 
     public function showhistory(string $id)
     {

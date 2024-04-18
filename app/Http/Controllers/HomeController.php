@@ -85,7 +85,7 @@ class HomeController extends Controller
     ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
     ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
     ->where('transactions.status', 'Late')
-    ->select('transactions.*', 'equipment.id as equipment_id','equipment.equipment_name as equipment_name', 'equipment.serial_no as serial_no', 'equipment.property_no as property_no', 'categories.category as category_name', 'offices.office as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
+    ->select('transactions.*', 'equipment.id as equipment_id','equipment.equipment_name as equipment_name', 'equipment.serial_no as serial_no', 'equipment.property_no as property_no', 'categories.category as category_name', 'offices.code as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
     ->orderBy('transactions.created_at', 'ASC')
     ->get();
 
