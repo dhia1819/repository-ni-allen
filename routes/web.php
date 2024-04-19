@@ -28,8 +28,8 @@ Route::get('/home', [Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/home-late', [Controllers\HomeController::class, 'late'])->name('late');
-    Route::get('/dowload-late', [Controllers\HomeController::class, 'downloadLate'])->name('download.late');
-  
+    Route::get('/download-late', [Controllers\HomeController::class, 'downloadLate'])->name('download.late');
+
     Route::get('/password', [Controllers\PasswordController::class, 'index'])->name('password');
     Route::get('/password/change', [Controllers\PasswordController::class, 'changePassword'])->name('changePassword');
     Route::post('/password/change', [Controllers\PasswordController::class, 'changePasswordSave'])->name('postChangePassword');
