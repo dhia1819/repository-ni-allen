@@ -63,11 +63,11 @@
                             </div>
 
                             <div class="form-group col-md-3">
-                                <label for="employee_filter">Filter by Employee:</label>
-                                <select class="form-control select2 select2-filter" id="employee_filter" name="employee_filter">
-                                    <option value="">All Employee</option>
-                                    @foreach($employees as $employee)
-                                        <option value="{{ $employee->fullName }}">{{ $employee->fullName }}</option>
+                                <label for="category_filter">Filter by Employee:</label>
+                                <select class="form-control select2 select2-filter" id="category_filter" name="category_filter">
+                                    <option value="">All Category</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->category }}">{{ $category->category }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -122,7 +122,7 @@
                                     <tr>
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Borrower</th> 
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Office</th>
-                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Released by:</th> 
+                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Category</th> 
     
                                         {{-- <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Equipment</th> 
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Property No#</th> 
@@ -140,7 +140,7 @@
                                         <tr>
                                             <td style="vertical-align: middle;">{{ $transaction->borrowed_by }}</td>
                                             <td style="vertical-align: middle;">{{ $transaction->office_name }}</td>
-                                            <td style="vertical-align: middle;">{{ $transaction->release_by }}</td>
+                                            <td style="vertical-align: middle;">{{ $transaction->category_name }}</td>
                                             {{-- <td style="vertical-align: middle;">{{ $transaction->equipment_name }}</td>
                                             <td style="vertical-align: middle;">{{ $transaction->property_no }}</td>
                                             <td style="vertical-align: middle;">{{ $transaction->serial_no }}</td> --}}

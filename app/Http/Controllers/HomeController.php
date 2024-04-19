@@ -10,6 +10,10 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\LateExport;;
+
 
 class HomeController extends Controller
 {
@@ -92,7 +96,55 @@ class HomeController extends Controller
         return view('equipment.late', compact('page', 'lateTransaction', 'categories', 'offices', 'employees' ));
     }
 
-    
-}
+    public function downloadLate(Request $request)
+{
+    $startBorrow = $request->input('start_date_borrowed');
+    $endBorrow = $request->input('end_date_borrowed');
+    $startReturn = $request->input('start_date_return');
+    $endReturn = $request->input('end_date_return');
+    $category_filter = $request->input('category_filter');
+    $office_filter = $request->input('office_filter');
 
+    // Adjust the end date to include transactions up to 11:59:59 PM on the end date
+    $endBorrowPlusOneDay = date('Y-m-d', strtotime($endBorrow . ' +1 day'));
+    $endReturnPlusOneDay = date('Y-m-d', strtotime($endReturn . ' +1 day'));
+
+    $query = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
+        ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
+        ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
+        ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
+        ->where('transactions.status', 'Late')
+        ->select('transactions.*', 'equipment.id as equipment_id', 'equipment.equipment_name as equipment_name', 'equipment.serial_no as serial_no', 'equipment.property_no as property_no', 'categories.category as category_name', 'offices.code as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
+        ->orderBy('transactions.created_at', 'ASC');
+
+    if (!empty($startBorrow) && !empty($endBorrow)) {
+        $query->whereBetween('date_borrowed', [$startBorrow, $endBorrowPlusOneDay]);
+    }
+
+    if (!empty($startReturn) && !empty($endReturn)) {
+        $query->whereBetween('returned_date', [$startReturn, $endReturnPlusOneDay]);
+    }
+
+    if (!empty($category_filter)) {
+        $query->where('categories.category', $category_filter);
+    }
+
+    if (!empty($office_filter)) {
+        $query->where('offices.code', $office_filter);
+    }
+
+    // Execute the query and retrieve the results
+    $lateTransactions = $query->get();
+
+    // Check if there are transactions within the date range
+    if ($lateTransactions->isEmpty()) {
+        return Redirect::back()->withErrors('No transactions found within the specified date range.');
+    }
+
+    $fileName = 'test.xlsx';
+
+    // Download the Excel file using Maatwebsite\Excel package
+    return Excel::download(new LateExport($lateTransactions), $fileName);
+}
+}
 
