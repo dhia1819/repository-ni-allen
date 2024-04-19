@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // Initialize Select2 on filter dropdowns
-    $('#office_filter, #employee_filter').select2();
+    $('#office_filter, #category_filter').select2();
 
     $('#start_date_borrowed, #end_date_borrowed').on('change', function() {
         applyFilters(); // Apply filters when date inputs are changed
@@ -54,7 +54,7 @@ $(document).ready(function() {
         var startDateReturn = $('#start_date_expect').val();
         var endDateReturn = $('#end_date_expect').val();
         var officeFilter = $('#office_filter').val();
-        var categoryFilter = $('#employee_filter').val();
+        var categoryFilter = $('#category_filter').val();
     
         $('#borrow_table_body tr').each(function() {
             var dateBorrowedStr = $(this).find('td:nth-child(4)').text().trim(); // Assuming date_borrowed column is the 4th column
@@ -91,7 +91,7 @@ $(document).ready(function() {
             $('#start_date_expect').val() ||
             $('#end_date_expect').val() ||
             $('#office_filter').val() ||
-            $('#employee_filter').val();
+            $('#category_filter').val();
 
         if (anyFilterActive) {
             $('#reset_filter').show(); // Show the Clear Filters button
@@ -101,7 +101,7 @@ $(document).ready(function() {
     }
 
     // Event listener for filter change (including date inputs)
-    $('#office_filter, #start_date_borrowed, #end_date_borrowed, #start_date_expect, #end_date_expect, #employee_filter').on('change', function() {
+    $('#office_filter, #start_date_borrowed, #end_date_borrowed, #start_date_expect, #end_date_expect, #category_filter').on('change', function() {
         applyFilters(); // Apply filters on filter change
         toggleClearFiltersButton(); // Check if filters are active and toggle button visibility
     });
@@ -124,7 +124,7 @@ function resetFilters() {
 
     // Reset Select2 dropdowns
     $('#office_filter').val('').trigger('change');
-    $('#employee_filter').val('').trigger('change');
+    $('#category_filter').val('').trigger('change');
 
     // Reset start date inputs and labels
     // For Date Borrowed

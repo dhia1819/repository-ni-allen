@@ -40,6 +40,9 @@ class HomeController extends Controller
             'crumb'     =>  array('Dashboard' => '/home')
         ];
 
+        $categories = Category::all();
+        $offices = Office::all();
+
         $users = User::count();
         $equipment = Equipment::count();
         $employee = Employee::count();
@@ -69,7 +72,9 @@ class HomeController extends Controller
             'statusAvailable',
             'statusBorrowed',
             'statusUnavailable',
-            'lateReturn'
+            'lateReturn',
+            'offices',
+            'categories'
         ));
     }
 
@@ -137,11 +142,37 @@ class HomeController extends Controller
     $lateTransactions = $query->get();
 
     // Check if there are transactions within the date range
-    if ($lateTransactions->isEmpty()) {
-        return Redirect::back()->withErrors('No transactions found within the specified date range.');
-    }
+    $fileName = 'Late_Borrowed_Equipments';
 
-    $fileName = 'test.xlsx';
+        if (!empty($office_filter)) {
+            $fileName .= '_' . $office_filter;
+        }
+        if (!empty($category_filter)) {
+            $fileName .= '_' . $category_filter;
+        }
+        if (!empty($start_date_borrowed) && !empty($end_date_borrowed)) {
+            $fileName .= '_' . $start_date_borrowed . '_to_' . $end_date_borrowed;
+        }
+        if (!empty($start_date_borrowed) && empty($end_date_borrowed)) {
+            $fileName .= '_' . $start_date_borrowed . '_to_present';
+        }
+        if (!empty($start_date_return) && !empty($end_date_return)) {
+            $fileName .= '_' . $start_date_return . '_to_' . $end_date_return;
+        }
+        if (!empty($start_date_return) && empty($end_date_return)) {
+            $fileName .= '_' . $start_date_return . '_to_present';
+        }
+
+        $fileName .= '.xlsx';
+
+
+        $lateTransaction = $query->get();
+
+        if($lateTransaction->isEmpty()){
+            return Redirect::back()->withErrors('No transactions to download.');
+        }
+
+        $fileName .= '.xlsx';
 
     // Download the Excel file using Maatwebsite\Excel package
     return Excel::download(new LateExport($lateTransactions), $fileName);

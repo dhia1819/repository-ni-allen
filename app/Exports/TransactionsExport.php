@@ -23,6 +23,8 @@ class TransactionsExport implements FromCollection, WithHeadings, WithColumnWidt
         // Prepare and return the data as a collection
         $data = $this->transactions->map(function ($transaction) {
             return [
+                'Serial Number' =>$transaction->serial_no,
+                'Property Number' => $transaction->property_no,
                 'Equipment' => $transaction->equipmentName,
                 'Category' =>$transaction->category_name,
                 'Borrower' => $transaction->borrowed_by,
@@ -42,6 +44,8 @@ class TransactionsExport implements FromCollection, WithHeadings, WithColumnWidt
     public function headings(): array
     {
         return [
+            'Serial Number',
+            'Property Number',
             'Equipment',
             'Category',
             'Borrower',
@@ -63,16 +67,18 @@ class TransactionsExport implements FromCollection, WithHeadings, WithColumnWidt
     public function columnWidths(): array
     {
         return [
-            'A' => '20', // Equipment
-            'B' => '20', //category
-            'C' => '20', // Borrower
-            'D' => '40', // Office
-            'E' => '20', // Date Borrowed
-            'F' => '20', // Expected Return
-            'G' => '20', // Released by
-            'H' => '20', // Date Returned
-            'I' => '20', // Returned by
-            'J' => '20', //Received by
+            'A' => '20', 
+            'B' => '20',
+            'C' => '20', 
+            'D' => '20', 
+            'E' => '20', 
+            'F' => '40', 
+            'G' => '20', 
+            'H' => '20', 
+            'I' => '20', 
+            'J' => '20',
+            'K' => '20',
+            'L' => '20'
 
         ];
     }

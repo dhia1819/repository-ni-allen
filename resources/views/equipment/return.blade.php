@@ -39,7 +39,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('download.history') }}" method="GET">
+            <form action="{{ route('download.borrowed') }}" method="GET">
                 @csrf
                 <div class="row">
                 <div class="col-md-12">
@@ -86,8 +86,8 @@
                             </div>
                             
                             <div class="date-range-container col-md-3">
-                                <label for="start_date_return" id="start_date_return_label">Date Return | Start Date</label>
-                                <label for="end_date_return" id="end_date_return_label" style="display: none;">Date Return | End Date</label>
+                                <label for="start_date_return" id="start_date_return_label">Expected Return Date | Start Date</label>
+                                <label for="end_date_return" id="end_date_return_label" style="display: none;">Expected Return Date | End Date</label>
                                 <div class="date-inputs">
                                     <input type="date" class="form-control" id="start_date_return" name="start_date_return" onchange="handleStartDateChange('returned')">
                                     <input type="date" class="form-control" id="end_date_return" name="end_date_return" style="display: none;">
@@ -114,7 +114,7 @@
                     <div class="card-header pb-0">                        
                         <div class="row">
                             <div class="col-md-8">
-                                <h6 class="text-info">Transaction Table</h6>
+                                <h6 class="text-info">Borrowed Items</h6>
                             </div>
                             
                         </div>
@@ -126,7 +126,7 @@
                                     <tr>
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Borrower</th> 
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Office</th>
-                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Released by:</th> 
+                                        <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Category</th> 
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Date Borrowed</th> 
                                         <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Expected Return Date</th>
                                         
@@ -139,7 +139,7 @@
                                         <tr>
                                             <td>{{ $transaction->borrowed_by }}</td>
                                             <td>{{ $transaction->office_name }}</td>
-                                            <td>{{ $transaction->release_by }}</td>
+                                            <td>{{ $transaction->category_name }}</td>
                                             <td>{{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F d, Y | h:i A') }}</td>
                                             <td>{{ \Carbon\Carbon::parse($transaction->date_returned)->format('F d, Y | h:i A') }}</td>
                                             
