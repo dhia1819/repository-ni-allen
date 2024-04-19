@@ -109,6 +109,26 @@
     $(document).ready(function() {
         $(".select2-create").select2({ dropdownParent: $('#office').parent() });
     });
+    $(document).ready(function() {
+        $('#office_filter, #employee_filter').select2();
+        // Initialize Select2 for all elements with class select2-create
+        $(".select2-create").select2();
+
+        // Function to adjust Select2 dropdown width based on form size
+        function adjustSelect2Width() {
+            $(".select2-container").each(function() {
+                var select2ParentWidth = $(this).parent().width();
+                $(this).css('width', select2ParentWidth + 'px');
+            });
+        }
+
+        // Call the adjustSelect2Width function on document ready and window resize
+        $(window).on('resize', function() {
+            adjustSelect2Width();
+        });
+        adjustSelect2Width(); // Call initially
+    });
+
 </script>
 
 @endsection
