@@ -1,20 +1,8 @@
 @extends('layouts.master')
-
 @section('page_name', $page['name'])
-
-@section('page_css')
-    <style type="text/css">
-        .font-22 {
-            font-size: 22pt !important;
-        }
-    </style>
+@section('page_script')
+    <script type="text/javascript" src="/js/home.js"></script>
 @endsection
-
-@section('page_js')
-<script type="text/javascript" src="/js/home.js"></script>
-@endsection
-
-
 @section('content')
 @include('layouts.message')
 
@@ -117,7 +105,34 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Equipment Conditions</h5>
+                <h5 class="card-title">Total Transactions</h5>
+                <div class="row">
+                        <div class="col-12" id="filter">
+                            <div class="row col-12">
+                                <div class="form-group col-md-6">
+                                    <label for="office_filter">Filter by Office:</label>
+                                    <select class="form-control select2 select2-filter" id="office_filter" name="office_filter">
+                                        <option value="">All Offices</option>
+                                        @foreach($offices as $office)
+                                            <option value="{{ $office->code }}">{{ $office->code }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="category_filter">Filter by Category:</label>
+                                    <select class="form-control select2 select2-filter" id="category_filter" name="category_filter">
+                                        <option value="">All Category</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->category }}">{{ $category->category }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+    
+                        </div>      
+            </div>
+            </div>
+
                 <canvas id="pieChart" style="width: 100%; height: 300px;"></canvas>
             </div>
         </div>
@@ -135,62 +150,37 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var conditions = @json($conditions); // Convert PHP array to JavaScript object
-
-        // Get keys (conditions) and values (counts)
-        var conditionLabels = Object.keys(conditions);
-        var conditionData = Object.values(conditions);
+        var historyCount = {{ $history }}; // Total transactions count
+    
         // Pie Chart
         var pieCtx = document.getElementById('pieChart').getContext('2d');
         var pieChart = new Chart(pieCtx, {
             type: 'pie',
             data: {
-                labels: conditionLabels,
+                labels: ['Total Transactions'],
                 datasets: [{
-                    label: 'Equipment Conditions',
-                    data: conditionData,
+                    label: 'Total Transactions',
+                    data: [historyCount],
                     backgroundColor: [
-                        // createLinearGradient('rgba(67, 131, 255, 1)', 'rgba(9, 183, 202, 1)'),
-                        // createLinearGradient('rgba(31, 203, 255, 1)', 'rgba(0, 142, 18, 1)'),
-                        // createLinearGradient('rgba(16, 205, 255, 1)', 'rgba(0, 104, 136, 1)'),
-                        // createLinearGradient('rgba(0, 217, 255, 1)', 'rgba(0, 92, 123, 1)'),
-                        // createLinearGradient('rgba(0, 197, 241, 1)', 'rgba(0, 76, 110, 1)'),
-                        // createLinearGradient('rgba(0, 202, 216, 1)', 'rgba(0, 63, 102, 1)'),
-                        // createLinearGradient('rgba(0, 168, 129, 1)', 'rgba(0, 57, 97, 1)'),  
-                        'rgba(54, 162, 235, 0.1)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.3)',
-                        'rgba(54, 162, 235, 0.4)',
-                        'rgba(54, 162, 235, 0.5)',
-                        'rgba(54, 162, 235, 0.6)',
                         'rgba(54, 162, 235, 0.7)'
-                        
                     ],
                     borderColor: 'rgba(0,0,0,0)',
-                    borderWidth: 1,
+                    borderWidth: 1
                 }]
             },
             options: {
                 title: {
                     display: true,
-                    text: 'Equipment Conditions'
-                },
+                    text: 'Total Transactions'
+                }
             }
         });
-        // function createLinearGradient(color1, color2) {
-        //     var ctx = pieCtx;
-        //     var gradient = ctx.createLinearGradient(0, 0, 0, 400);
-        //     gradient.addColorStop(0, color1);
-        //     gradient.addColorStop(1, color2);
-        //     return gradient;
-        // }
-
+    
         // Bar Graph
         var statusAvailable = @json($statusAvailable); // Convert PHP array to JavaScript object
         var statusBorrowed = @json($statusBorrowed);
         var statusUnavailable = @json($statusUnavailable);
-
-
+    
         var barCtx = document.getElementById('barGraph').getContext('2d');
         var barGraph = new Chart(barCtx, {
             type: 'bar',
@@ -202,7 +192,7 @@
                     backgroundColor: [
                         'rgba(54, 162, 235, 0.7)',
                         'rgba(54, 162, 235, 0.5)',
-                        'rgba(54, 162, 235, 0.3)',
+                        'rgba(54, 162, 235, 0.3)'
                     ],
                     borderColor: 'rgba(0,0,0,0)',
                     borderWidth: 1
@@ -220,11 +210,10 @@
                     display: true,
                     text: 'Borrowed Equipments per Month'
                 }
-                
             }
         });
     });
-</script>
+    </script>
 
 <style>
     .card-body canvas {

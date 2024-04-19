@@ -40,6 +40,9 @@ class HomeController extends Controller
             'crumb'     =>  array('Dashboard' => '/home')
         ];
 
+        $categories = Category::all();
+        $offices = Office::all();
+
         $users = User::count();
         $equipment = Equipment::count();
         $employee = Employee::count();
@@ -69,7 +72,9 @@ class HomeController extends Controller
             'statusAvailable',
             'statusBorrowed',
             'statusUnavailable',
-            'lateReturn'
+            'lateReturn',
+            'offices',
+            'categories'
         ));
     }
 
