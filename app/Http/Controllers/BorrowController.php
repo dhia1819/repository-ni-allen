@@ -149,7 +149,8 @@ public function phase(Request $request, string $id)
         ->where(function ($query) {
             $query->where('transactions.status', 'Borrowed')
                 ->orWhere('transactions.status', 'Late');
-        });
+        })
+        ->orderBy('transactions.date_borrowed', 'ASC');
 
         if(!empty($office_filter)){
             $query->where('offices.code', $office_filter);

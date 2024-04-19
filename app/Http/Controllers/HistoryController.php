@@ -96,7 +96,8 @@ class HistoryController extends Controller
                     'offices.office as office_name', 'release_employees.fullName as release_by', 
                     'received_employees.fullName as received_by',
                     'categories.category as category_name', )
-            ->where('transactions.status', '=', 'Return');
+            ->where('transactions.status', '=', 'Return')
+            ->orderBy('transactions.returned_date', 'ASC');
 
             if (!empty($startBorrow) && !empty($endBorrow)) {
                 $query->whereBetween('date_borrowed', [$startBorrow, $endBorrowPlusOneDay]);
@@ -122,7 +123,29 @@ class HistoryController extends Controller
             if (!empty($office_filter)) {
                 $query->where('offices.code', $office_filter);
             }
-                    $fileName = 'test.xlsx';
+            
+            $fileName = 'Borrowing_History';
+
+            if (!empty($office_filter)) {
+                $fileName .= '_' . $office_filter;
+            }
+            if (!empty($category_filter)) {
+                $fileName .= '_' . $category_filter;
+            }
+            if (!empty($startBorrow) && !empty($endBorrow)) {
+                $fileName .= '_' . $startBorrow . '_to_' . $endBorrow;
+            }
+            if (!empty($startBorrow) && empty($endBorrow)) {
+                $fileName .= '_' . $startBorrow . '_to_present';
+            }
+            if (!empty($startReturn) && !empty($endReturn)) {
+                $fileName .= '_' . $startReturn . '_to_' . $endReturn;
+            }
+            if (!empty($startReturn) && empty($endReturn)) {
+                $fileName .= '_' . $startReturn . '_to_present';
+            }
+    
+            $fileName .= '.xlsx';
            
 
         // Get transactions data from the database
