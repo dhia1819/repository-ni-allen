@@ -7,6 +7,20 @@
         var borrowedData = @json($borrowedData); // Convert PHP array/object to JSON
         console.log('Borrowed Data:', borrowedData);
     </script>
+    <script>
+        // Get the button element
+        const downloadBtn = document.getElementById('downloadBtn');
+        
+        // Add event listener for mouseover event
+        downloadBtn.addEventListener('mouseover', function() {
+            // Set the tooltip text using the title attribute
+            this.setAttribute('title', 'Download Transactions');
+            
+            // Initialize Bootstrap Tooltip manually (optional if not using Bootstrap Tooltip library)
+            // For Bootstrap 4 Tooltip:
+            // new bootstrap.Tooltip(downloadBtn);
+        });
+    </script>
 @endsection
 @section('page_css')
     <style type="text/css">
@@ -48,9 +62,9 @@
                             <i class="fa fa-undo mx-1"></i>Clear filters
                         </a>
                  
-                    <button type="submit" class="btn bg-gradient-success float-end">
-                        <i class="fa fa-download mx-1"></i> 
-                    </button>  
+                        <button type="submit" class="btn bg-gradient-success float-end" id="downloadBtn">
+                            <i class="fa fa-download mx-1"></i> 
+                        </button>
                 </div>
                 </div>
                 <div class="row">

@@ -59,7 +59,7 @@ $(document).ready(function() {
         $('#history_table_body tr').each(function() {
             var dateBorrowedStr = $(this).find('td:nth-child(4)').text().trim(); // Assuming date_borrowed column is the 4th column
             var dateReturnStr = $(this).find('td:nth-child(5)').text().trim(); // Assuming date_borrowed column is the 4th column
-            var office = $(this).find('td:nth-child(2)').text().trim(); // Assuming office column is the 2nd column
+            var office = $(this).find('td:nth-child(2)').draw() // Assuming office column is the 2nd column
             var category = $(this).find('td:nth-child(3)').text().trim();
     
             // Parse dateBorrowedStr into a Date object (date only, ignoring time)
