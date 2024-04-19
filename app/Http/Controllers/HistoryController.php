@@ -39,7 +39,7 @@ class HistoryController extends Controller
             ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
             ->where('transactions.status', 'Return') // Filter out borrowed transactions
             ->select('transactions.*', 'equipment.*', 'categories.category as category_name', 'offices.code as office_name', 'transactions.id as transaction_id','transactions.status as tstatus')
-            ->orderBy('transactions.created_at', 'ASC')
+            ->orderBy('transactions.returned_date', 'ASC')
             ->get();
 
         return view('equipment.history', compact('page', 'borrowedData', 'categories', 'offices'));       
@@ -92,7 +92,7 @@ class HistoryController extends Controller
             ->leftJoin('employees as received_employees', 'transactions.received_by', '=', 'received_employees.id')
             ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
             ->select('transactions.*', 
-                    'equipment.equipment_name as equipmentName', 
+                    'equipment.equipment_name as equipmentName', 'equipment.serial_no as serial_no', 'equipment.property_no as property_no',
                     'offices.office as office_name', 'release_employees.fullName as release_by', 
                     'received_employees.fullName as received_by',
                     'categories.category as category_name', )
@@ -104,7 +104,7 @@ class HistoryController extends Controller
             } 
 
             if (!empty($startBorrow) && empty($endBorrow)) {
-                $query->whereBetween('date_borrowed', [$startBorrow, $endBorrowPlusOneDay]);
+                $query->where('date_borrowed', '>=', $startBorrow);
             }
 
             if (!empty($startReturn) && !empty($endReturn)) {
@@ -112,7 +112,7 @@ class HistoryController extends Controller
             } 
 
             if (!empty($startReturn) && empty($endReturn)) {
-                $query->whereBetween('returned_date', [$startReturn, $endReturnPlusOneDay]);
+                $query->whereBetween('returned_date', '>=', $$startReturn);
             } 
 
             if (!empty($category_filter)) {
@@ -132,7 +132,7 @@ class HistoryController extends Controller
         // Check if there are transactions within the date range
         if ($transactions->isEmpty()) {
             // return response()->json(['message' => 'No transactions found within the specified date range'], 404);
-            return Redirect::back()->withErrors('No transactions found within the specified date range.');
+            return Redirect::back()->withErrors('No transactions to download.');
         }
 
         
