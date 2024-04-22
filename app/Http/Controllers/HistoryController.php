@@ -149,18 +149,18 @@ class HistoryController extends Controller
            
 
         // Get transactions data from the database
-        $transactions = $query->get();
+        $missing = $query->get();
 
 
         // Check if there are transactions within the date range
-        if ($transactions->isEmpty()) {
+        if ($missing->isEmpty()) {
             // return response()->json(['message' => 'No transactions found within the specified date range'], 404);
             return Redirect::back()->withErrors('No transactions to download.');
         }
 
         
         // Assuming you have an Export class named TransactionsExport
-        return $this->excel->download(new TransactionsExport($transactions), $fileName);
+        return $this->excel->download(new TransactionsExport($missing), $fileName);
     }
 
 

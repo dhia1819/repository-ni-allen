@@ -101,6 +101,7 @@ class HomeController extends Controller
         return view('equipment.late', compact('page', 'lateTransaction', 'categories', 'offices', 'employees' ));
     }
 
+    
     public function downloadLate(Request $request)
 {
     $startBorrow = $request->input('start_date_borrowed');
@@ -119,7 +120,15 @@ class HomeController extends Controller
         ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
         ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
         ->where('transactions.status', 'Late')
-        ->select('transactions.*', 'equipment.id as equipment_id', 'equipment.equipment_name as equipment_name', 'equipment.serial_no as serial_no', 'equipment.property_no as property_no', 'categories.category as category_name', 'offices.code as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
+        ->select('transactions.*', 
+                'equipment.id as equipment_id', 
+                'equipment.equipment_name as equipment_name', 
+                'equipment.serial_no as serial_no', 
+                'equipment.property_no as property_no', 
+                'categories.category as category_name', 
+                'offices.office as office_name', 
+                'employees.fullName as release_by', 
+                'transactions.id as transaction_id')
         ->orderBy('transactions.created_at', 'ASC');
 
     if (!empty($startBorrow) && !empty($endBorrow)) {
@@ -142,7 +151,7 @@ class HomeController extends Controller
     $lateTransactions = $query->get();
 
     // Check if there are transactions within the date range
-    $fileName = 'Late_Borrowed_Equipments';
+    $fileName = 'Late_Returned_Equipments';
 
         if (!empty($office_filter)) {
             $fileName .= '_' . $office_filter;
