@@ -33,7 +33,7 @@ class TransactionsExport implements FromCollection, WithHeadings, WithColumnWidt
                 'Borrower' => $transaction->borrowed_by,
                 'Office' => $transaction->office_name,
                 'Date Borrowed' => Carbon::parse($transaction->date_borrowed)->format('F d, Y'),
-                'Expected Return' => Carbon::parse($transaction->date_borrowed)->format('F d, Y'),
+                'Expected Return' => Carbon::parse($transaction->date_returned)->format('F d, Y'),
                 'Released by' => $transaction->release_by,
                 'Date Returned' => Carbon::parse($transaction->returned_date)->format('F d, Y'),
                 'Returned by' => $transaction->returned_by,
