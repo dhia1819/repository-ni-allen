@@ -110,7 +110,7 @@
                     <div class="card-header pb-0">                        
                         <div class="row">
                             <div class="col-md-8">
-                                <h6 class="text-info">Transaction Table</h6>
+                                <h6 class=>Transaction Table</h6>
                             </div>
                             
                         </div>

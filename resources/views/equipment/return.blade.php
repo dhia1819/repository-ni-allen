@@ -113,8 +113,8 @@
                 <div class="card mb-2">
                     <div class="card-header pb-0">                        
                         <div class="row">
-                            <div class="col-md-8">
-                                <h6 class="text-info">Borrowed Items</h6>
+                            <div class="col-md-12">
+                                <h6>Borrowed Items</h6>
                             </div>
                             
                         </div>

@@ -15,7 +15,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="text-info">Change Password</h5>
+                    <h5>Change Password</h5>
                 </div>
                 <div class="card-body">
                     @if($errors->any())
