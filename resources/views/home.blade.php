@@ -109,25 +109,10 @@
                 <div class="row">
                         <div class="col-12" id="filter">
                             <div class="row col-12">
-                                <div class="form-group col-md-6">
-                                    <label for="office_filter">Filter by Office:</label>
-                                    <select class="form-control select2 select2-filter" id="office_filter" name="office_filter">
-                                        <option value="">All Offices</option>
-                                        @foreach($offices as $office)
-                                            <option value="{{ $office->code }}">{{ $office->code }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                               
+                  
 
-                                <div class="form-group col-md-6">
-                                    <label for="category_filter">Filter by Category:</label>
-                                    <select class="form-control select2 select2-filter" id="category_filter" name="category_filter">
-                                        <option value="">All Category</option>
-                                        @foreach($categories as $category)
-                                            <option value="{{ $category->category }}">{{ $category->category }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                               
     
                         </div>      
             </div>
@@ -150,31 +135,93 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var historyCount = {{ $history }}; // Total transactions count
-    
-        // Pie Chart
-        var pieCtx = document.getElementById('pieChart').getContext('2d');
-        var pieChart = new Chart(pieCtx, {
-            type: 'pie',
-            data: {
-                labels: ['Total Transactions'],
-                datasets: [{
-                    label: 'Total Transactions',
-                    data: [historyCount],
-                    backgroundColor: [
-                        'rgba(54, 162, 235, 0.7)'
-                    ],
-                    borderColor: 'rgba(0,0,0,0)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                title: {
-                    display: true,
-                    text: 'Total Transactions'
-                }
+    // Assuming $officeCounts is passed from your controller to the view
+    var officeCounts = {!! json_encode($officeCounts) !!};
+
+    // Sort officeCounts by office_count in descending order
+    officeCounts.sort(function(a, b) {
+        return b.office_count - a.office_count;
+    });
+
+    var labels = [];
+    var data = [];
+    var backgroundColors = [];
+    var otherCount = 0;
+    var maxSlices = 5; // Number of top slices to display prominently
+
+    // Process data to display only top N values and aggregate the rest as "Others"
+    for (var i = 0; i < officeCounts.length; i++) {
+        if (i < maxSlices) {
+            labels.push(officeCounts[i].office_code); // Use office_code as label
+            data.push(officeCounts[i].office_count); // Use office_count as data
+            backgroundColors.push(generateShade('rgba(54, 162, 235, 0.7)', i, maxSlices));
+        } else {
+            otherCount += officeCounts[i].office_count; // Aggregate counts for "Others"
+        }
+    }
+
+    // Add "Others" category if there are more than maxSlices categories
+    if (officeCounts.length > maxSlices) {
+        labels.push('Others');
+        data.push(otherCount);
+        backgroundColors.push(generateShade('rgba(54, 162, 235, 0.7)', maxSlices, maxSlices + 1));
+    }
+
+    // Pie Chart
+    var pieCtx = document.getElementById('pieChart').getContext('2d');
+    var pieChart = new Chart(pieCtx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Total Transactions by Office',
+                data: data,
+                backgroundColor: backgroundColors,
+                borderColor: 'rgba(0,0,0,0)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Total Transactions by Office'
             }
-        });
+        }
+    });
+
+    // Function to generate shades of a base color
+    function generateShade(baseColor, index, count) {
+        var rgbValues = baseColor.match(/\d+/g); // Extract RGB values from baseColor
+        var alpha = parseFloat(baseColor.match(/[^,]+(?=\))/)[0]); // Extract alpha value
+        var factor = (index + 1) / count; // Factor to adjust color
+
+        // Generate shade by adjusting RGB values
+        var shade = 'rgba(' +
+            Math.floor(rgbValues[0] * factor) + ',' +
+            Math.floor(rgbValues[1] * factor) + ',' +
+            Math.floor(rgbValues[2] * factor) + ',' +
+            alpha +
+            ')';
+
+        return shade;
+    }
+
+    // Function to generate shades of a base color
+    function generateShade(baseColor, index, count) {
+        var rgbValues = baseColor.match(/\d+/g); // Extract RGB values from baseColor
+        var alpha = parseFloat(baseColor.match(/[^,]+(?=\))/)[0]); // Extract alpha value
+        var factor = (index + 1) / count; // Factor to adjust color
+
+        // Generate shade by adjusting RGB values
+        var shade = 'rgba(' +
+            Math.floor(rgbValues[0] * factor) + ',' +
+            Math.floor(rgbValues[1] * factor) + ',' +
+            Math.floor(rgbValues[2] * factor) + ',' +
+            alpha +
+            ')';
+
+        return shade;
+    }
     
         // Bar Graph
         var statusAvailable = @json($statusAvailable); // Convert PHP array to JavaScript object

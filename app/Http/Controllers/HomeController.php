@@ -33,50 +33,61 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        $page = [
-            'name'      =>  'Dashboard',
-            'title'     =>  'Dashboard',
-            'crumb'     =>  array('Dashboard' => '/home')
-        ];
+{
+    $page = [
+        'name'  => 'Dashboard',
+        'title' => 'Dashboard',
+        'crumb' => ['Dashboard' => '/home']
+    ];
 
-        $categories = Category::all();
-        $offices = Office::all();
+    // Retrieve counts and data for various entities
+    $users = User::count();
+    $equipment = Equipment::count();
+    $employee = Employee::count();
+    $history = Transaction::where('status', 'Return')->count();
+    
+    // Retrieve office counts based on transactions with 'Return' status
+    $officeCounts = Transaction::select('offices.code AS office_code', DB::raw('COUNT(*) AS office_count'))
+        ->join('offices', 'transactions.office', '=', 'offices.id')
+        ->where('transactions.status', 'Return')
+        ->groupBy('offices.code')
+        ->get();
 
-        $users = User::count();
-        $equipment = Equipment::count();
-        $employee = Employee::count();
-        $history =Transaction::where('status', 'Return')->count();
-        $conditions = Equipment::select('conditions', DB::raw('count(*) as total'))
-                           ->groupBy('conditions')
-                           ->pluck('total', 'conditions')
-                           ->toArray();
+    // Retrieve equipment condition counts
+    $conditions = Equipment::select('conditions', DB::raw('COUNT(*) AS total'))
+        ->groupBy('conditions')
+        ->pluck('total', 'conditions')
+        ->toArray();
 
-        $statusAvailable = Equipment::where('status', 'available')
-                           ->count();
+    // Retrieve counts based on equipment status
+    $statusAvailable = Equipment::where('status', 'available')->count();
+    $statusBorrowed = Equipment::where('status', 'Borrowed')->count();
+    $statusUnavailable = Equipment::where('status', 'unavailable')->count();
 
-        $statusBorrowed = Equipment::where('status', 'Borrowed')
-                           ->count();
-        $statusUnavailable = Equipment::where('status', 'unavailable')
-                           ->count();
-        
-        $lateReturn = Transaction::where('status', 'Late')
-                    ->count();
-        return view('home', compact(
-            'page', 
-            'users', 
-            'equipment', 
-            'conditions',
-            'employee',
-            'history',
-            'statusAvailable',
-            'statusBorrowed',
-            'statusUnavailable',
-            'lateReturn',
-            'offices',
-            'categories'
-        ));
-    }
+    // Retrieve count of transactions with 'Late' status
+    $lateReturn = Transaction::where('status', 'Late')->count();
+
+    // Retrieve all categories and offices (if needed in the view)
+    $categories = Category::all();
+    $offices = Office::all();
+
+    // Pass data to the 'home' view using compact() method
+    return view('home', compact(
+        'page', 
+        'users', 
+        'equipment', 
+        'conditions',
+        'employee',
+        'officeCounts',
+        'history',
+        'statusAvailable',
+        'statusBorrowed',
+        'statusUnavailable',
+        'lateReturn',
+        'offices',
+        'categories'
+    ));
+}
 
     public function late(){
         $page = [
