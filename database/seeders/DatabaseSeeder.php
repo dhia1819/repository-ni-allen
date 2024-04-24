@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             EquipmentSeeder::class,
             EmployeeSeeder::class,
-            TransactionsTableSeeder::class
+           
         ]);
     }
 }
