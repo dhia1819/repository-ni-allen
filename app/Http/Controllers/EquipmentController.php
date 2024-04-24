@@ -145,7 +145,7 @@ public function save(Request $request)
         'quantity' => 'required|integer',
         'image' => 'nullable|image',
         'remarks' => 'required|string',
-        'date_acquired' => 'nullable|date',
+        'date_acquired' => 'required|date',
         'conditions' => 'required|string'
     ]);
 

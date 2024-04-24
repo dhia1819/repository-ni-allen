@@ -81,7 +81,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label" for="date_returned">Returned By<span class="text-danger">&#x2022;</span></label>
-                                <input type="text" class="form-control" id="returned_by" name="returned_by">
+                                <input placeholder="Returned By" type="text" class="form-control" id="returned_by" name="returned_by">
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -116,13 +116,16 @@
         <div class="card">
             <div class="card-body">
                 <div class="col-md-12 mt-3">
-                    <label class="text-info">Uploaded File Preview</label>
+                    <h5 class="text-info text-sm">Uploaded File Preview</h5>
+                    {{-- <label class="text-info"></label> --}}
                     @foreach ($transactions as $transaction)
                         @if ($transaction->upload_file)
-                            @if (Str::endsWith($transaction->upload_file, ['.jpg', '.jpeg', '.png', '.gif']))
+                            @if (Str::endsWith($transaction->upload_file, ['.jpg', '.jpeg', '.png', '.gif', 'jfif']))
                                 <img src="{{ asset('uploads/' . $transaction->upload_file) }}" alt="Image Preview" style="max-width: 100%">
+                                <a href="{{ asset('uploads/' . $transaction->upload_file) }}" download="image.jpg" class="btn bg-gradient-success btn-submit float-end mt-2" role="button"><i class="fa fa-download"></i></a>
                             @elseif (Str::endsWith($transaction->upload_file, '.pdf'))
                                 <embed src="{{ asset('uploads/' . $transaction->upload_file) }}" type="application/pdf" width="100%" height="600px">
+                             
                             @endif
                         @else
                             <p>No file uploaded.</p>
