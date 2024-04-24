@@ -51,7 +51,7 @@ class CategorySeeder extends Seeder
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Camera',
+            'category'=>'Photobooth',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
@@ -100,6 +100,12 @@ class CategorySeeder extends Seeder
            ),
            array(
             'category'=>'Projector',
+            'status'=>1,
+            'created_at' => now(),
+            'updated_at' => now(),
+           ),
+           array(
+            'category'=>'ATS Machine',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
