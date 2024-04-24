@@ -17,7 +17,7 @@ $(document).ready(function() {
             var office = transaction.OFFICE || 'N/A';
             var category = transaction.CATEGORY || 'N/A';
             var dateBorrowed = transaction['DATE BORROWED'] || 'N/A';
-            var expectedReturn = transaction['DATE RETURNED'] || 'N/A';
+            var dateReturned = transaction['DATE RETURNED'] || 'N/A';
             var action = transaction.ACTION || 'N/A';
 
             // Log each transaction's details
@@ -25,7 +25,7 @@ $(document).ready(function() {
             console.log('Office:', office);
             console.log('Category:', category);
             console.log('Date Borrowed:', dateBorrowed);
-            console.log('Expected Return', expectedReturn);
+            console.log('Date Returned:', dateReturned);
             console.log('Action:', action);
 
             // Additional processing or logic can be added here
@@ -34,7 +34,7 @@ $(document).ready(function() {
         console.log('No Borrowed Data available or data format is incorrect.');
     }
 
-    // Initialize DataTable on #tbl-history table after processing borrowedData
+    // Initialize DataTable on #tbl-borrowed table after processing borrowedData
     $('#tbl-borrowed').DataTable({
         paging: true,
         language: {
@@ -51,36 +51,54 @@ $(document).ready(function() {
     function applyFilters() {
         var startDateBorrowed = $('#start_date_borrowed').val();
         var endDateBorrowed = $('#end_date_borrowed').val();
-        var startDateReturn = $('#start_date_expect').val();
-        var endDateReturn = $('#end_date_expect').val();
+        var startDateReturn = $('#start_date_return').val();
+        var endDateReturn = $('#end_date_return').val();
         var officeFilter = $('#office_filter').val();
         var categoryFilter = $('#category_filter').val();
     
-        $('#borrow_table_body tr').each(function() {
-            var dateBorrowedStr = $(this).find('td:nth-child(4)').text().trim(); // Assuming date_borrowed column is the 4th column
-            var dateReturnStr = $(this).find('td:nth-child(5)').text().trim(); // Assuming date_borrowed column is the 4th column
-            var office = $(this).find('td:nth-child(2)').text().trim(); // Assuming office column is the 2nd column
-            var category = $(this).find('td:nth-child(3)').text().trim();
+        // Get DataTable instance
+        var table = $('#tbl-borrowed').DataTable();
     
-            // Parse dateBorrowedStr into a Date object (date only, ignoring time)
-            var dateBorrowed = parseDateWithoutTime(dateBorrowedStr);
-            var dateReturn = parseDateWithoutTime(dateReturnStr);
+        // Custom filter function to handle date range filtering
+        $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+            var dateBorrowed = parseDateWithoutTime(data[3]); // Assuming Date Borrowed column index is 3
+            var dateReturned = parseDateWithoutTime(data[4]); // Assuming Date Returned column index is 4
     
-            // Check if the dateBorrowed is within the specified range and matches the selected office filter
+            // Filter based on date ranges
             var isDateInRangeBorrowed = (!startDateBorrowed || dateBorrowed >= parseDateWithoutTime(startDateBorrowed)) &&
-                                (!endDateBorrowed || dateBorrowed <= parseDateWithoutTime(endDateBorrowed));
-
-            var isDateInRangeReturn = (!startDateReturn || dateReturn >= parseDateWithoutTime(startDateReturn)) &&
-                                (!endDateReturn || dateReturn <= parseDateWithoutTime(endDateReturn));
-
-            var isOfficeMatch = !officeFilter || office === officeFilter;
-            var isCategoryMatch = !categoryFilter || category === categoryFilter;
+                (!endDateBorrowed || dateBorrowed <= parseDateWithoutTime(endDateBorrowed));
     
-            // Show/hide table row based on date range and office filter
-            $(this).toggle(isDateInRangeBorrowed && isOfficeMatch && isCategoryMatch && isDateInRangeReturn);
+            var isDateInRangeReturn = (!startDateReturn || dateReturned >= parseDateWithoutTime(startDateReturn)) &&
+                (!endDateReturn || dateReturned <= parseDateWithoutTime(endDateReturn));
+    
+            return isDateInRangeBorrowed && isDateInRangeReturn;
         });
     
-        toggleClearFiltersButton(); // Toggle Clear Filters button based on active filters
+        // Apply office and category filters
+        table.column(1).search(officeFilter).draw(); // Office column index is 1
+        table.column(2).search(categoryFilter).draw(); // Category column index is 2
+    
+        // Redraw the table with new filters
+        table.draw();
+    
+        // Remove custom date range filtering function
+        $.fn.dataTable.ext.search.pop();
+    
+        // Update "Show X entries" part based on the displayed rows
+        var info = table.page.info();
+    
+        // Determine if all filters are cleared (resetting display info accordingly)
+        var allFiltersCleared = !startDateBorrowed && !endDateBorrowed && !startDateReturn && !endDateReturn && !officeFilter && !categoryFilter;
+        
+        // Set the info text based on filters status
+        if (allFiltersCleared) {
+            $('#tbl-borrowed_info').text('Showing ' + (info.start + 1) + ' to ' + info.end + ' of ' + info.recordsTotal + ' entries');
+        } else {
+            $('#tbl-borrowed_info').text('Showing ' + (info.start + 1) + ' to ' + info.end + ' of ' + info.end + ' entries (filtered from ' + info.recordsTotal + ' total entries)');
+        }
+    
+        // Toggle Clear Filters button based on active filters
+        toggleClearFiltersButton();
     }
 
     // Function to toggle visibility of Clear Filters button based on active filters
@@ -88,8 +106,8 @@ $(document).ready(function() {
         var anyFilterActive =
             $('#start_date_borrowed').val() ||
             $('#end_date_borrowed').val() ||
-            $('#start_date_expect').val() ||
-            $('#end_date_expect').val() ||
+            $('#start_date_return').val() ||
+            $('#end_date_return').val() ||
             $('#office_filter').val() ||
             $('#category_filter').val();
 
@@ -101,7 +119,7 @@ $(document).ready(function() {
     }
 
     // Event listener for filter change (including date inputs)
-    $('#office_filter, #start_date_borrowed, #end_date_borrowed, #start_date_expect, #end_date_expect, #category_filter').on('change', function() {
+    $('#office_filter, #start_date_borrowed, #end_date_borrowed, #start_date_return, #end_date_return, #category_filter').on('change', function() {
         applyFilters(); // Apply filters on filter change
         toggleClearFiltersButton(); // Check if filters are active and toggle button visibility
     });
@@ -119,8 +137,8 @@ function resetFilters() {
     // Clear date inputs
     $('#start_date_borrowed').val('');
     $('#end_date_borrowed').val('');
-    $('#start_date_expect').val('');
-    $('#end_date_expect').val('');
+    $('#start_date_return').val('');
+    $('#end_date_return').val('');
 
     // Reset Select2 dropdowns
     $('#office_filter').val('').trigger('change');
@@ -134,12 +152,13 @@ function resetFilters() {
     $('#end_date_label').hide();      // Hide end date label
 
     // For Date Return
-    $('#start_date_expect').show();   // Show start date input
-    $('#end_date_expect').hide();     // Hide end date input
-    $('#start_date_expect_label').show();  // Show start date label
-    $('#end_date_expect_label').hide();    // Hide end date label
-}
+    $('#start_date_return').show();   // Show start date input
+    $('#end_date_return').hide();     // Hide end date input
+    $('#start_date_return_label').show();  // Show start date label
+    $('#end_date_return_label').hide();    // Hide end date label
 
+   
+}
 
 function parseDateWithoutTime(dateString) {
     if (!dateString) return null; // Return null for empty strings
@@ -178,10 +197,10 @@ function handleStartDateChange(type) {
         startLabel = document.getElementById('start_date_label');
         endLabel = document.getElementById('end_date_label');
     } else if (type === 'returned') {
-        startDateInput = document.getElementById('start_date_expect');
-        endDateInput = document.getElementById('end_date_expect');
-        startLabel = document.getElementById('start_date_expect_label');
-        endLabel = document.getElementById('end_date_expect_label');
+        startDateInput = document.getElementById('start_date_return');
+        endDateInput = document.getElementById('end_date_return');
+        startLabel = document.getElementById('start_date_return_label');
+        endLabel = document.getElementById('end_date_return_label');
     } else {
         return; // Invalid type
     }

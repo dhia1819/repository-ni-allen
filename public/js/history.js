@@ -56,32 +56,49 @@ $(document).ready(function() {
         var officeFilter = $('#office_filter').val();
         var categoryFilter = $('#category_filter').val();
     
-        $('#history_table_body tr').each(function() {
-            var dateBorrowedStr = $(this).find('td:nth-child(4)').text().trim(); // Assuming date_borrowed column is the 4th column
-            var dateReturnStr = $(this).find('td:nth-child(5)').text().trim(); // Assuming date_borrowed column is the 4th column
-            var office = $(this).find('td:nth-child(2)').text().trim(); // Assuming office column is the 2nd column
-            var category = $(this).find('td:nth-child(3)').text().trim();
+        // Get DataTable instance
+        var table = $('#tbl-history').DataTable();
     
-            // Parse dateBorrowedStr into a Date object (date only, ignoring time)
-            var dateBorrowed = parseDateWithoutTime(dateBorrowedStr);
-            var dateReturn = parseDateWithoutTime(dateReturnStr);
+        // Custom filter function to handle date range filtering
+        $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+            var dateBorrowed = parseDateWithoutTime(data[3]); // Assuming Date Borrowed column index is 3
+            var dateReturned = parseDateWithoutTime(data[4]); // Assuming Date Returned column index is 4
     
-            // Check if the dateBorrowed is within the specified range and matches the selected office filter
+            // Filter based on date ranges
             var isDateInRangeBorrowed = (!startDateBorrowed || dateBorrowed >= parseDateWithoutTime(startDateBorrowed)) &&
-                                (!endDateBorrowed || dateBorrowed <= parseDateWithoutTime(endDateBorrowed));
-
-            var isDateInRangeReturn = (!startDateReturn || dateReturn >= parseDateWithoutTime(startDateReturn)) &&
-                                (!endDateReturn || dateReturn <= parseDateWithoutTime(endDateReturn));
-
-
-            var isOfficeMatch = !officeFilter || office === officeFilter;
-            var isCategoryMatch = !categoryFilter || category === categoryFilter;
+                (!endDateBorrowed || dateBorrowed <= parseDateWithoutTime(endDateBorrowed));
     
-            // Show/hide table row based on date range and office filter
-            $(this).toggle(isDateInRangeBorrowed && isOfficeMatch && isCategoryMatch && isDateInRangeReturn);
+            var isDateInRangeReturn = (!startDateReturn || dateReturned >= parseDateWithoutTime(startDateReturn)) &&
+                (!endDateReturn || dateReturned <= parseDateWithoutTime(endDateReturn));
+    
+            return isDateInRangeBorrowed && isDateInRangeReturn;
         });
     
-        toggleClearFiltersButton(); // Toggle Clear Filters button based on active filters
+        // Apply office and category filters
+        table.column(1).search(officeFilter).draw(); // Office column index is 1
+        table.column(2).search(categoryFilter).draw(); // Category column index is 2
+    
+        // Redraw the table with new filters
+        table.draw();
+    
+        // Remove custom date range filtering function
+        $.fn.dataTable.ext.search.pop();
+    
+        // Update "Show X entries" part based on the displayed rows
+        var info = table.page.info();
+    
+        // Determine if all filters are cleared (resetting display info accordingly)
+        var allFiltersCleared = !startDateBorrowed && !endDateBorrowed && !startDateReturn && !endDateReturn && !officeFilter && !categoryFilter;
+        
+        // Set the info text based on filters status
+        if (allFiltersCleared) {
+            $('#tbl-history_info').text('Showing ' + (info.start + 1) + ' to ' + info.end + ' of ' + info.recordsTotal + ' entries');
+        } else {
+            $('#tbl-history_info').text('Showing ' + (info.start + 1) + ' to ' + info.end + ' of ' + info.end + ' entries (filtered from ' + info.recordsTotal + ' total entries)');
+        }
+    
+        // Toggle Clear Filters button based on active filters
+        toggleClearFiltersButton();
     }
 
     // Function to toggle visibility of Clear Filters button based on active filters

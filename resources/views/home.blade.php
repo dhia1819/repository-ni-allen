@@ -105,7 +105,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Total Transactions</h5>
+                <h5 class="card-title">Completed Transactons Per Office</h5>
                 <div class="row">
                         <div class="col-12" id="filter">
                             <div class="row col-12">

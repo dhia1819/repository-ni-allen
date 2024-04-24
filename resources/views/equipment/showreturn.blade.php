@@ -88,15 +88,16 @@
                             <div class="col-md-12">
                                 <label class="form-label" for="recieved_by">Recieved By<span class="text-danger">&#x2022;</span></label>
                                 <select class="form-control select2 select2-return" id="received_by" name="received_by">
-                                    <option value="">Recieved By</option>
+                                    <option disabled selected>Select Employee</option> <!-- Disabled and selected placeholder option -->
                                     @foreach($employees as $employee)
-                                        @if($employee->status == 1) <!-- Changed to status == 1 to include active employees -->
-                                            <option value="{{ $employee->id }}" {{ $employee->id ? 'selected' : '' }}>
+                                        @if($employee->status == 1)
+                                            <option value="{{ $employee->id }}">
                                                 {{ $employee->fullName }}
                                             </option>
                                         @endif
                                     @endforeach
-                                </select></div>
+                                </select>
+                            </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-12">
