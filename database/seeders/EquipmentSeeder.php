@@ -85,7 +85,7 @@ class EquipmentSeeder extends Seeder
             ),
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'Laptop Computer',
+                'equipment_name' => 'Laptop Computer - ACER ASPIRE',
                 'category' => 1,
                 'Description' => 'Laptop Computer - ACER ASPIRE, Sn: NXAYCSP004207113B33400, Intel Core i71195G7, 16GB DDR4, 1TB Pcle NVMe SSD.
                                     Intel Iris XE Graphics, 15.6"" Full HD 1080p IPS Slim Bezel.
@@ -104,7 +104,7 @@ class EquipmentSeeder extends Seeder
             ),
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'Scanner',
+                'equipment_name' => 'Finger Scanner-ACTAtek',
                 'category' => 4,
                 'Description' => 'Finger Scanner-ACTAtek, Sn: 00111DB025D0. 
                                 Real time system update and configuration 500DPI optical scanner; 
@@ -128,7 +128,7 @@ class EquipmentSeeder extends Seeder
             ),
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'Television',
+                'equipment_name' => 'Smart Television-LG',
                 'category' => 5,
                 'Description' => 'Smart Television-LG, Sn: 010INBSA9149. 55" Smart TV wide angle 4k Active HDR',
                 'property_no' => 'SMA0024968',
@@ -145,7 +145,7 @@ class EquipmentSeeder extends Seeder
             ),
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'Television',
+                'equipment_name' => 'Smart Television-LG',
                 'category' => 5,
                 'Description' => 'Smart Television-LG, Sn: 010INTXA9137. 55" Smart TV wide angle 4k Active HDR',
                 'property_no' => 'SMA0024970',
@@ -162,7 +162,7 @@ class EquipmentSeeder extends Seeder
             ),
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'Photobooth',
+                'equipment_name' => 'CANON EOS 6D',
                 'category' => 7,
                 'Description' => 'Camera Body Only CANON EOS 6D Sn: 398051004695; Lens Sn: 667891.',
                 'property_no' => 'PHO0012754B',
@@ -179,7 +179,7 @@ class EquipmentSeeder extends Seeder
             ),
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'Table',
+                'equipment_name' => 'Orlando conference - walnut finish',
                 'category' => 14,
                 'Description' => 'Orlando, conference, valnut finish, 24ft. X 4 ft.',
                 'property_no' => 'J200002',
@@ -236,7 +236,7 @@ class EquipmentSeeder extends Seeder
             ),
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'Laptop Computer',
+                'equipment_name' => 'Laptop-ACER',
                 'category' => 1,
                 'Description' => 'Laptop-ACER, 
                 SN: NHQ7NSP00C112231D73400.
@@ -276,7 +276,7 @@ class EquipmentSeeder extends Seeder
             ),
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'ACER Projector',
+                'equipment_name' => 'Projector-ACER',
                 'category' => 15,
                 'Description' => 'Projector-ACER, Sn: MRJPJ11007801002EE5900. 4500 Lumens, WXGA 1280x800, WUXGA 1920x1200. Contrast Ratio 20,000: 1, Lamp Life 4,000hrs., 16W speaker, HDMI.',
                 'property_no' => 'PRO0024938',
@@ -293,7 +293,7 @@ class EquipmentSeeder extends Seeder
             ),
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'ACER Projector',
+                'equipment_name' => 'Projector-ACER',
                 'category' => 15,
                 'Description' => 'Projector-ACER, Sn: MRJPJ11007106012835910. 4500 Lumens, WXGA 1280x800, WUXGA 1920x1200. Contrast Ratio 20,000: 1, Lamp Life 4,000hrs., 16W speaker, HDMI.',
                 'property_no' => 'PRO0024940',
@@ -473,7 +473,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 16,
+                'category' => 8,
                 'Description' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK
                     Sn: 00111DB03FE8
                     Specs: 
@@ -501,7 +501,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 16,
+                'category' => 8,
                 'Description' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK
                     Sn: 000111DB03FE9
                     Specs: 
@@ -530,7 +530,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 16,
+                'category' => 8,
                 'Description' => '"ATS Machine Facial and Fingerprint Verification - ACTATEK
                     Sn:  00111DB03FE3     
                     Specs: 
@@ -558,7 +558,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 16,
+                'category' => 8,
                 'Description' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK
                 Sn: 00111DB03FE0
                 Specs: 
@@ -586,7 +586,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 16,
+                'category' => 8,
                 'Description' => '""ATS Machine Facial and Fingerprint Verification - ACTATEK
                     Sn: 00111DB03FE4     
                     Specs: 
@@ -614,7 +614,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 16,
+                'category' => 8,
                 'Description' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK
                 Sn: 00111DB03FEA
                 Specs: 
@@ -642,7 +642,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 16,
+                'category' => 8,
                 'Description' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK
                 Sn:  00111DB03FE5     
                 Specs: 
@@ -670,7 +670,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 16,
+                'category' => 8,
                 'Description' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK
                 Sn: 00111DB03FEB
                 Specs: 
@@ -698,7 +698,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 16,
+                'category' => 8,
                 'Description' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK
                 Sn: 00111DB03FE7     
                 Specs: 
@@ -726,7 +726,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Finger Scanner - ACTATEK',
-                'category' => 16,
+                'category' => 8,
                 'Description' => 'ATS Finger Scanner - ACTATEK
                 Sn: 00111DB025DA
                 Real-time system update of configuration 500 DPI optical scanner.
@@ -767,7 +767,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop Computer-ASUS',
-                'category' => 16,
+                'category' => 1,
                 'Description' => 'Laptop Computer-ASUS, Sn: DBNOCX343136466. Intel core i7-4500U 1.8Ghz Processor/4GB DDR3, 15.6", Windows 8 SL.',
                 'property_no' => 'LAP0007968',
                 'serial_no' => 'DBNOCX343136466',
@@ -1238,13 +1238,13 @@ class EquipmentSeeder extends Seeder
                 'equipment_name' => 'Laptop-ACER',
                 'category' => 1,
                 'Description' => 'Laptop-ACER, 
-                SN: NHQ7NSP00C112231AF3400.
+                SN: NHQ7NSP00C112235133400.
                 i5-10300H Processor/8GB DDR4 Memory/ 256GB NVMe
                 SSD/15.6" FHD 19x1080/PS 144Hz Display/ Nvidia
                 GTX1650Ti 4GB GDDR5 VRAM / 802.11AX WiFi + BT
                 HDMI Port',
-                'property_no' => 'LAP0028667',
-                'serial_no' => 'NHQ7NSP00C112231AF3400',
+                'property_no' => 'LAP0028668',
+                'serial_no' => 'NHQ7NSP00C112235133400',
                 'unit_of_measure' => 'unit',
                 'value' => '66680',
                 'quantity' => 1,
@@ -1252,6 +1252,436 @@ class EquipmentSeeder extends Seeder
                 'remarks' => 'Renz Alfred Litan',
                 'status' => 'available',
                 'date_acquired' => '2015-11-03',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'equipment_name' => 'Storage-SYNOLOGY',
+                'category' => 9 ,
+                'Description' => 'Storage-SYNOLOGY, Sn: 2050SBR7CJY6J. 4 Bay NAS Disk Station 4GB DDR3L-1866 Memory, expandable up to 8GB',
+                'property_no' => 'STO0024931',
+                'serial_no' => '2050SBR7CJY6J',
+                'unit_of_measure' => 'unit',
+                'value' => '57980',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Renz Alfred Litan',
+                'status' => 'available',
+                'date_acquired' => '2021-01-06',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'equipment_name' => 'Machine ID Card-HITI',
+                'category' => 1,
+                'Description' => 'Machine ID Card-HITI, Sn: C2E00A44700021',
+                'property_no' => 'MAC0010625',
+                'serial_no' => 'C2E00A44700021',
+                'unit_of_measure' => 'unit',
+                'value' => '116230',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Jocelyn Dela Cruz',
+                'status' => 'available',
+                'date_acquired' => '2015-03-1',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+            array(
+                'admin_id' => 1,
+                'equipment_name' => 'Laptop-ACER',
+                'category' => 1,
+                'Description' => 'Laptop-ACER, Serial No: NXMN3SP001423171157600. Intel core i5-4210u up tp 2.70Ghz/4GB/1TB. 14inches HD, 8x DVD Super multi double layer drive. Windows 8.1',
+                'property_no' => 'LAP0010907',
+                'serial_no' => 'NXMN3SP001423171157600',
+                'unit_of_measure' => 'unit',
+                'value' => '55665',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Jocelyn Dela Cruz',
+                'status' => 'available',
+                'date_acquired' => '2015-05-18',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'equipment_name' => 'Machine ID Card-HITI',
+                'category' => 9 ,
+                'Description' => 'Machine ID Card-HITI, Sn: C2E00A50300001',
+                'property_no' => 'MAC0010626',
+                'serial_no' => 'C2E00A50300001',
+                'unit_of_measure' => 'unit',
+                'value' => '116230',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Jocelyn Dela Cruz',
+                'status' => 'available',
+                'date_acquired' => '2015-03-16',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'equipment_name' => 'Machine ID Card-HITI',
+                'category' => 9 ,
+                'Description' => 'Machine ID Card-HITI, Sn: C2E00A43800048',
+                'property_no' => 'MAC0010628',
+                'serial_no' => 'C2E00A43800048',
+                'unit_of_measure' => 'unit',
+                'value' => '116230',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Jocelyn Dela Cruz',
+                'status' => 'available',
+                'date_acquired' => '2015-03-16',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+            array(
+                'admin_id' => 1,
+                'equipment_name' => 'Machine ID Card-HITI',
+                'category' => 9 ,
+                'Description' => 'Machine ID Card-HITI, Sn: C2E00A43800045',
+                'property_no' => 'MAC0010630',
+                'serial_no' => 'C2E00A43800045',
+                'unit_of_measure' => 'unit',
+                'value' => '116230',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Jocelyn Dela Cruz',
+                'status' => 'available',
+                'date_acquired' => '2015-03-16',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'equipment_name' => 'Barcode Printer - ZEBRA',
+                'category' => 13 ,
+                'Description' => 'Barcode Printer - ZEBRA
+                Sn: 52J224201212
+                Resolution: 203 dpi
+                Print Method: Thermal transfer and Direct thermal
+                Print Speed: 6inches/sec
+                Memory: 128MB flash, 128MB SDRAM
+                Package includes: 
+                Designer basic barcode software
+                Power cord
+                USB printer cable
+                2 hrs. training to end users',
+                'property_no' => 'PRI0030617',
+                'serial_no' => '52J224201212',
+                'unit_of_measure' => 'unit',
+                'value' => '114150',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Jocelyn Dela Cruz',
+                'status' => 'available',
+                'date_acquired' => '2015-03-14',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+            
+            array(
+                'admin_id' => 1,
+                'equipment_name' => 'Machine ID Card Printer-HITI',
+                'category' => 9 ,
+                'Description' => 'Machine ID Card Printer-HITI, Model: PK-636G, Sn: C2E00163100046. Printing Speed: Colored-180 cards/hour (max), Monochrome-up to 1200cards/hour (max), Resolution-300x300dpi with USB connection. Print modes: color dye sublimation and monochrome thermal faster. Enhance color management system. Edge to edge printing (no margin). Integrated ribbon saver for monochrome printing.',
+                'property_no' => 'X909044-A',
+                'serial_no' => 'C2E00163100046',
+                'unit_of_measure' => 'unit',
+                'value' => '116230',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Jocelyn Dela Cruz',
+                'status' => 'available',
+                'date_acquired' => '2015-12-15',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'equipment_name' => 'Barcode Printer - ZEBRA',
+                'category' => 13 ,
+                'Description' => 'Barcode Printer - ZEBRA
+                Sn: 52J224201212
+                Resolution: 203 dpi
+                Print Method: Thermal transfer and Direct thermal
+                Print Speed: 6inches/sec
+                Memory: 128MB flash, 128MB SDRAM
+                Package includes: 
+                Designer basic barcode software
+                Power cord
+                USB printer cable
+                2 hrs. training to end users',
+                'property_no' => 'PRI0030617',
+                'serial_no' => '52J224201212',
+                'unit_of_measure' => 'unit',
+                'value' => '114150',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Jocelyn Dela Cruz',
+                'status' => 'available',
+                'date_acquired' => '2015-03-14',
+                'created_at' => now(),
+                'updated_at' => now(),
+                
+            ),
+            
+            array(
+                'admin_id' => 1,
+                'equipment_name' => 'Laptop-ACER',
+                'category' => 1 ,
+                'Description' => 'Laptop-ACER, 
+                SN: NHQ7NSP00C11222D1C3400.
+                i5-10300H Processor/8GB DDR4 Memory/ 256GB NVMe
+                SSD/15.6" FHD 19x1080/PS 144Hz Display/ Nvidia
+                GTX1650Ti 4GB GDDR5 VRAM / 802.11AX WiFi + BT
+                HDMI Port',
+                'property_no' => 'LAP0028660',
+                'serial_no' => 'NHQ7NSP00C11222D1C3400',
+                'unit_of_measure' => 'unit',
+                'value' => '66680',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2015-11-03',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'equipment_name' => 'Laptop-ACER',
+                'category' => 1 ,
+                'Description' => 'Laptop-ACER, 
+                SN: NHQ7NSP00C1122325C3400.
+                i5-10300H Processor/8GB DDR4 Memory/ 256GB NVMe
+                SSD/15.6" FHD 19x1080/PS 144Hz Display/ Nvidia
+                GTX1650Ti 4GB GDDR5 VRAM / 802.11AX WiFi + BT
+                HDMI Port',
+                'property_no' => 'LAP0028669',
+                'serial_no' => 'NHQ7NSP00C1122325C3400',
+                'unit_of_measure' => 'unit',
+                'value' => '66680',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2015-11-03',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'equipment_name' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER',
+                'category' => 1 ,
+                'Description' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER
+                Core i5-1035G1, 4GB, 512GB SSD
+                SN: NXHS7SP0031471AB143400',
+                'property_no' => 'LAP0029050',
+                'serial_no' => 'NXHS7SP0031471AB143400',
+                'unit_of_measure' => 'unit',
+                'value' => '58499.85',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2022-02-09',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 1,
+                'equipment_name' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER',
+                'Description' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER
+                Core i5-1035G1, 4GB, 512GB SSD
+                SN: NXHS7SP0031471B4D43400',
+                'property_no' => 'LAP0029051',
+                'serial_no' => 'NXHS7SP0031471B4D43400',
+                'unit_of_measure' => 'unit',
+                'value' => '58499.85',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2022-02-09',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 1 ,
+                'equipment_name' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER',
+                'Description' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER
+                Core i5-1035G1, 4GB, 512GB SSD
+                SN: NXHS7SP0031471B8913400',
+                'property_no' => 'LAP0029052',
+                'serial_no' => 'NXHS7SP0031471B8913400',
+                'unit_of_measure' => 'unit',
+                'value' => '58499.85',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2022-02-09',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 1 ,
+                'equipment_name' => 'Large Format Printer-EPSON',
+                'Description' => 'Large Format Printer-EPSON, 
+                Sn: VRSE100360
+                Nozzle Configuration: 360 nozzles each color, Print Direction
+                Bi-directional printing,uni-directional printing: Max Print
+                Resolution: 2880x1440dpi; Min Ink Droplet Size: 3.5pl with
+                photo paper gloss 24in x 30.5in 1 roll and maintenance box',
+                'property_no' => 'PRI0028675',
+                'serial_no' => 'VRSE100360',
+                'unit_of_measure' => 'unit',
+                'value' => '394850',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2021-11-03',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 17 ,
+                'equipment_name' => 'Server System',
+                'Description' => 'Server System x 3105 (434748A) AMD Dual Core Opteron 1210 1.8Ghz Processor, 2x1MB of L2 cache; 2x 512MB 667 Mhz PCs-5200ECC DDR2 SDRAM; 1x160 GB Simple swap SATA HDD; Combo DVD/CDRW + LCD Monitor 17" Syncmaster 740N black; Server-Sn: 2K02659; Monitor-Sn: MY17HMEQ105547. For HOMIS Project',
+                'property_no' => 'Q200005',
+                'serial_no' => '2K02659',
+                'unit_of_measure' => 'unit',
+                'value' => '65950',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2008-05-30',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 17,
+                'equipment_name' => 'Server System Monitor',
+                'Description' => 'Server System x 3105 (434748A) AMD Dual Core Opteron 1210 1.8Ghz Processor, 2x1MB of L2 cache; 2x 512MB 667 Mhz PCs-5200ECC DDR2 SDRAM; 1x160 GB Simple swap SATA HDD; Combo DVD/CDRW + LCD Monitor 17" Syncmaster 740N black; Server-Sn: 2K02659; Monitor-Sn: MY17HMEQ105547. For HOMIS Project',
+                'property_no' => 'Q200005',
+                'serial_no' => 'MY17HMEQ105547',
+                'unit_of_measure' => 'unit',
+                'value' => '65950',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2008-05-30',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 16,
+                'equipment_name' => 'IBM Server X3200 SAS',
+                'Description' => 'Personal Computer, IBM Server X3200 SAS (4262iBS) Dual Core Intel Xeron Processor 3040, 1.86Ghz, 2x1MB 12 cache 1x73GB 10K, Hot-swap SAS HDD, 1GB Hot-swap redundant, Integrated hardware RAID-0, IPMI 1.5-complaint mini-BMC, IBM Director, Alert Standard Format 2.0, IBM Server guide, Optical RSA II and Optional Remote Deployment Manager, 3 year on-site limited warranty, Sn: 99A4995; Keyboard-Sn: 00002729; Mouse-Sn: 23-014298. For Document Tracking System Project',
+                'property_no' => 'Q200011',
+                'serial_no' => '99A4995',
+                'unit_of_measure' => 'unit',
+                'value' => '94500',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2008-01-16',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 16,
+                'equipment_name' => 'IBM Server X3200 SAS',
+                'Description' => 'Personal Computer, IBM Server X3200 SAS (4262iBS), Sn: 99A2802; Keyboard-Sn: 02263707; Mouse-Sn: 23-014298. Dual Core Intel Xeron Processor 3040, 1.86Ghz, 2x1MB 12 cache 1x73GB 10K, Hot-swap SAS HDD, 1GB Hot-swap redundant, Integrated hardware RAID-0, IPMI 1.5-complaint mini-BMC, IBM Director, Alert Standard Format 2.0, IBM Server guide, Optical RSA II and Optional Remote Deployment Manager, 3 year on-site limited warranty',
+                'property_no' => 'Q200012',
+                'serial_no' => '99A2802',
+                'unit_of_measure' => 'unit',
+                'value' => '94500',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2008-01-16',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 17,
+                'equipment_name' => 'Server Unit Processor - LENOVO',
+                'Description' => 'Server Unit Processor - LENOVO
+                Sn: J3035WBI
+                5215 Gold 10c 85w 2.5GHz
+                Form Factor: 2Urack-mount
+                Chipset: C624
+                Memory min/max: 1x 16GB (x8) 293MHz
+                Operating System not included',
+                'property_no' => 'SER0030616',
+                'serial_no' => 'J3035WBI',
+                'unit_of_measure' => 'unit',
+                'value' => '858650',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2023-03-14',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 16,
+                'equipment_name' => 'Server Unit Processor - LENOVO',
+                'Description' => 'Server Unit Processor - LENOVO
+                Sn: J3035WBI
+                5215 Gold 10c 85w 2.5GHz
+                Form Factor: 2Urack-mount
+                Chipset: C624
+                Memory min/max: 1x 16GB (x8) 293MHz
+                Operating System not included',
+                'property_no' => 'SER0030616',
+                'serial_no' => 'J3035WBI',
+                'unit_of_measure' => 'unit',
+                'value' => '858650',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2023-03-14',
                 'created_at' => now(),
                 'updated_at' => now(),
             ),

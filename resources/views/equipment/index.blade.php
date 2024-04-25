@@ -115,7 +115,7 @@
                         <table class="table align-items-center mb-0" id="tbl-equipment" style="width: 100%;">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Image</th> 
+                                    
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Article Name</th>
 
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Category</th>

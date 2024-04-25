@@ -105,7 +105,13 @@ class CategorySeeder extends Seeder
             'updated_at' => now(),
            ),
            array(
-            'category'=>'ATS Machine',
+            'category'=>'Computer Set',
+            'status'=>1,
+            'created_at' => now(),
+            'updated_at' => now(),
+           ),
+           array(
+            'category'=>'Server Unit',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
