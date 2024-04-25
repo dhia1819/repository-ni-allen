@@ -133,11 +133,11 @@
                             <tbody id="equipment_table_body">
                                 @foreach ($equipment as $item)
                                 <tr>
-                                    @if($item->image)
+                                    {{-- @if($item->image)
                                         <td><img src="{{ asset('uploads/' . $item->image) }}" alt="Equipment Image" class="rounded-circle" style="width: 50px; height: 50px;"></td>
                                     @else
                                         <td>No Image</td>
-                                    @endif
+                                    @endif --}}
                                     <td style="vertical-align: middle;">{{ $item->equipment_name }}</td>
 
                                     <td style="vertical-align: middle;">{{ $item->category_name }}</td>
