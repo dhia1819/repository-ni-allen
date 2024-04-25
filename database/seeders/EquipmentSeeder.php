@@ -1702,6 +1702,1347 @@ class EquipmentSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 13,
+                'equipment_name' => 'Printer',
+                'Description' => 'S4M Barcode Printer, Sn: 81983855 DMXE, Made in USA',
+                'property_no' => 'T100305',
+                'serial_no' => '81983855',
+                'unit_of_measure' => 'unit',
+                'value' => '70650',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2008-05-27',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 18,
+                'equipment_name' => 'Tower Server',
+                'Description' => 'Tower Server-Hp, Sn: CN780801Q3. 
+                Intel Xeon Processor min of 3.3Ghz 4 Core: 
+                Memory min of 8GB registered DIMMs; Hard drive 2TB (2x1000GB HDD, preferably  SSD); 
+                Network interface; Four integrated gigabit ethernet ports (RJ-45); 
+                power supply: min of 300w with keyboard and mouse.',
+                'property_no' => 'TOW0016949',
+                'serial_no' => 'CN780801Q3',
+                'unit_of_measure' => 'unit',
+                'value' => '139200',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2018-04-13',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 18,
+                'equipment_name' => 'Tower Server',
+                'Description' => 'Tower Server - LENOVO
+                Model: 7Y48-CT01WW
+                Sn: J30A10HL
+                Single socket with 1 x 4 + 2C 65W 3.2 GHz.
+                1 x 8GB up to 64GB with 4x 16GB UDIMMs.
+                Up to 4x 3.5-inch non-hot swap drive bays with 1 x 3.5" 1TB HDD.
+                Integrated Graphics Technology Two-Display Port ports.
+                Max. resolution is 3480 x 2160 pixels (4K) at a refresh rate of 60Hz.',
+                'property_no' => 'TOW0030614-15',
+                'serial_no' => 'J30A10HL',
+                'unit_of_measure' => 'unit',
+                'value' => '102100',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2023-03-14',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 18,
+                'equipment_name' => 'Tower Server',
+                'Description' => 'Tower Server - LENOVO
+                Model: 7Y48-CT01WW
+                Sn: J30A10K4
+                Single socket with 1 x 4 + 2C 65W 3.2 GHz.
+                1 x 8GB up to 64GB with 4x 16GB UDIMMs.
+                Up to 4x 3.5-inch non-hot swap drive bays with 1 x 3.5" 1TB HDD.
+                Integrated Graphics Technology Two-Display Port ports.
+                Max. resolution is 3480 x 2160 pixels (4K) at a refresh rate of 60Hz.',
+                'property_no' => 'TOW0030614-15',
+                'serial_no' => 'J30A10K4',
+                'unit_of_measure' => 'unit',
+                'value' => '102100',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2023-03-14',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Computer Accessory',
+                'Description' => 'Uninterruptible Power Supply (3000 VA 23V)-APC,
+                Sn: AS2115251625',
+                'property_no' => 'UPS0028659',
+                'serial_no' => 'AS2115251625',
+                'unit_of_measure' => 'unit',
+                'value' => '195400',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'John Derel Tuazon',
+                'status' => 'available',
+                'date_acquired' => '2021-11-03',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 1,
+                'equipment_name' => 'Laptop Computer-ACER',
+                'Description' => 'Laptop Computer-ACER, Sn: NXGDWSP0047130FAB77600. 
+                Core i5-7200U (3MB L3 cache 2.5Ghz with turbo boost). 
+                4GB of DDR2. 2TB 2.5inch 5400 RPM. 15.6" Full HD',
+                'property_no' => 'COM0016450',
+                'serial_no' => 'NXGDWSP0047130FAB77600',
+                'unit_of_measure' => 'unit',
+                'value' => '59790',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2017-12-01',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 1,
+                'equipment_name' => 'Laptop Computer-ACER',
+                'Description' => 'Laptop Computer-ACER, Sn: NXGDWSP0047130FAEF7600. 
+                Core i5-7200U (3MB L3 cache 2.5Ghz with turbo boost). 
+                4GB of DDR2. 2TB 2.5inch 5400 RPM. 15.6" Full HD',
+                'property_no' => 'COM0016453',
+                'serial_no' => 'NXGDWSP0047130FAEF7600',
+                'unit_of_measure' => 'unit',
+                'value' => '59790',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2017-12-01',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 4,
+                'equipment_name' => 'Finger Scanner-ACTAtek',
+                'Description' => 'Finger Scanner-ACTAtek, Model: ACTA3-1K-FLI, Sn: 00111DB0062B. 
+                Scan Orange Card Application Form document; crop and edit photo and signature of recipient.',
+                'property_no' => 'FIN0008129',
+                'serial_no' => '00111DB0062B',
+                'unit_of_measure' => 'unit',
+                'value' => '108594.83',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2014-03-28',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 4,
+                'equipment_name' => 'Finger Scanner-ACTAtek',
+                'Description' => 'Finger Scanner-ACTAtek, Model: ACTA3-1K-FLI, Sn: 00111DB0062A. 
+                Scan Orange Card Application Form document; crop and edit photo and signature of recipient.',
+                'property_no' => 'FIN0008130',
+                'serial_no' => '00111DB0062A',
+                'unit_of_measure' => 'unit',
+                'value' => '108594.83',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2014-03-28',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 4,
+                'equipment_name' => 'Finger Scanner-ACTAtek',
+                'Description' => 'Finger Scanner-ACTAtek, Model: ACTA3-1K-FLI, Sn: 00111DB00624. 
+                Scan Orange Card Application Form document; crop and edit photo and signature of recipient.',
+                'property_no' => 'FIN0008131',
+                'serial_no' => '00111DB00624',
+                'unit_of_measure' => 'unit',
+                'value' => '108594.83',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2014-03-28',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 4,
+                'equipment_name' => 'Finger Scanner-ACTAtek',
+                'Description' => 'Finger Scanner-ACTAtek, Model: ACTA3-1K-FLI, Sn: 00111DB00625. 
+                Scan Orange Card Application Form document; crop and edit photo and signature of recipient.',
+                'property_no' => 'FIN0008132',
+                'serial_no' => '00111DB00625',
+                'unit_of_measure' => 'unit',
+                'value' => '108594.83',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2014-03-28',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Computer Accessory',
+                'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
+                HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
+                Sn: PHG927E02C',
+                'property_no' => 'HAR0030539',
+                'serial_no' => 'PHG927E02C',
+                'unit_of_measure' => 'unit',
+                'value' => '86790',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2022-12-09',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Computer Accessory',
+                'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
+                HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
+                Sn: PHG927EO2B',
+                'property_no' => 'HAR0030538',
+                'serial_no' => 'PHG927EO2B',
+                'unit_of_measure' => 'unit',
+                'value' => '86790',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2022-12-09',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Computer Accessory',
+                'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
+                HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
+                Sn:  PHG927EO56',
+                'property_no' => 'HAR0030537',
+                'serial_no' => 'PHG927EO56',
+                'unit_of_measure' => 'unit',
+                'value' => '86790',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2022-12-09',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Computer Accessory',
+                'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
+                HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
+                Sn:   PHG927E03J',
+                'property_no' => 'HAR0030536',
+                'serial_no' => 'PHG927E03J',
+                'unit_of_measure' => 'unit',
+                'value' => '86790',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2022-12-09',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Computer Accessory',
+                'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
+                HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
+                Sn:  PHG927E02E',
+                'property_no' => 'HAR0030535',
+                'serial_no' => 'PHG927E02E',
+                'unit_of_measure' => 'unit',
+                'value' => '86790',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2022-12-09',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Computer Accessory',
+                'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
+                HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
+                Sn: PHG927E02Z',
+                'property_no' => 'HAR0030534',
+                'serial_no' => 'PHG927E02Z',
+                'unit_of_measure' => 'unit',
+                'value' => '86790',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2022-12-09',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 19,
+                'equipment_name' => 'Rack Server (Application and Database)',
+                'Description' => 'Rack Server (Application and Database), Sn: SGH726V21P. 
+                Processor: Intel Xeon Processor (min. of 2.20Ghz, 4 Core). 
+                Memory: min. of 16GB registered DIMMS, 2133Mhz. Hard Drive: min. of 600GB HDD, preferably SSD. 
+                Power Supply: 2x redundant power supply. Network Interface: Four integrated gigabit ethernet ports (RJ-45)',
+                'property_no' => 'RAC0016423',
+                'serial_no' => 'SGH726V21P',
+                'unit_of_measure' => 'unit',
+                'value' => '284850',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2017-12-15',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 19,
+                'equipment_name' => 'Rack Server (Application and Database)',
+                'Description' => 'Rack Server (Application and Database), Sn: SGH726V21K. 
+                Processor: Intel Xeon Processor (min. of 2.20Ghz, 4 Core). 
+                Memory: min. of 16GB registered DIMMS, 2133Mhz. Hard Drive: min. of 600GB HDD, preferably SSD. 
+                Power Supply: 2x redundant power supply. Network Interface: Four integrated gigabit ethernet ports (RJ-45)',
+                'property_no' => 'RAC0016424',
+                'serial_no' => 'SGH726V21K',
+                'unit_of_measure' => 'unit',
+                'value' => '284850',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2017-12-15',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 4,
+                'equipment_name' => 'Finger Scanner-ACTAtek',
+                'Description' => 'Finger Scanner-ACTAtek, Sn: 00111DB025D8. 
+                Real time system update and configuration 500DPI optical scanner; 
+                Auto-match support up to 10,000 users (1:N) operates in Standalone or Network mode (Access Manager); 
+                Robust and scalable (Thousands of users on global basis) for enterprise wide deployment; 
+                IP65 rated, weather and impact resistant casing (Fluid ingress, dust, salt, fog protection); 
+                Built-in CMOS/Video camera for Video Surveillance (optional); Up to 500 photos (FIFO internal storage); 
+                API support for easy interface to most software applications 1,000 users up to 75,000 event logs, 
+                Five modes of authentication; Fingers print only',
+                'property_no' => 'SCA0021699',
+                'serial_no' => '00111DB025D8',
+                'unit_of_measure' => 'unit',
+                'value' => '57395',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2020-06-30',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 4,
+                'equipment_name' => 'Finger Scanner-ACTAtek',
+                'Description' => 'Finger Scanner-ACTAtek, Sn: 00111DB02AF3. 
+                Real time system update and configuration 500DPI optical scanner; 
+                Auto-match support up to 10,000 users (1:N) operates in Standalone or Network mode (Access Manager); 
+                Robust and scalable (Thousands of users on global basis) for enterprise wide deployment; 
+                IP65 rated, weather and impact resistant casing (Fluid ingress, dust, salt, fog protection); 
+                Built-in CMOS/Video camera for Video Surveillance (optional); Up to 500 photos (FIFO internal storage); 
+                API support for easy interface to most software applications 1,000 users up to 75,000 event logs, 
+                Five modes of authentication; Fingers print only',
+                'property_no' => 'SCA0021700',
+                'serial_no' => '00111DB02AF3',
+                'unit_of_measure' => 'unit',
+                'value' => '57395',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Julie Ann Yaneza',
+                'status' => 'available',
+                'date_acquired' => '2020-06-30',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            //no Serial No.
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Computer Accessory',
+                'Description' => 'CD-Book, Adaptive Server enterprises version 12 fro NT',
+                'property_no' => 'V300007',
+                'serial_no' => '-',
+                'unit_of_measure' => 'unit',
+                'value' => '137770',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Ned Tobias',
+                'status' => 'available',
+                'date_acquired' => '2000-08-14',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Computer Accessory',
+                'Description' => 'CD-Book, Sybase network seat, for 10 users',
+                'property_no' => 'V300008',
+                'serial_no' => '-',
+                'unit_of_measure' => 'unit',
+                'value' => '117900',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Ned Tobias',
+                'status' => 'available',
+                'date_acquired' => '2000-08-14',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Computer Accessory',
+                'Description' => 'Power Builder, version 7.00',
+                'property_no' => 'V300009',
+                'serial_no' => '-',
+                'unit_of_measure' => 'unit',
+                'value' => '172213',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Ned Tobias',
+                'status' => 'available',
+                'date_acquired' => '2000-08-14',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Computer Accessory',
+                'Description' => 'MSSQl, standard with CD,installer kit and 1 MSSQL client access',
+                'property_no' => 'V400003',
+                'serial_no' => '-',
+                'unit_of_measure' => 'unit',
+                'value' => '52500',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Ned Tobias',
+                'status' => 'available',
+                'date_acquired' => '2005-01-24',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Document Scanner-CANON',
+                'Description' => 'Document Scanner-CANON. 
+                Scanning resolution: 150x150dpi, 200x200dpi, 300x300dpi, 400x400dpi. Serial Nos.: FW435688',
+                'property_no' => 'SCA0010959',
+                'serial_no' => 'FW435688',
+                'unit_of_measure' => 'unit',
+                'value' => '68980',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Raquel Burbos',
+                'status' => 'available',
+                'date_acquired' => '2015-05-18',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Document Scanner-CANON',
+                'Description' => 'Document Scanner-CANON. 
+                Scanning resolution: 150x150dpi, 200x200dpi, 300x300dpi, 400x400dpi. Serial Nos.: FW435693 (Health Service Program)',
+                'property_no' => 'SCA0010961',
+                'serial_no' => 'FW435693',
+                'unit_of_measure' => 'unit',
+                'value' => '68980',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Raquel Burbos',
+                'status' => 'available',
+                'date_acquired' => '2015-05-18',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Document Scanner-CANON',
+                'Description' => 'Document Scanner-CANON. 
+                Scanning resolution: 150x150dpi, 200x200dpi, 300x300dpi, 400x400dpi. Serial Nos.: FW434826',
+                'property_no' => 'SCA0010964',
+                'serial_no' => 'FW434826',
+                'unit_of_measure' => 'unit',
+                'value' => '68980',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Raquel Burbos',
+                'status' => 'available',
+                'date_acquired' => '2015-05-18',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 1,
+                'equipment_name' => 'Laptop-ACER',
+                'Description' => 'Laptop-ACER. Intel core i5-4210u up tp 2.70Ghz/4GB/1TB. 14inches HD, 
+                8x DVD Super multi double layer drive. Windows 8.1, Serial Nos.: NXMN3SP001424031CF7600',
+                'property_no' => 'LAP0010912',
+                'serial_no' => 'NXMN3SP001424031CF7600',
+                'unit_of_measure' => 'unit',
+                'value' => '55665',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rodney Boy Reyes',
+                'status' => 'available',
+                'date_acquired' => '2015-05-18',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 13,
+                'equipment_name' => 'Double Side ID Card Printer',
+                'Description' => 'Double Side ID Card Printer, Smart 30v, Sn: 3SIA000000E50360',
+                'property_no' => 'PRI0010562',
+                'serial_no' => '3SIA000000E50360',
+                'unit_of_measure' => 'unit',
+                'value' => '153000',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rodney Boy Reyes',
+                'status' => 'available',
+                'date_acquired' => '2014-11-07',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 2,
+                'equipment_name' => '2.5Hp window type aircondition-CARRIER',
+                'Description' => '2.5Hp window type aircondition-CARRIER, Sn: 51PMX-RAC-CAR-24KEA N16PC-1220135',
+                'property_no' => 'F100225',
+                'serial_no' => '51PMX-RAC-CAR-24KEA N16PC-1220135',
+                'unit_of_measure' => 'unit',
+                'value' => '57300',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rodrigo Abasola',
+                'status' => 'available',
+                'date_acquired' => '2016-12-01',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 1,
+                'equipment_name' => 'Laptop-ACER',
+                'Description' => 'Laptop-ACER, SN: NHQ7NSP00C11222D583400.
+                i5-10300H Processor/8GB DDR4 Memory/ 256GB NVMe
+                SSD/15.6" FHD 19x1080/PS 144Hz Display/ Nvidia
+                GTX1650Ti 4GB GDDR5 VRAM / 802.11AX WiFi + BT
+                HDMI Port',
+                'property_no' => 'LAP0028662',
+                'serial_no' => 'NHQ7NSP00C11222D583400',
+                'unit_of_measure' => 'unit',
+                'value' => '66680',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rodrigo Abasola',
+                'status' => 'available',
+                'date_acquired' => '2021-11-03',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 2,
+                'equipment_name' => '3TR Floor Mounted Aircon with installation-CARRIER',
+                'Description' => '3TR Floor Mounted Aircon with installation-CARRIER, 
+                Serial Nos. Indoor: 0719-0075871; Outdoor: 2619-0207989',
+                'property_no' => 'AIR0020434',
+                'serial_no' => 'Indoor: 0719-0075871; Outdoor: 2619-0207989',
+                'unit_of_measure' => 'unit',
+                'value' => '159800',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Roi Vinson Abrazaldo',
+                'status' => 'available',
+                'date_acquired' => '2019-07-08',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 2,
+                'equipment_name' => 'Aircon, window type, 2.5Hp-CARRIER',
+                'Description' => 'Aircon, window type, 2.5Hp-CARRIER, Sn: 2919-0226433',
+                'property_no' => 'AIR0020436',
+                'serial_no' => '2919-0226433',
+                'unit_of_measure' => 'unit',
+                'value' => '54130',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Roi Vinson Abrazaldo',
+                'status' => 'available',
+                'date_acquired' => '2019-07-08',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 2,
+                'equipment_name' => '2.5Hp split type aircondition-CARRIER',
+                'Description' => '2.5Hp split type aircondition-CARRIER, 
+                Sn: Indoor-D202217700116912170056; Outdoor-D202161730216815170012',
+                'property_no' => 'F100224',
+                'serial_no' => 'Indoor-D202217700116912170056; Outdoor-D202161730216815170012',
+                'unit_of_measure' => 'unit',
+                'value' => '94700',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Roi Vinson Abrazaldo',
+                'status' => 'available',
+                'date_acquired' => '2016-12-01',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 2,
+                'equipment_name' => '2.5Hp split type aircondition-CARRIER',
+                'Description' => '2.5Hp split type aircondition-CARRIER, 
+                Sn: Indoor-D202217700116912170076; Outdoor-D202161730216815170011',
+                'property_no' => 'F100224',
+                'serial_no' => 'Indoor-D202217700116912170076; Outdoor-D202161730216815170011',
+                'unit_of_measure' => 'unit',
+                'value' => '94700',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Roi Vinson Abrazaldo',
+                'status' => 'available',
+                'date_acquired' => '2016-12-01',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 20,
+                'equipment_name' => 'Server: LENOVO',
+                'Description' => 'Server: LENOVO
+                Model: 7X06
+                SN: J301Y18P
+                Processor: 5215 Gold 10C 85W 2.5GHz
+                Form Factor: 2U rack-mount
+                Chipset: C624
+                Memory min/max: 1 x 16GB (x8) 2933MHz. Up to 24DIMM sockets
+                Hard Disk min/max: 8x 2TB 2.5" 7.2K SAS 12Gb Hot Swap 512n HDD
+                Optical Drive: External USB DVD RW Optical Disk Drive
+                RAID Controller: 930-8i 2GB Flash Pcle 12GB Adapter supports (RAID 0, 1, 10, 5, 50)
+                Network: 10GB 2 port Base T LOM
+                Graphics: 16MB memory integrated into the Xclarity Controller
+                Maximum resolution is 1920x1200 at 60Hz with 32bits per pixel
+                Power Supply: 2x 750W HS PSU, up to two redundant hot swap PSU;
+                Rackmount Kit: Tool-less Slide Rail
+                Operating System not included',
+                'property_no' => 'Q90900073AA',
+                'serial_no' => 'J301Y18P',
+                'unit_of_measure' => 'unit',
+                'value' => '747700',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Roi Vinson Abrazaldo',
+                'status' => 'available',
+                'date_acquired' => '2020-12-28',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 20,
+                'equipment_name' => 'Server: LENOVO',
+                'Description' => 'Server: LENOVO
+                Model: 7X06
+                SN: J301B1V0
+                Processor: 5215 Gold 10C 85W 2.5GHz
+                Form Factor: 2U rack-mount
+                Chipset: C624
+                Memory min/max: 1 x 16GB (x8) 2933MHz. Up to 24DIMM sockets
+                Hard Disk min/max: 8x 2TB 2.5" 7.2K SAS 12Gb Hot Swap 512n HDD
+                Optical Drive: External USB DVD RW Optical Disk Drive
+                RAID Controller: 930-8i 2GB Flash Pcle 12GB Adapter supports (RAID 0, 1, 10, 5, 50)
+                Network: 10GB 2 port Base T LOM
+                Graphics: 16MB memory integrated into the Xclarity Controller
+                Maximum resolution is 1920x1200 at 60Hz with 32bits per pixel
+                Power Supply: 2x 750W HS PSU, up to two redundant hot swap PSU;
+                Rackmount Kit: Tool-less Slide Rail
+                Operating System not included',
+                'property_no' => 'Q90900074AA',
+                'serial_no' => 'J301B1V0',
+                'unit_of_measure' => 'unit',
+                'value' => '747700',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Roi Vinson Abrazaldo',
+                'status' => 'available',
+                'date_acquired' => '2020-12-28',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Server-IBM',
+                'Description' => 'Server-IBM, Sn: 7383C5A06DWCZK. 
+                System x3500 M4, Intel Xeon, 8GB memory, 3x IBM 300GB HDD, Server Raid M5110-512MB. 
+                Cache-Raid /1/5, up to 8 disk bays x 3.5". Hot swap SAS/SATA HDDs, 
+                4 Integrated Gigabit Ethernet 1000BASE-T ports (RJ-45), redundant hot swap 750W AC power supplies. 
+                System mangement: Predictive Failure Analysis. IBM Systems Director.',
+                'property_no' => 'SER0010947',
+                'serial_no' => '7383C5A06DWCZK',
+                'unit_of_measure' => 'unit',
+                'value' => '282000',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Roi Vinson Abrazaldo',
+                'status' => 'available',
+                'date_acquired' => '2015-05-18',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Computer Accessory',
+                'Description' => 'Uninterruptible Power Supply, 3000VA, 230V-APC, Sn: AS2020164419',
+                'property_no' => 'U90900032',
+                'serial_no' => 'AS2020164419',
+                'unit_of_measure' => 'unit',
+                'value' => '195470',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Roi Vinson Abrazaldo',
+                'status' => 'available',
+                'date_acquired' => '2020-12-28',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Computer Accessory',
+                'Description' => 'Uninterruptible Power Supply, 3000VA, 230V-APC, Sn: AS2026262251',
+                'property_no' => 'U90900034',
+                'serial_no' => 'AS2026262251',
+                'unit_of_measure' => 'unit',
+                'value' => '195470',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Roi Vinson Abrazaldo',
+                'status' => 'available',
+                'date_acquired' => '2020-12-28',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Network Switch-LINKSYS',
+                'Description' => 'Network Switch-LINKSYS, Model: LGS124PV2, Sn: 13X20F1B900179. 
+                24-port Business Gigabit PoE+Switch (LGS124P)',
+                'property_no' => 'V1100057',
+                'serial_no' => '13X20F1B900179',
+                'unit_of_measure' => 'unit',
+                'value' => '67950',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Roi Vinson Abrazaldo',
+                'status' => 'available',
+                'date_acquired' => '2020-12-28',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 21,
+                'equipment_name' => 'Computer Server-IBM',
+                'Description' => 'Computer Server-IBM, Sn: O6KKZA5-2582B2A06KKZA5. 
+                Intel Xeon CPU E3 1200 3.10 Ghz, 8MB L3 cache RAM 4GB 1600 Mhz memory. 
+                4PCIe slots 3.5" simple swap SATAII. Integrated dual gigabit ethernet integrated video. 
+                Controller 300W power supply. IMM2 system management. Including installation.',
+                'property_no' => 'COM0004957',
+                'serial_no' => 'O6KKZA5-2582B2A06KKZA5',
+                'unit_of_measure' => 'unit',
+                'value' => '148683.85',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Roi Vinson Abrazaldo',
+                'status' => 'available',
+                'date_acquired' => '2013-04-12',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 20,
+                'equipment_name' => 'Data Base Server Unit-IBM 7328C2A',
+                'Description' => 'Data Base Server Unit-IBM 7328C2A, Sn: 0654568. 2.4Ghz Processor, 
+                8Gb Memory, Raid 0.1 Etherner Ports, DVD-ROM drive. Note: MISO server.',
+                'property_no' => 'Q200019',
+                'serial_no' => '0654568',
+                'unit_of_measure' => 'unit',
+                'value' => '115140',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Roi Vinson Abrazaldo',
+                'status' => 'available',
+                'date_acquired' => '2011-09-20',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'Server-LENOVO',
+                'Description' => 'Server-LENOVO, SN: J301Y18X.
+                Processor: 5215 Gold 10C 85W 2.5GHz; Form Factor 2U
+                rack-mount; Chipset: C624; Memory min/max: 1 x 16GB (x8)
+                2933MHz Up to 24 DIMM sockets: Hard Disk min/max
+                2x2TB 2.5" 7.2K SAS 12GB Hot Swap 512n HDD; Optical
+                Drive: External USB DVD RW Optical Disk Drive; Raid
+                Controller: 930-8i 2GB Flash Pcle 12GB Adapter Supports
+                Raid 0,1, 10, 50; Network: 10GB 2Poert Base T LOM;
+                Graphics: 16MB memory integrated into Xclarity Controller
+                Maximum resolution is 1920x1200 at 60Hz with 32bits per
+                pixel; Power supply: 2x 750W HS PSU,up to two rebundant
+                hot swap PSU; Rackmount: Tool-less Slide Rail; Operating
+                System Not included',
+                'property_no' => 'SER0028658',
+                'serial_no' => 'J301Y18X',
+                'unit_of_measure' => 'unit',
+                'value' => '858500',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Roi Vinson Abrazaldo',
+                'status' => 'available',
+                'date_acquired' => '2021-11-03',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 1,
+                'equipment_name' => 'Laptop-ACER',
+                'Description' => 'Laptop-ACER. Intel core i5-4210u up tp 2.70Ghz/4GB/1TB. 
+                14inches HD, 8x DVD Super multi double layer drive. Windows 8.1, Serial Nos.: NXMN3SP00142402FEF7600',
+                'property_no' => 'LAP0010900',
+                'serial_no' => 'NXMN3SP00142402FEF7600',
+                'unit_of_measure' => 'unit',
+                'value' => '55665',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rommel Talubo',
+                'status' => 'available',
+                'date_acquired' => '2015-05-18',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 7,
+                'equipment_name' => 'NIKON D5300',
+                'Description' => 'Photobooth box. Camera Body Only NIKON D5300 Sn: 7840834, 7841034; Lens Sn: 23818061, 23818059.',
+                'property_no' => 'PHO0012753A-53B',
+                'serial_no' => 'NIKON D5300 Sn: 7840834, 7841034; Lens Sn: 23818061, 23818059.',
+                'unit_of_measure' => 'set',
+                'value' => '127900',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rommel Talubo',
+                'status' => 'available',
+                'date_acquired' => '2016-01-14',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 2,
+                'equipment_name' => '2.5Hp window type aircondition-CARRIER',
+                'Description' => '2.5Hp window type aircondition-CARRIER, Sn: 51PMX-RAC-CAR-24KEA N16PC-1220143',
+                'property_no' => 'F100225',
+                'serial_no' => '51PMX-RAC-CAR-24KEA N16PC-1220143',
+                'unit_of_measure' => 'unit',
+                'value' => '57300',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2016-12-01',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 16,
+                'equipment_name' => 'DESKTOP COMPUTER - ACER',
+                'Description' => 'DESKTOP COMPUTER - ACER
+                SN: (21)-DQBGFSP00615000CEF6B01
+                Model: ACER Aspire C27-1655
+                27 inch FHD/Core i7-1165G7/8GB DDR4/5GB SSD/GE Force MX330
+                2GB/Win 11 (27in FHD max resolution 1920x1080 LED Brightness (cd/m2(sad)200nits)
+                IPS/Intel Core i7-1165G7 Processor/8GB soDIMM DDR4/512GB M.2 2280 PCI-E SSD/NVIDIA
+                GeForce MX330 with 2GB of GDDR5/11Home',
+                'property_no' => 'COM0029621',
+                'serial_no' => '(21)-DQBGFSP00615000CEF6B01',
+                'unit_of_measure' => 'set',
+                'value' => '94999',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2022-05-20',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 16,
+                'equipment_name' => 'DESKTOP COMPUTER - ACER',
+                'Description' => 'DESKTOP COMPUTER - ACER
+                SN: (22)-DQBGFSP00615000CF06B01
+                Model: ACER Aspire C27-1655
+                27 inch FHD/Core i7-1165G7/8GB DDR4/5GB SSD/GE Force MX330
+                2GB/Win 11 (27in FHD max resolution 1920x1080 LED Brightness (cd/m2(sad)200nits)
+                IPS/Intel Core i7-1165G7 Processor/8GB soDIMM DDR4/512GB M.2 2280 PCI-E SSD/NVIDIA
+                GeForce MX330 with 2GB of GDDR5/11Home',
+                'property_no' => 'COM0029622',
+                'serial_no' => '(22)-DQBGFSP00615000CF06B01',
+                'unit_of_measure' => 'set',
+                'value' => '94999',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2022-05-20',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 16,
+                'equipment_name' => 'DESKTOP COMPUTER - ACER',
+                'Description' => 'DESKTOP COMPUTER - ACER
+                SN: (23)-DQBGFSP00615000CFF6B01
+                Model: ACER Aspire C27-1655
+                27 inch FHD/Core i7-1165G7/8GB DDR4/5GB SSD/GE Force MX330
+                2GB/Win 11 (27in FHD max resolution 1920x1080 LED Brightness (cd/m2(sad)200nits)
+                IPS/Intel Core i7-1165G7 Processor/8GB soDIMM DDR4/512GB M.2 2280 PCI-E SSD/NVIDIA
+                GeForce MX330 with 2GB of GDDR5/11Home',
+                'property_no' => 'COM0029623',
+                'serial_no' => '(23)-DQBGFSP00615000CFF6B01',
+                'unit_of_measure' => 'set',
+                'value' => '94999',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2022-05-20',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 16,
+                'equipment_name' => 'DESKTOP COMPUTER - ACER',
+                'Description' => 'DESKTOP COMPUTER - ACER
+                SN: (24)-DQBGFSP00615000CFB6B01
+                Model: ACER Aspire C27-1655
+                27 inch FHD/Core i7-1165G7/8GB DDR4/5GB SSD/GE Force MX330
+                2GB/Win 11 (27in FHD max resolution 1920x1080 LED Brightness (cd/m2(sad)200nits)
+                IPS/Intel Core i7-1165G7 Processor/8GB soDIMM DDR4/512GB M.2 2280 PCI-E SSD/NVIDIA
+                GeForce MX330 with 2GB of GDDR5/11Home',
+                'property_no' => 'COM0029624',
+                'serial_no' => '(24)-DQBGFSP00615000CFB6B01',
+                'unit_of_measure' => 'set',
+                'value' => '94999',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2022-05-20',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 16,
+                'equipment_name' => 'DESKTOP COMPUTER - ACER',
+                'Description' => 'DESKTOP COMPUTER - ACER
+                SN: (25)-DQBGFSP00615000CEA6B01
+                Model: ACER Aspire C27-1655
+                27 inch FHD/Core i7-1165G7/8GB DDR4/5GB SSD/GE Force MX330
+                2GB/Win 11 (27in FHD max resolution 1920x1080 LED Brightness (cd/m2(sad)200nits)
+                IPS/Intel Core i7-1165G7 Processor/8GB soDIMM DDR4/512GB M.2 2280 PCI-E SSD/NVIDIA
+                GeForce MX330 with 2GB of GDDR5/11Home',
+                'property_no' => 'COM0029625',
+                'serial_no' => '(25)-DQBGFSP00615000CEA6B01',
+                'unit_of_measure' => 'set',
+                'value' => '94999',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2022-05-20',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 16,
+                'equipment_name' => 'DESKTOP COMPUTER - ACER',
+                'Description' => 'DESKTOP COMPUTER - ACER
+                SN: (26)-DQBGFSP00615000CE96B01
+                Model: ACER Aspire C27-1655
+                27 inch FHD/Core i7-1165G7/8GB DDR4/5GB SSD/GE Force MX330
+                2GB/Win 11 (27in FHD max resolution 1920x1080 LED Brightness (cd/m2(sad)200nits)
+                IPS/Intel Core i7-1165G7 Processor/8GB soDIMM DDR4/512GB M.2 2280 PCI-E SSD/NVIDIA
+                GeForce MX330 with 2GB of GDDR5/11Home',
+                'property_no' => 'COM0029626',
+                'serial_no' => '(26)-DQBGFSP00615000CE96B01',
+                'unit_of_measure' => 'set',
+                'value' => '94999',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2022-05-20',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 16,
+                'equipment_name' => 'DESKTOP COMPUTER - ACER',
+                'Description' => 'DESKTOP COMPUTER - ACER
+                SN: (27)-DQBGFSP00615000D016B01
+                Model: ACER Aspire C27-1655
+                27 inch FHD/Core i7-1165G7/8GB DDR4/5GB SSD/GE Force MX330
+                2GB/Win 11 (27in FHD max resolution 1920x1080 LED Brightness (cd/m2(sad)200nits)
+                IPS/Intel Core i7-1165G7 Processor/8GB soDIMM DDR4/512GB M.2 2280 PCI-E SSD/NVIDIA
+                GeForce MX330 with 2GB of GDDR5/11Home',
+                'property_no' => 'COM0029627',
+                'serial_no' => '(27)-DQBGFSP00615000D016B01',
+                'unit_of_measure' => 'set',
+                'value' => '94999',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2022-05-20',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 16,
+                'equipment_name' => 'DESKTOP COMPUTER - ACER',
+                'Description' => 'DESKTOP COMPUTER - ACER
+                SN: (28)-DQBGFSP00615000D006B01
+                Model: ACER Aspire C27-1655
+                27 inch FHD/Core i7-1165G7/8GB DDR4/5GB SSD/GE Force MX330
+                2GB/Win 11 (27in FHD max resolution 1920x1080 LED Brightness (cd/m2(sad)200nits)
+                IPS/Intel Core i7-1165G7 Processor/8GB soDIMM DDR4/512GB M.2 2280 PCI-E SSD/NVIDIA
+                GeForce MX330 with 2GB of GDDR5/11Home',
+                'property_no' => 'COM0029628',
+                'serial_no' => '(28)-DQBGFSP00615000D006B01',
+                'unit_of_measure' => 'set',
+                'value' => '94999',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2022-05-20',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 16,
+                'equipment_name' => 'DESKTOP COMPUTER - ACER',
+                'Description' => 'DESKTOP COMPUTER - ACER
+                SN: (29)-DQBGFSP00615000CEB6B01
+                Model: ACER Aspire C27-1655
+                27 inch FHD/Core i7-1165G7/8GB DDR4/5GB SSD/GE Force MX330
+                2GB/Win 11 (27in FHD max resolution 1920x1080 LED Brightness (cd/m2(sad)200nits)
+                IPS/Intel Core i7-1165G7 Processor/8GB soDIMM DDR4/512GB M.2 2280 PCI-E SSD/NVIDIA
+                GeForce MX330 with 2GB of GDDR5/11Home',
+                'property_no' => 'COM0029629',
+                'serial_no' => '(29)-DQBGFSP00615000CEB6B01',
+                'unit_of_measure' => 'set',
+                'value' => '94999',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2022-05-20',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 16,
+                'equipment_name' => 'DESKTOP COMPUTER - ACER',
+                'Description' => 'DESKTOP COMPUTER - ACER
+                SN: (30)-DQBGFSP00615000CF16B01
+                Model: ACER Aspire C27-1655
+                27 inch FHD/Core i7-1165G7/8GB DDR4/5GB SSD/GE Force MX330
+                2GB/Win 11 (27in FHD max resolution 1920x1080 LED Brightness (cd/m2(sad)200nits)
+                IPS/Intel Core i7-1165G7 Processor/8GB soDIMM DDR4/512GB M.2 2280 PCI-E SSD/NVIDIA
+                GeForce MX330 with 2GB of GDDR5/11Home',
+                'property_no' => 'COM0029630',
+                'serial_no' => '(30)-DQBGFSP00615000CF16B01',
+                'unit_of_measure' => 'set',
+                'value' => '94999',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2022-05-20',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'UPS back-up Power-APC',
+                'Description' => 'UPS back-up Power-APC, Sn: 4B2010P01612. Power Saving Back UPS Pro 1500-230v',
+                'property_no' => 'UPS0024928',
+                'serial_no' => '4B2010P01612',
+                'unit_of_measure' => 'unit',
+                'value' => '56980',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2021-01-06',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'UPS back-up Power-APC',
+                'Description' => 'UPS back-up Power-APC, Sn: 4B2010P01514. Power Saving Back UPS Pro 1500-230v',
+                'property_no' => 'UPS0024929',
+                'serial_no' => '4B2010P01514',
+                'unit_of_measure' => 'unit',
+                'value' => '56980',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2021-01-06',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 9,
+                'equipment_name' => 'UPS back-up Power-APC',
+                'Description' => 'UPS back-up Power-APC, Sn: 4B2010P01502. Power Saving Back UPS Pro 1500-230v',
+                'property_no' => 'UPS0024930',
+                'serial_no' => '4B2010P01502',
+                'unit_of_measure' => 'unit',
+                'value' => '56980',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2021-01-06',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 22,
+                'equipment_name' => 'Video Mixing Server-DELL',
+                'Description' => 'Video Mixing Server-DELL, Sn: HZXS033. 
+                CPU: i7-9700 3.0GHz 12M Cache up to 4.70 GHz 16GB Memory DDR4 at 2666MHz HDD 256GB M2 Pcle SSD + 1TB SATA 7200 RPM HDD 3.5inch. 
+                Graphics: 6GB GDDR5. Wireless Killer 1650x802 11ax2x2 built on Intel WIFI. 6 chipset + Bluetooth 5.0',
+                'property_no' => 'VID0024922',
+                'serial_no' => 'HZXS033',
+                'unit_of_measure' => 'unit',
+                'value' => '169900',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2021-01-06',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 22,
+                'equipment_name' => 'Video Mixing Server-DELL',
+                'Description' => 'Video Mixing Server-DELL, Sn: HZSR033. 
+                CPU: i7-9700 3.0GHz 12M Cache up to 4.70 GHz 16GB Memory DDR4 at 2666MHz HDD 256GB M2 Pcle SSD + 1TB SATA 7200 RPM HDD 3.5inch. 
+                Graphics: 6GB GDDR5. Wireless Killer 1650x802 11ax2x2 built on Intel WIFI. 6 chipset + Bluetooth 5.0',
+                'property_no' => 'VID0024923',
+                'serial_no' => 'HZSR033',
+                'unit_of_measure' => 'unit',
+                'value' => '169900',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2021-01-06',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+
+            array(
+                'admin_id' => 1,
+                'category' => 22,
+                'equipment_name' => 'Video Mixing Server-DELL',
+                'Description' => 'Video Mixing Server-DELL, Sn: HZMW033. 
+                CPU: i7-9700 3.0GHz 12M Cache up to 4.70 GHz 16GB Memory DDR4 at 2666MHz HDD 256GB M2 Pcle SSD + 1TB SATA 7200 RPM HDD 3.5inch. 
+                Graphics: 6GB GDDR5. Wireless Killer 1650x802 11ax2x2 built on Intel WIFI. 6 chipset + Bluetooth 5.0',
+                'property_no' => 'VID0024924',
+                'serial_no' => 'HZMW033',
+                'unit_of_measure' => 'unit',
+                'value' => '169900',
+                'quantity' => 1,
+                'conditions' => 'Good',
+                'remarks' => 'Rowena Palacol',
+                'status' => 'available',
+                'date_acquired' => '2021-01-06',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
         );
         DB::table('equipment')->insert($equipment);
 

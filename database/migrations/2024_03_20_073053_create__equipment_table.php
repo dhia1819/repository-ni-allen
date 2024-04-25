@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('category');
             $table->text('Description', 8000);
             $table->string('property_no');
-            $table->string('serial_no')->unique();
+            $table->string('serial_no');
             $table->string('unit_of_measure');
             $table->string('value');
             $table->integer('quantity');

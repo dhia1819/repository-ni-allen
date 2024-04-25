@@ -116,6 +116,37 @@ class CategorySeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
            ),
+           array(
+            'category'=>'Tower Server',
+            'status'=>1,
+            'created_at' => now(),
+            'updated_at' => now(),
+           ),
+           array(
+            'category'=>'Database Server',
+            'status'=>1,
+            'created_at' => now(),
+            'updated_at' => now(),
+           ),
+           array(
+            'category'=>'Server',
+            'status'=>1,
+            'created_at' => now(),
+            'updated_at' => now(),
+           ),
+           array(
+            'category'=>'Computer Server',
+            'status'=>1,
+            'created_at' => now(),
+            'updated_at' => now(),
+           ),
+           array(
+            'category'=>'Video Mixing Server',
+            'status'=>1,
+            'created_at' => now(),
+            'updated_at' => now(),
+           ),   
+
         );
 
         DB::table('categories')->insert($category);

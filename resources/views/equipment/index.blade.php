@@ -112,7 +112,7 @@
                         <h6>Equipment Table</h6>
                     </div>
                     <div class="card-body">
-                        <table class="table align-items-center mb-0" id="tbl-equipment" style="width: 100%;">
+                        <table class="table align-items-center mb-0 responsive" id="tbl-equipment" style="width: 100%;">
                             <thead>
                                 <tr>
                                     
