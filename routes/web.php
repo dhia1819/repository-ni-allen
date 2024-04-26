@@ -74,6 +74,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/borrow/showhistory/{id}', [Controllers\HistoryController::class, 'showhistory'])->name('show.history');
     Route::get('/dowload-history', [Controllers\HistoryController::class, 'downloadHistory'])->name('download.history');
     Route::get('/fetch-transactions', [Controllers\HistoryController::class, 'fetchTransactions'])->name('fetchTransactions');
+    Route::post('/updatefile/{id}', [Controllers\HistoryController::class, 'updatefile'])->name('ud.file');
+
 
     //Office Module
 	Route::get('/office', [Controllers\OfficeController::class, 'index'])->name('office');

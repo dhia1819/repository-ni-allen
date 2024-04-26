@@ -45,7 +45,6 @@ class HistoryController extends Controller
         return view('equipment.history', compact('page', 'borrowedData', 'categories', 'offices'));       
     }
 
-
     
 
     public function showhistory(string $id)
@@ -64,7 +63,13 @@ class HistoryController extends Controller
         ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
         ->leftJoin('employees as release_employees', 'transactions.release_by', '=', 'release_employees.id')
         ->leftJoin('employees as received_employees', 'transactions.received_by', '=', 'received_employees.id')
-        ->select('transactions.*', 'equipment.*', 'offices.office as office_name', 'release_employees.fullName as release_by', 'received_employees.fullName as received_by')
+        ->select('transactions.*', 
+                    'equipment.equipment_name',
+                    'equipment.property_no',
+                    'equipment.serial_no', 
+                    'offices.office as office_name', 
+                    'release_employees.fullName as release_by', 
+                    'received_employees.fullName as received_by')
         ->where('transactions.id', $id)
         ->where('transactions.status', '=', 'Return')
         ->get();
@@ -164,4 +169,31 @@ class HistoryController extends Controller
     }
 
 
+    public function updatefile(Request $request, string $id){
+
+        $transaction = Transaction::findOrFail($id);
+    
+        $validatedData = $request->validate([
+            'upload_file' => 'nullable|image'
+        ]);
+    
+        // Handle file upload
+        if ($request->hasFile('upload_file')) {
+            $upload_file = $request->file('upload_file');
+            
+            // Get the original filename
+            $fileName = $upload_file->getClientOriginalName();
+            
+            // Move the uploaded file to the uploads directory with the original filename
+            $upload_file->move(public_path('uploads'), $fileName);
+    
+            // Set file name to the validated data
+            $validatedData['upload_file'] = $fileName;
+        }
+    
+        $transaction->update($validatedData);
+        
+        return redirect()->route('show.history', ['id' => $transaction->id])->with('success', 'File updated successfully.');
+    }
+    
 }
