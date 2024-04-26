@@ -10,6 +10,7 @@ use App\Models\Employee;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use App\Exports\EquipmentsExport;
+use App\Models\Equipment_Archive;
 use Maatwebsite\Excel\Excel;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Redirect;
@@ -365,4 +366,15 @@ return redirect()->route('equipment.show', ['id' => $equipment->id])->with('succ
         return $this->excel->download(new EquipmentsExport($equipments), $fileName);
     }
 
+    public function archive($id)
+    {
+        $equipment = Equipment::findOrFail($id);
+
+        Equipment_Archive::create($equipment->toArray());
+
+        // Delete the entry from the equipment table
+        $equipment->delete();
+
+        return redirect()->back()->with('success', 'Equipment archived successfully.');
+    }
 }

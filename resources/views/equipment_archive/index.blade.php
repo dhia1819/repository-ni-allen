@@ -37,9 +37,6 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-4">
-                    <a href="{{ route('equipment.create') }}" class="btn bg-gradient-info trigger-modal btn-md">
-                        <i class="fa fa-plus"></i> Add Equipment
-                    </a>
                     <button id="reset_filters" class="btn bg-gradient-danger" style="display:none;">
                         <i class="fa fa-undo"></i> Clear Filters
                     </button>
@@ -117,7 +114,6 @@
                                 <tr>
                                     
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Article Name</th>
-
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Category</th>
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Property Number</th> 
                                     <th class="text-uppercase text-dark text-xxs font-weight-bolder ps-2">Serial Number</th>
@@ -147,25 +143,10 @@
                                     <td style="vertical-align: middle;">{{ ucfirst($item->status) }}</td>
                                     <td>
                                         <div class="text-center">                                                              
-                                            <a href="{{ route('equipment.show', ['id' => $item->id]) }}" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center align-items-center justify-content-center">
+                                            <a href="{{ route('archive.view', ['id' => $item->id]) }}" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center align-items-center justify-content-center">
                                                 <i class="fa fa-eye 2x" aria-hidden="true"></i>
                                             </a>
-                                            @if($item->status !== 'Borrowed' && !in_array($item->conditions, ['Damaged', 'Obsolete', 'Unusable', 'Under Maintenance']))
-                                                <a href="{{ route('equipment.borrow', ['id' => $item->id]) }}" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-warning text-center align-items-center justify-content-center">
-                                                    <i class="fas fa-hand-holding"></i>
-                                                </a>
-                                            @else
-                                                <a href="#" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-secondary text-center align-items-center justify-content-center">
-                                                    <i class="fas fa-hand-holding"></i>
-                                                </a>
-                                            @endif
-                                            <form action="{{ route('archive', ['id' => $item->id]) }}" method="post">
-                                                @csrf
-                                                @method('POST')
-                                                <button type="submit" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-danger text-center align-items-center justify-content-center">
-                                                    <i class="fas fa-archive"></i>
-                                                </button>
-                                            </form>
+                                            
                                         </div>
                                     </td>
                                     
