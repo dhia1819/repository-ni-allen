@@ -251,7 +251,7 @@ public function condition(Request $request, $id)
             'category' => 'required|string',
             'Description' => 'required|string',
             'property_no' => 'required|string',
-            'serial_no' => 'required|string',
+            'serial_no' => 'required|string|unique:equipment,serial_no',
             'unit_of_measure' => 'required|string',
             'value' => 'required|string',
             'quantity' => 'required|integer',
