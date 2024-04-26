@@ -43,11 +43,11 @@ $(function() {
             // Filter by status in the seventh column
     
             if (status === 'available') {
-                table.columns(6).search('^Available$', true, false).draw(); // Filter only "available" items, case-sensitive
+                table.columns(5).search('^Available$', true, false).draw(); // Filter only "available" items, case-sensitive
             } else if (status === 'unavailable') {
-                table.columns(6).search('^Unavailable$', true, false).draw(); // Filter only "unavailable" items, case-sensitive
+                table.columns(5).search('^Unavailable$', true, false).draw(); // Filter only "unavailable" items, case-sensitive
             } else {
-                table.columns(6).search(status).draw(); // Filter by status for all items
+                table.columns(5).search(status).draw(); // Filter by status for all items
             }
             // Show the clear filters button when any filter is selected
             $('#reset_filters').show();

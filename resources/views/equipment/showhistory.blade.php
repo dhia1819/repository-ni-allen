@@ -116,8 +116,8 @@
                     {{-- <label class="text-info"></label> --}}
                     @foreach ($transactions as $transaction)
                         @if ($transaction->upload_file)
-                            @if (Str::endsWith($transaction->upload_file, ['.jpg', '.jpeg', '.png', '.gif', 'jfif']))
-                                <img src="{{ asset('uploads/' . $transaction->upload_file) }}" alt="Image Preview" style="max-width: 100%">
+                        @if (Str::endsWith($transaction->upload_file, ['.jpg', '.jpeg', '.png', '.gif', 'jfif', '.JPG', '.JPEG', '.PNG', '.GIF', '.JFIF']))
+                            <img src="{{ asset('uploads/' . $transaction->upload_file) }}" alt="Image Preview" style="max-width: 100%">
                                 <a href="{{ asset('uploads/' . $transaction->upload_file) }}" download="image.jpg" class="btn bg-gradient-success btn-submit float-end mt-2" role="button"><i class="fa fa-download"></i></a>
                             @elseif (Str::endsWith($transaction->upload_file, '.pdf'))
                                 <embed src="{{ asset('uploads/' . $transaction->upload_file) }}" type="application/pdf" width="100%" height="600px">
