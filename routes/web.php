@@ -68,6 +68,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/borrow/return', [Controllers\BorrowController::class, 'return'])->name('return');
     Route::get('/borrow/return/{id}', [Controllers\BorrowController::class, 'showreturn'])->name('borrow.return');
     Route::post('/borrow/{id}/phase', [Controllers\BorrowController::class, 'phase'])->name('borrow.phase');
+    Route::post('/updatefile-borrowed/{id}', [Controllers\BorrowController::class, 'updatefile_borrowed'])->name('file.borrowed');
+
 
     //Borrow History Module
     Route::get('/borrow/history', [Controllers\HistoryController::class, 'history'])->name('history');

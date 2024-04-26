@@ -73,13 +73,47 @@ class BorrowController extends Controller
         $transactions = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
             ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
             ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
-            ->select('transactions.*', 'equipment.*', 'offices.office as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
+            ->select('transactions.*', 
+            'equipment.equipment_name',
+            'equipment.serial_no',
+            'equipment.property_no', 
+            'offices.office as office_name',
+            'employees.fullName as release_by', 
+            'transactions.id as transaction_id')
             ->where('transactions.id', $id)
         
             ->get();
             
 
         return view('equipment.showreturn', compact('transactions', 'page', 'offices', 'employees'));
+    }
+
+    public function updatefile_borrowed(Request $request, string $id){
+        
+        $transaction = Transaction::findOrFail($id);
+    
+        $validatedData = $request->validate([
+            'upload_file' => 'nullable|file|mimes:jpeg,png,pdf'
+        ]);
+    
+        // Handle file upload
+        if ($request->hasFile('upload_file')) {
+            $upload_file = $request->file('upload_file');
+            
+            // Get the original filename
+            $fileName = $upload_file->getClientOriginalName();
+            
+            // Move the uploaded file to the uploads directory with the original filename
+            $upload_file->move(public_path('uploads'), $fileName);
+    
+            // Set file name to the validated data
+            $validatedData['upload_file'] = $fileName;
+        }
+    
+        $transaction->update($validatedData);
+        
+        return redirect()->route('borrow.return', ['id' => $transaction->id])->with('success', 'File updated successfully.');
+    
     }
 
     public function phase(Request $request, string $id)

@@ -174,7 +174,7 @@ class HistoryController extends Controller
         $transaction = Transaction::findOrFail($id);
     
         $validatedData = $request->validate([
-            'upload_file' => 'nullable|image'
+            'upload_file' => 'nullable|file|mimes:jpeg,png,pdf'
         ]);
     
         // Handle file upload

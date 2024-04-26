@@ -95,7 +95,7 @@
                             <input type="text" class="form-control" id="remarks" name="remarks">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="image">Image <span class="text-info">(Optional)</span></label>
+                            <label class="form-label" for="image">Image <span class="text-info">(Optional | max: 40MB)</span></label>
                             <input type="file" class="form-control" id="image" name="image">
                         </div>
                     </div>

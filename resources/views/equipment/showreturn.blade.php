@@ -116,22 +116,48 @@
         <div class="card">
             <div class="card-body">
                 <div class="col-md-12 mt-3">
-                    <h5 class="text-info text-sm">Uploaded File Preview</h5>
                     {{-- <label class="text-info"></label> --}}
                     @foreach ($transactions as $transaction)
                         @if ($transaction->upload_file)
-                            @if (Str::endsWith($transaction->upload_file, ['.jpg', '.jpeg', '.png', '.gif', 'jfif', '.JPG', '.JPEG', '.PNG', '.GIF', '.JFIF']))
-                                <img src="{{ asset('uploads/' . $transaction->upload_file) }}" alt="Image Preview" style="max-width: 100%">
-                                <a href="{{ asset('uploads/' . $transaction->upload_file) }}" download="image.jpg" class="btn bg-gradient-success btn-submit float-end mt-2" role="button"><i class="fa fa-download"></i></a>
-                            @elseif (Str::endsWith($transaction->upload_file, ['.pdf', '.PDF']))
+                        @if (Str::endsWith($transaction->upload_file, ['.jpg', '.jpeg', '.png', '.gif', 'jfif', '.JPG', '.JPEG', '.PNG', '.GIF', '.JFIF']))
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h4 class="text-info text-sm">Uploaded File Preview</h4>
+                                </div>
+                                <div class="col-md-3">
+                                    <a href="{{ asset('uploads/' . $transaction->upload_file) }}" download="image.jpg" class="btn btn-sm bg-gradient-success btn-submit mt-2 float-end" role="button"><i class="fa fa-download"></i></a>    
+                                </div>
+                            </div>    
+                            <img src="{{ asset('uploads/' . $transaction->upload_file) }}" alt="Image Preview" style="max-width: 100%">
+                            @elseif (Str::endsWith($transaction->upload_file, '.pdf'))
+                                <h4 class="text-info text-sm">Uploaded File Preview</h4>
                                 <embed src="{{ asset('uploads/' . $transaction->upload_file) }}" type="application/pdf" width="100%" height="600px">
                              
                             @endif
                         @else
+                            <h4 class="text-info text-sm">Uploaded File Preview</h4>
                             <p>No file uploaded.</p>
                         @endif
-                    @endforeach
+                    
                 </div>
+                <div class="row mt-2">
+                    <form method="POST" action="{{route('file.borrowed', ['id' => $transaction->id])}}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-10">
+                                <label class="form-label" for="upload_file">Update file</label>
+                                <input type="file" class="form-control" id="upload_file" name="upload_file" accept="image/jpeg, image/png, application/pdf">
+                                <p style="font-size: 0.75rem" class="text-muted">Note: Upload only <strong class="text-info">ONE (1)</strong> file | <strong class="text-info">(max: 40MB)</strong></p>
+                            </div>
+                            <div class="col-md-1 float-end mx-0 px-0 mr-2">
+                                <br>
+                                <button type="submit" class="btn bg-gradient-success btn-submit mt-1 ">
+                                    <i class="fa fa-upload"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                @endforeach
             </div>
         </div>
     </div>

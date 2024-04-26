@@ -125,6 +125,7 @@
                             </div>    
                             <img src="{{ asset('uploads/' . $transaction->upload_file) }}" alt="Image Preview" style="max-width: 100%">
                             @elseif (Str::endsWith($transaction->upload_file, '.pdf'))
+                                <h4 class="text-info text-sm">Uploaded File Preview</h4>
                                 <embed src="{{ asset('uploads/' . $transaction->upload_file) }}" type="application/pdf" width="100%" height="600px">
                              
                             @endif
@@ -141,8 +142,7 @@
                             <div class="col-md-10">
                                 <label class="form-label" for="upload_file">Update file</label>
                                 <input type="file" class="form-control" id="upload_file" name="upload_file" accept="image/jpeg, image/png, application/pdf">
-                                <p style="font-size: 0.75rem" class="text-muted">Note: Upload only <strong>ONE (1)</strong> file</p>
-                            </div>
+                                <p style="font-size: 0.75rem" class="text-muted">Note: Upload only <strong class="text-info">ONE (1)</strong> file | <strong class="text-info">(max: 40MB)</strong></p>                            </div>
                             <div class="col-md-1 float-end mx-0 px-0 mr-2">
                                 <br>
                                 <button type="submit" class="btn bg-gradient-success btn-submit mt-1 ">
