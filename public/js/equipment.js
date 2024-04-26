@@ -38,8 +38,8 @@ $(function() {
             
     
             // Apply filters using DataTables API
-            table.columns(2).search(category).draw(); // Filter by category in the third column
-            table.columns(5).search(condition).draw(); // Filter by condition in the sixth column
+            table.columns(1).search(category).draw(); // Filter by category in the third column
+            table.columns(4).search(condition).draw(); // Filter by condition in the sixth column
             // Filter by status in the seventh column
     
             if (status === 'available') {

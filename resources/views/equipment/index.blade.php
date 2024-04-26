@@ -112,7 +112,7 @@
                         <h6>Equipment Table</h6>
                     </div>
                     <div class="card-body">
-                        <table class="table align-items-center mb-0 responsive" id="tbl-equipment" style="width: 100%;">
+                        <table class="table align-items-center mb-0 " id="tbl-equipment" style="width: 100%; overflow-x:auto">
                             <thead>
                                 <tr>
                                     
@@ -138,11 +138,11 @@
                                     @else
                                         <td>No Image</td>
                                     @endif --}}
-                                    <td style="vertical-align: middle;">{{ $item->equipment_name }}</td>
+                                    <td style="vertical-align: middle; white-space: normal;">{{ $item->equipment_name }}</td>
 
                                     <td style="vertical-align: middle;">{{ $item->category_name }}</td>
                                     <td style="vertical-align: middle;">{{ $item->property_no }}</td>
-                                    <td style="vertical-align: middle;">{{ $item->serial_no }}</td>
+                                    <td style="vertical-align: middle; white-space: normal;">{{ $item->serial_no }}</td>
                                     {{-- <td style="vertical-align: middle;">Php.{{ $item->value }}</td>
                                     <td style="vertical-align: middle;">{{ $item->quantity }}</td>
                                     <td style="vertical-align: middle;">{{ $item->remarks }}</td>
