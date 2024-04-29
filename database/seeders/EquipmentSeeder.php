@@ -794,7 +794,7 @@ class EquipmentSeeder extends Seeder
                 'conditions' => 'Good',
                 'remarks' => 'Audie Cada',
                 'status' => 'available',
-                'date_acquired' => '2024-15-01',
+                'date_acquired' => '2024-01-15',
                 'created_at' => now(),
                 'updated_at' => now(),
             ),

@@ -31,6 +31,8 @@ class EquipmentController extends Controller
         $equipment = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
             ->orderBy('equipment.created_at', 'ASC')
             ->select('equipment.*', 'categories.category as category_name')
+            ->where('equipment.status', '=', 'available')
+            ->orWhere('equipment.status', '=', 'Borrowed')
             ->get();
         
         return view('equipment.index', compact('page', 'equipment','categories'));
@@ -316,7 +318,9 @@ return redirect()->route('equipment.show', ['id' => $equipment->id])->with('succ
 
         // Get equipments data from the database
         $query = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
-                        ->select('equipment.*', 'categories.category as category');
+            ->select('equipment.*', 'categories.category as category')
+            ->where('equipment.status', '!=', 'Archived');
+
 
         if (!empty($category_filter) && !empty($condition_filter) && !empty($status_filter)) {
             // Code for when all filters are not empty
@@ -367,14 +371,15 @@ return redirect()->route('equipment.show', ['id' => $equipment->id])->with('succ
     }
 
     public function archive($id)
-    {
-        $equipment = Equipment::findOrFail($id);
+{
+    // Find the equipment record by ID
+    $equipment = Equipment::findOrFail($id);
 
-        Equipment_Archive::create($equipment->toArray());
+    $equipment->status = 'archived';
+    $equipment->conditions = 'Condemned';
+    $equipment->save();
 
-        // Delete the entry from the equipment table
-        $equipment->delete();
+    return redirect('/equipment-archive')->with('success', 'Equipment archived successfully.');
+}
 
-        return redirect()->back()->with('success', 'Equipment archived successfully.');
-    }
 }

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ArchiveExport;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Models\Equipment_Archive;
+use App\Models\Equipment;
+use Illuminate\Support\Facades\Redirect;
+use Maatwebsite\Excel\Excel;
 
 class EquipmentArchiveController extends Controller
 {
@@ -18,9 +21,10 @@ class EquipmentArchiveController extends Controller
             'crumb' =>  array('Equipment Archive' => '/equipment-archive')
         ];
 
-        $equipment=Equipment_Archive::leftJoin('categories', 'equipment__archives.category', '=', 'categories.id')
-        ->orderBy('equipment__archives.created_at', 'ASC')
-        ->select('equipment__archives.*', 'categories.category as category_name')
+        $equipment=Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
+        ->orderBy('equipment.created_at', 'ASC')
+        ->select('equipment.*', 'categories.category as category_name')
+        ->where('equipment.status', '=', 'archived')
         ->get();
         
         return view('equipment_archive.index', compact('page', 'equipment','categories'));
@@ -37,11 +41,52 @@ class EquipmentArchiveController extends Controller
 
         $categories = Category::all();
 
-        $equipment = Equipment_Archive::leftJoin('categories', 'equipment__archives.category', '=', 'categories.id')
-        ->where('equipment__archives.id', $id) 
-        ->select('equipment__archives.*', 'categories.category as category_name')
+        $equipment = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
+        ->where('equipment.id', $id) 
+        ->select('equipment.*', 'categories.category as category_name')
         ->firstOrFail();
     
         return view('equipment_archive.details', compact('equipment', 'page', 'categories'));
+    }
+
+    public function restore(string $id){
+        // Find the equipment record by ID
+        $equipment = Equipment::findOrFail($id);
+
+        $equipment->status = 'available';
+        $equipment->conditions = 'Good';
+        $equipment->save();
+
+        return redirect()->back()->with('success', 'Equipment Restored successfully.');
+    }
+
+    protected $excel;
+
+    public function __construct(Excel $excel)
+    {
+        $this->excel = $excel;
+    }
+    public function downloadArchive(Request $request){
+        $category_filter = $request->input('category_filter');
+
+        $query = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
+            ->select('equipment.*', 'categories.category as category')
+            ->where('equipment.status', '=', 'archived');
+
+        if(!empty($category_filter)){
+            $query->where('categories.category', '=', $category_filter);
+            $fileName = 'Condemned_Equipments_'.$category_filter.'.xlsx';
+        }
+
+        $fileName = 'Archived_Equipment.xlsx';
+        $archive = $query->get();
+
+      
+        if ($archive->isEmpty()) {
+            return Redirect::back()->withErrors('No equipments found with the specified filters.');
+        }
+        
+        // Use the Excel facade to download the Excel file
+        return $this->excel->download(new ArchiveExport($archive), $fileName);
     }
 }

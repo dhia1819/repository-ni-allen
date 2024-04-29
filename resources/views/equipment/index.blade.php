@@ -52,13 +52,7 @@
                             <i class="fa fa-download mx-1"> </i>
                         </button>
                 </div>
-                
-                
             </div>
-            {{-- <a href="{{route('download.equipment')}}" class="btn bg-gradient-success float-end">
-                <i class="fas fa-download mx-1"></i> 
-            </a> --}}
-            
             
             @include('layouts.message')
         </div>
@@ -146,26 +140,30 @@
                                     <td style="vertical-align: middle;">{{ $item->conditions }}</td>
                                     <td style="vertical-align: middle;">{{ ucfirst($item->status) }}</td>
                                     <td>
-                                        <div class="text-center">                                                              
-                                            <a href="{{ route('equipment.show', ['id' => $item->id]) }}" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center align-items-center justify-content-center">
-                                                <i class="fa fa-eye 2x" aria-hidden="true"></i>
-                                            </a>
-                                            @if($item->status !== 'Borrowed' && !in_array($item->conditions, ['Damaged', 'Obsolete', 'Unusable', 'Under Maintenance']))
+                                        <div class="text-center row">
+                                            <div class="col-md-3">
+                                                <a href="{{ route('equipment.show', ['id' => $item->id]) }}" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center align-items-center justify-content-center">
+                                                    <i class="fa fa-eye 2x" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3">
+                                                @if($item->status !== 'Borrowed' && !in_array($item->conditions, ['Damaged', 'Obsolete', 'Unusable', 'Under Maintenance']))
                                                 <a href="{{ route('equipment.borrow', ['id' => $item->id]) }}" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-warning text-center align-items-center justify-content-center">
                                                     <i class="fas fa-hand-holding"></i>
                                                 </a>
-                                            @else
-                                                <a href="#" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-secondary text-center align-items-center justify-content-center">
-                                                    <i class="fas fa-hand-holding"></i>
-                                                </a>
-                                            @endif
-                                            <form action="{{ route('archive', ['id' => $item->id]) }}" method="post">
-                                                @csrf
-                                                @method('POST')
-                                                <button type="submit" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-danger text-center align-items-center justify-content-center">
-                                                    <i class="fas fa-archive"></i>
-                                                </button>
-                                            </form>
+                                                @else
+                                                    <a href="#" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-secondary text-center align-items-center justify-content-center">
+                                                        <i class="fas fa-hand-holding"></i>
+                                                    </a>
+                                                @endif</div> 
+                                            <div class="col-md-3">
+                                                <form action="{{ route('archive', ['id' => $item->id]) }}" method="post">
+                                                    @csrf
+                                                    @method('POST')
+                                                    <button type="submit" class="border-0 icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-danger text-center align-items-center justify-content-center">
+                                                        <i class="fas fa-archive"></i>
+                                                    </button>
+                                                </form></div>  
                                         </div>
                                     </td>
                                     

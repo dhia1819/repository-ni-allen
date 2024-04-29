@@ -67,6 +67,8 @@ Route::middleware(['auth'])->group(function () {
     //Archive module
     Route::get('/equipment-archive', [Controllers\EquipmentArchiveController::class, 'index'])->name('archive.index');
     Route::get('/equipment-archive-view/{id}', [Controllers\EquipmentArchiveController::class, 'view'])->name('archive.view');
+    Route::post('/restore-equipment/{id}', [Controllers\EquipmentArchiveController::class, 'restore'])->name('restore');
+    Route::get('/download-archive', [Controllers\EquipmentArchiveController::class, 'downloadArchive'])->name('dl.archive');
 
     //Borrow Module
     Route::get('/download-borrowed', [Controllers\BorrowController::class, 'downloadBorrowed'])->name('download.borrowed');
