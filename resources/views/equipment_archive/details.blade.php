@@ -17,7 +17,7 @@
 
 <div class="row mt-2">
     <div class="col-md-12">
-        <a href="{{ route('equipment.back') }}" class="btn bg-gradient-danger trigger-modal btn-md">
+        <a href="{{ route('archive.index') }}" class="btn bg-gradient-danger trigger-modal btn-md">
             <i class="fa fa-arrow-left"></i> Back
         </a>
         {{-- <a href="{{ route('equipment.edit', ['id' => $equipment->id]) }}" class="btn bg-gradient-success trigger-modal btn-md">

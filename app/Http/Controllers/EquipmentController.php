@@ -254,7 +254,7 @@ public function condition(Request $request, $id)
             'category' => 'required|string',
             'Description' => 'required|string',
             'property_no' => 'required|string',
-            'serial_no' => 'required|string|unique:equipment,serial_no',
+            'serial_no' => 'required|string|unique:equipment,serial_no,'.$equipment->id,
             'unit_of_measure' => 'required|string',
             'value' => 'required|string',
             'quantity' => 'required|integer',
@@ -263,6 +263,7 @@ public function condition(Request $request, $id)
             'date_acquired' => 'nullable|date',
             'conditions' => 'required|string',
         ]);
+        
     
         // Set admin_id to the authenticated user's ID
         $validatedData['admin_id'] = Auth::id();
@@ -290,10 +291,10 @@ public function condition(Request $request, $id)
         }
     
         // Update the equipment record with the validated data
-$equipment->update($validatedData);
+        $equipment->update($validatedData);
 
-// Redirect to the show route for the updated equipment
-return redirect()->route('equipment.show', ['id' => $equipment->id])->with('success', 'Equipment updated successfully.');
+        // Redirect to the show route for the updated equipment
+        return redirect()->route('equipment.show', ['id' => $equipment->id])->with('success', 'Equipment updated successfully.');
     }
     
     /**
