@@ -32,6 +32,7 @@ class EquipmentController extends Controller
             ->orderBy('equipment.created_at', 'ASC')
             ->select('equipment.*', 'categories.category as category_name')
             ->where('equipment.status', '=', 'available')
+            ->orWhere('equipment.status', '=', 'unavailable')
             ->orWhere('equipment.status', '=', 'Borrowed')
             ->get();
         
