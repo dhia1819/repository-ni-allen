@@ -1502,26 +1502,6 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER',
-                'category' => 1 ,
-                'Description' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER
-                Core i5-1035G1, 4GB, 512GB SSD
-                SN: NXHS7SP0031471AB143400',
-                'property_no' => 'LAP0029050',
-                'serial_no' => 'NXHS7SP0031471AB143400',
-                'unit_of_measure' => 'unit',
-                'value' => '58499.85',
-                'quantity' => 1,
-                'conditions' => 'Good',
-                'remarks' => 'John Derel Tuazon',
-                'status' => 'available',
-                'date_acquired' => '2022-02-09',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ),
-
-            array(
-                'admin_id' => 1,
                 'category' => 1,
                 'equipment_name' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER',
                 'Description' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER
