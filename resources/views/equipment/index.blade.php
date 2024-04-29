@@ -155,7 +155,8 @@
                                                     <a href="#" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-secondary text-center align-items-center justify-content-center">
                                                         <i class="fas fa-hand-holding"></i>
                                                     </a>
-                                                @endif</div> 
+                                                @endif
+                                            </div> 
                                             <div class="col-md-3">
                                                 <form action="{{ route('archive', ['id' => $item->id]) }}" method="post">
                                                     @csrf
@@ -163,7 +164,8 @@
                                                     <button type="submit" class="border-0 icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-danger text-center align-items-center justify-content-center">
                                                         <i class="fas fa-archive"></i>
                                                     </button>
-                                                </form></div>  
+                                                </form>
+                                            </div>  
                                         </div>
                                     </td>
                                     

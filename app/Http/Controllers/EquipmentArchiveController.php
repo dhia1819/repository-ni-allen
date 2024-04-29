@@ -77,10 +77,14 @@ class EquipmentArchiveController extends Controller
             $query->where('categories.category', '=', $category_filter);
             $fileName = 'Condemned_Equipments_'.$category_filter.'.xlsx';
         }
+        else{
+            $fileName = 'Archived_Equipment.xlsx';
+        }
 
-        $fileName = 'Archived_Equipment.xlsx';
+        
         $archive = $query->get();
 
+       
       
         if ($archive->isEmpty()) {
             return Redirect::back()->withErrors('No equipments found with the specified filters.');
