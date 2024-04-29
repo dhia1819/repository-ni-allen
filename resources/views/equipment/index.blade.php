@@ -162,7 +162,7 @@
                                                     @csrf
                                                     @method('POST')
                                                     @if($item->status === 'Borrowed')
-                                                    <button type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-secondary text-center align-items-center justify-content-center" disabled>
+                                                    <button type="button" class=" border-0 icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-secondary text-center align-items-center justify-content-center" disabled>
                                                         <i class="fas fa-archive"></i>
                                                     </button>                                                    
                                                     @else
