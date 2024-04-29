@@ -62,6 +62,13 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/equipment/borrow/{id}', [Controllers\EquipmentController::class, 'borrow'])->name('equipment.borrow');
     Route::get('/back', [Controllers\EquipmentController::class, 'index'])->name('equipment.back');
     Route::post('/borrow/borrow/', [Controllers\EquipmentController::class, 'save'])->name('equipment.save');
+    Route::post('/equipment/archive/{id}', [Controllers\EquipmentController::class, 'archive'])->name('archive');
+
+    //Archive module
+    Route::get('/equipment-archive', [Controllers\EquipmentArchiveController::class, 'index'])->name('archive.index');
+    Route::get('/equipment-archive-view/{id}', [Controllers\EquipmentArchiveController::class, 'view'])->name('archive.view');
+    Route::post('/restore-equipment/{id}', [Controllers\EquipmentArchiveController::class, 'restore'])->name('restore');
+    Route::get('/download-archive', [Controllers\EquipmentArchiveController::class, 'downloadArchive'])->name('dl.archive');
 
     //Borrow Module
     Route::get('/download-borrowed', [Controllers\BorrowController::class, 'downloadBorrowed'])->name('download.borrowed');

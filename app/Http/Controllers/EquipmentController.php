@@ -10,6 +10,7 @@ use App\Models\Employee;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use App\Exports\EquipmentsExport;
+use App\Models\Equipment_Archive;
 use Maatwebsite\Excel\Excel;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Redirect;
@@ -30,6 +31,8 @@ class EquipmentController extends Controller
         $equipment = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
             ->orderBy('equipment.created_at', 'ASC')
             ->select('equipment.*', 'categories.category as category_name')
+            ->where('equipment.status', '=', 'available')
+            ->orWhere('equipment.status', '=', 'Borrowed')
             ->get();
         
         return view('equipment.index', compact('page', 'equipment','categories'));
@@ -315,7 +318,9 @@ return redirect()->route('equipment.show', ['id' => $equipment->id])->with('succ
 
         // Get equipments data from the database
         $query = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
-                        ->select('equipment.*', 'categories.category as category');
+            ->select('equipment.*', 'categories.category as category')
+            ->where('equipment.status', '!=', 'Archived');
+
 
         if (!empty($category_filter) && !empty($condition_filter) && !empty($status_filter)) {
             // Code for when all filters are not empty
@@ -364,5 +369,17 @@ return redirect()->route('equipment.show', ['id' => $equipment->id])->with('succ
         // Use the Excel facade to download the Excel file
         return $this->excel->download(new EquipmentsExport($equipments), $fileName);
     }
+
+    public function archive($id)
+{
+    // Find the equipment record by ID
+    $equipment = Equipment::findOrFail($id);
+
+    $equipment->status = 'archived';
+    $equipment->conditions = 'Condemned';
+    $equipment->save();
+
+    return redirect('/equipment-archive')->with('success', 'Equipment archived successfully.');
+}
 
 }
