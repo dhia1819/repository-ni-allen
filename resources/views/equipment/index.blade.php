@@ -161,9 +161,15 @@
                                                 <form action="{{ route('archive', ['id' => $item->id]) }}" method="post">
                                                     @csrf
                                                     @method('POST')
+                                                    @if($item->status === 'Borrowed')
+                                                    <button type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-secondary text-center align-items-center justify-content-center" disabled>
+                                                        <i class="fas fa-archive"></i>
+                                                    </button>                                                    
+                                                    @else
                                                     <button type="submit" class="border-0 icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-danger text-center align-items-center justify-content-center">
                                                         <i class="fas fa-archive"></i>
                                                     </button>
+                                                    @endif
                                                 </form>
                                             </div>  
                                         </div>
