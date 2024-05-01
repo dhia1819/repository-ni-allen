@@ -7,6 +7,18 @@
 @endsection
 @section('page_script')
     <script type="text/javascript" src="/js/equipment.js"></script>
+    <script>
+    document.getElementById('upload_file').addEventListener('change', function() {
+        var fileInput = document.getElementById('upload_file');
+        var submitButtonWrapper = document.getElementById('submitButtonWrapper');
+
+        if (fileInput.files.length > 0) {
+            submitButtonWrapper.style.display = 'block';
+        } else {
+            submitButtonWrapper.style.display = 'none';
+        }
+    });
+</script>
 @endsection
 @section('content')
 
@@ -141,22 +153,24 @@
                     
                 </div>
                 <div class="row mt-2">
-                    <form method="POST" action="{{route('file.borrowed', ['id' => $transaction->id])}}" enctype="multipart/form-data">
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-10">
-                                <label class="form-label" for="upload_file">Update file</label>
-                                <input type="file" class="form-control" id="upload_file" name="upload_file" accept="image/jpeg, image/png, application/pdf">
-                                <p style="font-size: 0.75rem" class="text-muted">Note: Upload only <strong class="text-info">ONE (1)</strong> file | <strong class="text-info">(max: 40MB)</strong></p>
-                            </div>
-                            <div class="col-md-1 float-end mx-0 px-0 mr-2">
-                                <br>
-                                <button type="submit" class="btn bg-gradient-success btn-submit mt-1 ">
-                                    <i class="fa fa-upload"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+    <form method="POST" action="{{ route('file.borrowed', ['id' => $transaction->id]) }}" enctype="multipart/form-data" id="uploadForm">
+        @csrf
+        <div class="row">
+            <div class="col-md-10">
+                <label class="form-label" for="upload_file">Update file</label>
+                <input type="file" class="form-control" id="upload_file" name="upload_file" accept="image/jpeg, image/png, application/pdf">
+                <p style="font-size: 0.75rem" class="text-muted">Note: Upload only <strong class="text-info">ONE (1)</strong> file | <strong class="text-info">(max: 40MB)</strong></p>
+            </div>
+            <div class="col-md-1 float-end mx-0 px-0 mr-2" id="submitButtonWrapper" style="display: none;">
+                <br>
+                <button type="submit" class="btn bg-gradient-success btn-submit mt-1">
+                    <i class="fa fa-upload"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
                 @endforeach
             </div>
         </div>
