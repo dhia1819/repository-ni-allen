@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\LateExport;;
+use Illuminate\Support\Facades\Auth;
 
 
 class HomeController extends Controller
@@ -40,8 +41,11 @@ class HomeController extends Controller
         'crumb' => ['Dashboard' => '/home']
     ];
 
+    $users = User::orderBy('name', 'ASC')
+    ->where('id', '<>', Auth::user()->id)
+    ->get();
+
     // Retrieve counts and data for various entities
-    $users = User::count();
     $equipment = Equipment::count();
     $employee = Employee::count();
     $history = Transaction::where('status', 'Return')->count();

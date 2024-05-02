@@ -35,7 +35,12 @@
    
     <div class="{{ $colClass }}">
         <div class="card">
-            <a href="{{route('employee')}}">
+            <a 
+            @if(in_array(Auth::user()->classification_id, [1,2]))
+            href="{{route('employee')}}"
+            @else
+            href="javascript:void(0)"
+            @endif>
                 <div class="card-body p-3">
                     <div class="row">
                         <div class="col-8">
