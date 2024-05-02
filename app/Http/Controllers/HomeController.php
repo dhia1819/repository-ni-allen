@@ -50,32 +50,32 @@ class HomeController extends Controller
     $employee = Employee::count();
     $history = Transaction::where('status', 'Return')->count();
     
-    // Retrieve office counts based on transactions with 'Return' status
+    
     $officeCounts = Transaction::select('offices.code AS office_code', DB::raw('COUNT(*) AS office_count'))
         ->join('offices', 'transactions.office', '=', 'offices.id')
         ->where('transactions.status', 'Return')
         ->groupBy('offices.code')
         ->get();
 
-    // Retrieve equipment condition counts
+    
     $conditions = Equipment::select('conditions', DB::raw('COUNT(*) AS total'))
         ->groupBy('conditions')
         ->pluck('total', 'conditions')
         ->toArray();
 
-    // Retrieve counts based on equipment status
+    
     $statusAvailable = Equipment::where('status', 'available')->count();
     $statusBorrowed = Equipment::where('status', 'Borrowed')->count();
     $statusUnavailable = Equipment::where('status', 'unavailable')->count();
 
-    // Retrieve count of transactions with 'Late' status
+    
     $lateReturn = Transaction::where('status', 'Late')->count();
 
-    // Retrieve all categories and offices (if needed in the view)
+    
     $categories = Category::all();
     $offices = Office::all();
 
-    // Pass data to the 'home' view using compact() method
+    
     return view('home', compact(
         'page', 
         'users', 
@@ -126,7 +126,7 @@ class HomeController extends Controller
     $category_filter = $request->input('category_filter');
     $office_filter = $request->input('office_filter');
 
-    // Adjust the end date to include transactions up to 11:59:59 PM on the end date
+    
     $endBorrowPlusOneDay = date('Y-m-d', strtotime($endBorrow . ' +1 day'));
     $endReturnPlusOneDay = date('Y-m-d', strtotime($endReturn . ' +1 day'));
 
@@ -162,10 +162,10 @@ class HomeController extends Controller
         $query->where('offices.code', $office_filter);
     }
 
-    // Execute the query and retrieve the results
+    
     $lateTransactions = $query->get();
 
-    // Check if there are transactions within the date range
+    
     $fileName = 'Unreturned_Equipments';
 
         if (!empty($office_filter)) {
@@ -198,7 +198,7 @@ class HomeController extends Controller
 
         $fileName .= '.xlsx';
 
-    // Download the Excel file using Maatwebsite\Excel package
+    
     return Excel::download(new LateExport($lateTransactions), $fileName);
 }
 }

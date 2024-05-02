@@ -105,7 +105,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        // Find the user with the specified ID or throw a ModelNotFoundException
+        
         $user = User::findOrFail($id);
     
         // Return the user data as JSON response
@@ -117,7 +117,7 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        // Validate the request data
+        
         $validator = Validator::make($request->all(), [
             'rowid'          => 'required|exists:tbl_users,id',
             'name'           => 'required',
@@ -126,16 +126,16 @@ class UserController extends Controller
             'status'        => 'required'
         ]);
     
-        // Check if validation fails
+        
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput();
         }
     
         try {
-            // Find the user by rowid
+            
             $user = User::findOrFail($request->rowid);
     
-            // Update the user instance with new data
+            
             $user->name = $request->name;
             $user->username = strtolower($request->username);
             $user->classification_id = $request->classification;

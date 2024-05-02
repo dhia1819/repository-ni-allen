@@ -1,18 +1,18 @@
 $(document).ready(function() {
-    // Initialize Select2 on filter dropdowns
+    
     $('#office_filter, #category_filter').select2();
 
     $('#start_date_borrowed, #end_date_borrowed').on('change', function() {
-        applyFilters(); // Apply filters when date inputs are changed
+        applyFilters(); 
     });
 
-    // Check if borrowedData is defined and process it
+    
     if (typeof borrowedData !== 'undefined' && Array.isArray(borrowedData)) {
         console.log('Borrowed Data:', borrowedData);
 
-        // Loop through each transaction in borrowedData
+        
         borrowedData.forEach(function(transaction) {
-            // Extract relevant properties from each transaction
+            
             var borrower = transaction.BORROWER || 'N/A';
             var office = transaction.OFFICE || 'N/A';
             var category = transaction.CATEGORY || 'N/A';
@@ -20,7 +20,7 @@ $(document).ready(function() {
             var dateReturned = transaction['DATE RETURNED'] || 'N/A';
             var action = transaction.ACTION || 'N/A';
 
-            // Log each transaction's details
+            
             console.log('Borrower:', borrower);
             console.log('Office:', office);
             console.log('Category:', category);
@@ -28,13 +28,13 @@ $(document).ready(function() {
             console.log('Date Returned:', dateReturned);
             console.log('Action:', action);
 
-            // Additional processing or logic can be added here
+            
         });
     } else {
         console.log('No Borrowed Data available or data format is incorrect.');
     }
 
-    // Initialize DataTable on #tbl-borrowed table after processing borrowedData
+    
     $('#tbl-borrowed').DataTable({
         paging: true,
         language: {
@@ -56,15 +56,15 @@ $(document).ready(function() {
         var officeFilter = $('#office_filter').val();
         var categoryFilter = $('#category_filter').val();
     
-        // Get DataTable instance
+        
         var table = $('#tbl-borrowed').DataTable();
     
-        // Custom filter function to handle date range filtering
+        
         $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
             var dateBorrowed = parseDateWithoutTime(data[3]); // Assuming Date Borrowed column index is 3
             var dateReturned = parseDateWithoutTime(data[4]); // Assuming Date Returned column index is 4
     
-            // Filter based on date ranges
+            
             var isDateInRangeBorrowed = (!startDateBorrowed || dateBorrowed >= parseDateWithoutTime(startDateBorrowed)) &&
                 (!endDateBorrowed || dateBorrowed <= parseDateWithoutTime(endDateBorrowed));
     
@@ -74,34 +74,34 @@ $(document).ready(function() {
             return isDateInRangeBorrowed && isDateInRangeReturn;
         });
     
-        // Apply office and category filters
-        table.column(1).search(officeFilter).draw(); // Office column index is 1
-        table.column(2).search(categoryFilter).draw(); // Category column index is 2
+        
+        table.column(1).search(officeFilter).draw(); 
+        table.column(2).search(categoryFilter).draw(); 
     
-        // Redraw the table with new filters
+        
         table.draw();
     
-        // Remove custom date range filtering function
+        
         $.fn.dataTable.ext.search.pop();
     
-        // Update "Show X entries" part based on the displayed rows
+        
         var info = table.page.info();
     
-        // Determine if all filters are cleared (resetting display info accordingly)
+        
         var allFiltersCleared = !startDateBorrowed && !endDateBorrowed && !startDateReturn && !endDateReturn && !officeFilter && !categoryFilter;
         
-        // Set the info text based on filters status
+        
         if (allFiltersCleared) {
             $('#tbl-borrowed_info').text('Showing ' + (info.start + 1) + ' to ' + info.end + ' of ' + info.recordsTotal + ' entries');
         } else {
             $('#tbl-borrowed_info').text('Showing ' + (info.start + 1) + ' to ' + info.end + ' of ' + info.end + ' entries (filtered from ' + info.recordsTotal + ' total entries)');
         }
     
-        // Toggle Clear Filters button based on active filters
+        
         toggleClearFiltersButton();
     }
 
-    // Function to toggle visibility of Clear Filters button based on active filters
+    
     function toggleClearFiltersButton() {
         var anyFilterActive =
             $('#start_date_borrowed').val() ||
@@ -112,73 +112,73 @@ $(document).ready(function() {
             $('#category_filter').val();
 
         if (anyFilterActive) {
-            $('#reset_filter').show(); // Show the Clear Filters button
+            $('#reset_filter').show(); 
         } else {
-            $('#reset_filter').hide(); // Hide the Clear Filters button
+            $('#reset_filter').hide(); 
         }
     }
 
-    // Event listener for filter change (including date inputs)
+    
     $('#office_filter, #start_date_borrowed, #end_date_borrowed, #start_date_return, #end_date_return, #category_filter').on('change', function() {
-        applyFilters(); // Apply filters on filter change
-        toggleClearFiltersButton(); // Check if filters are active and toggle button visibility
+        applyFilters(); 
+        toggleClearFiltersButton(); 
     });
 
     // Event listener for Clear Filters button
     $('#reset_filter').click(function() {
-        resetFilters(); // Clear filters on button click
+        resetFilters(); 
     });
 
-    // Initial toggle button visibility on page load
+    
     toggleClearFiltersButton();
 });
 
 function resetFilters() {
-    // Clear date inputs
+    
     $('#start_date_borrowed').val('');
     $('#end_date_borrowed').val('');
     $('#start_date_return').val('');
     $('#end_date_return').val('');
 
-    // Reset Select2 dropdowns
+    
     $('#office_filter').val('').trigger('change');
     $('#category_filter').val('').trigger('change');
 
-    // Reset start date inputs and labels
-    // For Date Borrowed
-    $('#start_date_borrowed').show(); // Show start date input
-    $('#end_date_borrowed').hide();   // Hide end date input
-    $('#start_date_label').show();    // Show start date label
-    $('#end_date_label').hide();      // Hide end date label
+    
+    
+    $('#start_date_borrowed').show(); 
+    $('#end_date_borrowed').hide();   
+    $('#start_date_label').show();    
+    $('#end_date_label').hide();      
 
-    // For Date Return
-    $('#start_date_return').show();   // Show start date input
-    $('#end_date_return').hide();     // Hide end date input
-    $('#start_date_return_label').show();  // Show start date label
-    $('#end_date_return_label').hide();    // Hide end date label
+    
+    $('#start_date_return').show();   
+    $('#end_date_return').hide();     
+    $('#start_date_return_label').show();  
+    $('#end_date_return_label').hide();    
 
    
 }
 
 function parseDateWithoutTime(dateString) {
-    if (!dateString) return null; // Return null for empty strings
+    if (!dateString) return null; 
 
-    // Split the dateString by '|' to separate date and time parts
+    
     var parts = dateString.split('|');
 
-    // Trim the date part to remove leading/trailing spaces
+    
     var datePart = parts[0].trim();
 
-    // Use JavaScript Date constructor to parse the date part
+    
     var dateObj = new Date(datePart);
 
-    // Return the date object (without considering the time)
+    
     return new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate());
 }
 
-// Function to convert input date to string format
+
 function convertInputDate(inputDate) {
-    if (!inputDate) return ''; // Return empty string if input date is empty
+    if (!inputDate) return ''; 
     var date = new Date(inputDate);
     var month = date.toLocaleString('en-US', { month: 'long' });
     var day = date.getDate();
@@ -186,7 +186,7 @@ function convertInputDate(inputDate) {
     return month + ' ' + day + ', ' + year;
 }
 
-// Function to handle start date change for either 'borrowed' or 'returned' type
+
 function handleStartDateChange(type) {
     var startDateInput, endDateInput;
     var startLabel, endLabel;
@@ -202,26 +202,26 @@ function handleStartDateChange(type) {
         startLabel = document.getElementById('start_date_return_label');
         endLabel = document.getElementById('end_date_return_label');
     } else {
-        return; // Invalid type
+        return; 
     }
 
-    // Show end date input and label
+    
     endDateInput.style.display = 'inline-block';
     endLabel.style.display = 'inline-block';
 
-    // Hide start date input and label
+
     startDateInput.style.display = 'none';
     startLabel.style.display = 'none';
 
-    // Attach event listener to end date input
+    
     endDateInput.addEventListener('change', function() {
-        // Parse and format the end date input
+        
         var parsedEndDate = parseDateWithoutTime(endDateInput.value);
         var formattedEndDate = convertInputDate(parsedEndDate);
         console.log("Formatted End Date (" + type + "):", formattedEndDate);
     });
 
-    // Parse and format the start date input
+    
     var parsedStartDate = parseDateWithoutTime(startDateInput.value);
     var formattedStartDate = convertInputDate(parsedStartDate);
     console.log("Formatted Start Date (" + type + "):", formattedStartDate);

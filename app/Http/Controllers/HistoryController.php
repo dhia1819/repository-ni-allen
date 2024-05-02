@@ -26,18 +26,18 @@ class HistoryController extends Controller
     public function history()
     {
         $categories = Category::all();
-        $offices = Office::all(); // Assuming you have an Office model
+        $offices = Office::all(); 
 
         $page = [
-            'name'  =>  'History', // Change the name to "Borrowed"
-            'title' =>  'History', // Change the title to "Borrowed"
-            'crumb' =>  ['History' => '/borrow/history'] // Change the crumb to "Borrowed"
+            'name'  =>  'History', 
+            'title' =>  'History', 
+            'crumb' =>  ['History' => '/borrow/history'] 
         ];
         
         $borrowedData = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
             ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
             ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
-            ->where('transactions.status', 'Return') // Filter out borrowed transactions
+            ->where('transactions.status', 'Return') 
             ->select('transactions.*', 'equipment.*', 'categories.category as category_name', 'offices.code as office_name', 'transactions.id as transaction_id','transactions.status as tstatus')
             ->orderBy('transactions.returned_date', 'ASC')
             ->get();
@@ -55,7 +55,7 @@ class HistoryController extends Controller
             'crumb' =>  ['History' => '/borrow/history', 'History Details' => "/borrow/showhistory/{$id}"]
         ];
 
-        // Assuming you have an 'Offices' model
+        
         $offices = Office::all();
         $employees = Employee::all();
 
@@ -86,11 +86,11 @@ class HistoryController extends Controller
         $category_filter = $request->input('category_filter');
         $office_filter =$request->input('office_filter');
 
-         // Adjust the end date to include transactions up to 11:59:59 PM on the end date
+         
          $endBorrowPlusOneDay = date('Y-m-d', strtotime($endBorrow . ' +1 day'));
          $endReturnPlusOneDay = date('Y-m-d', strtotime($endReturn . ' +1 day'));
 
-        // Initialize query
+        
         $query = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
             ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
             ->leftJoin('employees as release_employees', 'transactions.release_by', '=', 'release_employees.id')
@@ -153,18 +153,18 @@ class HistoryController extends Controller
             $fileName .= '.xlsx';
            
 
-        // Get transactions data from the database
+        
         $missing = $query->get();
 
 
-        // Check if there are transactions within the date range
+        
         if ($missing->isEmpty()) {
-            // return response()->json(['message' => 'No transactions found within the specified date range'], 404);
+            
             return Redirect::back()->withErrors('No transactions to download.');
         }
 
         
-        // Assuming you have an Export class named TransactionsExport
+        
         return $this->excel->download(new TransactionsExport($missing), $fileName);
     }
 
@@ -177,17 +177,17 @@ class HistoryController extends Controller
             'upload_file' => 'nullable|file|mimes:jpeg,png,pdf'
         ]);
     
-        // Handle file upload
+        
         if ($request->hasFile('upload_file')) {
             $upload_file = $request->file('upload_file');
             
-            // Get the original filename
+            
             $fileName = $upload_file->getClientOriginalName();
             
-            // Move the uploaded file to the uploads directory with the original filename
+            
             $upload_file->move(public_path('uploads'), $fileName);
     
-            // Set file name to the validated data
+            
             $validatedData['upload_file'] = $fileName;
         }
     

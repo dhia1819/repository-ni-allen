@@ -37,7 +37,7 @@ class OfficeController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate incoming request data
+        
         $validatedData = $request->validate([
             'code' => 'required|string',
             'office' => 'required|string',
@@ -54,16 +54,16 @@ class OfficeController extends Controller
             return redirect()->back()->withErrors(['This Code already exists']);  
         }
     
-        // Create a new instance of your model
+        
         $newItem = new Office();
     
-        // Fill the model with the validated data
+        
         $newItem->fill($validatedData);
     
-        // Save the new item to the database
+        
         $newItem->save();
     
-        // Optionally, you can return a response indicating success
+        
         return redirect()->back()->with('success', 'Office added successfully!');
     }
     /**
@@ -87,23 +87,23 @@ class OfficeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // Validate incoming request data
+        
         $validatedData = $request->validate([
             'code' => 'required|string',
             'office' => 'required|string',
             'type' => 'required|string',
         ]);
         
-        // Find the existing Office model by its ID
+        
         $office = Office::where('id', $id)->firstOrFail();
         
-        // Update the attributes of the Office model with the validated data
+        
         $office->fill($validatedData);
         
-        // Save the changes to the database
+        
         $office->save();
         
-        // Redirect back with a success message
+        
         return redirect()->back()->with('success', 'Office updated successfully!');
     }
     
