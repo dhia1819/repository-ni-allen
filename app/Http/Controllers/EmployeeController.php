@@ -27,47 +27,47 @@ class EmployeeController extends Controller
     }
 
     public function store(Request $request)
-{
-    // Validation rules
-    $rules = [
-        'fullName'           => 'required|unique:employees',
-        'position'       => 'required',
-    ];
+    {
+        $rules = [
+            'fullName'           => 'required|unique:employees',
+            'position'       => 'required',
+        ];
 
-    // Validate the request
-    $validator = Validator::make($request->all(), $rules);
+        // Validate the request
+        $validator = Validator::make($request->all(), $rules);
 
-    // Check if validation fails
-    if ($validator->fails()) {
-        return Redirect::back()->withErrors($validator)->withInput();
-    }
-
-    // Start database transaction
-    DB::beginTransaction();
-
-    try {
-        // Create a new User instance
-        $employee = new Employee;
-        $employee->fullName = $request->fullName;
-        $employee->position = $request->position;
-        $employee->status = 1;
-        $employee->created_at = Carbon::now('Asia/Manila');
-        $employee->save();
-
-        // Commit the transaction
-        DB::commit(); 
-
-        return Redirect::back()->with('success', 'Employee added successfully!');
-    }catch (QueryException $e) {
-        // Check if the exception is due to a duplicate entry
-        if ($e->errorInfo[1] == 1062) {
-            return Redirect::back()->withErrors('')->withInput();
-        } else {
-            // Rollback the transaction for other exceptions
-            DB::rollBack();
-            return Redirect::back()->withErrors($e->getMessage())->withInput();
+        // Check if validation fails
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
         }
-    }}
+
+        // Start database transaction
+        DB::beginTransaction();
+
+        try {
+            // Create a new User instance
+            $employee = new Employee;
+            $employee->fullName = $request->fullName;
+            $employee->position = $request->position;
+            $employee->status = 1;
+            $employee->created_at = Carbon::now('Asia/Manila');
+            $employee->save();
+
+            // Commit the transaction
+            DB::commit(); 
+
+            return Redirect::back()->with('success', 'Employee added successfully!');
+        }catch (QueryException $e) {
+            // Check if the exception is due to a duplicate entry
+            if ($e->errorInfo[1] == 1062) {
+                return Redirect::back()->withErrors('')->withInput();
+            } else {
+                // Rollback the transaction for other exceptions
+                DB::rollBack();
+                return Redirect::back()->withErrors($e->getMessage())->withInput();
+            }
+        }
+    }
 
 
     public function edit($id)

@@ -18,8 +18,6 @@ class BorrowController extends Controller
 
     public function return()
     {
-        // Set the timezone for Carbon to match your local timezone (e.g., Asia/Manila)
-        // Adjust this to match your actual timezone
         date_default_timezone_set('Asia/Manila');
 
         $categories = Category::all();
@@ -27,9 +25,9 @@ class BorrowController extends Controller
         $employees = Employee::all();
 
         $page = [
-            'name'  =>  'Borrowed', // Change the name to "Borrowed"
-            'title' =>  'Borrowed', // Change the title to "Borrowed"
-            'crumb' =>  ['Borrowed' => '/borrow/return'] // Change the crumb to "Borrowed"
+            'name'  =>  'Borrowed', 
+            'title' =>  'Borrowed', 
+            'crumb' =>  ['Borrowed' => '/borrow/return']
         ];
         
         $borrowedData = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
@@ -51,7 +49,7 @@ class BorrowController extends Controller
             if (Carbon::now()->greaterThan($expectedReturnDateTime) && $transaction->status !== 'Return') {
                 // Update transaction status to 'Late'
                 $transaction->status = 'Late';
-                $transaction->save(); // Save the updated status
+                $transaction->save();
             }
         }
 
@@ -66,7 +64,6 @@ class BorrowController extends Controller
             'crumb' =>  ['Borrowed' => '/borrow/return', 'Return Equipment' => "/borrow/return/{$id}"]
         ];
 
-        // Assuming you have an 'Offices' model
         $offices = Office::all();
         $employees = Employee::all();
 
@@ -96,7 +93,7 @@ class BorrowController extends Controller
             'upload_file' => 'nullable|file|mimes:jpeg,png,pdf'
         ]);
     
-        // Handle file upload
+        // file upload
         if ($request->hasFile('upload_file')) {
             $upload_file = $request->file('upload_file');
             
@@ -124,23 +121,15 @@ class BorrowController extends Controller
                 'received_by' => 'required|string',
             ]);
         
-            // Here, you're setting the status to 'Good'. However, it's not clear where 'status' should be updated.
-            // Assuming you have a status field in the transaction table, you might need to adjust this part accordingly.
-            // Otherwise, you might encounter errors or unexpected behavior.
             $validatedData['status'] = 'Return';
-        
-            // Assuming 'transaction_id' is a variable representing the ID of the transaction being updated.
-            // However, the syntax for updating in Laravel is incorrect. You should use the 'update' method on the model instance.
+            
             $transaction = Transaction::findOrFail($id); // Retrieve the transaction by ID
             $transaction->update($validatedData);
         
-            // Update equipment status to Borrowed
-            // Assuming 'equipment_id' is a field in the 'transactions' table that represents the ID of the equipment related to this transaction.
-            // If not, please replace it with the correct field name.
             $equipment = Equipment::find($transaction->equipment_id); // Retrieve equipment related to this transaction
             if ($equipment) {
                 $equipment->status = 'Available';
-                $equipment->save(); // Use save() to persist changes to the database
+                $equipment->save();
             }
         
             // Return a response indicating success
@@ -163,7 +152,7 @@ class BorrowController extends Controller
         $start_date_return = $request->input('start_date_return');
         $end_date_return = $request->input('end_date_return');
 
-        // Adjust the end date to include transactions up to 11:59:59 PM on the end date
+        // used to adjust the end date to include transactions up to 11:59:59 PM on the end date
         $endBorrowPlusOneDay = date('Y-m-d', strtotime($end_date_borrowed . ' +1 day'));
         $endReturnPlusOneDay = date('Y-m-d', strtotime($end_date_return . ' +1 day'));
 

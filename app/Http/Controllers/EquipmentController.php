@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class EquipmentController extends Controller
 {
-    //Reading Of Equipment
+    //display the table or the equipment module
     public function index()
     {
         $categories = Category::all();
@@ -40,188 +40,185 @@ class EquipmentController extends Controller
         
     }
 
-    //Borrow Button Action Dsiplay
+    //When you click the borrow button. will lead to borrow form
     public function borrow(int $id)
-{
-    $office = Office::all();
-    $employees = Employee::all();
-    $equipment = Equipment::findOrFail($id);
-    
-    $page = [
-        'name'  =>  'Borrow',
-        'title' =>  'Borrow Equipment',
-        'crumb' =>  ['Equipment' => '/equipment', 'Borrow Equipment' => "/equipment/borrow/{$id}"]
-    ];
+    {
+        $office = Office::all();
+        $employees = Employee::all();
+        $equipment = Equipment::findOrFail($id);
+        
+        $page = [
+            'name'  =>  'Borrow',
+            'title' =>  'Borrow Equipment',
+            'crumb' =>  ['Equipment' => '/equipment', 'Borrow Equipment' => "/equipment/borrow/{$id}"]
+        ];
 
-    return view('equipment.borrow', compact('page', 'equipment', 'office', 'employees'));
-}
-
-public function save(Request $request)
-{
-    // Set timezone to Asia/Manila
-    date_default_timezone_set('Asia/Manila');
-
-    $validatedData = $request->validate([
-        'equipment_id' => 'required|string',
-        'release_by' => 'required|string',
-        'borrowed_by' => 'required|string', 
-        'date_borrowed' => 'required|date',
-        'date_returned' => 'nullable|date', // Validate datetime format (date and time)
-        'office' => 'required|string',
-        'upload_file' => 'nullable|file|mimes:jpeg,png,pdf', //Can be nullable or not depends on process
-        'returned_by' => 'nullable|string',
-        'received_by' => 'nullable|string',
-    ]);
-
-    // Upload file part
-    if ($request->hasFile('upload_file')) {
-        $image = $request->file('upload_file');
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('uploads'), $imageName);
-
-        $validatedData['upload_file'] = $imageName;
+        return view('equipment.borrow', compact('page', 'equipment', 'office', 'employees'));
     }
 
-    // Check if the return date and time has passed
-    if (!empty($validatedData['date_returned'])) {
-        $returnDateTime = Carbon::parse($validatedData['date_returned'])->timezone('Asia/Manila');
-        $currentDateTime = Carbon::now()->timezone('Asia/Manila');
+    //to submit the borrow form
+    public function save(Request $request)
+    {
+        // Set timezone to Asia/Manila
+        date_default_timezone_set('Asia/Manila');
 
-        // Compare date and time (including seconds) for precise comparison
-        if ($currentDateTime->greaterThanOrEqualTo($returnDateTime)) {
-            $status = 'Late';
+        $validatedData = $request->validate([
+            'equipment_id' => 'required|string',
+            'release_by' => 'required|string',
+            'borrowed_by' => 'required|string', 
+            'date_borrowed' => 'required|date',
+            'date_returned' => 'nullable|date',
+            'office' => 'required|string',
+            'upload_file' => 'nullable|file|mimes:jpeg,png,pdf', 
+            'returned_by' => 'nullable|string',
+            'received_by' => 'nullable|string',
+        ]);
+
+        // Upload file part
+        if ($request->hasFile('upload_file')) {
+            $image = $request->file('upload_file');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('uploads'), $imageName);
+
+            $validatedData['upload_file'] = $imageName;
+        }
+
+        // Check if the return date and time has passed
+        if (!empty($validatedData['date_returned'])) {
+            $returnDateTime = Carbon::parse($validatedData['date_returned'])->timezone('Asia/Manila');
+            $currentDateTime = Carbon::now()->timezone('Asia/Manila');
+
+            // Compare date and time (including seconds) for precise comparison
+            if ($currentDateTime->greaterThanOrEqualTo($returnDateTime)) {
+                $status = 'Late';
+            } else {
+                $status = 'Borrowed';
+            }
         } else {
+            // If no return date is specified, default to 'Borrowed'
             $status = 'Borrowed';
         }
-    } else {
-        // If no return date is specified, default to 'Borrowed'
-        $status = 'Borrowed';
+        
+        // Set the status based on whether the return date and time has passed
+        $validatedData['status'] = $status;
+
+        // Create the transaction
+        $transaction = Transaction::create($validatedData);
+
+        // Update equipment status to 'Borrowed' if applicable
+        $equipment = Equipment::find($validatedData['equipment_id']);
+        if ($equipment) {
+            $equipment->status = 'Borrowed';
+            $equipment->save();
+        }
+
+        return redirect('/borrow/return')->with('success', 'Equipment Borrowed successfully.');
     }
-    
-    // Set the status based on whether the return date and time has passed
-    $validatedData['status'] = $status;
-
-    // Create the transaction
-    $transaction = Transaction::create($validatedData);
-
-    // Update equipment status to 'Borrowed' if applicable
-    $equipment = Equipment::find($validatedData['equipment_id']);
-    if ($equipment) {
-        $equipment->status = 'Borrowed';
-        $equipment->save();
-    }
-
-    return redirect('/borrow/return')->with('success', 'Equipment Borrowed successfully.');
-}
-
-
 
     //Display Add Item page
     public function create()
-{
-    // Fetch all categories with status 'Active'
-    $categories = Category::where('status', '1')->get();
+    {
+        // Fetch all categories with status 'Active'
+        $categories = Category::where('status', '1')->get();
 
-    // Data for the page
-    $page = [
-        'name'  =>  'Equipment',
-        'title' =>  'Add Equipment',
-        'crumb' =>  ['Equipment' => '/equipment', 'Add Equipment' => '/equipment/create']
-    ];
+        // Data for the page
+        $page = [
+            'name'  =>  'Equipment',
+            'title' =>  'Add Equipment',
+            'crumb' =>  ['Equipment' => '/equipment', 'Add Equipment' => '/equipment/create']
+        ];
 
-    
-    return view('equipment.create', compact('page', 'categories'));
-}
+        
+        return view('equipment.create', compact('page', 'categories'));
+    }
     
     
     //Creating or Adding of new equipment for the inventory
     public function store(Request $request)
-{
-    // Validate incoming request data
-    $validatedData = $request->validate([
-        'equipment_name' => 'required|string',
-        'category' => 'required|string',
-        'Description' => 'required|string',
-        'property_no' => 'required|string',
-        'serial_no' => 'required|string|unique:equipment,serial_no',
-        'unit_of_measure' => 'required|string',
-        'value' => 'required|string',
-        'quantity' => 'required|integer',
-        'image' => 'nullable|image',
-        'remarks' => 'required|string',
-        'date_acquired' => 'required|date',
-        'conditions' => 'required|string'
-    ]);
+    {
+        // Validate incoming request data
+        $validatedData = $request->validate([
+            'equipment_name' => 'required|string',
+            'category' => 'required|string',
+            'Description' => 'required|string',
+            'property_no' => 'required|string',
+            'serial_no' => 'required|string|unique:equipment,serial_no',
+            'unit_of_measure' => 'required|string',
+            'value' => 'required|string',
+            'quantity' => 'required|integer',
+            'image' => 'nullable|image',
+            'remarks' => 'required|string',
+            'date_acquired' => 'required|date',
+            'conditions' => 'required|string'
+        ]);
 
-    // Set admin_id to the authenticated user's ID
-    $validatedData['admin_id'] = Auth::id();
+        // Set admin_id to the authenticated user's ID
+        $validatedData['admin_id'] = Auth::id();
 
-    //status
-    if ($validatedData['conditions'] === 'Good' || $validatedData['conditions'] === 'Fair' || $validatedData['conditions'] === 'Poor') {
-        $validatedData['status'] = 'available';
+        //status
+        if ($validatedData['conditions'] === 'Good' || $validatedData['conditions'] === 'Fair' || $validatedData['conditions'] === 'Poor') {
+            $validatedData['status'] = 'available';
+        }
+        else{
+            $validatedData['status'] = 'unavailable';
+        }
+
+        //image upload
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time().'.'.$image->extension();
+            $image->move(public_path('uploads'), $imageName);
+
+            // Set image name to the validated data
+            $validatedData['image'] = $imageName;
+        }
+
+        // Create new equipment record
+        Equipment::create($validatedData);
+
+        // Redirect back with success message
+        return redirect('equipment')->with('success', 'Equipment updated successfully.');
     }
-    else{
-        $validatedData['status'] = 'unavailable';
+
+    public function condition(Request $request, $id)
+    {
+        // Validate the request data
+        $request->validate([
+            'condition' => 'required|in:Good,Fair,Poor', // Validate the condition field
+        ]);
+
+        // Find the equipment by its ID
+        $equipment = Equipment::findOrFail($id);
+
+        // Update the condition of the equipment
+        $equipment->update([
+            'condition' => $request->condition,
+        ]);
+
+        // Redirect back or return a response indicating success
+        return redirect()->back()->with('success', 'Equipment condition updated successfully.');
     }
-    
-    
-
-    // Handle image upload
-    if($request->hasFile('image')) {
-        $image = $request->file('image');
-        $imageName = time().'.'.$image->extension();
-        $image->move(public_path('uploads'), $imageName);
-
-        // Set image name to the validated data
-        $validatedData['image'] = $imageName;
-    }
-
-    // Create new equipment record
-    Equipment::create($validatedData);
-
-    // Redirect back with success message
-    return redirect('equipment')->with('success', 'Equipment updated successfully.');
-}
-
-public function condition(Request $request, $id)
-{
-    // Validate the request data
-    $request->validate([
-        'condition' => 'required|in:Good,Fair,Poor', // Validate the condition field
-    ]);
-
-    // Find the equipment by its ID
-    $equipment = Equipment::findOrFail($id);
-
-    // Update the condition of the equipment
-    $equipment->update([
-        'condition' => $request->condition,
-    ]);
-
-    // Redirect back or return a response indicating success
-    return redirect()->back()->with('success', 'Equipment condition updated successfully.');
-}
 
     
     //Display and reading of full equipment details on a new view
     public function show(string $id)
-{
-    $categories = Category::all();
-    
-    // Fetch the specific equipment item by ID
-    $equipment = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
-        ->where('equipment.id', $id) // Filter by equipment ID
-        ->select('equipment.*', 'categories.category as category_name')
-        ->firstOrFail(); // Use firstOrFail() to fetch a single record
-    
-    $page = [
-        'name'  =>  'Equipment',
-        'title' =>  'Equipment Details',
-        'crumb' =>  ['Equipment' => '/equipment', 'Details' => "/show/{$id}"]
-    ];
-    
-    return view('equipment.show', compact('equipment', 'page', 'categories'));
-}
+    {
+        $categories = Category::all();
+        
+        // Fetch the specific equipment item by ID
+        $equipment = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
+            ->where('equipment.id', $id) // Filter by equipment ID
+            ->select('equipment.*', 'categories.category as category_name')
+            ->firstOrFail(); // Use firstOrFail() to fetch a single record
+        
+        $page = [
+            'name'  =>  'Equipment',
+            'title' =>  'Equipment Details',
+            'crumb' =>  ['Equipment' => '/equipment', 'Details' => "/show/{$id}"]
+        ];
+        
+        return view('equipment.show', compact('equipment', 'page', 'categories'));
+    }
 
     
 
