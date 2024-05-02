@@ -11,10 +11,8 @@ $(function() {
     });
 
 
-
-    //
     $(".select2-return").select2({
-        dropdownParent: $("#received_by").parent() // Changed to parent() instead of selecting by ID
+        dropdownParent: $("#received_by").parent()
     });
 
 
@@ -24,12 +22,9 @@ $(function() {
 
     
     $(document).ready(function() {
-        // Initialize DataTable
         var table = $('#tbl-equipment').DataTable();
 
         
-    
-        // Event listener for filter select elements
         $('#category_filter, #condition_filter, #status_filter').on('change', function() {
             // Get selected filter values
             var category = $('#category_filter').val();
@@ -37,41 +32,36 @@ $(function() {
             var status = $('#status_filter').val();
             
     
-            // Apply filters using DataTables API
-            table.columns(1).search(category).draw(); // Filter by category in the third column
-            table.columns(4).search(condition).draw(); // Filter by condition in the sixth column
-            // Filter by status in the seventh column
+            table.columns(1).search(category).draw(); 
+            table.columns(4).search(condition).draw();
+           
     
             if (status === 'available') {
-                table.columns(5).search('^Available$', true, false).draw(); // Filter only "available" items, case-sensitive
+                table.columns(5).search('^Available$', true, false).draw(); 
             } else if (status === 'unavailable') {
-                table.columns(5).search('^Unavailable$', true, false).draw(); // Filter only "unavailable" items, case-sensitive
+                table.columns(5).search('^Unavailable$', true, false).draw(); 
             } else {
-                table.columns(5).search(status).draw(); // Filter by status for all items
+                table.columns(5).search(status).draw(); 
             }
             // Show the clear filters button when any filter is selected
             $('#reset_filters').show();
         });
     
-        // Event listener for reset filters button
         $('#reset_filters').click(function() {
-            // Reset all filter select elements to their default value
             $('.select2-filter').val('').trigger('change');
     
-            // Clear filters using DataTables API
             table.columns().search('').draw();
     
-            // Hide the clear filters button after resetting filters
             $(this).hide();
         });
     
-        // Check if all filter select elements are at their default value and hide the "Clear Filters" button accordingly
+        // Check if all filter select elements are at their default value
         function checkClearFiltersButton() {
             var allDefault = true;
             $('.select2-filter').each(function() {
                 if ($(this).val() !== '') {
                     allDefault = false;
-                    return false; // Exit the loop early if a non-default value is found
+                    return false; 
                 }
             });
             if (allDefault) {
@@ -79,10 +69,8 @@ $(function() {
             }
         }
     
-        // Call the function initially to hide the "Clear Filters" button if all filters are at their default value
         checkClearFiltersButton();
     
-        // Event listener for filter select elements to continuously check the status of the "Clear Filters" button
         $('.select2-filter').on('change', function() {
             checkClearFiltersButton();
         });

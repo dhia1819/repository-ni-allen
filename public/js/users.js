@@ -2,7 +2,6 @@ $(function() {
 
   $('#tbl-users').dataTable({
       'language':{
-          // 'zeroRecords': '<center><span class="badge text-white bg-danger">No Records Found</span></center>',
           "paginate": {
               "previous": "<",
               "next": ">",
@@ -21,15 +20,12 @@ $(function() {
       $('.destroy-label').html(name);
       $('#user_id').val(id);
   });
-// JavaScript/jQuery code to dynamically set modal target
+  
 $('.btn-edit-user').click(function () {
-  // Get the rowid from the clicked button
   var rowId = $(this).data('rowid');
 
-  // Find the closest table row to the clicked "Edit" button
   var row = $(this).closest('tr');
 
-  // Extract data from the table row
   var UserName = row.find('td:eq(0)').text().trim();
   var FullName = row.find('td:eq(1)').text().trim();
   var Classification = row.find('td:eq(2)').text().trim(); 

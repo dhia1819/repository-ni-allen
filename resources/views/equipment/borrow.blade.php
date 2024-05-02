@@ -70,7 +70,7 @@
                         <div class="col-md-12">
                             <label class="form-label" for="release_by">Released by<span class="text-danger">&#x2022;</span></label>
                             <select class="form-control select2 select2-create"  id="release_by" name="release_by">
-                                    <option disabled selected>Select Employee</option> <!-- Disabled and selected placeholder option -->
+                                    <option disabled selected>Select Employee</option>
                                     @foreach($employees as $employee)
                                         @if($employee->status == 1)
                                             <option value="{{ $employee->id }}">
@@ -112,10 +112,8 @@
     });
     $(document).ready(function() {
         $('#office_filter, #employee_filter').select2();
-        // Initialize Select2 for all elements with class select2-create
         $(".select2-create").select2();
 
-        // Function to adjust Select2 dropdown width based on form size
         function adjustSelect2Width() {
             $(".select2-container").each(function() {
                 var select2ParentWidth = $(this).parent().width();
@@ -123,11 +121,10 @@
             });
         }
 
-        // Call the adjustSelect2Width function on document ready and window resize
         $(window).on('resize', function() {
             adjustSelect2Width();
         });
-        adjustSelect2Width(); // Call initially
+        adjustSelect2Width();
     });
 
 </script>
