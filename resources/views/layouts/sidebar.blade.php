@@ -54,6 +54,7 @@ id="sidenav-main">
 				</a>
 			</li>
 
+			@if(in_array(Auth::user()->classification_id, [1,2]))
 			<li class="nav-item mt-3">
 				<h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">REFERENCE LIBRARY</h6>
 			</li>
@@ -96,7 +97,7 @@ id="sidenav-main">
 			</li>
 			
 
-			@if(in_array(Auth::user()->classification_id, [1,2]))
+			
 				<li class="nav-item mt-3">
 					<h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">ADMINISTRATION</h6>
 				</li>
@@ -108,11 +109,7 @@ id="sidenav-main">
 						</div>
 						<span class="nav-link-text ms-1">Users</span>
 					</a>
-				</li>
-
-				
-				
-				
+				</li>	
 			@endif
 
 		</ul>

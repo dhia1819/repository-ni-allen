@@ -33,6 +33,7 @@
                                 <option selected disabled></option>
                                 <option value ="1">Overall Admin</option>
                                 <option value ="2"> Admin</option>
+                                <option value="3">Staff</option>
                             </select>
                         </div>
                     </div>

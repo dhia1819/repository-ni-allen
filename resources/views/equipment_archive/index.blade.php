@@ -111,13 +111,13 @@
                                     <td style="vertical-align: middle;">{{ $item->conditions }}</td>
                                     <td style="vertical-align: middle;">{{ ucfirst($item->status) }}</td>
                                     <td>
-                                        <div class="text-center row justify-content-center gx-4">
-                                            <div class="col-3">
+                                        <div class="text-center row justify-content-center">
+                                            <div class="col-4">
                                                 <a href="{{ route('archive.view', ['id' => $item->id]) }}" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center align-items-center justify-content-center">
                                                     <i class="fa fa-eye 2x" aria-hidden="true"></i>
                                                 </a>
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-4">
                                                 <form action="{{ route('restore', ['id' => $item->id]) }}" method="post">
                                                     @csrf
                                                     @method('POST')

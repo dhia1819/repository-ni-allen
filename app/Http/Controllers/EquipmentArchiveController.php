@@ -57,7 +57,7 @@ class EquipmentArchiveController extends Controller
         $equipment->conditions = 'Good';
         $equipment->save();
 
-        return redirect()->back()->with('success', 'Equipment Restored successfully.');
+        return redirect('/equipment')->with('success', 'Equipment Restored successfully.');
     }
 
     protected $excel;

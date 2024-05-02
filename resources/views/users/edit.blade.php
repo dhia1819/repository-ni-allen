@@ -30,6 +30,7 @@
                                 <option selected disabled></option>
                                 <option value ="1">Overall Administrator</option>
                                 <option value ="2">Administrator</option>
+                                <option value="3">Staff</option>
                             </select>
                             <label class="text-muted">Status</label> <span class="text-danger">&#x2022;</span>
                             <select class="form-control select2 select2-edit" name="status" id="status"style="width: 100%" required>

@@ -49,9 +49,10 @@
                                         </span>
                                     </td>
                                     <td data-label="Classification" class="align-middle with-label">
-                                        <span class="text-xs" style="color: {{$user->classification_id == 1 ? 'blue' : 'red'}};">
-                                            {{$user->classification_id == 1 ? 'Overall Administrator' : 'Administrator'}}
+                                        <span class="text-xs" style="color: {{ $user->classification_id == 1 ? 'blue' : ($user->classification_id == 2 ? 'red' : 'orange') }}">
+                                            {{ $user->classification_id == 1 ? 'Overall Administrator' : ($user->classification_id == 2 ? 'Administrator' : 'Staff') }}
                                         </span>
+                                        
                                     </td>
 
                                     <td data-label="Status" class="align-middle with-label" align="center">

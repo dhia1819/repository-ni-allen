@@ -16,13 +16,30 @@
 @section('content')
 
 <div class="row mt-2">
-    <div class="col-md-12">
-        <a href="{{ route('equipment.back') }}" class="btn bg-gradient-danger trigger-modal btn-md">
-            <i class="fa fa-arrow-left"></i> Back
-        </a>
-        <a href="{{ route('equipment.edit', ['id' => $equipment->id]) }}" class="btn bg-gradient-success trigger-modal btn-md">
-            <i class="fa fa-pen"></i> Update Equipment
-        </a>
+    <div class="row g-0">
+        <div class="col-md-8">
+            <a href="{{ route('equipment.back') }}" class="btn bg-gradient-danger btn-md">
+                <i class="fa fa-arrow-left"> </i>&nbsp;&nbsp;Back
+            </a>
+            <a href="{{ route('equipment.edit', ['id' => $equipment->id]) }}" class="btn bg-gradient-success btn-md">
+                <i class="fa fa-pen"> </i> &nbsp;&nbsp;Update
+            </a>
+        </div>
+        <div class="col-md-4">
+            <form action="{{ route('archive', ['id' => $equipment->id]) }}" method="post">
+                @csrf
+                @method('POST')
+                @if($equipment->status === 'Borrowed')
+                <button type="button" class="btn bg-gradient-secondary btn-md float-right" disabled>
+                    <i class="fas fa-archive"> </i>&nbsp;&nbsp;Archive
+                </button>                                                    
+                @else
+                <button type="submit" class="btn bg-gradient-warning btn-md float-right">
+                    <i class="fas fa-archive"> </i>&nbsp;&nbsp;Archive
+                </button>
+                @endif
+            </form>
+        </div>  
         @include('layouts.message')
     </div>
 </div>
