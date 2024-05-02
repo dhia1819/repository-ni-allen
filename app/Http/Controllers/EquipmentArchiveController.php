@@ -50,7 +50,7 @@ class EquipmentArchiveController extends Controller
     }
 
     public function restore(string $id){
-        // Find the equipment record by ID
+        
         $equipment = Equipment::findOrFail($id);
 
         $equipment->status = 'available';
@@ -90,7 +90,7 @@ class EquipmentArchiveController extends Controller
             return Redirect::back()->withErrors('No equipments found with the specified filters.');
         }
         
-        // Use the Excel facade to download the Excel file
+        // Excel File Download
         return $this->excel->download(new ArchiveExport($archive), $fileName);
     }
 }

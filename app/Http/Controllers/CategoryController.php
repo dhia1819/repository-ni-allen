@@ -39,7 +39,7 @@ class CategoryController extends Controller
     {
         $validatedData = $request->validate([
             'category' => 'required|string|max:255',
-            'status' => 'required|string|max:255' // Assuming 'status' is a string in the form ('Active' or 'Inactive')
+            'status' => 'required|string|max:255' 
         ]);
     
         $existingCategory = Category::where('category', $validatedData['category'])->first();
@@ -71,9 +71,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
 {
-    $category = Category::findOrFail($id); // Assuming you're using Eloquent ORM
+    $category = Category::findOrFail($id); 
 
-    // Return the category data as JSON
+    
     return response()->json([
         'id' => $category->id,
         'category' => $category->category,
@@ -88,16 +88,16 @@ class CategoryController extends Controller
         $validatedData = $request->validate([
             'rowid'    => 'required|exists:categories,id',
             'category' => 'required|string|max:255',
-            'status' => 'required|string|max:255' // Assuming 'status' is a string in the form ('Active' or 'Inactive')
+            'status' => 'required|string|max:255' 
         ]);
     
-        // Check if the category already exists
+        
         $existingCategory = Category::where('category', $validatedData['category'])->first();
         if ($existingCategory && $existingCategory->id != $validatedData['rowid']) {
             return redirect()->back()->withErrors(['This category already exists']);
         }
     
-        // Update the category
+        // Category Update
         $tblCategory = Category::findOrFail($validatedData['rowid']);
         $tblCategory->category = $validatedData['category'];
         $tblCategory->status = $validatedData['status'] === '1';

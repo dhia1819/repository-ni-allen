@@ -37,13 +37,13 @@ class PasswordController extends Controller
         ]);
         $auth = Auth::user();
 
-	// The passwords matches
+	
         if (!Hash::check($request->get('current_password'), $auth->password)) 
         {
             return back()->with('error', "Current Password is Invalid");
         }
 
-// Current password and new password same
+
         if (strcmp($request->get('current_password'), $request->new_password) == 0) 
         {
             return redirect()->back()->with("error", "New Password cannot be same as your current password.");
