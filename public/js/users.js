@@ -13,6 +13,7 @@ $(function() {
   
   $(".select2-create").select2({ dropdownParent: $("#create_modal")});
   $(".select2-edit").select2({ dropdownParent: $("#edit_modal")});
+
   
   $(".btn-destroy").click(function() {
       var id = $(this).data('id');
@@ -31,8 +32,8 @@ $('.btn-edit-user').click(function () {
   // Extract data from the table row
   var UserName = row.find('td:eq(0)').text().trim();
   var FullName = row.find('td:eq(1)').text().trim();
-  var Classification = row.find('td:eq(2)').text().trim(); // Assuming classification is in the third column
-  // Adjust indexes according to your table structure
+  var Classification = row.find('td:eq(2)').text().trim(); 
+  var status = row.find('td:eq(3)').text().trim(); 
 
   // Populate the modal form fields with the retrieved data
   $('#name').val(FullName);
@@ -40,6 +41,7 @@ $('.btn-edit-user').click(function () {
 
   // Set the classification select element's value
   $('#classification').val(Classification);
+  $('#status').val(status);
 
   // Set the rowid in a hidden input field
   $('#rowid').val(rowId);
