@@ -22,17 +22,15 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <div class="row">
-                        <div class="col">
-                          <h5 class="card-title text-info">Borrow Form</h5>
-                        </div>
-                        <div class="col-auto position-relative" style="width: 40px; height: 40px;">
-                          <a href="{{ route('equipment.show', ['id' => $equipment->id]) }}" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center position-absolute top-50 start-50 translate-middle" style="width: 100%; height: 100%;">
-                              <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
-                          </a>
-                        </div>
-                      </div>
-                      
+                    <div class="col">
+                      <h5 class="card-title text-info">Borrow Form</h5>
+                    </div>
+                    <div class="col-auto position-relative" style="width: 40px; height: 40px;">
+                      <a href="{{ route('equipment.show', ['id' => $equipment->id]) }}" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center position-absolute top-50 start-50 translate-middle" style="width: 100%; height: 100%;">
+                          <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+                      </a>
+                    </div>
+                  </div>
                 <form method="POST" action="{{ route('equipment.save') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
@@ -69,7 +67,7 @@
 
                     <div class="row mt-3">
                         <div class="col-md-6">
-                            <label class="form-label" for="date_borrowed">Date Borrowed<span class="text-danger">&#x2022;</span></label>
+                            <label class="form-label" for="date_borrowed">Date<span class="text-danger">&#x2022;</span></label>
                             <input type="datetime-local" class="form-control" id="date_borrowed" name="date_borrowed" required>
                         </div>
                         <div class="col-md-6">
