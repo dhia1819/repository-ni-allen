@@ -69,7 +69,7 @@
 
                     <div class="row mt-3">
                         <div class="col-md-6">
-                            <label class="form-label" for="date_borrowed">Date<span class="text-danger">&#x2022;</span></label>
+                            <label class="form-label" for="date_borrowed">Date Borrowed<span class="text-danger">&#x2022;</span></label>
                             <input type="datetime-local" class="form-control" id="date_borrowed" name="date_borrowed" required>
                         </div>
                         <div class="col-md-6">
