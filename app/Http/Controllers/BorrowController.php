@@ -116,6 +116,10 @@ class BorrowController extends Controller
     public function phase(Request $request, string $id)
         {
             $validatedData = $request->validate([
+                'borrowed_by' => 'required|string',
+                'office_name' => 'required|string',
+                'date_borrowed' => 'required|string',
+                'date_returned'=> 'required|string',
                 'returned_date' => 'required|date',
                 'returned_by' => 'required|string',
                 'received_by' => 'required|string',

@@ -53,25 +53,27 @@
                             <input type="text" class="form-control" id="property_no" name="property_no" value="{{ $transaction->property_no }}" readonly>
                         </div>
                     </div>
+                    <form method="POST" action="{{ route('borrow.phase', ['id' => $transaction->transaction_id]) }}" enctype="multipart/form-data">
+                        @csrf
                     <div class="row mt-3">
                         <div class="col-md-6">
                             <label class="form-label" for="borrowed_by">Borrower<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="borrowed_by" name="borrowed_by" value="{{ $transaction->borrowed_by }}" readonly>
+                            <input type="text" class="form-control" id="borrowed_by" name="borrowed_by" value="{{ $transaction->borrowed_by }}">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="office">Office<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="office_name" name="office_name" value="{{ $transaction->office_name }}" readonly>                        </div>
+                            <input type="text" class="form-control" id="office_name" name="office_name" value="{{ $transaction->office_name }}">                        </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-6">
                             <label class="form-label" for="date_borrowed">Date<span class="text-danger">&#x2022;</span></label>
-                            <input type="datetime-local" class="form-control" id="date_borrowed" name="date_borrowed" value="{{ $transaction->date_borrowed }}" readonly>
+                            <input type="datetime-local" class="form-control" id="date_borrowed" name="date_borrowed" value="{{ $transaction->date_borrowed }}">
 
                             {{-- <p>{{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F j, Y') }}</p> --}}
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="date_returned">Expected Return Date</label>
-                            <input type="datetime-local" class="form-control" id="date_returned" name="date_returned" value="{{ $transaction->date_returned }}" readonly>
+                            <input type="datetime-local" class="form-control" id="date_returned" name="date_returned" value="{{ $transaction->date_returned }}">
 
                             {{-- <p>{{ \Carbon\Carbon::parse($transaction->date_returned)->format('F j, Y') }}</p> --}}
                         </div>
@@ -79,15 +81,24 @@
                     <div class="row mt-3">
                         <div class="col-md-12">
                             <label class="form-label" for="release_by">Released by:<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="release_by" name="release_by" value="{{ $transaction->release_by }}" readonly>
+                            {{-- <input type="text" class="form-control" id="release_by" name="release_by" value="{{ $transaction->release_by }}"> --}}
+                            <select class="form-control select2 select2-return" id="release_by" name="release_by">
+                                <option value="{{ $transaction->release_by }}" selected>{{ $transaction->release_by }}</option> <!-- Disabled and selected placeholder option -->
+                                @foreach($employees as $employee)
+                                    @if($employee->status == 1)
+                                        <option value="{{ $employee->id }}">
+                                            {{ $employee->fullName }}
+                                        </option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </div>
                     </div>
-                    <form method="POST" action="{{ route('borrow.phase', ['id' => $transaction->transaction_id]) }}" enctype="multipart/form-data">
-                        @csrf
+                    
                         <div class="row mt-3">
                             <h5>Return Form</h5>
                             <div class="col-md-6">
-                                <input type="hidden" class="form-control" id="equipment_id" name="equipment_id" value="{{ $transaction->transaction_id }}" readonly>
+                                <input type="hidden" class="form-control" id="equipment_id" name="equipment_id" value="{{ $transaction->transaction_id }}">
                                 <label class="form-label" for="date_borrowed">Return Date<span class="text-danger">&#x2022;</span></label>
                                 <input type="datetime-local" class="form-control" id="returned_date" name="returned_date" required>
                             </div>
