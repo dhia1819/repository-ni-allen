@@ -38,7 +38,16 @@
 
                 @forelse ($transactions as $transaction)
                     <div class="row">
-                        <label class="text-info"><h>Transaction Information<span class="text-danger">&#x2022;</span></h4></label> 
+                            <div class="row">
+                                <div class="col">
+                                    <label class="text-info"><h>Transaction Information<span class="text-danger">&#x2022;</span></h4></label> 
+                                </div>
+                                <div class="col-auto position-relative" style="width: 40px; height: 40px;">
+                                    <a href="{{ route('equipment.show', $transaction->equipment_id) }}" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center position-absolute top-50 start-50 translate-middle" style="width: 100%; height: 100%;">
+                                      <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+                                  </a>
+                                </div>
+                              </div>
 
                         <div class="col-md-5">
                             <label class="form-label" for="equipment_name">Equipment Name <span class="text-danger">&#x2022;</span></label>

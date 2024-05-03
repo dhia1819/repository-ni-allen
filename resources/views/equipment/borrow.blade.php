@@ -21,7 +21,18 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title text-info">Borrow Form</h5>
+                <div class="row">
+                    <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-info">Borrow Form</h5>
+                        </div>
+                        <div class="col-auto position-relative" style="width: 40px; height: 40px;">
+                          <a href="{{ route('equipment.show', ['id' => $equipment->id]) }}" type="button" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center position-absolute top-50 start-50 translate-middle" style="width: 100%; height: 100%;">
+                              <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+                          </a>
+                        </div>
+                      </div>
+                      
                 <form method="POST" action="{{ route('equipment.save') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
