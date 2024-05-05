@@ -4,7 +4,7 @@
             <form method="post" action="{{ route('category.update', ['id' => $cat->id]) }}" class="form">
                 @csrf()
                 <div class="modal-header">
-                    <b class="modal-title text-info text-gradient"><i class="fa fa-plus"></i> Update Category</b>
+                    <b class="modal-title text-info text-gradient"><i class="fa fa-edit"></i> Update Category</b>
                     <a class="close text-secondary" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </a>

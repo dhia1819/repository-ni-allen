@@ -16,7 +16,7 @@ class EquipmentSeeder extends Seeder
         $equipment=array(
             array(
             'admin_id' => 1,
-            'equipment_name' => 'Air Conditioner',
+            'equipment_name' => '2.5Hp window type aircondition-CARRIER',
             'category' => 2,
             'Description' => '2.5Hp window type aircondition-CARRIER',
             'property_no' => 'F100225',
@@ -34,7 +34,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'Laptop Computer',
+                'equipment_name' => 'Laptop Computer-DELL',
                 'category' => 1,
                 'Description' => 'Laptop with separated audio jack with high-end webcam-DELL, 15.6" FHD, Core i5-10300H (8MB Cache, up to 4.5GHz, 4 Cores). 8GB DDR4-2933MHz, 2x4G. 1TB SATA HD + 256GB M.2 Pcle NVMe SSD. 4GB GDDR6. Operating System',
                 'property_no' => 'LAP0024935',
@@ -51,7 +51,7 @@ class EquipmentSeeder extends Seeder
             ),
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'Laptop Computer',
+                'equipment_name' => 'Laptop Computer-DELL',
                 'category' => 1,
                 'Description' => 'Laptop with separated audio jack with high-end webcam-DELL, Sn: GGRF203. 15.6" FHD, Core i5-10300H (8MB Cache, up to 4.5GHz, 4 Cores). 8GB DDR4-2933MHz, 2x4G. 1TB SATA HD + 256GB M.2 Pcle NVMe SSD. 4GB GDDR6. Operating System                ',
                 'property_no' => 'LAP0024936',
@@ -68,7 +68,7 @@ class EquipmentSeeder extends Seeder
             ),
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'Laptop Computer',
+                'equipment_name' => 'Laptop Computer-DELL',
                 'category' => 1,
                 'Description' => 'Laptop with separated audio jack with high-end webcam-DELL, Sn: JLRF203. 15.6" FHD, Core i5-10300H (8MB Cache, up to 4.5GHz, 4 Cores). 8GB DDR4-2933MHz, 2x4G. 1TB SATA HD + 256GB M.2 Pcle NVMe SSD. 4GB GDDR6. Operating System                ',
                 'property_no' => 'LAP0024937',
@@ -213,7 +213,7 @@ class EquipmentSeeder extends Seeder
             ),
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'Air Conditioner',
+                'equipment_name' => 'Air conditioner, 2.0Hp, window type, inverter - CARRIER',
                 'category' => 2,
                 'Description' => 'Air conditioner, 2.0Hp, window type, inverter - CARRIER
                                 Sn: 2322-0154162
@@ -233,7 +233,7 @@ class EquipmentSeeder extends Seeder
             ),
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'Air Conditioner',
+                'equipment_name' => 'Air conditioner, 2.0Hp, window type, inverter - CARRIER',
                 'category' => 2,
                 'Description' => 'Air conditioner, 2.0Hp, window type, inverter - CARRIER
                                 Sn: 2322-0154162
@@ -275,7 +275,7 @@ class EquipmentSeeder extends Seeder
             ),
             array(
                 'admin_id' => 1,
-                'equipment_name' => 'Acer Laptop',
+                'equipment_name' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER',
                 'category' => 1,
                 'Description' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER
                 Core i5-1035G1, 4GB, 512GB SSD',
@@ -890,7 +890,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Letwork Switch  (28 port)-LINKSYS',
-                'category' => 1,
+                'category' => 9,
                 'Description' => '"Network Switch  (28 port)-LINKSYS, 
                 Sn: 14E10C91801926
                 28-port Bussiness Managed Gigabit PoE + 2x Gigabit
@@ -1294,7 +1294,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Machine ID Card-HITI',
-                'category' => 1,
+                'category' => 9,
                 'Description' => 'Machine ID Card-HITI, Sn: C2E00A44700021',
                 'property_no' => 'MAC0010625',
                 'serial_no' => 'C2E00A44700021',
@@ -1542,7 +1542,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 1 ,
+                'category' => 13 ,
                 'equipment_name' => 'Large Format Printer-EPSON',
                 'Description' => 'Large Format Printer-EPSON, 
                 Sn: VRSE100360
@@ -1704,7 +1704,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 18,
-                'equipment_name' => 'Tower Server',
+                'equipment_name' => 'Tower Server-Hp',
                 'Description' => 'Tower Server-Hp, Sn: CN780801Q3. 
                 Intel Xeon Processor min of 3.3Ghz 4 Core: 
                 Memory min of 8GB registered DIMMs; Hard drive 2TB (2x1000GB HDD, preferably  SSD); 
@@ -1726,7 +1726,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 18,
-                'equipment_name' => 'Tower Server',
+                'equipment_name' => 'Tower Server - LENOVO',
                 'Description' => 'Tower Server - LENOVO
                 Model: 7Y48-CT01WW
                 Sn: J30A10HL
@@ -1751,7 +1751,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 18,
-                'equipment_name' => 'Tower Server',
+                'equipment_name' => 'Tower Server - LENOVO',
                 'Description' => 'Tower Server - LENOVO
                 Model: 7Y48-CT01WW
                 Sn: J30A10K4
@@ -1776,7 +1776,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 9,
-                'equipment_name' => 'Computer Accessory',
+                'equipment_name' => 'Uninterruptible Power Supply (3000 VA 23V)-APC',
                 'Description' => 'Uninterruptible Power Supply (3000 VA 23V)-APC,
                 Sn: AS2115251625',
                 'property_no' => 'UPS0028659',
@@ -1911,7 +1911,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 9,
-                'equipment_name' => 'Computer Accessory',
+                'equipment_name' => '600GB Hot plug Dual-Port SAS Hard Disk Drive',
                 'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
                 HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
                 Sn: PHG927E02C',
@@ -1931,7 +1931,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 9,
-                'equipment_name' => 'Computer Accessory',
+                'equipment_name' => '600GB Hot plug Dual-Port SAS Hard Disk Drive',
                 'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
                 HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
                 Sn: PHG927EO2B',
@@ -1951,7 +1951,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 9,
-                'equipment_name' => 'Computer Accessory',
+                'equipment_name' => '600GB Hot plug Dual-Port SAS Hard Disk Drive',
                 'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
                 HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
                 Sn:  PHG927EO56',
@@ -1971,7 +1971,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 9,
-                'equipment_name' => 'Computer Accessory',
+                'equipment_name' => '600GB Hot plug Dual-Port SAS Hard Disk Drive',
                 'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
                 HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
                 Sn:   PHG927E03J',
@@ -1991,7 +1991,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 9,
-                'equipment_name' => 'Computer Accessory',
+                'equipment_name' => '600GB Hot plug Dual-Port SAS Hard Disk Drive',
                 'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
                 HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
                 Sn:  PHG927E02E',
@@ -2011,7 +2011,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 9,
-                'equipment_name' => 'Computer Accessory',
+                'equipment_name' => '600GB Hot plug Dual-Port SAS Hard Disk Drive',
                 'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
                 HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
                 Sn: PHG927E02Z',
@@ -2124,7 +2124,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 9,
-                'equipment_name' => 'Computer Accessory',
+                'equipment_name' => 'CD-Book',
                 'Description' => 'CD-Book, Adaptive Server enterprises version 12 fro NT',
                 'property_no' => 'V300007',
                 'serial_no' => '-',
@@ -2142,7 +2142,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 9,
-                'equipment_name' => 'Computer Accessory',
+                'equipment_name' => 'CD-Book',
                 'Description' => 'CD-Book, Sybase network seat, for 10 users',
                 'property_no' => 'V300008',
                 'serial_no' => '-',
@@ -2160,7 +2160,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 9,
-                'equipment_name' => 'Computer Accessory',
+                'equipment_name' => 'Power Builder',
                 'Description' => 'Power Builder, version 7.00',
                 'property_no' => 'V300009',
                 'serial_no' => '-',
@@ -2178,7 +2178,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 9,
-                'equipment_name' => 'Computer Accessory',
+                'equipment_name' => 'MSSQl installer kit',
                 'Description' => 'MSSQl, standard with CD,installer kit and 1 MSSQL client access',
                 'property_no' => 'V400003',
                 'serial_no' => '-',
@@ -2493,7 +2493,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 9,
-                'equipment_name' => 'Computer Accessory',
+                'equipment_name' => 'Uninterruptible Power Supply',
                 'Description' => 'Uninterruptible Power Supply, 3000VA, 230V-APC, Sn: AS2020164419',
                 'property_no' => 'U90900032',
                 'serial_no' => 'AS2020164419',
@@ -2511,7 +2511,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'category' => 9,
-                'equipment_name' => 'Computer Accessory',
+                'equipment_name' => 'Uninterruptible Power Supply',
                 'Description' => 'Uninterruptible Power Supply, 3000VA, 230V-APC, Sn: AS2026262251',
                 'property_no' => 'U90900034',
                 'serial_no' => 'AS2026262251',

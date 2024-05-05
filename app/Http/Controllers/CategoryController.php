@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Category;
+use App\Models\Equipment; // Add this line to import the Equipment model
 
 
 use Illuminate\Http\Request;
@@ -84,27 +85,32 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        $validatedData = $request->validate([
-            'rowid'    => 'required|exists:categories,id',
-            'category' => 'required|string|max:255',
-            'status' => 'required|string|max:255' 
-        ]);
+{
+    $validatedData = $request->validate([
+        'rowid'    => 'required|exists:categories,id',
+        'category' => 'required|string|max:255',
+        'status' => 'required|string|max:255' 
+    ]);
+
     
-        
-        $existingCategory = Category::where('category', $validatedData['category'])->first();
-        if ($existingCategory && $existingCategory->id != $validatedData['rowid']) {
-            return redirect()->back()->withErrors(['This category already exists']);
-        }
-    
-        // Category Update
-        $tblCategory = Category::findOrFail($validatedData['rowid']);
-        $tblCategory->category = $validatedData['category'];
-        $tblCategory->status = $validatedData['status'] === '1';
-        $tblCategory->save();
-    
-        return redirect()->back()->with('success', 'Category updated successfully!');
+    $existingCategory = Category::where('category', $validatedData['category'])->first();
+    if ($existingCategory && $existingCategory->id != $validatedData['rowid']) {
+        return redirect()->back()->withErrors(['This category already exists']);
     }
+
+    // Category Update
+    $tblCategory = Category::findOrFail($validatedData['rowid']);
+    $tblCategory->category = $validatedData['category'];
+    $tblCategory->status = $validatedData['status'] === '1';
+    $tblCategory->save();
+
+    // Update the conditions in the equipment table based on the category status
+    $conditions = $validatedData['status'] === '1' ? 'Available' : 'Archived';
+    Equipment::where('category', $tblCategory->id)->update(['status' => $conditions]);
+
+    return redirect()->back()->with('success', 'Category updated successfully!');
+}
+
     
 
     /**
