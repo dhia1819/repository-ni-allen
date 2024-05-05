@@ -7,6 +7,39 @@
 @endsection
 @section('page_script')
     <script type="text/javascript" src="/js/equipment.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the input element
+        const valueInput = document.getElementById('value');
+
+        // Function to format the value with commas and add peso sign
+        function formatValueWithPesoSign(value) {
+            // Add pesos sign and commas
+            return '₱ ' + value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Function to remove peso sign and commas
+        function removePesoSignAndCommas(value) {
+            // Remove peso sign and commas
+            return value.replace(/[^\d.]/g, '');
+        }
+
+        // Add event listener to input element
+        valueInput.addEventListener('input', function(event) {
+            // Get the input value
+            let value = event.target.value;
+            // Remove peso sign and commas
+            value = removePesoSignAndCommas(value);
+            // Format the value with commas and add peso sign
+            const formattedValue = formatValueWithPesoSign(value);
+            // Set the formatted value back to the input
+            event.target.value = formattedValue;
+        });
+
+        // Format the placeholder text with the Philippine peso sign and commas
+        valueInput.placeholder = formatValueWithPesoSign(valueInput.placeholder);
+    });
+</script>
 @endsection
 @section('content')
 
@@ -75,13 +108,16 @@
                             <input type="text" class="form-control" id="unit_of_measure" name="unit_of_measure">
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label" for="quantity">Quantity per Property Card<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="quantity" name="quantity">
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label" for="value">Value<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="value" name="value">
-                        </div>
+    <label class="form-label" for="quantity">Quantity per Property Card<span class="text-danger">&#x2022;</span></label>
+    <input type="text" class="form-control" id="quantity" name="quantity">
+</div>
+
+<div class="col-md-4">
+    <label class="form-label" for="value">Value<span class="text-danger">&#x2022;</span></label>
+    <input type="text" class="form-control" id="value" name="value" placeholder="0.00">
+</div>
+
+                        
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">

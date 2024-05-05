@@ -99,7 +99,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label" for="value">Value</label>
-                                <input type="text" class="form-control" id="value" name="value" value="{{ $equipment->value }}" readonly>
+                                <input type="text" class="form-control" id="value" name="value" value="₱ {{ number_format($equipment->value, 2, '.', ',') }}" readonly>
                             </div>
                         </div>
 

@@ -134,51 +134,54 @@ class EquipmentController extends Controller
     
     
     //Creating or Adding of new equipment for the inventory
-    public function store(Request $request)
-    {
-        // Validate incoming request data
-        $validatedData = $request->validate([
-            'equipment_name' => 'required|string',
-            'category' => 'required|string',
-            'Description' => 'required|string',
-            'property_no' => 'required|string',
-            'serial_no' => 'required|string|unique:equipment,serial_no',
-            'unit_of_measure' => 'required|string',
-            'value' => 'required|string',
-            'quantity' => 'required|integer',
-            'image' => 'nullable|image',
-            'remarks' => 'required|string',
-            'date_acquired' => 'required|date',
-            'conditions' => 'required|string'
-        ]);
+public function store(Request $request)
+{
+    // Validate incoming request data
+    $validatedData = $request->validate([
+        'equipment_name' => 'required|string',
+        'category' => 'required|string',
+        'Description' => 'required|string',
+        'property_no' => 'required|string',
+        'serial_no' => 'required|string|unique:equipment,serial_no',
+        'unit_of_measure' => 'required|string',
+        'value' => 'required|string',
+        'quantity' => 'required|integer',
+        'image' => 'nullable|image',
+        'remarks' => 'required|string',
+        'date_acquired' => 'required|date',
+        'conditions' => 'required|string'
+    ]);
 
-        // Set admin_id to the authenticated user's ID
-        $validatedData['admin_id'] = Auth::id();
+    // Remove peso sign and commas from the value
+    $validatedData['value'] = preg_replace("/[^0-9.]/", "", $validatedData['value']);
 
-        //status
-        if ($validatedData['conditions'] === 'Good' || $validatedData['conditions'] === 'Fair' || $validatedData['conditions'] === 'Poor') {
-            $validatedData['status'] = 'available';
-        }
-        else{
-            $validatedData['status'] = 'unavailable';
-        }
+    // Set admin_id to the authenticated user's ID
+    $validatedData['admin_id'] = Auth::id();
 
-        //image upload
-        if($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time().'.'.$image->extension();
-            $image->move(public_path('uploads'), $imageName);
-
-            // Set image name to the validated data
-            $validatedData['image'] = $imageName;
-        }
-
-        // Create new equipment record
-        Equipment::create($validatedData);
-
-        // Redirect back with success message
-        return redirect('equipment')->with('success', 'Equipment updated successfully.');
+    //status
+    if ($validatedData['conditions'] === 'Good' || $validatedData['conditions'] === 'Fair' || $validatedData['conditions'] === 'Poor') {
+        $validatedData['status'] = 'available';
     }
+    else{
+        $validatedData['status'] = 'unavailable';
+    }
+
+    //image upload
+    if($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time().'.'.$image->extension();
+        $image->move(public_path('uploads'), $imageName);
+
+        // Set image name to the validated data
+        $validatedData['image'] = $imageName;
+    }
+
+    // Create new equipment record
+    Equipment::create($validatedData);
+
+    // Redirect back with success message
+    return redirect('equipment')->with('success', 'Equipment created successfully.');
+}
 
     public function condition(Request $request, $id)
     {

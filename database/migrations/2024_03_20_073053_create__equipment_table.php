@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('property_no');
             $table->string('serial_no');
             $table->string('unit_of_measure');
-            $table->string('value');
+            $table->decimal('value', 10, 2);
             $table->integer('quantity');
             $table->string('image')->nullable();
             $table->string('conditions');

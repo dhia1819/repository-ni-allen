@@ -157,8 +157,10 @@
                                     <h4 class="text-info text-sm">Uploaded File Preview</h4>
                                 </div>
                                 <div class="col-md-3">
-                                    <a href="{{ asset('uploads/' . $transaction->upload_file) }}" download="image.jpg" class="btn btn-sm bg-gradient-success btn-submit mt-2 float-end" role="button"><i class="fa fa-download"></i></a>    
-                                </div>
+    @if ($transaction->upload_file)
+        <a href="{{ asset('uploads/' . $transaction->upload_file) }}" download="image.jpg" class="btn btn-sm bg-gradient-success btn-submit mt-2 float-end" role="button"><i class="fa fa-download"></i></a>
+    @endif
+</div>
                             </div>    
                             <img src="{{ asset('uploads/' . $transaction->upload_file) }}" alt="Image Preview" style="max-width: 100%">
                             @elseif (Str::endsWith($transaction->upload_file, '.pdf'))
