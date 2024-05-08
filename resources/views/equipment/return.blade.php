@@ -141,7 +141,13 @@
                                             <td>{{ $transaction->office_name }}</td>
                                             <td>{{ $transaction->category_name }}</td>
                                             <td>{{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F d, Y | h:i A') }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($transaction->date_returned)->format('F d, Y | h:i A') }}</td>
+                                            <td>
+                                                @if ($transaction->date_returned)
+                                                    {{ \Carbon\Carbon::parse($transaction->date_returned)->format('F d, Y | h:i A') }}
+                                                @else
+                                                    No Expected Return Date
+                                                @endif
+                                            </td>
                                             
                                             <td class="align-middle text-center action" role="group" aria-label="Status">
                                                 @if ($transaction->status === 'Late')

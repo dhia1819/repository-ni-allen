@@ -42,17 +42,20 @@ class BorrowController extends Controller
         ->orderBy('transactions.created_at', 'ASC')
             ->get();
 
-        // Update transaction status to 'Late' if the expected return datetime has passed
-        foreach ($borrowedData as $transaction) {
-            $expectedReturnDateTime = Carbon::parse($transaction->date_returned);
-
-            if (Carbon::now()->greaterThan($expectedReturnDateTime) && $transaction->status !== 'Return') {
-                // Update transaction status to 'Late'
-                $transaction->status = 'Late';
-                $transaction->save();
+            foreach ($borrowedData as $transaction) {
+                $expectedReturnDateTime = $transaction->date_returned ? Carbon::parse($transaction->date_returned) : null;
+            
+                if ($expectedReturnDateTime && Carbon::now()->greaterThan($expectedReturnDateTime) && $transaction->status !== 'Return') {
+                    // Update transaction status to 'Late'
+                    $transaction->status = 'Late';
+                    $transaction->save();
+                } elseif (!$expectedReturnDateTime) {
+                    // If expected return date is null, set status back to 'Borrowed'
+                    $transaction->status = 'Borrowed';
+                    $transaction->save();
+                }
             }
-        }
-
+            
         return view('equipment.return', compact('page', 'borrowedData', 'categories', 'offices', 'employees'));       
     }
 
@@ -119,7 +122,7 @@ class BorrowController extends Controller
                 'borrowed_by' => 'required|string',
                 'office_name' => 'required|string',
                 'date_borrowed' => 'required|string',
-                'date_returned'=> 'required|string',
+                'date_returned'=> 'nullable|string',
                 'returned_date' => 'required|date',
                 'returned_by' => 'required|string',
                 'received_by' => 'required|string',
