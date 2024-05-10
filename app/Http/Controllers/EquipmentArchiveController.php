@@ -51,12 +51,21 @@ class EquipmentArchiveController extends Controller
 
     public function restore(string $id){
         
+        // Find the equipment
         $equipment = Equipment::findOrFail($id);
-
+    
+        // Update equipment status
         $equipment->status = 'available';
         $equipment->conditions = 'Good';
         $equipment->save();
-
+    
+        // Retrieve the category ID associated with the equipment
+        $category = $equipment->category;
+    
+        // Update the category status in the categories table
+        Category::where('id', $category)->update(['status' => 1]);
+    
+        // Redirect with success message
         return redirect('/equipment')->with('success', 'Equipment Restored successfully.');
     }
 

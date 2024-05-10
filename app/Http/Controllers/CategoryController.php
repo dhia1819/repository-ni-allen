@@ -89,27 +89,34 @@ class CategoryController extends Controller
     $validatedData = $request->validate([
         'rowid'    => 'required|exists:categories,id',
         'category' => 'required|string|max:255',
-        'status' => 'required|string|max:255' 
+        'status'   => 'required|string|max:255' 
     ]);
 
-    
-    $existingCategory = Category::where('category', $validatedData['category'])->first();
-    if ($existingCategory && $existingCategory->id != $validatedData['rowid']) {
-        return redirect()->back()->withErrors(['This category already exists']);
+    // Check if there are any borrowed items in the category
+    $hasBorrowedItems = Equipment::where('category', $validatedData['rowid'])
+                                  ->where('status', 'Borrowed')
+                                  ->exists();
+
+    // If there are borrowed items and the new status is 'Inactive', show a message
+    if ($hasBorrowedItems && $validatedData['status'] === '0') {
+        return redirect()->back()->withErrors(['Cannot set category status to Inactive. There are borrowed items in this category.']);
     }
 
     // Category Update
     $tblCategory = Category::findOrFail($validatedData['rowid']);
     $tblCategory->category = $validatedData['category'];
-    $tblCategory->status = $validatedData['status'] === '1';
+    $tblCategory->status = $validatedData['status'] === 'Active'; // assuming 'Active' means status is 1
     $tblCategory->save();
 
     // Update the conditions in the equipment table based on the category status
-    $conditions = $validatedData['status'] === '1' ? 'Available' : 'Archived';
-    Equipment::where('category', $tblCategory->id)->update(['status' => $conditions]);
+    $conditions = $validatedData['status'] === 'Active' ? 'Available' : 'Archived';
+    Equipment::where('category', $tblCategory->id)
+             ->update(['status' => $conditions]);
 
     return redirect()->back()->with('success', 'Category updated successfully!');
 }
+
+    
 
     
 
