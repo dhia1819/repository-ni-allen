@@ -341,6 +341,6 @@ class OfficeSeeder extends Seeder
             )
         );  
 
-        DB::table('offices')->insert($offices);
+        DB::table('tbl_office')->insert($offices);
     }
 }

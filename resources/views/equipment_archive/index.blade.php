@@ -64,7 +64,7 @@
                                     @if($category->status == 0)
                                         @continue
                                     @endif
-                                <option value="{{ $category->category }}">{{ $category->category }}</option>
+                                <option value="{{ $category->name }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -101,7 +101,7 @@
                                     @endif --}}
                                     <td style="vertical-align: middle; white-space: normal;">{{ $item->equipment_name }}</td>
 
-                                    <td style="vertical-align: middle;">{{ $item->category_name }}</td>
+                                    <td style="vertical-align: middle;">{{ $item->category->name }}</td>
                                     <td style="vertical-align: middle;">{{ $item->property_no }}</td>
                                     <td style="vertical-align: middle; white-space: normal;">{{ $item->serial_no }}</td>
                                     {{-- <td style="vertical-align: middle;">Php.{{ $item->value }}</td>

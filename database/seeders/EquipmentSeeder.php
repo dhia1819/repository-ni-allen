@@ -17,7 +17,7 @@ class EquipmentSeeder extends Seeder
             array(
             'admin_id' => 1,
             'equipment_name' => '2.5Hp window type aircondition-CARRIER',
-            'category' => 2,
+            'category_id' => 2,
             'Description' => '2.5Hp window type aircondition-CARRIER',
             'property_no' => 'F100225',
             'serial_no' => '51PMX-RAC-CAR-24KEA N16PC-1220130',
@@ -35,7 +35,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop Computer-DELL',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop with separated audio jack with high-end webcam-DELL, 15.6" FHD, Core i5-10300H (8MB Cache, up to 4.5GHz, 4 Cores). 8GB DDR4-2933MHz, 2x4G. 1TB SATA HD + 256GB M.2 Pcle NVMe SSD. 4GB GDDR6. Operating System',
                 'property_no' => 'LAP0024935',
                 'serial_no' => 'FJRF203',
@@ -52,7 +52,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop Computer-DELL',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop with separated audio jack with high-end webcam-DELL, Sn: GGRF203. 15.6" FHD, Core i5-10300H (8MB Cache, up to 4.5GHz, 4 Cores). 8GB DDR4-2933MHz, 2x4G. 1TB SATA HD + 256GB M.2 Pcle NVMe SSD. 4GB GDDR6. Operating System                ',
                 'property_no' => 'LAP0024936',
                 'serial_no' => 'GGRF203',
@@ -69,7 +69,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop Computer-DELL',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop with separated audio jack with high-end webcam-DELL, Sn: JLRF203. 15.6" FHD, Core i5-10300H (8MB Cache, up to 4.5GHz, 4 Cores). 8GB DDR4-2933MHz, 2x4G. 1TB SATA HD + 256GB M.2 Pcle NVMe SSD. 4GB GDDR6. Operating System                ',
                 'property_no' => 'LAP0024937',
                 'serial_no' => 'JLRF203',
@@ -86,7 +86,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop Computer - ACER ASPIRE',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop Computer - ACER ASPIRE, Sn: NXAYCSP004207113B33400, Intel Core i71195G7, 16GB DDR4, 1TB Pcle NVMe SSD.
                                     Intel Iris XE Graphics, 15.6"" Full HD 1080p IPS Slim Bezel.
                                     Windows 11 Licensed MS Office Home and Student 2021',
@@ -105,7 +105,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Finger Scanner-ACTAtek',
-                'category' => 4,
+                'category_id' => 4,
                 'Description' => 'Finger Scanner-ACTAtek, Sn: 00111DB025D0. 
                                 Real time system update and configuration 500DPI optical scanner; 
                                 Auto-match support up to 10,000 users (1:N) operates in Standalone or Network mode (Access Manager); 
@@ -129,7 +129,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Smart Television-LG',
-                'category' => 5,
+                'category_id' => 5,
                 'Description' => 'Smart Television-LG, Sn: 010INBSA9149. 55" Smart TV wide angle 4k Active HDR',
                 'property_no' => 'SMA0024968',
                 'serial_no' => '010INBSA9149',
@@ -146,7 +146,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Smart Television-LG',
-                'category' => 5,
+                'category_id' => 5,
                 'Description' => 'Smart Television-LG, Sn: 010INFKA9147. 55" Smart TV wide angle 4k Active HDR',
                 'property_no' => 'SMA0024969',
                 'serial_no' => '010INFKA9147',
@@ -163,7 +163,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Smart Television-LG',
-                'category' => 5,
+                'category_id' => 5,
                 'Description' => 'Smart Television-LG, Sn: 010INTXA9137. 55" Smart TV wide angle 4k Active HDR',
                 'property_no' => 'SMA0024970',
                 'serial_no' => '010INTXA9137',
@@ -180,7 +180,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'CANON EOS 6D',
-                'category' => 7,
+                'category_id' => 7,
                 'Description' => 'Camera Body Only CANON EOS 6D Sn: 398051004695; Lens Sn: 667891.',
                 'property_no' => 'PHO0012754B',
                 'serial_no' => '398051004695',
@@ -197,7 +197,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Orlando conference - walnut finish',
-                'category' => 14,
+                'category_id' => 14,
                 'Description' => 'Orlando, conference, valnut finish, 24ft. X 4 ft.',
                 'property_no' => 'J200002',
                 'serial_no' => '-',
@@ -214,7 +214,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Air conditioner, 2.0Hp, window type, inverter - CARRIER',
-                'category' => 2,
+                'category_id' => 2,
                 'Description' => 'Air conditioner, 2.0Hp, window type, inverter - CARRIER
                                 Sn: 2322-0154162
                                 3021-0200230
@@ -234,7 +234,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Air conditioner, 2.0Hp, window type, inverter - CARRIER',
-                'category' => 2,
+                'category_id' => 2,
                 'Description' => 'Air conditioner, 2.0Hp, window type, inverter - CARRIER
                                 Sn: 2322-0154162
                                 3021-0200230
@@ -254,7 +254,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop-ACER, 
                 SN: NHQ7NSP00C112231D73400.
                 i5-10300H Processor/8GB DDR4 Memory/ 256GB NVMe
@@ -276,7 +276,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER
                 Core i5-1035G1, 4GB, 512GB SSD',
                 'property_no' => 'LAP0029050',
@@ -294,7 +294,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Projector-ACER',
-                'category' => 15,
+                'category_id' => 15,
                 'Description' => 'Projector-ACER, Sn: MRJPJ11007801002EE5900. 4500 Lumens, WXGA 1280x800, WUXGA 1920x1200. Contrast Ratio 20,000: 1, Lamp Life 4,000hrs., 16W speaker, HDMI.',
                 'property_no' => 'PRO0024938',
                 'serial_no' => 'MRJPJ11007801002EE5900',
@@ -311,7 +311,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Projector-ACER',
-                'category' => 15,
+                'category_id' => 15,
                 'Description' => 'Projector-ACER, Sn: MRJPJ11007106012835910. 4500 Lumens, WXGA 1280x800, WUXGA 1920x1200. Contrast Ratio 20,000: 1, Lamp Life 4,000hrs., 16W speaker, HDMI.',
                 'property_no' => 'PRO0024940',
                 'serial_no' => 'MRJPJ11007106012835910',
@@ -328,7 +328,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Toyota Tamaraw FX',
-                'category' => 3,
+                'category_id' => 3,
                 'Description' => 'Toyota Tamaraw FX, Plate No. SFB 820, Standard Gas with complete accessries. Model No: Wagon 1800CC 4 Cyl 2010 kg., (Engine No. 7K-0331651; Chassis No. KF52-963421; Year Model: 2000; Make: Toyota-SR M/T Wagon; Color: Wine Red)',
                 'property_no' => 'LLL200012',
                 'serial_no' => 'KF52-963421',
@@ -346,7 +346,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Toyota Tamaraw FX',
-                'category' => 3,
+                'category_id' => 3,
                 'Description' => 'Plate No. SDS 893, Toyota Tamaraw FX; Engine No. 7K-0261381; Chassis No. KF52-962820',
                 'property_no' => 'LLL200015',
                 'serial_no' => 'KF52-962820',
@@ -364,7 +364,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Toyota Revo',
-                'category' => 3,
+                'category_id' => 3,
                 'Description' => 'Toyota Revo, Plate No. SFB 815. (Engine No. 7K-0349160; Chassis No. KF80-8017544; Year Model: 2000; Make: Toyota-Revo SR MT Wagon; Color: Wine Red). With one (1) set seat cover.',
                 'property_no' => 'LLL200029',
                 'serial_no' => 'KF80-8017544',
@@ -381,7 +381,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Carrier Air Conditioner',
-                'category' => 2,
+                'category_id' => 2,
                 'Description' => '2.5Hp split type aircondition-CARRIER, Sn: Indoor-D202217700116912170068; Outdoor-D202161730216815170005',
                 'property_no' => 'F100224',
                 'serial_no' => 'D202217700116912170068',
@@ -400,7 +400,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Carrier Air Conditioner',
-                'category' => 2,
+                'category_id' => 2,
                 'Description' => '2.5Hp split type aircondition-CARRIER, Sn: Indoor-D202217700116912170068; Outdoor-D202161730216815170005',
                 'property_no' => 'F100224',
                 'serial_no' => 'D202161730216815170005',
@@ -418,7 +418,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Toyota Tamaraw FX',
-                'category' => 3,
+                'category_id' => 3,
                 'Description' => 'Plate No. SDS 893, Toyota Tamaraw FX; Engine No. 7K-0261381; Chassis No. KF52-962820',
                 'property_no' => 'LLL200029',
                 'serial_no' => 'KF80-8017544',
@@ -437,7 +437,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop-ACER. Intel core i5-4210u up tp 2.70Ghz/4GB/1TB. 14inches HD, 8x DVD Super multi double layer drive. Windows 8.1, Serial Nos.: NXMN3SP0014240307E7600',
                 'property_no' => 'LAP0010903',
                 'serial_no' => 'NXMN3SP0014240307E7600',
@@ -455,7 +455,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'NIKON D5300',
-                'category' => 7,
+                'category_id' => 7,
                 'Description' => 'Camera Body Only NIKON D5300 Sn: 7840460; Lens Sn: 23818843.',
                 'property_no' => 'PHO0012754A',
                 'serial_no' => '7840460',
@@ -473,7 +473,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Police Patrol Type Jeep',
-                'category' => 3,
+                'category_id' => 3,
                 'Description' => 'Police Patrol Type Jeep Multicab, (Engine No. F6A-55033117; Chassis No. DD51B-100194; Year Model: 2008; Make: Suzuki-HSPUR; Color: Not Indicated)',
                 'property_no' => 'MVO018',
                 'serial_no' => 'DD51B-100194',
@@ -490,7 +490,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 8,
+                'category_id' => 8,
                 'Description' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK
                     Sn: 00111DB03FE8
                     Specs: 
@@ -518,7 +518,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 8,
+                'category_id' => 8,
                 'Description' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK
                     Sn: 000111DB03FE9
                     Specs: 
@@ -547,7 +547,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 8,
+                'category_id' => 8,
                 'Description' => '"ATS Machine Facial and Fingerprint Verification - ACTATEK
                     Sn:  00111DB03FE3     
                     Specs: 
@@ -575,7 +575,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 8,
+                'category_id' => 8,
                 'Description' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK
                 Sn: 00111DB03FE0
                 Specs: 
@@ -603,7 +603,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 8,
+                'category_id' => 8,
                 'Description' => '""ATS Machine Facial and Fingerprint Verification - ACTATEK
                     Sn: 00111DB03FE4     
                     Specs: 
@@ -631,7 +631,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 8,
+                'category_id' => 8,
                 'Description' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK
                 Sn: 00111DB03FEA
                 Specs: 
@@ -659,7 +659,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 8,
+                'category_id' => 8,
                 'Description' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK
                 Sn:  00111DB03FE5     
                 Specs: 
@@ -687,7 +687,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 8,
+                'category_id' => 8,
                 'Description' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK
                 Sn: 00111DB03FEB
                 Specs: 
@@ -715,7 +715,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK',
-                'category' => 8,
+                'category_id' => 8,
                 'Description' => 'ATS Machine Facial and Fingerprint Verification - ACTATEK
                 Sn: 00111DB03FE7     
                 Specs: 
@@ -743,7 +743,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'ATS Finger Scanner - ACTATEK',
-                'category' => 8,
+                'category_id' => 8,
                 'Description' => 'ATS Finger Scanner - ACTATEK
                 Sn: 00111DB025DA
                 Real-time system update of configuration 500 DPI optical scanner.
@@ -766,7 +766,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop Computer - ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop Computer-ACER, Sn: NXGDWSP0047130FAE57600. Core i5-7200U (3MB L3 cache 2.5Ghz with turbo boost). 4GB of DDR2. 2TB 2.5inch 5400 RPM. 15.6" Full HD',
                 'property_no' => 'COM0016449',
                 'serial_no' => 'NXGDWSP0047130FAE57600',
@@ -784,7 +784,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop Computer-ASUS',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop Computer-ASUS, Sn: DBNOCX343136466. Intel core i7-4500U 1.8Ghz Processor/4GB DDR3, 15.6", Windows 8 SL.',
                 'property_no' => 'LAP0007968',
                 'serial_no' => 'DBNOCX343136466',
@@ -801,7 +801,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop Computer - ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop-ACER, Sn: NXMN3SP0014240308E7600. Intel core i5-4210u up tp 2.70Ghz/4GB/1TB. 14inches HD, 8x DVD Super multi double layer drive. Windows 8.1 (Health Service Program)',
                 'property_no' => 'LAP0010905',
                 'serial_no' => 'NXGDWSP0047130FAE57600',
@@ -819,7 +819,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop-ACER. Intel core i5-4210u up tp 2.70Ghz/4GB/1TB. 14inches HD, 8x DVD Super multi double layer drive. Windows 8.1, Serial Nos.: NXMN3SP001423171FF7600',
                 'property_no' => 'LAP0010909',
                 'serial_no' => 'NXMN3SP001423171FF7600',
@@ -836,7 +836,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop Computer - ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop-ACER. Intel core i5-4210u up tp 2.70Ghz/4GB/1TB. 14inches HD, 8x DVD Super multi double layer drive. Windows 8.1, Serial Nos.: NXMN3SP001423170AB7600',
                 'property_no' => 'LAP0010913',
                 'serial_no' => 'NXMN3SP001423170AB7600',
@@ -854,7 +854,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop-ACER, Sn: NXMN3SP0014240331D7600. Intel core i5-4210u up tp 2.70Ghz/4GB/1TB. 14inches HD, 8x DVD Super multi double layer drive. Windows 8.1 (Health Service Program)',
                 'property_no' => 'LAP0010916',
                 'serial_no' => 'NXMN3SP0014240331D7600',
@@ -872,7 +872,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop Computer - ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop-ACER, Sn: NXMN3SP001427045AB7600. Intel core i5-4210u up tp 2.70Ghz/4GB/1TB. 14inches HD, 8x DVD Super multi double layer drive. Windows 8.1 (Health Service Program)',
                 'property_no' => 'LAP0010919',
                 'serial_no' => 'NXMN3SP001427045AB7600',
@@ -890,7 +890,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Letwork Switch  (28 port)-LINKSYS',
-                'category' => 9,
+                'category_id' => 9,
                 'Description' => '"Network Switch  (28 port)-LINKSYS, 
                 Sn: 14E10C91801926
                 28-port Bussiness Managed Gigabit PoE + 2x Gigabit
@@ -910,7 +910,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Network Switch  (28 port)-LINKSYS',
-                'category' => 9,
+                'category_id' => 9,
                 'Description' => 'Network Switch  (28 port)-LINKSYS, 
                 Sn: 14E10C91801904
                 28-port Bussiness Managed Gigabit PoE + 2x Gigabit
@@ -931,7 +931,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Network Switch  (24 port)-LINKSYS',
-                'category' => 9,
+                'category_id' => 9,
                 'Description' => 'Network Switch  (24 port)-LINKSYS, 
                 Sn: 39B10GH8B00375
                 24-port Bussiness Managed Gigabit PoE + Switch w/4 10G, SPF + Uplinks 410W',
@@ -950,7 +950,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Uninterrupted Power Supply (UPS) - VERTIV',
-                'category' => 9,
+                'category_id' => 9,
                 'Description' => 'Uninterrupted Power Supply (UPS) - VERTIV
                     Model: GXTRT 3000IRT2UXL
                     Sn: 2232810321RT13C
@@ -975,7 +975,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Digital Audio Video NTSC Professional Offer Data Video',
-                'category' => 10,
+                'category_id' => 10,
                 'Description' => 'Digital Audio Video NTSC Professional Offer Data Video, Switcher Model SE 500, Sn: 00399943',
                 'property_no' => 'DIG0012755',
                 'serial_no' => '00399943',
@@ -993,7 +993,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Solar Power Portable Generator - POWEROAD',
-                'category' => 12,
+                'category_id' => 12,
                 'Description' => 'Solar Power Portable Generator - POWEROAD
                 Model: Prime 750.
                 SN: Y1261520K180024.
@@ -1025,7 +1025,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Document Scanner-CANON',
-                'category' => 12,
+                'category_id' => 12,
                 'Description' => 'Document Scanner-CANON. Scanning resolution: 150x150dpi, 200x200dpi, 300x300dpi, 400x400dpi. Serial Nos.: FW434824 (Health Service Program)',
                 'property_no' => 'SCA0010965',
                 'serial_no' => 'FW434824',
@@ -1042,7 +1042,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Photocopier Machine-GESTETNER',
-                'category' => 12,
+                'category_id' => 12,
                 'Description' => 'Photocopier Machine-GESTETNER, Sn: 
                     E356M350085. Warm-up time: 10secs. 1st Output Speed: 6.5secs. Continous output speed: 20/25 pages/m. Memory: Standard 128MB. Dimensions: 587x568x430/587x568x528mm. Weight: 37kg. Power source: 220-240V. 50/60Hz',
                 'property_no' => 'COP0013447',
@@ -1061,7 +1061,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Document Scanner-CANON',
-                'category' => 9,
+                'category_id' => 9,
                 'Description' => 'Document Scanner-CANON. Scanning resolution: 150x150dpi, 200x200dpi, 300x300dpi, 400x400dpi. Serial Nos.: FW4355690',
                 'property_no' => 'SCA0010960',
                 'serial_no' => 'FW4355690',
@@ -1078,7 +1078,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Document Scanner-CANON',
-                'category' => 9,
+                'category_id' => 9,
                 'Description' => 'Document Scanner-CANON. Scanning resolution: 150x150dpi, 200x200dpi, 300x300dpi, 400x400dpi. Serial Nos.: FW4355690',
                 'property_no' => 'SCA0010960',
                 'serial_no' => 'FW4355690',
@@ -1096,7 +1096,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop-ACER. Intel core i5-4210u up tp 2.70Ghz/4GB/1TB. 14inches HD, 8x DVD Super multi double layer drive. Windows 8.1, Serial Nos.: NXMN3SP001423170C97600',
                 'property_no' => 'LAP0010915',
                 'serial_no' => 'NXMN3SP001423170C97600',
@@ -1114,7 +1114,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Information and Communication Technology Thermal ID card Printer with Flipper - SMART',
-                'category' => 13,
+                'category_id' => 13,
                 'Description' => 'Information and Communication Technology Thermal ID card Printer with Flipper - SMART
                 Sn: 5SPH000000270017, Model: SMART-51S
                 PRINTING
@@ -1162,7 +1162,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop-ACER, 
                 SN: NHQ7NSP00C112233EE3400.
                 i5-10300H Processor/8GB DDR4 Memory/ 256GB NVMe
@@ -1184,7 +1184,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop-ACER, 
                 SN: NHQ7NSP00C11222DA43400.
                 i5-10300H Processor/8GB DDR4 Memory/ 256GB NVMe
@@ -1207,7 +1207,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop-ACER, 
                 SN: NHQ7NSP00C112231DC3400.
                 i5-10300H Processor/8GB DDR4 Memory/ 256GB NVMe
@@ -1230,7 +1230,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop-ACER, 
                 SN: NHQ7NSP00C11222DB03400.
                 i5-10300H Processor/8GB DDR4 Memory/ 256GB NVMe
@@ -1253,7 +1253,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop-ACER, 
                 SN: NHQ7NSP00C112235133400.
                 i5-10300H Processor/8GB DDR4 Memory/ 256GB NVMe
@@ -1276,7 +1276,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Storage-SYNOLOGY',
-                'category' => 9 ,
+                'category_id' => 9 ,
                 'Description' => 'Storage-SYNOLOGY, Sn: 2050SBR7CJY6J. 4 Bay NAS Disk Station 4GB DDR3L-1866 Memory, expandable up to 8GB',
                 'property_no' => 'STO0024931',
                 'serial_no' => '2050SBR7CJY6J',
@@ -1294,7 +1294,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Machine ID Card-HITI',
-                'category' => 9,
+                'category_id' => 9,
                 'Description' => 'Machine ID Card-HITI, Sn: C2E00A44700021',
                 'property_no' => 'MAC0010625',
                 'serial_no' => 'C2E00A44700021',
@@ -1311,7 +1311,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
-                'category' => 1,
+                'category_id' => 1,
                 'Description' => 'Laptop-ACER, Serial No: NXMN3SP001423171157600. Intel core i5-4210u up tp 2.70Ghz/4GB/1TB. 14inches HD, 8x DVD Super multi double layer drive. Windows 8.1',
                 'property_no' => 'LAP0010907',
                 'serial_no' => 'NXMN3SP001423171157600',
@@ -1329,7 +1329,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Machine ID Card-HITI',
-                'category' => 9 ,
+                'category_id' => 9 ,
                 'Description' => 'Machine ID Card-HITI, Sn: C2E00A50300001',
                 'property_no' => 'MAC0010626',
                 'serial_no' => 'C2E00A50300001',
@@ -1347,7 +1347,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Machine ID Card-HITI',
-                'category' => 9 ,
+                'category_id' => 9 ,
                 'Description' => 'Machine ID Card-HITI, Sn: C2E00A43800048',
                 'property_no' => 'MAC0010628',
                 'serial_no' => 'C2E00A43800048',
@@ -1364,7 +1364,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Machine ID Card-HITI',
-                'category' => 9 ,
+                'category_id' => 9 ,
                 'Description' => 'Machine ID Card-HITI, Sn: C2E00A43800045',
                 'property_no' => 'MAC0010630',
                 'serial_no' => 'C2E00A43800045',
@@ -1382,7 +1382,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Barcode Printer - ZEBRA',
-                'category' => 13 ,
+                'category_id' => 13 ,
                 'Description' => 'Barcode Printer - ZEBRA
                 Sn: 52J224201212
                 Resolution: 203 dpi
@@ -1410,7 +1410,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Machine ID Card Printer-HITI',
-                'category' => 9 ,
+                'category_id' => 9 ,
                 'Description' => 'Machine ID Card Printer-HITI, Model: PK-636G, Sn: C2E00163100046. Printing Speed: Colored-180 cards/hour (max), Monochrome-up to 1200cards/hour (max), Resolution-300x300dpi with USB connection. Print modes: color dye sublimation and monochrome thermal faster. Enhance color management system. Edge to edge printing (no margin). Integrated ribbon saver for monochrome printing.',
                 'property_no' => 'X909044-A',
                 'serial_no' => 'C2E00163100046',
@@ -1428,7 +1428,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Barcode Printer - ZEBRA',
-                'category' => 13 ,
+                'category_id' => 13 ,
                 'Description' => 'Barcode Printer - ZEBRA
                 Sn: 52J224201212
                 Resolution: 203 dpi
@@ -1457,7 +1457,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
-                'category' => 1 ,
+                'category_id' => 1 ,
                 'Description' => 'Laptop-ACER, 
                 SN: NHQ7NSP00C11222D1C3400.
                 i5-10300H Processor/8GB DDR4 Memory/ 256GB NVMe
@@ -1480,7 +1480,7 @@ class EquipmentSeeder extends Seeder
             array(
                 'admin_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
-                'category' => 1 ,
+                'category_id' => 1 ,
                 'Description' => 'Laptop-ACER, 
                 SN: NHQ7NSP00C1122325C3400.
                 i5-10300H Processor/8GB DDR4 Memory/ 256GB NVMe
@@ -1502,7 +1502,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 1,
+                'category_id' => 1,
                 'equipment_name' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER',
                 'Description' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER
                 Core i5-1035G1, 4GB, 512GB SSD
@@ -1522,7 +1522,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 1 ,
+                'category_id' => 1 ,
                 'equipment_name' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER',
                 'Description' => 'Laptop-A315-56 512U (red) 15.6 FHD - ACER
                 Core i5-1035G1, 4GB, 512GB SSD
@@ -1542,7 +1542,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 13 ,
+                'category_id' => 13 ,
                 'equipment_name' => 'Large Format Printer-EPSON',
                 'Description' => 'Large Format Printer-EPSON, 
                 Sn: VRSE100360
@@ -1565,7 +1565,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 17 ,
+                'category_id' => 17 ,
                 'equipment_name' => 'Server System',
                 'Description' => 'Server System x 3105 (434748A) AMD Dual Core Opteron 1210 1.8Ghz Processor, 2x1MB of L2 cache; 2x 512MB 667 Mhz PCs-5200ECC DDR2 SDRAM; 1x160 GB Simple swap SATA HDD; Combo DVD/CDRW + LCD Monitor 17" Syncmaster 740N black; Server-Sn: 2K02659; Monitor-Sn: MY17HMEQ105547. For HOMIS Project',
                 'property_no' => 'Q200005',
@@ -1583,7 +1583,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 17,
+                'category_id' => 17,
                 'equipment_name' => 'Server System Monitor',
                 'Description' => 'Server System x 3105 (434748A) AMD Dual Core Opteron 1210 1.8Ghz Processor, 2x1MB of L2 cache; 2x 512MB 667 Mhz PCs-5200ECC DDR2 SDRAM; 1x160 GB Simple swap SATA HDD; Combo DVD/CDRW + LCD Monitor 17" Syncmaster 740N black; Server-Sn: 2K02659; Monitor-Sn: MY17HMEQ105547. For HOMIS Project',
                 'property_no' => 'Q200005',
@@ -1601,7 +1601,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 16,
+                'category_id' => 16,
                 'equipment_name' => 'IBM Server X3200 SAS',
                 'Description' => 'Personal Computer, IBM Server X3200 SAS (4262iBS) Dual Core Intel Xeron Processor 3040, 1.86Ghz, 2x1MB 12 cache 1x73GB 10K, Hot-swap SAS HDD, 1GB Hot-swap redundant, Integrated hardware RAID-0, IPMI 1.5-complaint mini-BMC, IBM Director, Alert Standard Format 2.0, IBM Server guide, Optical RSA II and Optional Remote Deployment Manager, 3 year on-site limited warranty, Sn: 99A4995; Keyboard-Sn: 00002729; Mouse-Sn: 23-014298. For Document Tracking System Project',
                 'property_no' => 'Q200011',
@@ -1619,7 +1619,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 16,
+                'category_id' => 16,
                 'equipment_name' => 'IBM Server X3200 SAS',
                 'Description' => 'Personal Computer, IBM Server X3200 SAS (4262iBS), Sn: 99A2802; Keyboard-Sn: 02263707; Mouse-Sn: 23-014298. Dual Core Intel Xeron Processor 3040, 1.86Ghz, 2x1MB 12 cache 1x73GB 10K, Hot-swap SAS HDD, 1GB Hot-swap redundant, Integrated hardware RAID-0, IPMI 1.5-complaint mini-BMC, IBM Director, Alert Standard Format 2.0, IBM Server guide, Optical RSA II and Optional Remote Deployment Manager, 3 year on-site limited warranty',
                 'property_no' => 'Q200012',
@@ -1637,7 +1637,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 17,
+                'category_id' => 17,
                 'equipment_name' => 'Server Unit Processor - LENOVO',
                 'Description' => 'Server Unit Processor - LENOVO
                 Sn: J3035WBI
@@ -1661,7 +1661,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 16,
+                'category_id' => 16,
                 'equipment_name' => 'Server Unit Processor - LENOVO',
                 'Description' => 'Server Unit Processor - LENOVO
                 Sn: J3035WBI
@@ -1685,7 +1685,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 13,
+                'category_id' => 13,
                 'equipment_name' => 'Printer',
                 'Description' => 'S4M Barcode Printer, Sn: 81983855 DMXE, Made in USA',
                 'property_no' => 'T100305',
@@ -1703,7 +1703,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 18,
+                'category_id' => 18,
                 'equipment_name' => 'Tower Server-Hp',
                 'Description' => 'Tower Server-Hp, Sn: CN780801Q3. 
                 Intel Xeon Processor min of 3.3Ghz 4 Core: 
@@ -1725,7 +1725,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 18,
+                'category_id' => 18,
                 'equipment_name' => 'Tower Server - LENOVO',
                 'Description' => 'Tower Server - LENOVO
                 Model: 7Y48-CT01WW
@@ -1750,7 +1750,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 18,
+                'category_id' => 18,
                 'equipment_name' => 'Tower Server - LENOVO',
                 'Description' => 'Tower Server - LENOVO
                 Model: 7Y48-CT01WW
@@ -1775,7 +1775,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'Uninterruptible Power Supply (3000 VA 23V)-APC',
                 'Description' => 'Uninterruptible Power Supply (3000 VA 23V)-APC,
                 Sn: AS2115251625',
@@ -1794,7 +1794,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 1,
+                'category_id' => 1,
                 'equipment_name' => 'Laptop Computer-ACER',
                 'Description' => 'Laptop Computer-ACER, Sn: NXGDWSP0047130FAB77600. 
                 Core i5-7200U (3MB L3 cache 2.5Ghz with turbo boost). 
@@ -1814,7 +1814,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 1,
+                'category_id' => 1,
                 'equipment_name' => 'Laptop Computer-ACER',
                 'Description' => 'Laptop Computer-ACER, Sn: NXGDWSP0047130FAEF7600. 
                 Core i5-7200U (3MB L3 cache 2.5Ghz with turbo boost). 
@@ -1834,7 +1834,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 4,
+                'category_id' => 4,
                 'equipment_name' => 'Finger Scanner-ACTAtek',
                 'Description' => 'Finger Scanner-ACTAtek, Model: ACTA3-1K-FLI, Sn: 00111DB0062B. 
                 Scan Orange Card Application Form document; crop and edit photo and signature of recipient.',
@@ -1853,7 +1853,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 4,
+                'category_id' => 4,
                 'equipment_name' => 'Finger Scanner-ACTAtek',
                 'Description' => 'Finger Scanner-ACTAtek, Model: ACTA3-1K-FLI, Sn: 00111DB0062A. 
                 Scan Orange Card Application Form document; crop and edit photo and signature of recipient.',
@@ -1872,7 +1872,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 4,
+                'category_id' => 4,
                 'equipment_name' => 'Finger Scanner-ACTAtek',
                 'Description' => 'Finger Scanner-ACTAtek, Model: ACTA3-1K-FLI, Sn: 00111DB00624. 
                 Scan Orange Card Application Form document; crop and edit photo and signature of recipient.',
@@ -1891,7 +1891,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 4,
+                'category_id' => 4,
                 'equipment_name' => 'Finger Scanner-ACTAtek',
                 'Description' => 'Finger Scanner-ACTAtek, Model: ACTA3-1K-FLI, Sn: 00111DB00625. 
                 Scan Orange Card Application Form document; crop and edit photo and signature of recipient.',
@@ -1910,7 +1910,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => '600GB Hot plug Dual-Port SAS Hard Disk Drive',
                 'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
                 HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
@@ -1930,7 +1930,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => '600GB Hot plug Dual-Port SAS Hard Disk Drive',
                 'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
                 HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
@@ -1950,7 +1950,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => '600GB Hot plug Dual-Port SAS Hard Disk Drive',
                 'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
                 HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
@@ -1970,7 +1970,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => '600GB Hot plug Dual-Port SAS Hard Disk Drive',
                 'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
                 HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
@@ -1990,7 +1990,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => '600GB Hot plug Dual-Port SAS Hard Disk Drive',
                 'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
                 HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
@@ -2010,7 +2010,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => '600GB Hot plug Dual-Port SAS Hard Disk Drive',
                 'Description' => '600GB Hot plug Dual-Port SAS Hard Disk Drive -6GB/Sec. 
                 HP Transfer Rate 10,000 RPM 2.5 inch Small from Factor (SFF)
@@ -2030,7 +2030,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 19,
+                'category_id' => 19,
                 'equipment_name' => 'Rack Server (Application and Database)',
                 'Description' => 'Rack Server (Application and Database), Sn: SGH726V21P. 
                 Processor: Intel Xeon Processor (min. of 2.20Ghz, 4 Core). 
@@ -2051,7 +2051,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 19,
+                'category_id' => 19,
                 'equipment_name' => 'Rack Server (Application and Database)',
                 'Description' => 'Rack Server (Application and Database), Sn: SGH726V21K. 
                 Processor: Intel Xeon Processor (min. of 2.20Ghz, 4 Core). 
@@ -2072,7 +2072,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 4,
+                'category_id' => 4,
                 'equipment_name' => 'Finger Scanner-ACTAtek',
                 'Description' => 'Finger Scanner-ACTAtek, Sn: 00111DB025D8. 
                 Real time system update and configuration 500DPI optical scanner; 
@@ -2097,7 +2097,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 4,
+                'category_id' => 4,
                 'equipment_name' => 'Finger Scanner-ACTAtek',
                 'Description' => 'Finger Scanner-ACTAtek, Sn: 00111DB02AF3. 
                 Real time system update and configuration 500DPI optical scanner; 
@@ -2123,7 +2123,7 @@ class EquipmentSeeder extends Seeder
             //no Serial No.
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'CD-Book',
                 'Description' => 'CD-Book, Adaptive Server enterprises version 12 fro NT',
                 'property_no' => 'V300007',
@@ -2141,7 +2141,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'CD-Book',
                 'Description' => 'CD-Book, Sybase network seat, for 10 users',
                 'property_no' => 'V300008',
@@ -2159,7 +2159,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'Power Builder',
                 'Description' => 'Power Builder, version 7.00',
                 'property_no' => 'V300009',
@@ -2177,7 +2177,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'MSSQl installer kit',
                 'Description' => 'MSSQl, standard with CD,installer kit and 1 MSSQL client access',
                 'property_no' => 'V400003',
@@ -2195,7 +2195,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'Document Scanner-CANON',
                 'Description' => 'Document Scanner-CANON. 
                 Scanning resolution: 150x150dpi, 200x200dpi, 300x300dpi, 400x400dpi. Serial Nos.: FW435688',
@@ -2214,7 +2214,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'Document Scanner-CANON',
                 'Description' => 'Document Scanner-CANON. 
                 Scanning resolution: 150x150dpi, 200x200dpi, 300x300dpi, 400x400dpi. Serial Nos.: FW435693 (Health Service Program)',
@@ -2233,7 +2233,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'Document Scanner-CANON',
                 'Description' => 'Document Scanner-CANON. 
                 Scanning resolution: 150x150dpi, 200x200dpi, 300x300dpi, 400x400dpi. Serial Nos.: FW434826',
@@ -2252,7 +2252,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 1,
+                'category_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
                 'Description' => 'Laptop-ACER. Intel core i5-4210u up tp 2.70Ghz/4GB/1TB. 14inches HD, 
                 8x DVD Super multi double layer drive. Windows 8.1, Serial Nos.: NXMN3SP001424031CF7600',
@@ -2271,7 +2271,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 13,
+                'category_id' => 13,
                 'equipment_name' => 'Double Side ID Card Printer',
                 'Description' => 'Double Side ID Card Printer, Smart 30v, Sn: 3SIA000000E50360',
                 'property_no' => 'PRI0010562',
@@ -2289,7 +2289,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 2,
+                'category_id' => 2,
                 'equipment_name' => '2.5Hp window type aircondition-CARRIER',
                 'Description' => '2.5Hp window type aircondition-CARRIER, Sn: 51PMX-RAC-CAR-24KEA N16PC-1220135',
                 'property_no' => 'F100225',
@@ -2307,7 +2307,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 1,
+                'category_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
                 'Description' => 'Laptop-ACER, SN: NHQ7NSP00C11222D583400.
                 i5-10300H Processor/8GB DDR4 Memory/ 256GB NVMe
@@ -2329,7 +2329,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 2,
+                'category_id' => 2,
                 'equipment_name' => '3TR Floor Mounted Aircon with installation-CARRIER',
                 'Description' => '3TR Floor Mounted Aircon with installation-CARRIER, 
                 Serial Nos. Indoor: 0719-0075871; Outdoor: 2619-0207989',
@@ -2348,7 +2348,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 2,
+                'category_id' => 2,
                 'equipment_name' => 'Aircon, window type, 2.5Hp-CARRIER',
                 'Description' => 'Aircon, window type, 2.5Hp-CARRIER, Sn: 2919-0226433',
                 'property_no' => 'AIR0020436',
@@ -2366,7 +2366,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 2,
+                'category_id' => 2,
                 'equipment_name' => '2.5Hp split type aircondition-CARRIER',
                 'Description' => '2.5Hp split type aircondition-CARRIER, 
                 Sn: Indoor-D202217700116912170056; Outdoor-D202161730216815170012',
@@ -2385,7 +2385,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 2,
+                'category_id' => 2,
                 'equipment_name' => '2.5Hp split type aircondition-CARRIER',
                 'Description' => '2.5Hp split type aircondition-CARRIER, 
                 Sn: Indoor-D202217700116912170076; Outdoor-D202161730216815170011',
@@ -2404,7 +2404,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 20,
+                'category_id' => 20,
                 'equipment_name' => 'Server: LENOVO',
                 'Description' => 'Server: LENOVO
                 Model: 7X06
@@ -2437,7 +2437,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 20,
+                'category_id' => 20,
                 'equipment_name' => 'Server: LENOVO',
                 'Description' => 'Server: LENOVO
                 Model: 7X06
@@ -2470,7 +2470,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'Server-IBM',
                 'Description' => 'Server-IBM, Sn: 7383C5A06DWCZK. 
                 System x3500 M4, Intel Xeon, 8GB memory, 3x IBM 300GB HDD, Server Raid M5110-512MB. 
@@ -2492,7 +2492,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'Uninterruptible Power Supply',
                 'Description' => 'Uninterruptible Power Supply, 3000VA, 230V-APC, Sn: AS2020164419',
                 'property_no' => 'U90900032',
@@ -2510,7 +2510,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'Uninterruptible Power Supply',
                 'Description' => 'Uninterruptible Power Supply, 3000VA, 230V-APC, Sn: AS2026262251',
                 'property_no' => 'U90900034',
@@ -2528,7 +2528,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'Network Switch-LINKSYS',
                 'Description' => 'Network Switch-LINKSYS, Model: LGS124PV2, Sn: 13X20F1B900179. 
                 24-port Business Gigabit PoE+Switch (LGS124P)',
@@ -2547,7 +2547,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 21,
+                'category_id' => 21,
                 'equipment_name' => 'Computer Server-IBM',
                 'Description' => 'Computer Server-IBM, Sn: O6KKZA5-2582B2A06KKZA5. 
                 Intel Xeon CPU E3 1200 3.10 Ghz, 8MB L3 cache RAM 4GB 1600 Mhz memory. 
@@ -2568,7 +2568,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 20,
+                'category_id' => 20,
                 'equipment_name' => 'Data Base Server Unit-IBM 7328C2A',
                 'Description' => 'Data Base Server Unit-IBM 7328C2A, Sn: 0654568. 2.4Ghz Processor, 
                 8Gb Memory, Raid 0.1 Etherner Ports, DVD-ROM drive. Note: MISO server.',
@@ -2587,7 +2587,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'Server-LENOVO',
                 'Description' => 'Server-LENOVO, SN: J301Y18X.
                 Processor: 5215 Gold 10C 85W 2.5GHz; Form Factor 2U
@@ -2617,7 +2617,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 1,
+                'category_id' => 1,
                 'equipment_name' => 'Laptop-ACER',
                 'Description' => 'Laptop-ACER. Intel core i5-4210u up tp 2.70Ghz/4GB/1TB. 
                 14inches HD, 8x DVD Super multi double layer drive. Windows 8.1, Serial Nos.: NXMN3SP00142402FEF7600',
@@ -2636,7 +2636,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 7,
+                'category_id' => 7,
                 'equipment_name' => 'NIKON D5300',
                 'Description' => 'Photobooth box. Camera Body Only NIKON D5300 Sn: 7840834, 7841034; Lens Sn: 23818061, 23818059.',
                 'property_no' => 'PHO0012753A-53B',
@@ -2654,7 +2654,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 2,
+                'category_id' => 2,
                 'equipment_name' => '2.5Hp window type aircondition-CARRIER',
                 'Description' => '2.5Hp window type aircondition-CARRIER, Sn: 51PMX-RAC-CAR-24KEA N16PC-1220143',
                 'property_no' => 'F100225',
@@ -2672,7 +2672,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 16,
+                'category_id' => 16,
                 'equipment_name' => 'DESKTOP COMPUTER - ACER',
                 'Description' => 'DESKTOP COMPUTER - ACER
                 SN: (21)-DQBGFSP00615000CEF6B01
@@ -2696,7 +2696,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 16,
+                'category_id' => 16,
                 'equipment_name' => 'DESKTOP COMPUTER - ACER',
                 'Description' => 'DESKTOP COMPUTER - ACER
                 SN: (22)-DQBGFSP00615000CF06B01
@@ -2720,7 +2720,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 16,
+                'category_id' => 16,
                 'equipment_name' => 'DESKTOP COMPUTER - ACER',
                 'Description' => 'DESKTOP COMPUTER - ACER
                 SN: (23)-DQBGFSP00615000CFF6B01
@@ -2744,7 +2744,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 16,
+                'category_id' => 16,
                 'equipment_name' => 'DESKTOP COMPUTER - ACER',
                 'Description' => 'DESKTOP COMPUTER - ACER
                 SN: (24)-DQBGFSP00615000CFB6B01
@@ -2768,7 +2768,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 16,
+                'category_id' => 16,
                 'equipment_name' => 'DESKTOP COMPUTER - ACER',
                 'Description' => 'DESKTOP COMPUTER - ACER
                 SN: (25)-DQBGFSP00615000CEA6B01
@@ -2792,7 +2792,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 16,
+                'category_id' => 16,
                 'equipment_name' => 'DESKTOP COMPUTER - ACER',
                 'Description' => 'DESKTOP COMPUTER - ACER
                 SN: (26)-DQBGFSP00615000CE96B01
@@ -2816,7 +2816,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 16,
+                'category_id' => 16,
                 'equipment_name' => 'DESKTOP COMPUTER - ACER',
                 'Description' => 'DESKTOP COMPUTER - ACER
                 SN: (27)-DQBGFSP00615000D016B01
@@ -2840,7 +2840,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 16,
+                'category_id' => 16,
                 'equipment_name' => 'DESKTOP COMPUTER - ACER',
                 'Description' => 'DESKTOP COMPUTER - ACER
                 SN: (28)-DQBGFSP00615000D006B01
@@ -2864,7 +2864,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 16,
+                'category_id' => 16,
                 'equipment_name' => 'DESKTOP COMPUTER - ACER',
                 'Description' => 'DESKTOP COMPUTER - ACER
                 SN: (29)-DQBGFSP00615000CEB6B01
@@ -2888,7 +2888,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 16,
+                'category_id' => 16,
                 'equipment_name' => 'DESKTOP COMPUTER - ACER',
                 'Description' => 'DESKTOP COMPUTER - ACER
                 SN: (30)-DQBGFSP00615000CF16B01
@@ -2912,7 +2912,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'UPS back-up Power-APC',
                 'Description' => 'UPS back-up Power-APC, Sn: 4B2010P01612. Power Saving Back UPS Pro 1500-230v',
                 'property_no' => 'UPS0024928',
@@ -2930,7 +2930,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'UPS back-up Power-APC',
                 'Description' => 'UPS back-up Power-APC, Sn: 4B2010P01514. Power Saving Back UPS Pro 1500-230v',
                 'property_no' => 'UPS0024929',
@@ -2948,7 +2948,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 9,
+                'category_id' => 9,
                 'equipment_name' => 'UPS back-up Power-APC',
                 'Description' => 'UPS back-up Power-APC, Sn: 4B2010P01502. Power Saving Back UPS Pro 1500-230v',
                 'property_no' => 'UPS0024930',
@@ -2966,7 +2966,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 22,
+                'category_id' => 22,
                 'equipment_name' => 'Video Mixing Server-DELL',
                 'Description' => 'Video Mixing Server-DELL, Sn: HZXS033. 
                 CPU: i7-9700 3.0GHz 12M Cache up to 4.70 GHz 16GB Memory DDR4 at 2666MHz HDD 256GB M2 Pcle SSD + 1TB SATA 7200 RPM HDD 3.5inch. 
@@ -2986,7 +2986,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 22,
+                'category_id' => 22,
                 'equipment_name' => 'Video Mixing Server-DELL',
                 'Description' => 'Video Mixing Server-DELL, Sn: HZSR033. 
                 CPU: i7-9700 3.0GHz 12M Cache up to 4.70 GHz 16GB Memory DDR4 at 2666MHz HDD 256GB M2 Pcle SSD + 1TB SATA 7200 RPM HDD 3.5inch. 
@@ -3006,7 +3006,7 @@ class EquipmentSeeder extends Seeder
 
             array(
                 'admin_id' => 1,
-                'category' => 22,
+                'category_id' => 22,
                 'equipment_name' => 'Video Mixing Server-DELL',
                 'Description' => 'Video Mixing Server-DELL, Sn: HZMW033. 
                 CPU: i7-9700 3.0GHz 12M Cache up to 4.70 GHz 16GB Memory DDR4 at 2666MHz HDD 256GB M2 Pcle SSD + 1TB SATA 7200 RPM HDD 3.5inch. 
@@ -3024,7 +3024,7 @@ class EquipmentSeeder extends Seeder
                 'updated_at' => now(),
             ),
         );
-        DB::table('equipment')->insert($equipment);
+        DB::table('tbl_equipment')->insert($equipment);
 
     }
 }

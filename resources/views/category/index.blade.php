@@ -36,7 +36,7 @@
                             @foreach($category as $cat)
                                 <tr>
                                     <td data-label="Category" class="align-middle header with-label">
-                                        <span class="text-xs">{{ $cat->category }}</span>
+                                        <span class="text-xs">{{ $cat->name }}</span>
                                     </td>
                                     
 

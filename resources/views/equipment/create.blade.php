@@ -80,11 +80,11 @@
                             <input type="text" class="form-control" id="equipment_name" name="equipment_name">
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label" for="category">Category<span class="text-danger">&#x2022;</span></label>
-                            <select class="form-control select select2-create" id="category" name="category">
+                            <label class="form-label" for="category_id">Category<span class="text-danger">&#x2022;</span></label>
+                            <select class="form-control select select2-create" id="category_id" name="category_id">
                                 <option selected disabled>Select Category</option>
                                 @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->category }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->name}}</option>
                                 @endforeach
                             </select>
                         </div>

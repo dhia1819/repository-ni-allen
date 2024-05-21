@@ -13,17 +13,19 @@ class CategoryController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $page = [
-            'name'  =>  'Category',
-            'title' =>  'Category',
-            'crumb' =>  array('Category' => '/category')
-        ];
-        $category = Category::orderBy('created_at', 'ASC')->get();
+{
+    $page = [
+        'name'  => 'Category',
+        'title' => 'Category',
+        'crumb' => ['Category' => '/category']
+    ];
 
+    // Ordering by 'id' instead of 'created_at'
+    $category = Category::orderBy('name', 'ASC')->get();
 
-        return view('category.index', compact('page','category'));
-    }
+    return view('category.index', compact('page', 'category'));
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -75,9 +77,10 @@ class CategoryController extends Controller
     $category = Category::findOrFail($id); 
 
     
+    
     return response()->json([
         'id' => $category->id,
-        'category' => $category->category,
+        'category' => $category->name,
         'status' => $category->status,
     ]);
 }
@@ -87,13 +90,13 @@ class CategoryController extends Controller
     public function update(Request $request, string $id)
 {
     $validatedData = $request->validate([
-        'rowid'    => 'required|exists:categories,id',
+        'rowid'    => 'required|exists:tbl_category,id',
         'category' => 'required|string|max:255',
         'status'   => 'required|string|max:255' 
     ]);
 
     // Check if there are any borrowed items in the category
-    $hasBorrowedItems = Equipment::where('category', $validatedData['rowid'])
+    $hasBorrowedItems = Equipment::where('category_id', $validatedData['rowid'])
                                   ->where('status', 'Borrowed')
                                   ->exists();
 
@@ -102,15 +105,15 @@ class CategoryController extends Controller
         return redirect()->back()->withErrors(['Cannot set category status to Inactive. There are borrowed items in this category.']);
     }
 
-    // Category Update
+    
     $tblCategory = Category::findOrFail($validatedData['rowid']);
-    $tblCategory->category = $validatedData['category'];
-    $tblCategory->status = $validatedData['status'] === 'Active'; // assuming 'Active' means status is 1
+    $tblCategory->name = $validatedData['category'];
+    $tblCategory->status = $validatedData['status'] === 'Active'; 
     $tblCategory->save();
 
     // Update the conditions in the equipment table based on the category status
     $conditions = $validatedData['status'] === 'Active' ? 'Available' : 'Archived';
-    Equipment::where('category', $tblCategory->id)
+    Equipment::where('category_id', $tblCategory->id)
              ->update(['status' => $conditions]);
 
     return redirect()->back()->with('success', 'Category updated successfully!');

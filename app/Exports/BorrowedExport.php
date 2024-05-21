@@ -22,15 +22,15 @@ class BorrowedExport implements FromCollection, WithHeadings, WithColumnWidths, 
     {
         $data = $this->Borrowed->map(function ($Borrowed) {
             return [
-                'Serial Number' => $Borrowed->serial_no,
-                'Property Number' => $Borrowed->property_no,
-                'Equipment' => $Borrowed->equipment_name,
-                'Category' => $Borrowed->category_name,
+                'Serial Number' => $Borrowed->equipment->serial_no,
+                'Property Number' => $Borrowed->equipment->property_no,
+                'Equipment' => $Borrowed->equipment->equipment_name,
+                'Category' => $Borrowed->equipment->category->name,
                 'Borrower' => $Borrowed->borrowed_by,
-                'Office' => $Borrowed->office_name,
+                'Office' => $Borrowed->office->office,
                 'Date Borrowed' => Carbon::parse($Borrowed->date_borrowed)->format('F d, Y'),
                 'Expected Return' => Carbon::parse($Borrowed->date_returned)->format('F d, Y'),
-                'Released by' => $Borrowed->release_by,
+                'Released by' => $Borrowed->releaseBy->fullName,
             ];
         });
 

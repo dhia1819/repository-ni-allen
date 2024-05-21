@@ -18,33 +18,30 @@ use Illuminate\Database\QueryException;
 
 class EquipmentController extends Controller
 {
-    //display the table or the equipment module
+
     public function index()
-    {
-        $categories = Category::all();
+{
+    $categories = Category::all();
 
-        $page = [
-            'name'  =>  'Equipment',
-            'title' =>  'Equipment',
-            'crumb' =>  array('Equipment' => '/equipment')
-        ];
-        
-        $equipment = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
-            ->orderBy('equipment.created_at', 'ASC')
-            ->select('equipment.*', 'categories.category as category_name')
-            ->where('equipment.status', '=', 'available')
-            ->orWhere('equipment.status', '=', 'unavailable')
-            ->orWhere('equipment.status', '=', 'Borrowed')
-            ->get();
-        
-        return view('equipment.index', compact('page', 'equipment','categories'));
-        
-    }
+    $page = [
+        'name'  => 'Equipment',
+        'title' => 'Equipment',
+        'crumb' => ['Equipment' => '/equipment']
+    ];
 
-    //When you click the borrow button. will lead to borrow form
+    $equipment = Equipment::with('category')
+        ->orderBy('equipment_name', 'ASC')
+        ->whereIn('status', ['available', 'unavailable', 'Borrowed'])
+        ->get();
+
+    return view('equipment.index', compact('page', 'equipment', 'categories'));
+}
+
+
+    
     public function borrow(int $id)
     {
-        $office = Office::all();
+        $offices = Office::all();
         $employees = Employee::all();
         $equipment = Equipment::findOrFail($id);
         
@@ -54,7 +51,7 @@ class EquipmentController extends Controller
             'crumb' =>  ['Equipment' => '/equipment', 'Borrow Equipment' => "/equipment/borrow/{$id}"]
         ];
 
-        return view('equipment.borrow', compact('page', 'equipment', 'office', 'employees'));
+        return view('equipment.borrow', compact('page', 'equipment', 'offices', 'employees'));
     }
 
     //to submit the borrow form
@@ -69,7 +66,7 @@ class EquipmentController extends Controller
             'borrowed_by' => 'required|string', 
             'date_borrowed' => 'required|date',
             'date_returned' => 'nullable|date',
-            'office' => 'required|string',
+            'office_id' => 'required|string',
             'upload_file' => 'nullable|file|mimes:jpeg,png,pdf', 
             'returned_by' => 'nullable|string',
             'received_by' => 'nullable|string',
@@ -116,13 +113,13 @@ class EquipmentController extends Controller
         return redirect('/borrow/return')->with('success', 'Equipment Borrowed successfully.');
     }
 
-    //Display Add Item page
+    
     public function create()
     {
-        // Fetch all categories with status 'Active'
+       
         $categories = Category::where('status', '1')->get();
 
-        // Data for the page
+       
         $page = [
             'name'  =>  'Equipment',
             'title' =>  'Add Equipment',
@@ -135,91 +132,77 @@ class EquipmentController extends Controller
     
     
     
-//Creating or Adding of new equipment for the inventory
-public function store(Request $request)
+    public function store(Request $request)
 {
-    try {
-        // Validate incoming request data
-        $validatedData = $request->validate([
-            'equipment_name' => 'required|string',
-            'category' => 'required|string',
-            'Description' => 'required|string',
-            'property_no' => 'required|string',
-            'serial_no' => 'required|string|unique:equipment,serial_no',
-            'unit_of_measure' => 'required|string',
-            'value' => 'required|string',
-            'quantity' => 'required|integer',
-            'image' => 'nullable|image',
-            'remarks' => 'required|string',
-            'date_acquired' => 'required|date',
-            'conditions' => 'required|string'
-        ]);
+    
+    $validatedData = $request->validate([
+        'equipment_name' => 'required|string',
+        'category_id' => 'required|string',
+        'Description' => 'required|string',
+        'property_no' => 'required|string',
+        'serial_no' => 'required|string|unique:tbl_equipment,serial_no',
+        'unit_of_measure' => 'required|string',
+        'value' => 'required|numeric|min:0.01', 
+        'quantity' => 'required|integer',
+        'image' => 'nullable|image',
+        'remarks' => 'required|string',
+        'date_acquired' => 'required|date',
+        'conditions' => 'required|string'
+    ]);
 
-        // Remove peso sign and commas from the value
-        $validatedData['value'] = preg_replace("/[^0-9.]/", "", $validatedData['value']);
+    
+    $validatedData['admin_id'] = Auth::id();
 
-        // Set admin_id to the authenticated user's ID
-        $validatedData['admin_id'] = Auth::id();
-
-        //status
-        if ($validatedData['conditions'] === 'Good' || $validatedData['conditions'] === 'Fair' || $validatedData['conditions'] === 'Poor') {
-            $validatedData['status'] = 'available';
-        }
-        else{
-            $validatedData['status'] = 'unavailable';
-        }
-
-        //image upload
-        if($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time().'.'.$image->extension();
-            $image->move(public_path('uploads'), $imageName);
-
-            // Set image name to the validated data
-            $validatedData['image'] = $imageName;
-        }
-
-        // Create new equipment record
-        Equipment::create($validatedData);
-
-        // Redirect back with success message
-        return redirect('equipment')->with('success', 'Equipment created successfully.');
-    } catch (QueryException $e) {
-        // Handle database-related exceptions
-        return redirect()->back()->withErrors('Enter Proper Value, Try Again.');
+    
+    if ($validatedData['conditions'] === 'Good' || $validatedData['conditions'] === 'Fair' || $validatedData['conditions'] === 'Poor') {
+        $validatedData['status'] = 'available';
+    } else {
+        $validatedData['status'] = 'unavailable';
     }
+
+    
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->extension();
+        $image->move(public_path('uploads'), $imageName);
+
+        
+        $validatedData['image'] = $imageName;
+    }
+
+    
+    Equipment::create($validatedData);
+
+    
+    return redirect('equipment')->with('success', 'Equipment created successfully.');
 }
 
+    
     public function condition(Request $request, $id)
     {
-        // Validate the request data
+        
         $request->validate([
-            'condition' => 'required|in:Good,Fair,Poor', // Validate the condition field
+            'condition' => 'required|in:Good,Fair,Poor', 
         ]);
 
-        // Find the equipment by its ID
+        
         $equipment = Equipment::findOrFail($id);
 
-        // Update the condition of the equipment
+        
         $equipment->update([
             'condition' => $request->condition,
         ]);
 
-        // Redirect back or return a response indicating success
+        
         return redirect()->back()->with('success', 'Equipment condition updated successfully.');
     }
 
     
-    //Display and reading of full equipment details on a new view
+    
     public function show(string $id)
     {
         $categories = Category::all();
-        
-        // Fetch the specific equipment item by ID
-        $equipment = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
-            ->where('equipment.id', $id) // Filter by equipment ID
-            ->select('equipment.*', 'categories.category as category_name')
-            ->firstOrFail(); // Use firstOrFail() to fetch a single record
+        $equipment = Equipment::find($id);
         
         $page = [
             'name'  =>  'Equipment',
@@ -232,13 +215,13 @@ public function store(Request $request)
 
     
 
-    //Display Page for the editing function of equipment
+    
     public function edit(string $id)
     {
         $categories = Category::all();
 
         
-        $equipment = Equipment::findOrFail($id); // Fetch the equipment data
+        $equipment = Equipment::findOrFail($id); 
         
         $page = [
             'name'  =>  'Equipment',
@@ -250,19 +233,19 @@ public function store(Request $request)
     }
 
 
-    //Actual Update function after making the changes 
+     
     public function update(Request $request, string $id)
     {
-        // Find the equipment record by ID
+        
         $equipment = Equipment::findOrFail($id);
     
-        // Validate incoming request data
+        
         $validatedData = $request->validate([
             'equipment_name' => 'required|string',
-            'category' => 'required|string',
+            'category_id' => 'required|string',
             'Description' => 'required|string',
             'property_no' => 'required|string',
-            'serial_no' => 'required|string|unique:equipment,serial_no,'.$equipment->id,
+            'serial_no' => 'required|string|unique:tbl_equipment,serial_no,'.$equipment->id,
             'unit_of_measure' => 'required|string',
             'value' => 'required|string',
             'quantity' => 'required|integer',
@@ -273,10 +256,10 @@ public function store(Request $request)
         ]);
         
     
-        // Set admin_id to the authenticated user's ID
+        
         $validatedData['admin_id'] = Auth::id();
     
-        // Set status
+        
         if ($equipment->status === 'available' || $equipment->status === 'unavailable') {
             if ($validatedData['conditions'] === 'Good' || $validatedData['conditions'] === 'Fair' || $validatedData['conditions'] === 'Poor') {
                 $validatedData['status'] = 'available';
@@ -288,26 +271,24 @@ public function store(Request $request)
             $validatedData['status'] = 'Borrowed';
         }
     
-        // Handle image upload
+        
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'.'.$image->extension();
             $image->move(public_path('uploads'), $imageName);
     
-            // Set image name to the validated data
+            
             $validatedData['image'] = $imageName;
         }
     
-        // Update the equipment record with the validated data
+        
         $equipment->update($validatedData);
 
-        // Redirect to the show route for the updated equipment
+        
         return redirect()->route('equipment.show', ['id' => $equipment->id])->with('success', 'Equipment updated successfully.');
     }
     
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(string $id)
     {
         //
@@ -320,64 +301,52 @@ public function store(Request $request)
         $this->excel = $excel;
     }
     public function downloadEquipment(Request $request)
-    {
-        $category_filter = $request->input('category_filter');
-        $condition_filter = $request->input('condition_filter');
-        $status_filter = $request->input('status_filter');
+{
+    $category_filter = $request->input('category_filter');
+    $condition_filter = $request->input('condition_filter');
+    $status_filter = $request->input('status_filter');
 
-        // Get equipments data from the database
-        $query = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
-            ->select('equipment.*', 'categories.category as category')
-            ->where('equipment.status', '!=', 'Archived');
+    // Start building the query with the Equipment model
+    $query = Equipment::with('category')
+        ->where('status', '!=', 'Archived');
 
-
-        if (!empty($category_filter) && !empty($condition_filter) && !empty($status_filter)) {
-            // Code for when all filters are not empty
-            $query->where('categories.category', '=', $category_filter)
-                    ->where('conditions', '=', $condition_filter)
-                    ->where('equipment.status', '=', $status_filter);
-            $fileName = 'Equipments_'.$category_filter.'_'.$condition_filter.'_'.$status_filter.'.xlsx';
-        } elseif (!empty($category_filter) && !empty($condition_filter) && empty($status_filter)) {
-            // Code for when category and condition filters are not empty, but status filter is empty
-            $query->where('categories.category', '=', $category_filter)
-                    ->where('conditions', '=', $condition_filter);
-                    $fileName = 'Equipments_'.$category_filter.'_'.$condition_filter.'.xlsx';
-        } elseif (!empty($category_filter) && empty($condition_filter) && !empty($status_filter)) {
-            // Code for when category and status filters are not empty, but condition filter is empty
-            $query->where('categories.category', '=', $category_filter)
-                    ->where('equipment.status', '=', $status_filter);
-                    $fileName = 'Equipments_'.$category_filter.'_'.$status_filter.'.xlsx';
-        } elseif (empty($category_filter) && !empty($condition_filter) && !empty($status_filter)) {
-            // Code for when condition and status filters are not empty, but category filter is empty
-            $query->where('conditions', '=', $condition_filter)
-                    ->where('equipment.status', '=', $status_filter);
-                    $fileName = 'Equipments_'.$condition_filter.'_'.$status_filter.'.xlsx';
-        } elseif (!empty($category_filter) && empty($condition_filter) && empty($status_filter)) {
-            // Code for when only category filter is not empty
-            $query->where('categories.category', '=', $category_filter);
-            $fileName = 'Equipments_'.$category_filter.'.xlsx';
-        } elseif (empty($category_filter) && !empty($condition_filter) && empty($status_filter)) {
-            // Code for when only condition filter is not empty
-            $query->where('conditions', '=', $condition_filter);
-            $fileName = 'Equipments_'.$condition_filter.'.xlsx';
-        } elseif (empty($category_filter) && empty($condition_filter) && !empty($status_filter)) {
-            // Code for when only status filter is not empty
-            $query->where('equipment.status', '=', $status_filter);
-            $fileName = 'Equipments_'.$status_filter.'.xlsx';
-        } else {
-            // Code for when all filters are empty
-            $fileName = 'MISO_Equipments.xlsx';
-        }
-
-        $equipments = $query->get();
-
-        if ($equipments->isEmpty()) {
-            return Redirect::back()->withErrors('No equipments found with the specified filters.');
-        }
-        
-        // Use the Excel facade to download the Excel file
-        return $this->excel->download(new EquipmentsExport($equipments), $fileName);
+    if (!empty($category_filter)) {
+        $query->whereHas('category', function($q) use ($category_filter) {
+            $q->where('name', '=', $category_filter);
+        });
     }
+
+    if (!empty($condition_filter)) {
+        $query->where('conditions', '=', $condition_filter);
+    }
+
+    if (!empty($status_filter)) {
+        $query->where('status', '=', $status_filter);
+    }
+
+    // Generate the filename based on the filters
+    $fileName = 'MISO_Equipments.xlsx';
+    if (!empty($category_filter)) {
+        $fileName = 'Equipments_'.$category_filter.'.xlsx';
+    }
+    if (!empty($condition_filter)) {
+        $fileName = str_replace('.xlsx', '_'.$condition_filter.'.xlsx', $fileName);
+    }
+    if (!empty($status_filter)) {
+        $fileName = str_replace('.xlsx', '_'.$status_filter.'.xlsx', $fileName);
+    }
+
+    // Execute the query and get the results
+    $equipments = $query->get();
+
+    if ($equipments->isEmpty()) {
+        return Redirect::back()->withErrors('No equipments found with the specified filters.');
+    }
+
+    // Use the Excel facade to download the Excel file
+    return $this->excel->download(new EquipmentsExport($equipments), $fileName);
+}
+
 
     public function archive($id)
 {

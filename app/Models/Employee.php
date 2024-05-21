@@ -9,9 +9,17 @@ class Employee extends Model
 {
     use HasFactory;
 
+    protected $table = 'tbl_employees';
+
     protected $fillable=[
         'fullName',
         'position',
         'status'
     ];
+
+    public function transactions()
+{
+    return $this->hasMany(Transaction::class, 'release_by', 'received_by');
+}
+
 }

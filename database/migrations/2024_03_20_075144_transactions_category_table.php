@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('borrowed_by');
             $table->datetime('date_borrowed');
             $table->datetime('date_returned')->nullable();
-            $table->string('office');
+            $table->string('office_id');
             $table->string('upload_file')->nullable();
             $table->datetime('returned_date')->nullable();
             $table->string('returned_by')->nullable();

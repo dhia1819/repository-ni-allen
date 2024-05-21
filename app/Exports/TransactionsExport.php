@@ -26,18 +26,18 @@ class TransactionsExport implements FromCollection, WithHeadings, WithColumnWidt
         // Prepare and return the data as a collection
         $data = $this->transactions->map(function ($transaction) {
             return [
-                'Serial Number' =>$transaction->serial_no,
-                'Property Number' => $transaction->property_no,
-                'Equipment' => $transaction->equipmentName,
-                'Category' =>$transaction->category_name,
+                'Serial Number' =>$transaction->equipment->serial_no,
+                'Property Number' => $transaction->equipment->property_no,
+                'Equipment' => $transaction->equipment->equipment_name,
+                'Category' =>$transaction->equipment->category->name,
                 'Borrower' => $transaction->borrowed_by,
-                'Office' => $transaction->office_name,
+                'Office' => $transaction->office->office,
                 'Date Borrowed' => Carbon::parse($transaction->date_borrowed)->format('F d, Y'),
                 'Expected Return' => Carbon::parse($transaction->date_returned)->format('F d, Y'),
-                'Released by' => $transaction->release_by,
+                'Released by' => $transaction->releaseBy->fullName,
                 'Date Returned' => Carbon::parse($transaction->returned_date)->format('F d, Y'),
                 'Returned by' => $transaction->returned_by,
-                'Received by' => $transaction->received_by,
+                'Received by' => $transaction->receivedBy->fullName,
             ];
         });
 

@@ -11,8 +11,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\LateExport;;
+use Maatwebsite\Excel\Excel;
+use App\Exports\LateExport;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -23,9 +23,13 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    protected $excel;
+
+    // Modify the existing constructor to include Excel service injection
+    public function __construct(Excel $excel)
     {
         $this->middleware('auth');
+        $this->excel = $excel;
     }
 
     /**
@@ -50,12 +54,22 @@ class HomeController extends Controller
     $employee = Employee::count();
     $history = Transaction::where('status', 'Return')->count();
     
-    
-    $officeCounts = Transaction::select('offices.code AS office_code', DB::raw('COUNT(*) AS office_count'))
-        ->join('offices', 'transactions.office', '=', 'offices.id')
-        ->where('transactions.status', 'Return')
-        ->groupBy('offices.code')
-        ->get();
+
+    $officeCounts = Transaction::with(['office' => function ($query) {
+        $query->select('id', 'code');
+    }])
+    ->select('office_id', DB::raw('COUNT(*) AS office_count'))
+    ->where('status', 'Return')
+    ->groupBy('office_id')
+    ->get()
+    ->map(function ($item) {
+        return [
+            'office_code' => $item->office ? $item->office->code : null,
+            'office_count' => $item->office_count,
+        ];
+    });
+
+
 
     
     $conditions = Equipment::select('conditions', DB::raw('COUNT(*) AS total'))
@@ -93,113 +107,103 @@ class HomeController extends Controller
     ));
 }
 
-    public function late(){
-        $page = [
-            'name'      =>  'Late Transactions',
-            'title'     =>  'Late Transactions',
-            'crumb'     =>  ['Dashboard' => '/home', 'Late Transactions' => '/home/home-late']
-        ];
-
-        $categories = Category::all();
-        $offices = Office::all();
-        $employees = Employee::all();
-
-        $lateTransaction = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
-    ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
-    ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
-    ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
-    ->where('transactions.status', 'Late')
-    ->select('transactions.*', 'equipment.id as equipment_id','equipment.equipment_name as equipment_name', 'equipment.serial_no as serial_no', 'equipment.property_no as property_no', 'categories.category as category_name', 'offices.code as office_name', 'employees.fullName as release_by', 'transactions.id as transaction_id')
-    ->orderBy('transactions.created_at', 'ASC')
-    ->get();
-
-        return view('equipment.late', compact('page', 'lateTransaction', 'categories', 'offices', 'employees' ));
-    }
-
-    
-    public function downloadLate(Request $request)
+public function late()
 {
+    $page = [
+        'name'      => 'Late Transactions',
+        'title'     => 'Late Transactions',
+        'crumb'     => ['Dashboard' => '/home', 'Late Transactions' => '/home/home-late']
+    ];
+
+    // Fetch necessary related data with eager loading
+    $lateTransactions = Transaction::with(['equipment.category', 'office', 'releaseBy'])
+        ->where('status', 'Late')
+        ->orderBy('created_at', 'ASC')
+        ->get();
+
+    // Extract other necessary data
+    $categories = Category::all();
+    $offices = Office::all();
+    $employees = Employee::all();
+
+    return view('equipment.late', compact('page', 'lateTransactions', 'categories', 'offices', 'employees'));
+}
+
+
+
+public function downloadLate(Request $request)
+{
+    $office_filter = $request->input('office_filter');
+    $category_filter = $request->input('category_filter');
     $startBorrow = $request->input('start_date_borrowed');
     $endBorrow = $request->input('end_date_borrowed');
     $startReturn = $request->input('start_date_return');
     $endReturn = $request->input('end_date_return');
-    $category_filter = $request->input('category_filter');
-    $office_filter = $request->input('office_filter');
 
-    
     $endBorrowPlusOneDay = date('Y-m-d', strtotime($endBorrow . ' +1 day'));
     $endReturnPlusOneDay = date('Y-m-d', strtotime($endReturn . ' +1 day'));
 
-    $query = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
-        ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
-        ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
-        ->leftJoin('employees', 'transactions.release_by', '=', 'employees.id')
-        ->where('transactions.status', 'Late')
-        ->select('transactions.*', 
-                'equipment.id as equipment_id', 
-                'equipment.equipment_name as equipment_name', 
-                'equipment.serial_no as serial_no', 
-                'equipment.property_no as property_no', 
-                'categories.category as category_name', 
-                'offices.office as office_name', 
-                'employees.fullName as release_by', 
-                'transactions.id as transaction_id')
-        ->orderBy('transactions.created_at', 'ASC');
+    $query = Transaction::with(['equipment.category', 'office', 'releaseBy'])
+        ->where(function ($query) {
+            $query->where('status', 'Late');
+        });
 
-    if (!empty($startBorrow) && !empty($endBorrow)) {
-        $query->whereBetween('date_borrowed', [$startBorrow, $endBorrowPlusOneDay]);
-    }
-
-    if (!empty($startReturn) && !empty($endReturn)) {
-        $query->whereBetween('returned_date', [$startReturn, $endReturnPlusOneDay]);
+    // Apply filters
+    if (!empty($office_filter)) {
+        $query->whereHas('office', function ($officeQuery) use ($office_filter) {
+            $officeQuery->where('code', $office_filter);
+        });
     }
 
     if (!empty($category_filter)) {
-        $query->where('categories.category', $category_filter);
+        $query->whereHas('equipment.category', function ($categoryQuery) use ($category_filter) {
+            $categoryQuery->where('name', $category_filter);
+        });
     }
+
+    if (!empty($startBorrow) && !empty($endBorrow)) {
+        $query->whereBetween('date_borrowed', [$startBorrow, $endBorrowPlusOneDay]);
+    } elseif (!empty($startBorrow)) {
+        $query->where('date_borrowed', '>=', $startBorrow);
+    }
+
+    if (!empty($startReturn) && !empty($endReturn)) {
+        $query->whereBetween('date_returned', [$startReturn, $endReturnPlusOneDay]);
+    } elseif (!empty($startReturn)) {
+        $query->where('date_returned', '>=', $startReturn);
+    }
+
+    // Prepare file name
+    $fileName = 'Missing_Equipments';
 
     if (!empty($office_filter)) {
-        $query->where('offices.code', $office_filter);
+        $fileName .= '_' . $office_filter;
+    }
+    if (!empty($category_filter)) {
+        $fileName .= '_' . $category_filter;
+    }
+    if (!empty($startBorrow) && !empty($endBorrow)) {
+        $fileName .= '_' . $startBorrow . '_to_' . $endBorrow;
+    }
+    if (!empty($startBorrow) && empty($endBorrow)) {
+        $fileName .= '_' . $startBorrow . '_to_present';
+    }
+    if (!empty($startReturn) && !empty($endReturn)) {
+        $fileName .= '_' . $startReturn . '_to_' . $endReturn;
+    }
+    if (!empty($startReturn) && empty($endReturn)) {
+        $fileName .= '_' . $startReturn . '_to_present';
     }
 
-    
+    $fileName .= '.xlsx';
+
     $lateTransactions = $query->get();
 
-    
-    $fileName = 'Unreturned_Equipments';
+    if ($lateTransactions->isEmpty()) {
+        return redirect()->back()->withErrors('No transactions to download.');
+    }
 
-        if (!empty($office_filter)) {
-            $fileName .= '_' . $office_filter;
-        }
-        if (!empty($category_filter)) {
-            $fileName .= '_' . $category_filter;
-        }
-        if (!empty($start_date_borrowed) && !empty($end_date_borrowed)) {
-            $fileName .= '_' . $start_date_borrowed . '_to_' . $end_date_borrowed;
-        }
-        if (!empty($start_date_borrowed) && empty($end_date_borrowed)) {
-            $fileName .= '_' . $start_date_borrowed . '_to_present';
-        }
-        if (!empty($start_date_return) && !empty($end_date_return)) {
-            $fileName .= '_' . $start_date_return . '_to_' . $end_date_return;
-        }
-        if (!empty($start_date_return) && empty($end_date_return)) {
-            $fileName .= '_' . $start_date_return . '_to_present';
-        }
-
-        $fileName .= '.xlsx';
-
-
-        $lateTransaction = $query->get();
-
-        if($lateTransaction->isEmpty()){
-            return Redirect::back()->withErrors('No transactions to download.');
-        }
-
-        $fileName .= '.xlsx';
-
-    
-    return Excel::download(new LateExport($lateTransactions), $fileName);
+    return $this->excel->download(new LateExport($lateTransactions), $fileName);
 }
 }
 

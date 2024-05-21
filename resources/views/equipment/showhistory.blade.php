@@ -36,8 +36,8 @@
         <div class="card">
             <div class="card-body">
 
-                @forelse ($transactions as $transaction)
-                    <div class="row">
+                @if($transaction)
+    <div class="row">
                         <div class="row">
                             <div class="col">
                                 <h5 class="text-info text-sm">Transaction Information</h5>
@@ -48,50 +48,69 @@
                               </a>
                             </div>
                           </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <label class="form-label" for="equipment_name">Equipment Name <span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="equipment_name" name="equipment_name" value="{{ $transaction->equipment_name }}" readonly>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="date_borrowed">Date Borrowed<span class="text-danger">&#x2022;</span></label>
-                            <input type="datetime-local" class="form-control" id="date_borrowed" name="date_borrowed" value="{{ $transaction->date_borrowed }}" readonly>
-                            {{-- <p>{{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F j, Y') }}</p> --}}
+                            <label type="text" class="form-control" id="equipment_name" name="equipment_name"  readonly> {{ $transaction->equipment->equipment_name }}</label>
                         </div>
                         
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label class="form-label" for="serial_no">Serial Number<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="serial_no" name="serial_no" value="{{ $transaction->serial_no }}" readonly>
+                            <input type="text" class="form-control" id="serial_no" name="serial_no" value="{{ $transaction->equipment->serial_no }}" readonly>
                         </div>
-                        <div class="col-md-6">
+
+                        
+                        <div class="col-md-4">
                             <label class="form-label" for="property_no">Property Number<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="property_no" name="property_no" value="{{ $transaction->property_no }}" readonly>
+                            <input type="text" class="form-control" id="property_no" name="property_no" value="{{ $transaction->equipment->property_no }}" readonly>
                         </div>
                     </div>
+                   
                     <div class="row mt-3">
                         <div class="col-md-6">
                             <label class="form-label" for="borrowed_by">Borrower<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="borrowed_by" name="borrowed_by" value="{{ $transaction->borrowed_by }}" readonly>
+                            <label type="text" class="form-control" id="borrowed_by" name="borrowed_by"  readonly> {{ $transaction->borrowed_by }} </label>
                             {{-- <p> {{ $transaction->borrowed_by }}</p> --}}
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="office">Office<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="office_name" name="office_name" value="{{ $transaction->office_name }}" readonly>
+                            <label type="text" class="form-control" id="office_name" name="office_name"  readonly> {{ $transaction->office->office }} </label>
                             {{-- <p>{{ $transaction->office_name }}</p> --}}
                         </div>
                     </div>
+                   
                     <div class="row mt-3">
-                        
-                        <div class="col-md-6">
+                        @php
+                $formattedDate = \Carbon\Carbon::parse($transaction->date_borrowed)->format('Y-m-d h:i A');
+            @endphp
+            
+            <div class="col-md-6">
+                <label class="form-label" for="date_borrowed">Borrow Date<span class="text-danger">&#x2022;</span></label>
+                <label class="form-control" id="date_borrowed" name="date_borrowed" readonly>
+                    {{ $formattedDate }}
+                </label>
+            </div>
+            
+                        {{-- <div class="col-md-6">
                             <label class="form-label" for="date_returned">Expected Return Date</label>
                             <input type="datetime-local" class="form-control" id="date_returned" name="date_returned" value="{{ $transaction->date_returned }}" readonly>
+                        </div> --}}
+            
+                        @php
+                        $formattedReturn = \Carbon\Carbon::parse($transaction->date_returned)->format('Y-m-d h:i A');
+                    @endphp
+                    
+                    <div class="col-md-6">
+                        <label class="form-label" for="date_returned">Expected Return Date<span class="text-danger">&#x2022;</span></label>
+                        <label class="form-control" id="date_returned" name="date_returned" readonly>
+                            {{ $formattedReturn }}
+                        </label>
+                    </div>
 
-                            {{-- <p>{{ \Carbon\Carbon::parse($transaction->date_returned)->format('F j, Y') }}</p> --}}
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label class="form-label" for="release_by">Released by<span class="text-danger">&#x2022;</span></label>
-                            <input type="text" class="form-control" id="release_by" name="release_by" value="{{ $transaction->release_by }}" readonly>
+                            <label type="text" class="form-control" id="release_by" name="release_by"  readonly>
+                                {{ $transaction->releaseBy->fullName}} 
+                            </label>
 
                             {{-- <p>{{ $transaction->release_by }}</p> --}}
                         </div>
@@ -100,16 +119,22 @@
                     
                         <div class="row mt-3">
                             <h5 class="text-info text-sm">Return Details</h5>
-                            <div class="col-md-6">
-                                <input type="hidden" class="form-control" id="equipment_id" name="equipment_id" value="{{ $transaction->transaction_id }}" readonly>
-                                <label class="form-label" for="date_borrowed">Date Returned<span class="text-danger">&#x2022;</span></label>
-                                <input type="datetime-local" class="form-control" id="returned_date" name="returned_date" value="{{ $transaction->returned_date }}" readonly>
+                            @php
+            $formattedActual = \Carbon\Carbon::parse($transaction->returned_date)->format('Y-m-d h:i A');
+        @endphp
+        
+        <div class="col-md-6">
+            <label class="form-label" for="returned_date">Date Returned <span class="text-danger">&#x2022;</span></label>
+            <label class="form-control" id="returned_date" name="returned_date" readonly>
+                {{ $formattedActual }}
+            </label>
+        
 
                                 {{-- <p>{{ \Carbon\Carbon::parse($transaction->returned_date)->format('F j, Y') }}</p> --}}
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label" for="date_returned">Returned By<span class="text-danger">&#x2022;</span></label>
-                                <input type="text" class="form-control" id="returned_by" name="returned_by" value="{{ $transaction->returned_by }}" readonly>
+                                <label type="text" class="form-control" id="returned_by" name="returned_by"  readonly> {{ $transaction->returned_by }} </label>
 
                                 {{-- <p>{{ $transaction->returned_by }}</p> --}}
                             </div>
@@ -117,14 +142,14 @@
                         <div class="row mt-3">
                             <div class="col-md-12">
                                 <label class="form-label" for="date_returned">Received by<span class="text-danger">&#x2022;</span></label>
-                                <input type="text" class="form-control" id="received_by" name="received_by" value="{{ $transaction->received_by }}" readonly>
+                                <label type="text" class="form-control" id="received_by" name="received_by"  readonly> {{ $transaction->receivedBy->fullName }} </label>
 
                                 {{-- <p>{{ $transaction->received_by }}</p> --}}
                             </div>
                         </div>
-                @empty
-                    <p>No transaction found.</p>
-                @endforelse
+                        @else
+                            <p>No transaction found.</p>
+                        @endif
             </div>
         </div>
     </div>
@@ -133,7 +158,9 @@
             <div class="card-body">
                 <div class="col-md-12 mt-3">
                     {{-- <label class="text-info"></label> --}}
-                    @foreach ($transactions as $transaction)
+                    
+                    @if($transaction)
+
                         @if ($transaction->upload_file)
                         @if (Str::endsWith($transaction->upload_file, ['.jpg', '.jpeg', '.png', '.gif', 'jfif', '.JPG', '.JPEG', '.PNG', '.GIF', '.JFIF']))
                             <div class="row">
@@ -174,7 +201,7 @@
         </div>
     </form>
 </div>
-                @endforeach
+@endif
             </div>
         </div>
     </div>

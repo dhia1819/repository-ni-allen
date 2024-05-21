@@ -68,10 +68,13 @@
 
                             <div class="form-group col-md-3">
                                 <label for="category_filter">Filter by Category:</label>
-                                <select class="form-control select2 select2-filter" id="category_filter" name="category_filter">
-                                    <option value="">All Category</option>
+                                <select class="form-control select select2-filter" id="category_filter" name="category_filter">
+                                    <option value="">All Categories</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->category }}">{{ $category->category }}</option>
+                                            @if($category->status == 0)
+                                                @continue
+                                            @endif
+                                        <option value="{{ $category->name }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -138,8 +141,9 @@
                                     @foreach ($borrowedData as $transaction)
                                         <tr>
                                             <td>{{ $transaction->borrowed_by }}</td>
-                                            <td>{{ $transaction->office_name }}</td>
-                                            <td>{{ $transaction->category_name }}</td>
+                                            <td>{{ $transaction->office->code }}</td>
+                                            <td>{{ $transaction->equipment->category->name }}</td>
+
                                             <td>{{ \Carbon\Carbon::parse($transaction->date_borrowed)->format('F d, Y | h:i A') }}</td>
                                             <td>
                                                 @if ($transaction->date_returned)
@@ -158,7 +162,7 @@
                                             </td>
                                             <td>
                                                 <div class="align-middle text-center action" role="group" aria-label="Actions">
-                                                    <a href="{{ route('borrow.return', ['id' => $transaction->transaction_id]) }}" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-warning text-center align-items-center justify-content-center">
+                                                    <a href="{{ route('borrow.return', ['id' => $transaction->id]) }}" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-warning text-center align-items-center justify-content-center">
                                                         <i class="fas fa-reply"></i>
                                                     </a>
                                                 </div>

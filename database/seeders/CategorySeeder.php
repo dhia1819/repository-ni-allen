@@ -15,133 +15,133 @@ class CategorySeeder extends Seeder
     {
         $category=array(
            array(
-            'category'=>'Laptop Computer',
+            'name'=>'Laptop Computer',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Air Conditioner',
+            'name'=>'Air Conditioner',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Vehicle',
+            'name'=>'Vehicle',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Scanner',
+            'name'=>'Scanner',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Television',
+            'name'=>'Television',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Table',
+            'name'=>'Table',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Photobooth',
+            'name'=>'Photobooth',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'ATS Machine',
+            'name'=>'ATS Machine',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Computer Accessory',
+            'name'=>'Computer Accessory',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Digital Audio Video',
+            'name'=>'Digital Audio Video',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Copier Machine',
+            'name'=>'Copier Machine',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Generator Set',
+            'name'=>'Generator Set',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Printer',
+            'name'=>'Printer',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Table',
+            'name'=>'Table',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Projector',
+            'name'=>'Projector',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Computer Set',
+            'name'=>'Computer Set',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Server Unit',
+            'name'=>'Server Unit',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Tower Server',
+            'name'=>'Tower Server',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Database Server',
+            'name'=>'Database Server',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Server',
+            'name'=>'Server',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Computer Server',
+            'name'=>'Computer Server',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
            ),
            array(
-            'category'=>'Video Mixing Server',
+            'name'=>'Video Mixing Server',
             'status'=>1,
             'created_at' => now(),
             'updated_at' => now(),
@@ -149,7 +149,7 @@ class CategorySeeder extends Seeder
 
         );
 
-        DB::table('categories')->insert($category);
+        DB::table('tbl_category')->insert($category);
 
     }
 }

@@ -85,7 +85,7 @@
                                 <select class="form-control select2 select2-filter" id="category_filter" name="category_filter">
                                     <option value="">All Category</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->category }}">{{ $category->category }}</option>
+                                        <option value="{{ $category->name }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -152,12 +152,13 @@
                                     </tr>
                                 </thead>
                                 <tbody id="history_table_body">
-                                    @foreach ($borrowedData as $transaction)
+                                    @foreach($borrowedData as $transaction)
                                         <tr>
                                             <td style="vertical-align: middle;">{{ $transaction->borrowed_by }}</td>
-                                            <td style="vertical-align: middle;">{{ $transaction->office_name }}</td>
+                                            <td style="vertical-align: middle;">{{ $transaction->office->code }}</td>
                                            
-                                            <td style="vertical-align: middle;">{{ $transaction->category_name }}</td>
+                                            <td style="vertical-align: middle;">{{ $transaction->equipment->category->name }}</td>
+
                                             {{-- <td style="vertical-align: middle;">{{ $transaction->property_no }}</td>
                                             <td style="vertical-align: middle;">{{ $transaction->serial_no }}</td> --}}
                                             <td style="vertical-align: middle;">
@@ -172,8 +173,7 @@
                                             <td style="vertical-align: middle;">{{ ucfirst($transaction->tstatus) }}</td> --}}
                                             <td>
                                                 <div class="align-middle text-center action" role="group" aria-label="Actions">
-                                                <a href="{{ route('show.history', ['id' => $transaction->
-                                                transaction_id]) }}" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center align-items-center justify-content-center">
+                                                <a href="{{ route('show.history', [$transaction->id]) }}" class="icon icon-shape pt-1 icon-sm shadow border-radius-md bg-gradient-success text-center align-items-center justify-content-center">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                                 </div>

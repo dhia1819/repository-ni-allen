@@ -56,11 +56,11 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="office">Office<span class="text-danger">&#x2022;</span></label>
-                            <select class="form-control select2 select2-create" id="office" name="office">
+                            <select class="form-control select2 select2-create" id="office" name="office_id">
                                 <option value="">Select Office</option>
-                                @foreach($office as $offices)
-                                    <option value="{{ $offices->id }}">{{ $offices->office }}</option>
-                                @endforeach
+                                @foreach($offices as $office)
+                                <option value="{{ $office->id }}">{{ $office->office }}</option>
+                            @endforeach
                             </select>
                         </div>
                     </div>

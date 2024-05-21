@@ -34,13 +34,10 @@ class HistoryController extends Controller
             'crumb' =>  ['History' => '/borrow/history'] 
         ];
         
-        $borrowedData = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
-            ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
-            ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
-            ->where('transactions.status', 'Return') 
-            ->select('transactions.*', 'equipment.*', 'categories.category as category_name', 'offices.code as office_name', 'transactions.id as transaction_id','transactions.status as tstatus')
-            ->orderBy('transactions.returned_date', 'ASC')
-            ->get();
+        $borrowedData = Transaction::with(['equipment.category', 'office'])
+    ->where('status', 'Return')
+    ->orderBy('returned_date', 'ASC')
+    ->get();
 
         return view('equipment.history', compact('page', 'borrowedData', 'categories', 'offices'));       
     }
@@ -48,35 +45,24 @@ class HistoryController extends Controller
     
 
     public function showhistory(string $id)
-    {
-        $page = [
-            'name'  =>  'Return',
-            'title' =>  'History Details',
-            'crumb' =>  ['History' => '/borrow/history', 'History Details' => "/borrow/showhistory/{$id}"]
-        ];
+{
+    $page = [
+        'name'  =>  'Return',
+        'title' =>  'History Details',
+        'crumb' =>  ['History' => '/borrow/history', 'History Details' => "/borrow/showhistory/{$id}"]
+    ];
 
-        
-        $offices = Office::all();
-        $employees = Employee::all();
+    $offices = Office::all();
+    $employees = Employee::all();
 
-        $transactions = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
-        ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
-        ->leftJoin('employees as release_employees', 'transactions.release_by', '=', 'release_employees.id')
-        ->leftJoin('employees as received_employees', 'transactions.received_by', '=', 'received_employees.id')
-        ->select('transactions.*', 
-                    'equipment.equipment_name',
-                    'equipment.property_no',
-                    'equipment.serial_no', 
-                    'offices.office as office_name', 
-                    'release_employees.fullName as release_by', 
-                    'received_employees.fullName as received_by')
-        ->where('transactions.id', $id)
-        ->where('transactions.status', '=', 'Return')
-        ->get();
+    $transaction = Transaction::with(['equipment', 'office', 'releaseBy'])
+        ->where('id', $id)
+        ->where('status', 'Return')
+        ->firstOrFail();
 
+    return view('equipment.showhistory', compact('transaction', 'page', 'offices', 'employees'));
+}
 
-        return view('equipment.showhistory', compact('transactions', 'page', 'offices', 'employees'));
-    }
     public function downloadHistory(Request $request)
     {
         $startBorrow = $request->input('start_date_borrowed');
@@ -90,44 +76,37 @@ class HistoryController extends Controller
          $endBorrowPlusOneDay = date('Y-m-d', strtotime($endBorrow . ' +1 day'));
          $endReturnPlusOneDay = date('Y-m-d', strtotime($endReturn . ' +1 day'));
 
-        
-        $query = Transaction::leftJoin('equipment', 'transactions.equipment_id', '=', 'equipment.id')
-            ->leftJoin('offices', 'transactions.office', '=', 'offices.id')
-            ->leftJoin('employees as release_employees', 'transactions.release_by', '=', 'release_employees.id')
-            ->leftJoin('employees as received_employees', 'transactions.received_by', '=', 'received_employees.id')
-            ->leftJoin('categories', 'equipment.category', '=', 'categories.id')
-            ->select('transactions.*', 
-                    'equipment.equipment_name as equipmentName', 'equipment.serial_no as serial_no', 'equipment.property_no as property_no',
-                    'offices.office as office_name', 'release_employees.fullName as release_by', 
-                    'received_employees.fullName as received_by',
-                    'categories.category as category_name', )
-            ->where('transactions.status', '=', 'Return')
-            ->orderBy('transactions.returned_date', 'ASC');
+
+        $query = Transaction::with(['equipment.category', 'office', 'releaseBy', 'receivedBy'])
+        ->where(function ($query) {
+            $query->where('status', 'Return')
+                  ->orderBy('borrowed_by', 'ASC');
+        });
 
             if (!empty($startBorrow) && !empty($endBorrow)) {
                 $query->whereBetween('date_borrowed', [$startBorrow, $endBorrowPlusOneDay]);
-            
-            } 
-
-            if (!empty($startBorrow) && empty($endBorrow)) {
-                $query->where('date_borrowed', '>=', $startBorrow);
-            }
+    } elseif (!empty($startBorrow)) {
+        $query->where('date_borrowed', '>=', $startBorrow);
+    }
 
             if (!empty($startReturn) && !empty($endReturn)) {
                 $query->whereBetween('returned_date', [$startReturn, $endReturnPlusOneDay]);
-            } 
-
-            if (!empty($startReturn) && empty($endReturn)) {
-                $query->whereBetween('returned_date', '>=', $$startReturn);
+            } elseif (!empty($startReturn)) {
+                $query->where('returned_date', '>=', $startReturn);
             } 
 
             if (!empty($category_filter)) {
-                $query->where('categories.category', $category_filter);
+                $query->whereHas('equipment.category', function ($categoryQuery) use ($category_filter) {
+                    $categoryQuery->where('name', $category_filter);
+                });
             }
         
-            if (!empty($office_filter)) {
-                $query->where('offices.code', $office_filter);
-            }
+            // Apply filters
+    if (!empty($office_filter)) {
+        $query->whereHas('office', function ($officeQuery) use ($office_filter) {
+            $officeQuery->where('code', $office_filter);
+        });
+    }
             
             $fileName = 'Borrowing_History';
 

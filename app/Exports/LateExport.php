@@ -28,16 +28,18 @@ class LateExport implements FromCollection, WithColumnFormatting, ShouldAutoSize
                 'Date Borrowed' => Carbon::parse($missing->date_borrowed)->format('F d, Y'),
                 'Expected Return' => Carbon::parse($missing->date_returned)->format('F d, Y'),
                 'Borrower' => $missing->borrowed_by,
-                'Office' => $missing->office_name,
-                'Serial Number' => $missing->serial_no,
-                'Property Number' => $missing->property_no,
-                'Equipment' => $missing->equipment_name,
-                'Category' => $missing->category_name,
-                'Released by' => $missing->release_by,
+                'Office' => $missing->office->office,
+                'Serial Number' => $missing->equipment->serial_no,
+                'Property Number' => $missing->equipment->property_no,
+                'Equipment' => $missing->equipment->equipment_name,
+                'Category' => $missing->equipment->category->name,
+                'Released by' => $missing->releaseBy->fullName,
           
             ];
         });
     }
+
+    
 
     public function title(): string
     {

@@ -24,7 +24,7 @@ class ArchiveExport implements FromCollection, WithHeadings, WithColumnWidths, W
         $data = $this->archive->map(function ($archive) {
             return [
                 'Article/Item Name'=> $archive->equipment_name,
-                'Category'=> $archive->category,
+                'Category'=> $archive->category->name,
                 'Description' => $archive->Description,
                 'Property no.' => $archive->property_no,
                 'Serial no.' => $archive->serial_no,

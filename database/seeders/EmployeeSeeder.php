@@ -202,6 +202,6 @@ class EmployeeSeeder extends Seeder
             ),
         );
         
-        DB::table('employees')->insert($employees);
+        DB::table('tbl_employees')->insert($employees);
     }
 }

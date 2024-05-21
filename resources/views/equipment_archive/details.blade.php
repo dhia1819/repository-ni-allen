@@ -56,7 +56,7 @@
                         <div class="row mt-2">
                             <div class="col-md-6">
                                 <label class="form-label" for="category">Category</label>
-                                <input type="text" class="form-control" id="category" name="category" value="{{ $equipment->category_name }}" readonly>
+                                <input type="text" class="form-control" id="category" name="category" value="{{ $equipment->category->name }}" readonly>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label" for="category">Condition</label>

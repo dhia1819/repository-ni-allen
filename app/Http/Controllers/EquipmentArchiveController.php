@@ -21,13 +21,12 @@ class EquipmentArchiveController extends Controller
             'crumb' =>  array('Equipment Archive' => '/equipment-archive')
         ];
 
-        $equipment=Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
-        ->orderBy('equipment.created_at', 'ASC')
-        ->select('equipment.*', 'categories.category as category_name')
-        ->where('equipment.status', '=', 'archived')
-        ->get();
-        
-        return view('equipment_archive.index', compact('page', 'equipment','categories'));
+        $equipment = Equipment::with('category')
+    ->orderBy('equipment_name', 'ASC')
+    ->where('status', 'archived')
+    ->get();
+
+return view('equipment_archive.index', compact('page', 'equipment', 'categories'));
         
     }
 
@@ -41,31 +40,28 @@ class EquipmentArchiveController extends Controller
 
         $categories = Category::all();
 
-        $equipment = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
-        ->where('equipment.id', $id) 
-        ->select('equipment.*', 'categories.category as category_name')
-        ->firstOrFail();
+        $equipment = Equipment::findOrFail($id);
     
         return view('equipment_archive.details', compact('equipment', 'page', 'categories'));
     }
 
     public function restore(string $id){
         
-        // Find the equipment
+        
         $equipment = Equipment::findOrFail($id);
     
-        // Update equipment status
+        
         $equipment->status = 'available';
         $equipment->conditions = 'Good';
         $equipment->save();
     
-        // Retrieve the category ID associated with the equipment
+        
         $category = $equipment->category;
     
-        // Update the category status in the categories table
+        
         Category::where('id', $category)->update(['status' => 1]);
     
-        // Redirect with success message
+        
         return redirect('/equipment')->with('success', 'Equipment Restored successfully.');
     }
 
@@ -75,31 +71,33 @@ class EquipmentArchiveController extends Controller
     {
         $this->excel = $excel;
     }
-    public function downloadArchive(Request $request){
-        $category_filter = $request->input('category_filter');
+    public function downloadArchive(Request $request)
+{
+    $category_filter = $request->input('category_filter');
 
-        $query = Equipment::leftJoin('categories', 'equipment.category', '=', 'categories.id')
-            ->select('equipment.*', 'categories.category as category')
-            ->where('equipment.status', '=', 'archived');
+    // Query with relationships
+    $query = Equipment::with('category')
+                      ->orderBy('equipment_name', 'ASC')
+                      ->where('status', '=', 'archived');
 
-        if(!empty($category_filter)){
-            $query->where('categories.category', '=', $category_filter);
-            $fileName = 'Condemned_Equipments_'.$category_filter.'.xlsx';
-        }
-        else{
-            $fileName = 'Archived_Equipment.xlsx';
-        }
-
-        
-        $archive = $query->get();
-
-       
-      
-        if ($archive->isEmpty()) {
-            return Redirect::back()->withErrors('No equipments found with the specified filters.');
-        }
-        
-        // Excel File Download
-        return $this->excel->download(new ArchiveExport($archive), $fileName);
+    if (!empty($category_filter)) {
+        $query->whereHas('category', function ($q) use ($category_filter) {
+            $q->where('name', '=', $category_filter);
+        });
+        $fileName = 'Condemned_Equipments_' . $category_filter . '.xlsx';
+    } else {
+        $fileName = 'Archived_Equipment.xlsx';
     }
+
+    $archive = $query->get();
+
+    if ($archive->isEmpty()) {
+        return Redirect::back()->withErrors('No equipments found with the specified filters.');
+    }
+
+    // Excel File Download
+    return $this->excel->download(new ArchiveExport($archive), $fileName);
 }
+
+}
+

@@ -59,14 +59,16 @@
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label class="form-label" for="category">Category<span class="text-danger">&#x2022;</span></label>
-                                    <select class="form-control select select2-update" id="category" name="category">
+                                    <label class="form-label" for="category_id">Category<span class="text-danger">&#x2022;</span></label>
+                                    <select class="form-control select select2-update" id="category_id" name="category_id">
                                         <option value="">Select Category</option>
                                         @foreach($categories as $category)
-                                        @if($category->status==0)
-                                            @continue
+                                            @if($category->status == 0)
+                                                @continue
                                             @endif
-                                            <option value="{{ $category->id }}" {{ $category->id == $equipment->category ? 'selected' : '' }}>{{ $category->category }}</option>
+                                            <option value="{{ $category->id }}" {{ $category->id == $equipment->category_id ? 'selected' : '' }}>
+                                                {{ $category->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
